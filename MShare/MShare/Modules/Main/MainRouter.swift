@@ -8,25 +8,57 @@
 import UIKit
 
 protocol MainRouterProtocol {
-    static func createModule() -> UIViewController
+    static func createModule() -> MainViewProtocol
+    static func createTabModules() -> [UIViewController]
 }
 
 class MainRouter: MainRouterProtocol {
     
-    static func createModule() -> UIViewController {
+    static func createModule() -> MainViewProtocol {
         let view: MainViewProtocol = MainView()
         let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()
         var interactor: MainInteractorIntputProtocol = MainInteractor()
         let router = MainRouter()
+        let tabViews = createTabModules()
         
         view.presenter = presenter
+        view.setTabControllers(tabViews)
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
         interactor.presenter = presenter
         
-        let navigationController = UINavigationController(rootViewController: view.viewController)
-        return navigationController
+        return view
     }
     
+    static func createTabModules() -> [UIViewController] {
+        let appleMusicChartView = AppleMusicChartRouter.createModule()
+        appleMusicChartView.title = "Apple Music"
+        appleMusicChartView.tabBarItem.image = UIImage(systemName: "chart.bar")
+        
+        let spotifyChartView = SpotifyChartRouter.createModule()
+        spotifyChartView.title = "Spotify"
+        spotifyChartView.tabBarItem.image = UIImage(systemName: "chart.bar")
+        
+        let linkView = LinkRouter.createModule()
+        linkView.title = "Link"
+        linkView.tabBarItem.image = UIImage(systemName: "link")
+        
+        let searchView = SearchRouter.createModule()
+        searchView.title = "Search"
+        searchView.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        
+        let settingsView = SettingsRouter.createModule()
+        settingsView.title = "Settings"
+        settingsView.tabBarItem.image = UIImage(systemName: "gear")
+        
+        let views = [appleMusicChartView,
+                     spotifyChartView,
+                     linkView,
+                     searchView,
+                     settingsView]
+        return views
+    }
+    
+   
 }

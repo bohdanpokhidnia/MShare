@@ -24,8 +24,33 @@ class LinkView: ViewController<LinkContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
+        setupUserInteraction()
     }
 
+}
+
+// MARK: - Setup
+
+private extension LinkView {
+    
+    func setupNavigationBar() {
+        title = "Link"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+}
+
+// MARK: - User interactions
+
+private extension LinkView {
+    
+    func setupUserInteraction() {
+        contentView.searchOnLinkAction = {
+            print("[dev] clicked on link search button")
+        }
+    }
+    
 }
 
 // MARK: - LinkViewProtocol

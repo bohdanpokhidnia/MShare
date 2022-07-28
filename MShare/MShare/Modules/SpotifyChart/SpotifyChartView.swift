@@ -24,6 +24,8 @@ class SpotifyChartView: ViewController<SpotifyChartContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Spotify"
+        contentView.backgroundColor = .green
     }
 
 }

@@ -24,6 +24,8 @@ class SettingsView: ViewController<SettingsContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Settings"
+        contentView.backgroundColor = .systemGray
     }
 
 }

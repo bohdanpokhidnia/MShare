@@ -9,27 +9,31 @@ import UIKit
 
 protocol MainViewProtocol: AnyObject {
     var presenter: MainPresenterProtocol? { get set }
-    var viewController: UIViewController { get }
+    var viewController: UITabBarController { get }
+    
+    func setTabControllers(_ viewControllers: [UIViewController])
+    func selectedTab(_ index: Int)
 }
 
-class MainView: UIViewController {
+class MainView: UITabBarController {
     
     var presenter: MainPresenterProtocol?
-    var viewController: UIViewController {
+    var viewController: UITabBarController {
         return self
     }
     
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
 }
 
 // MARK: - MainViewProtocol
 
 extension MainView: MainViewProtocol {
+    
+    func setTabControllers(_ viewControllers: [UIViewController]) {
+        setViewControllers(viewControllers, animated: false)
+    }
+    
+    func selectedTab(_ index: Int) {
+        selectedIndex = index
+    }
     
 }

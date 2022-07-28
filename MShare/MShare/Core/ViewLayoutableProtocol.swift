@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol ViewLayoutableProtocol {
+    func setup()
+    func setupSubviews()
+    func defineLayout()
+}

@@ -10,13 +10,13 @@ import UIKit
 class AppleMusicChartContentView: View {
     
     // MARK: - Lifecycle
-    
-    ovveride setupSubviews() {
+
+    override func setupSubviews() {
         super.setupSubviews()
         
     }
     
-    ovveride defineLayout() {
+    override func defineLayout() {
         super.defineLayout()
         
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController<ContentView: UIView>: UIViewController {
+class ViewController<ContentView: View>: UIViewController {
     
     var contentView: ContentView! {
         return view as? ContentView

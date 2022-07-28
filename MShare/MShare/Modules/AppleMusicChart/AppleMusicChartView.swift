@@ -24,6 +24,8 @@ class AppleMusicChartView: ViewController<AppleMusicChartContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Apple Music"
+        contentView.backgroundColor = .red
     }
 
 }
@@ -33,3 +35,4 @@ class AppleMusicChartView: ViewController<AppleMusicChartContentView> {
 extension AppleMusicChartView: AppleMusicChartViewProtocol {
     
 }
+
