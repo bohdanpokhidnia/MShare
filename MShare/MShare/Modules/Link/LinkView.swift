@@ -10,6 +10,8 @@ import UIKit
 protocol LinkViewProtocol: AnyObject {
     var presenter: LinkPresenterProtocol? { get set }
     var viewController: UIViewController { get }
+    
+    func setLink(_ linkString: String)
 }
 
 class LinkView: ViewController<LinkContentView> {
@@ -25,7 +27,13 @@ class LinkView: ViewController<LinkContentView> {
         super.viewDidLoad()
         
         setupNavigationBar()
-        setupUserInteraction()
+        setupUserActions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter?.setupPresenter()
     }
 
 }
@@ -45,7 +53,7 @@ private extension LinkView {
 
 private extension LinkView {
     
-    func setupUserInteraction() {
+    func setupUserActions() {
         contentView.searchOnLinkAction = {
             print("[dev] clicked on link search button")
         }
@@ -56,5 +64,9 @@ private extension LinkView {
 // MARK: - LinkViewProtocol
 
 extension LinkView: LinkViewProtocol {
+    
+    func setLink(_ linkString: String) {
+        contentView.linkTextField.text = linkString
+    }
     
 }

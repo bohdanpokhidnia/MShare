@@ -8,7 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     var mainView: MainViewProtocol?
     
@@ -19,12 +19,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         configureTabBarStyle()
         
         mainView = MainRouter.createModule()
-        mainView?.selectedTab(2)
+        
+        if let url = connectionOptions.urlContexts.first?.url {
+            handleIncomingURL(url)
+        }
         
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = mainView?.viewController
         window?.makeKeyAndVisible()
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        
+        handleIncomingURL(url)
+    }
+    
+}
+
+// MARK: - Setup Configuration
+
+private extension SceneDelegate {
     
     func configureNavigationBarStyle() {
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -43,3 +58,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
 }
 
+// MARK: - Link handling
+
+private extension SceneDelegate {
+    
+    func handleIncomingURL(_ url: URL) {
+        guard let scheme = url.scheme,
+              scheme.caseInsensitiveCompare("ShareExtension") == .orderedSame
+        //TODO: - For select tab in future
+        //let page = url.host
+        else { return }
+        var parameters: [String: String] = [:]
+        
+        URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
+            parameters[$0.name] = $0.value
+        }
+        
+        guard let urlString = parameters["url"] else {
+            return
+        }
+        
+        mainView?.selectedTab(.link)
+        UserDefaults().set(urlString, forKey: "incomingURL")
+    }
+    
+}

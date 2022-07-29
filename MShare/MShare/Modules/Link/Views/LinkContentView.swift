@@ -21,6 +21,7 @@ class LinkContentView: View {
     private(set) var linkTextField = UITextField()
         .make {
             $0.placeholder = "Link for search song"
+            $0.adjustsFontSizeToFitWidth = true
         }
     
     private lazy var searchButton = UIButton(type: .system)

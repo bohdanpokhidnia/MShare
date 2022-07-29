@@ -12,10 +12,18 @@ protocol MainViewProtocol: AnyObject {
     var viewController: UITabBarController { get }
     
     func setTabControllers(_ viewControllers: [UIViewController])
-    func selectedTab(_ index: Int)
+    func selectedTab(_ tabItemIndex: MainView.TabItemIndex)
 }
 
 class MainView: UITabBarController {
+    
+    enum TabItemIndex: Int {
+        case appleMusic
+        case spotify
+        case link
+        case search
+        case settings
+    }
     
     var presenter: MainPresenterProtocol?
     var viewController: UITabBarController {
@@ -32,8 +40,8 @@ extension MainView: MainViewProtocol {
         setViewControllers(viewControllers, animated: false)
     }
     
-    func selectedTab(_ index: Int) {
-        selectedIndex = index
+    func selectedTab(_ tabItemIndex: MainView.TabItemIndex) {
+        selectedIndex = tabItemIndex.rawValue
     }
     
 }
