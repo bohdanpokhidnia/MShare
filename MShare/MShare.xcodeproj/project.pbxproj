@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
+		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91D2891AEDC00438A37 /* AppDelegate.swift */; };
 		F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91F2891AEDC00438A37 /* SceneDelegate.swift */; };
 		F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F774B9262891AEDD00438A37 /* Assets.xcassets */; };
@@ -56,7 +58,34 @@
 		F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902834289322EB0058CC19 /* UIStackView+Ext.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F7653FB7289452A200FC47FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F774B9122891AEDC00438A37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7653FAE289452A200FC47FA;
+			remoteInfo = ShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F7653FBA289452A200FC47FA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F774B91A2891AEDC00438A37 /* MShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F774B91D2891AEDC00438A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F774B91F2891AEDC00438A37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +136,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F7653FAC289452A200FC47FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F774B9172891AEDC00438A37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,10 +155,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F7653FB0289452A200FC47FA /* ShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F7653FB1289452A200FC47FA /* ShareViewController.swift */,
+				F7653FB6289452A200FC47FA /* Info.plist */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
 		F774B9112891AEDC00438A37 = {
 			isa = PBXGroup;
 			children = (
 				F774B91C2891AEDC00438A37 /* MShare */,
+				F7653FB0289452A200FC47FA /* ShareExtension */,
 				F774B91B2891AEDC00438A37 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F774B91A2891AEDC00438A37 /* MShare.app */,
+				F7653FAF289452A200FC47FA /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +374,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F7653FAE289452A200FC47FA /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7653FBD289452A200FC47FA /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				F7653FAB289452A200FC47FA /* Sources */,
+				F7653FAC289452A200FC47FA /* Frameworks */,
+				F7653FAD289452A200FC47FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareExtension;
+			productName = ShareExtension;
+			productReference = F7653FAF289452A200FC47FA /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F774B9192891AEDC00438A37 /* MShare */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F774B92E2891AEDD00438A37 /* Build configuration list for PBXNativeTarget "MShare" */;
@@ -334,10 +398,12 @@
 				F774B9162891AEDC00438A37 /* Sources */,
 				F774B9172891AEDC00438A37 /* Frameworks */,
 				F774B9182891AEDC00438A37 /* Resources */,
+				F7653FBA289452A200FC47FA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F7653FB8289452A200FC47FA /* PBXTargetDependency */,
 			);
 			name = MShare;
 			packageProductDependencies = (
@@ -358,6 +424,9 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					F7653FAE289452A200FC47FA = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					F774B9192891AEDC00438A37 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -381,11 +450,19 @@
 			projectRoot = "";
 			targets = (
 				F774B9192891AEDC00438A37 /* MShare */,
+				F7653FAE289452A200FC47FA /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F7653FAD289452A200FC47FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F774B9182891AEDC00438A37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +475,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F7653FAB289452A200FC47FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F774B9162891AEDC00438A37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +535,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F7653FB8289452A200FC47FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7653FAE289452A200FC47FA /* ShareExtension */;
+			targetProxy = F7653FB7289452A200FC47FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		F774B9282891AEDD00438A37 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -462,6 +555,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F7653FBB289452A200FC47FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3S8AVD2TKW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanpoh.MShare.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F7653FBC289452A200FC47FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3S8AVD2TKW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanpoh.MShare.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F774B92C2891AEDD00438A37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -579,6 +724,7 @@
 		F774B92F2891AEDD00438A37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -606,6 +752,7 @@
 		F774B9302891AEDD00438A37 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -633,6 +780,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F7653FBD289452A200FC47FA /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7653FBB289452A200FC47FA /* Debug */,
+				F7653FBC289452A200FC47FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F774B9152891AEDC00438A37 /* Build configuration list for PBXProject "MShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
