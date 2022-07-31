@@ -23,10 +23,6 @@ final class LinkInteractor {
     
     weak var presenter: LinkInteractorOutputProtocol?
     
-    init() {
-        
-    }
-    
     @objc
     func handleURL() {
         guard let incomingURL = UserDefaults().value(forKey: "incomingURL") as? String else { return }
