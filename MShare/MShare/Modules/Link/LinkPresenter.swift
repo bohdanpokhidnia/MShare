@@ -17,9 +17,9 @@ protocol LinkPresenterProtocol: AnyObject {
 }
 
 final class LinkPresenter {
-    internal var view: LinkViewProtocol?
-    internal var interactor: LinkInteractorIntputProtocol?
-    internal var router: LinkRouterProtocol?
+    var view: LinkViewProtocol?
+    var interactor: LinkInteractorIntputProtocol?
+    var router: LinkRouterProtocol?
 }
 
 // MARK: - LinkPresenterProtocol
