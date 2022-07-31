@@ -34,7 +34,7 @@ extension TableView {
     }
     
     @discardableResult
-    func set(_ inset: UIEdgeInsets) -> Self {
+    func set(inset: UIEdgeInsets) -> Self {
         separatorInset = inset
         return self
     }

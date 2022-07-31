@@ -15,9 +15,7 @@ final class ServicesTableView: View {
         .register(class: ServiceTableViewCell.self)
         .setRowHeight(80)
         .enableScroll(false)
-        .make {
-            $0.separatorInset = .init(aLeft: ServiceTableViewCell.iconImageContainerWidth)
-        }
+        .set(inset: .init(aLeft: ServiceTableViewCell.iconImageContainerWidth))
     
     // MARK: - Lifecycle
     
