@@ -42,6 +42,8 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     
     func didCatchURL(_ urlString: String) {
         view?.setLink(urlString)
+        
+        interactor?.requestServices()
     }
     
     func didFetchServices(_ serviceEntities: [ServiceEntity]) {
