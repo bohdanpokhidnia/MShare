@@ -14,7 +14,19 @@ class LinkContentView: View {
     
     // MARK: - UI
     
-    private lazy var contentStackView = makeStackView(axis: .horizontal)(
+    private lazy var contentStackView = makeStackView(
+        axis: .vertical,
+        spacing: 10
+    )(
+        controlsStackView,
+        servicesTableView,
+        View()
+    )
+    
+    private lazy var controlsStackView = makeStackView(
+        axis: .horizontal,
+        spacing: 12
+    )(
         linkTextField, searchButton
     )
     
@@ -33,6 +45,8 @@ class LinkContentView: View {
             $0.addTarget(self, action: #selector(didTapSearchButton(_:)), for: .touchUpInside)
         }
     
+    private(set) var servicesTableView = ServicesTableView()
+    
     // MARK: - Lifecycle
 
     override func setupSubviews() {
@@ -48,7 +62,7 @@ class LinkContentView: View {
         contentStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(UIEdgeInsets(aTop: 16))
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
-            $0.height.equalTo(40)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         searchButton.snp.makeConstraints {
@@ -65,6 +79,20 @@ private extension LinkContentView {
     @objc
     func didTapSearchButton(_ sender: UIButton) {
         searchOnLinkAction()
+    }
+    
+}
+
+// MARK: - Set
+
+extension LinkContentView {
+    
+    func setLinkText(_ text: String) {
+        linkTextField.text = text
+    }
+    
+    func closeKeyboard() {
+        linkTextField.resignFirstResponder()
     }
     
 }

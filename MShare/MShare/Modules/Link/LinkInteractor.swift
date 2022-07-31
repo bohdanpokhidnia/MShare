@@ -11,10 +11,12 @@ protocol LinkInteractorIntputProtocol {
     var presenter: LinkInteractorOutputProtocol? { get set }
     
     func setupNotification()
+    func requestServices()
 }
 
 protocol LinkInteractorOutputProtocol: AnyObject {
     func didCatchURL(_ urlString: String)
+    func didFetchServices(_ serviceEntities: [ServiceEntity])
 }
 
 final class LinkInteractor {
@@ -48,6 +50,10 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                                                selector: #selector(handleURL),
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
+    }
+    
+    func requestServices() {
+        presenter?.didFetchServices([.mock, .mock1])
     }
     
 }

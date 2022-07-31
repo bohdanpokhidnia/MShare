@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F72E82F228956286008D7702 /* ServicesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F128956286008D7702 /* ServicesTableView.swift */; };
+		F72E82F528956382008D7702 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F428956382008D7702 /* ServiceTableViewCell.swift */; };
+		F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F6289563D4008D7702 /* CollectionViewCell.swift */; };
+		F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F828956838008D7702 /* UICollectionView+Ext.swift */; };
+		F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FA2895775C008D7702 /* UITableView+Ext.swift */; };
+		F72E82FD2895777F008D7702 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FC2895777F008D7702 /* TableView.swift */; };
+		F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E8300289578A2008D7702 /* TableViewCell.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91D2891AEDC00438A37 /* AppDelegate.swift */; };
@@ -38,7 +45,7 @@
 		F783BB962891BDFB004D2A6E /* SpotifyChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB902891BDFB004D2A6E /* SpotifyChartContentView.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
-		F790280B289309320058CC19 /* LinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* LinkEntity.swift */; };
+		F790280B289309320058CC19 /* ServiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* ServiceEntity.swift */; };
 		F790280C289309320058CC19 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902805289309320058CC19 /* LinkView.swift */; };
 		F790280D289309320058CC19 /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902806289309320058CC19 /* LinkPresenter.swift */; };
 		F790280E289309320058CC19 /* LinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902808289309320058CC19 /* LinkContentView.swift */; };
@@ -83,6 +90,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F72E82F128956286008D7702 /* ServicesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableView.swift; sourceTree = "<group>"; };
+		F72E82F428956382008D7702 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		F72E82F6289563D4008D7702 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F72E82F828956838008D7702 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
+		F72E82FA2895775C008D7702 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		F72E82FC2895777F008D7702 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,7 +129,7 @@
 		F783BB902891BDFB004D2A6E /* SpotifyChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartContentView.swift; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
-		F7902804289309320058CC19 /* LinkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkEntity.swift; sourceTree = "<group>"; };
+		F7902804289309320058CC19 /* ServiceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceEntity.swift; sourceTree = "<group>"; };
 		F7902805289309320058CC19 /* LinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		F7902806289309320058CC19 /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
 		F7902808289309320058CC19 /* LinkContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +169,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F72E82F32895636B008D7702 /* ServicesCollection */ = {
+			isa = PBXGroup;
+			children = (
+				F72E82F428956382008D7702 /* ServiceTableViewCell.swift */,
+				F72E82F128956286008D7702 /* ServicesTableView.swift */,
+			);
+			path = ServicesCollection;
+			sourceTree = "<group>";
+		};
+		F72E82FE28957883008D7702 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F774B94B2891B33A00438A37 /* View.swift */,
+				F774B9482891B24400438A37 /* ViewController.swift */,
+				F72E82FC2895777F008D7702 /* TableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F72E82FF2895788B008D7702 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F72E82F6289563D4008D7702 /* CollectionViewCell.swift */,
+				F72E8300289578A2008D7702 /* TableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F7653FB0289452A200FC47FA /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,8 +293,8 @@
 		F774B94A2891B31E00438A37 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F774B9482891B24400438A37 /* ViewController.swift */,
-				F774B94B2891B33A00438A37 /* View.swift */,
+				F72E82FE28957883008D7702 /* Views */,
+				F72E82FF2895788B008D7702 /* Cells */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -306,7 +348,7 @@
 				F7902805289309320058CC19 /* LinkView.swift */,
 				F7902803289309320058CC19 /* LinkInteractor.swift */,
 				F7902806289309320058CC19 /* LinkPresenter.swift */,
-				F7902804289309320058CC19 /* LinkEntity.swift */,
+				F7902804289309320058CC19 /* ServiceEntity.swift */,
 				F7902802289309320058CC19 /* LinkRouter.swift */,
 			);
 			path = Link;
@@ -315,6 +357,7 @@
 		F7902807289309320058CC19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F72E82F32895636B008D7702 /* ServicesCollection */,
 				F7902808289309320058CC19 /* LinkContentView.swift */,
 			);
 			path = Views;
@@ -367,6 +410,8 @@
 			children = (
 				F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */,
 				F7902834289322EB0058CC19 /* UIStackView+Ext.swift */,
+				F72E82F828956838008D7702 /* UICollectionView+Ext.swift */,
+				F72E82FA2895775C008D7702 /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -493,11 +538,14 @@
 				F774B9602891BB4400438A37 /* AppleMusicChartPresenter.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
+				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F774B9632891BB4400438A37 /* AppleMusicChartContentView.swift in Sources */,
 				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
+				F72E82F228956286008D7702 /* ServicesTableView.swift in Sources */,
 				F783BB932891BDFB004D2A6E /* SpotifyChartInteractor.swift in Sources */,
+				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
 				F783BB922891BDFB004D2A6E /* SpotifyChartPresenter.swift in Sources */,
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
@@ -505,9 +553,10 @@
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F774B95F2891BB4400438A37 /* AppleMusicChartRouter.swift in Sources */,
 				F783BB952891BDFB004D2A6E /* SpotifyChartEntity.swift in Sources */,
-				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
+				F790280B289309320058CC19 /* ServiceEntity.swift in Sources */,
 				F774B95E2891BB4400438A37 /* AppleMusicChartView.swift in Sources */,
 				F774B9502891B3BB00438A37 /* MakeProtocol.swift in Sources */,
+				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
@@ -526,8 +575,11 @@
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
 				F790281E2893095D0058CC19 /* SearchContentView.swift in Sources */,
 				F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */,
+				F72E82F528956382008D7702 /* ServiceTableViewCell.swift in Sources */,
 				F783BB962891BDFB004D2A6E /* SpotifyChartContentView.swift in Sources */,
+				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
+				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
 				F783BB942891BDFB004D2A6E /* SpotifyChartView.swift in Sources */,
 			);

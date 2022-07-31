@@ -12,6 +12,7 @@ protocol LinkViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
+    func setServiceItems(_ items: [ServiceItem])
 }
 
 class LinkView: ViewController<LinkContentView> {
@@ -26,15 +27,20 @@ class LinkView: ViewController<LinkContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViews()
         setupNavigationBar()
-        setupUserActions()
+        setupActionHandlers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter?.setupPresenter()
+        presenter?.viewDidAppear()
     }
+    
+    // MARK: - Private
+    
+    private var serviceItems = [ServiceItem]()
 
 }
 
@@ -42,21 +48,60 @@ class LinkView: ViewController<LinkContentView> {
 
 private extension LinkView {
     
+    func setupViews() {
+        contentView.linkTextField.delegate = self
+        contentView.servicesTableView.tableView.dataSource = self
+        contentView.servicesTableView.tableView.delegate = self
+    }
+    
     func setupNavigationBar() {
         title = "Link"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    func setupActionHandlers() {
+        contentView.searchOnLinkAction = { [unowned self] in            
+            presenter?.getServices()
+        }
+    }
+    
 }
 
-// MARK: - User interactions
+// MARK: - UICollectionViewDataSource
 
-private extension LinkView {
+extension LinkView: UITableViewDataSource {
     
-    func setupUserActions() {
-        contentView.searchOnLinkAction = {
-            print("[dev] clicked on link search button")
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return serviceItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sericeItem = serviceItems[indexPath.row]
+        
+        let cell = tableView.dequeue(ServiceTableViewCell.self, for: indexPath)
+        return cell.set(state: sericeItem)
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension LinkView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+
+extension LinkView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
     
 }
@@ -66,7 +111,14 @@ private extension LinkView {
 extension LinkView: LinkViewProtocol {
     
     func setLink(_ linkString: String) {
-        contentView.linkTextField.text = linkString
+        contentView.setLinkText(linkString)
+    }
+    
+    func setServiceItems(_ items: [ServiceItem]) {
+        serviceItems.removeAll()
+        serviceItems = items
+        
+        contentView.servicesTableView.tableView.reloadData()
     }
     
 }

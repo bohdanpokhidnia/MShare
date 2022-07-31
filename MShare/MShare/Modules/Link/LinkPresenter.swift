@@ -12,21 +12,26 @@ protocol LinkPresenterProtocol: AnyObject {
     var interactor: LinkInteractorIntputProtocol? { get set }
     var router: LinkRouterProtocol? { get set }
     
-    func setupPresenter()
+    func viewDidAppear()
+    func getServices()
 }
 
 final class LinkPresenter {
-    var view: LinkViewProtocol?
-    var interactor: LinkInteractorIntputProtocol?
-    var router: LinkRouterProtocol?
+    internal var view: LinkViewProtocol?
+    internal var interactor: LinkInteractorIntputProtocol?
+    internal var router: LinkRouterProtocol?
 }
 
 // MARK: - LinkPresenterProtocol
 
 extension LinkPresenter: LinkPresenterProtocol {
     
-    func setupPresenter() {
+    func viewDidAppear() {
         interactor?.setupNotification()
+    }
+    
+    func getServices() {
+        interactor?.requestServices()
     }
     
 }
@@ -37,6 +42,12 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     
     func didCatchURL(_ urlString: String) {
         view?.setLink(urlString)
+    }
+    
+    func didFetchServices(_ serviceEntities: [ServiceEntity]) {
+        let serviceItem: [ServiceItem] = serviceEntities.map { .init(title: $0.name, imageURL: "") }
+        
+        view?.setServiceItems(serviceItem)
     }
     
 }
