@@ -42,7 +42,9 @@ class LinkContentView: View {
             $0.backgroundColor = .secondarySystemBackground
         }
     
-    private(set) var servicesTableView = ServicesTableView()
+    private(set) var servicesTableView = MediaTableView()
+        .set(rowHeight: 80)
+        .enableScroll(false)
     
     // MARK: - Lifecycle
 

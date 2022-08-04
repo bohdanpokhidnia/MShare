@@ -1,21 +1,21 @@
 //
-//  ServicesTableView.swift
+//  MediaTableView.swift
 //  MShare
 //
-//  Created by Bohdan Pokhidnia on 30.07.2022.
+//  Created by Bohdan Pokhidnia on 04.08.2022.
 //
 
 import UIKit
+import SnapKit
 
-final class ServicesTableView: View {
+final class MediaTableView: View {
     
     // MARK: - UI
     
     private(set) lazy var tableView = TableView()
         .register(class: MediaTableViewCell.self)
-        .setRowHeight(80)
         .set(inset: .init(aLeft: MediaTableViewCell.iconImageContainerWidth))
-        .enableScroll(false)
+    
     
     // MARK: - Lifecycle
     
@@ -31,6 +31,24 @@ final class ServicesTableView: View {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+}
+
+// MARK: - Set
+
+extension MediaTableView {
+    
+    @discardableResult
+    func set(rowHeight: CGFloat) -> Self {
+        tableView.setRowHeight(rowHeight)
+        return self
+    }
+    
+    @discardableResult
+    func enableScroll(_ isEnabled: Bool) -> Self {
+        tableView.enableScroll(isEnabled)
+        return self
     }
     
 }
