@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F72E82F228956286008D7702 /* ServicesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F128956286008D7702 /* ServicesTableView.swift */; };
-		F72E82F528956382008D7702 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F428956382008D7702 /* ServiceTableViewCell.swift */; };
 		F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F6289563D4008D7702 /* CollectionViewCell.swift */; };
 		F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F828956838008D7702 /* UICollectionView+Ext.swift */; };
 		F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FA2895775C008D7702 /* UITableView+Ext.swift */; };
@@ -63,6 +62,11 @@
 		F790282E289309940058CC19 /* SettingsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902828289309940058CC19 /* SettingsContentView.swift */; };
 		F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */; };
 		F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902834289322EB0058CC19 /* UIStackView+Ext.swift */; };
+		F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */; };
+		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
+		F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C5289ADD870073709D /* UIImageView+Ext.swift */; };
+		F7D589C8289AEC1A0073709D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C7289AEC1A0073709D /* Button.swift */; };
+		F7D589CA289AFEC60073709D /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C9289AFEC60073709D /* UIImage+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +95,6 @@
 
 /* Begin PBXFileReference section */
 		F72E82F128956286008D7702 /* ServicesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableView.swift; sourceTree = "<group>"; };
-		F72E82F428956382008D7702 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		F72E82F6289563D4008D7702 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F72E82F828956838008D7702 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		F72E82FA2895775C008D7702 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
@@ -147,6 +150,11 @@
 		F7902828289309940058CC19 /* SettingsContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsContentView.swift; sourceTree = "<group>"; };
 		F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
 		F7902834289322EB0058CC19 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
+		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		F7D589C5289ADD870073709D /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		F7D589C7289AEC1A0073709D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F7D589C9289AFEC60073709D /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,21 +177,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F72E82F32895636B008D7702 /* ServicesCollection */ = {
-			isa = PBXGroup;
-			children = (
-				F72E82F428956382008D7702 /* ServiceTableViewCell.swift */,
-				F72E82F128956286008D7702 /* ServicesTableView.swift */,
-			);
-			path = ServicesCollection;
-			sourceTree = "<group>";
-		};
 		F72E82FE28957883008D7702 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F774B94B2891B33A00438A37 /* View.swift */,
 				F774B9482891B24400438A37 /* ViewController.swift */,
 				F72E82FC2895777F008D7702 /* TableView.swift */,
+				F7D589C7289AEC1A0073709D /* Button.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +229,7 @@
 			children = (
 				F774B9372891B03700438A37 /* Application */,
 				F774B9472891B20F00438A37 /* Core */,
+				F7D589BF289ABD310073709D /* CustomViews */,
 				F774B9392891B10B00438A37 /* Modules */,
 				F774B9382891B04600438A37 /* Resources */,
 			);
@@ -293,8 +294,8 @@
 		F774B94A2891B31E00438A37 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F72E82FE28957883008D7702 /* Views */,
 				F72E82FF2895788B008D7702 /* Cells */,
+				F72E82FE28957883008D7702 /* Views */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -357,7 +358,7 @@
 		F7902807289309320058CC19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F72E82F32895636B008D7702 /* ServicesCollection */,
+				F72E82F128956286008D7702 /* ServicesTableView.swift */,
 				F7902808289309320058CC19 /* LinkContentView.swift */,
 			);
 			path = Views;
@@ -412,8 +413,27 @@
 				F7902834289322EB0058CC19 /* UIStackView+Ext.swift */,
 				F72E82F828956838008D7702 /* UICollectionView+Ext.swift */,
 				F72E82FA2895775C008D7702 /* UITableView+Ext.swift */,
+				F7D589C3289AC26C0073709D /* UILabel+Ext.swift */,
+				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
+				F7D589C9289AFEC60073709D /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F7D589BF289ABD310073709D /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F7D589C2289ABDF90073709D /* Cells */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		F7D589C2289ABDF90073709D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -539,11 +559,14 @@
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
+				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
+				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
 				F774B9632891BB4400438A37 /* AppleMusicChartContentView.swift in Sources */,
 				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
 				F72E82F228956286008D7702 /* ServicesTableView.swift in Sources */,
+				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
 				F783BB932891BDFB004D2A6E /* SpotifyChartInteractor.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
@@ -567,6 +590,7 @@
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
+				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
@@ -575,11 +599,11 @@
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
 				F790281E2893095D0058CC19 /* SearchContentView.swift in Sources */,
 				F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */,
-				F72E82F528956382008D7702 /* ServiceTableViewCell.swift in Sources */,
 				F783BB962891BDFB004D2A6E /* SpotifyChartContentView.swift in Sources */,
 				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
+				F7D589CA289AFEC60073709D /* UIImage+Ext.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
 				F783BB942891BDFB004D2A6E /* SpotifyChartView.swift in Sources */,
 			);
