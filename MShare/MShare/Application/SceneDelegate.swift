@@ -20,6 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         mainView = MainRouter.createModule()
         
+        #if DEBUG
+        mainView?.selectedTab(.link)
+        #endif
+        
         if let url = connectionOptions.urlContexts.first?.url {
             handleIncomingURL(url)
         }
