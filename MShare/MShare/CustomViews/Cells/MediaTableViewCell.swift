@@ -80,9 +80,6 @@ final class MediaTableViewCell: TableViewCell {
     private let subtitileLabel = UILabel()
         .set(numberOfLines: 1)
         .textColor(.secondaryLabel)
-        .text(alignment: .center)
-    
-    private let emptyView = View()
     
     private let shareButton = Button(type: .system)
         .setImage(UIImage(systemName: "square.and.arrow.up"))
