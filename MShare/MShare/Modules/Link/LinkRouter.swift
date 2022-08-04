@@ -9,6 +9,8 @@ import UIKit
 
 protocol LinkRouterProtocol {
     static func createModule() -> UIViewController
+    
+    func pushSongListScreen(from view: LinkViewProtocol, for songList: [SongListEntity])
 }
 
 class LinkRouter: LinkRouterProtocol {
@@ -27,6 +29,11 @@ class LinkRouter: LinkRouterProtocol {
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
+    }
+    
+    func pushSongListScreen(from view: LinkViewProtocol, for songList: [SongListEntity]) {
+        let songListModule = SongListRouter.createModule(songList)
+        view.viewController.navigationController?.pushViewController(songListModule, animated: true)
     }
     
 }

@@ -14,12 +14,15 @@ protocol LinkPresenterProtocol: AnyObject {
     
     func viewDidAppear()
     func getServices()
+    func showSongList(at indexPath: IndexPath)
 }
 
 final class LinkPresenter {
     var view: LinkViewProtocol?
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
+    
+    private var services = [ServiceEntity]()
 }
 
 // MARK: - LinkPresenterProtocol
@@ -32,6 +35,13 @@ extension LinkPresenter: LinkPresenterProtocol {
     
     func getServices() {
         interactor?.requestServices()
+    }
+    
+    func showSongList(at indexPath: IndexPath) {
+        guard let view = view else { return }
+        let service = services[indexPath.row]
+        
+        router?.pushSongListScreen(from: view, for: [.mock])
     }
     
 }
@@ -47,6 +57,9 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     }
     
     func didFetchServices(_ serviceEntities: [ServiceEntity]) {
+        services.removeAll()
+        services = serviceEntities
+        
         var serviceItem = [MediaItem]()
         serviceItem.append(.init(tiile: serviceEntities.first!.name, defaultPlaceholder: .appleMusicLogo))
         serviceItem.append(.init(tiile: serviceEntities.last!.name, defaultPlaceholder: .spotifyLogo))

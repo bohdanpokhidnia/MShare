@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F7002751289C3B470075C133 /* MediaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002750289C3B470075C133 /* MediaTableView.swift */; };
+		F700275E289C41720075C133 /* SongListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002757289C41720075C133 /* SongListInteractor.swift */; };
+		F700275F289C41720075C133 /* SongListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002758289C41720075C133 /* SongListRouter.swift */; };
+		F7002760289C41720075C133 /* SongListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002759289C41720075C133 /* SongListPresenter.swift */; };
+		F7002761289C41720075C133 /* SongListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700275B289C41720075C133 /* SongListContentView.swift */; };
+		F7002762289C41720075C133 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700275C289C41720075C133 /* SongListView.swift */; };
+		F7002763289C41720075C133 /* SongListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700275D289C41720075C133 /* SongListEntity.swift */; };
 		F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F6289563D4008D7702 /* CollectionViewCell.swift */; };
 		F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F828956838008D7702 /* UICollectionView+Ext.swift */; };
 		F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FA2895775C008D7702 /* UITableView+Ext.swift */; };
@@ -95,6 +101,12 @@
 
 /* Begin PBXFileReference section */
 		F7002750289C3B470075C133 /* MediaTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableView.swift; sourceTree = "<group>"; };
+		F7002757289C41720075C133 /* SongListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListInteractor.swift; sourceTree = "<group>"; };
+		F7002758289C41720075C133 /* SongListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListRouter.swift; sourceTree = "<group>"; };
+		F7002759289C41720075C133 /* SongListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListPresenter.swift; sourceTree = "<group>"; };
+		F700275B289C41720075C133 /* SongListContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListContentView.swift; sourceTree = "<group>"; };
+		F700275C289C41720075C133 /* SongListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
+		F700275D289C41720075C133 /* SongListEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListEntity.swift; sourceTree = "<group>"; };
 		F72E82F6289563D4008D7702 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F72E82F828956838008D7702 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		F72E82FA2895775C008D7702 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
@@ -185,6 +197,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F7002756289C41720075C133 /* SongList */ = {
+			isa = PBXGroup;
+			children = (
+				F700275A289C41720075C133 /* Views */,
+				F700275C289C41720075C133 /* SongListView.swift */,
+				F7002757289C41720075C133 /* SongListInteractor.swift */,
+				F7002759289C41720075C133 /* SongListPresenter.swift */,
+				F700275D289C41720075C133 /* SongListEntity.swift */,
+				F7002758289C41720075C133 /* SongListRouter.swift */,
+			);
+			path = SongList;
+			sourceTree = "<group>";
+		};
+		F700275A289C41720075C133 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F700275B289C41720075C133 /* SongListContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F72E82FE28957883008D7702 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				F774B93C2891B16600438A37 /* Main */,
+				F7002756289C41720075C133 /* SongList */,
 				F774B9562891BB4400438A37 /* AppleMusicChart */,
 				F783BB892891BDFB004D2A6E /* SpotifyChart */,
 				F7902801289309320058CC19 /* Link */,
@@ -565,7 +599,10 @@
 				F790281B2893095D0058CC19 /* SearchInteractor.swift in Sources */,
 				F774B9602891BB4400438A37 /* AppleMusicChartPresenter.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
+				F7002761289C41720075C133 /* SongListContentView.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
+				F7002763289C41720075C133 /* SongListEntity.swift in Sources */,
+				F7002760289C41720075C133 /* SongListPresenter.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
 				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
@@ -584,8 +621,10 @@
 				F774B95F2891BB4400438A37 /* AppleMusicChartRouter.swift in Sources */,
 				F783BB952891BDFB004D2A6E /* SpotifyChartEntity.swift in Sources */,
 				F790280B289309320058CC19 /* ServiceEntity.swift in Sources */,
+				F700275E289C41720075C133 /* SongListInteractor.swift in Sources */,
 				F774B95E2891BB4400438A37 /* AppleMusicChartView.swift in Sources */,
 				F774B9502891B3BB00438A37 /* MakeProtocol.swift in Sources */,
+				F700275F289C41720075C133 /* SongListRouter.swift in Sources */,
 				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
@@ -599,6 +638,7 @@
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
+				F7002762289C41720075C133 /* SongListView.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
