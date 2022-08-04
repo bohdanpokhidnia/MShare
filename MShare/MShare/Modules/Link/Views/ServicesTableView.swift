@@ -12,10 +12,10 @@ final class ServicesTableView: View {
     // MARK: - UI
     
     private(set) lazy var tableView = TableView()
-        .register(class: ServiceTableViewCell.self)
+        .register(class: MediaTableViewCell.self)
         .setRowHeight(80)
+        .set(inset: .init(aLeft: MediaTableViewCell.iconImageContainerWidth))
         .enableScroll(false)
-        .set(inset: .init(aLeft: ServiceTableViewCell.iconImageContainerWidth))
     
     // MARK: - Lifecycle
     

@@ -5,4 +5,186 @@
 //  Created by Bohdan Pokhidnia on 03.08.2022.
 //
 
-import Foundation
+import UIKit
+import SnapKit
+
+protocol MediaItemDelegate: AnyObject {
+    func didTapShareButton(_ indexPath: IndexPath)
+}
+
+typealias MediaItem = MediaTableViewCell.State
+
+final class MediaTableViewCell: TableViewCell {
+    
+    static let iconImageContainerWidth: CGFloat = 70
+    
+    struct State {
+        let title: String
+        let subtitle: String?
+        let positionNumber: String?
+        let imageURL: String?
+        let defaultPlaceholder: UIImage?
+        let displayShareButton: Bool
+        
+        init(tiile: String,
+             subtitle: String? = nil,
+             positionNumber: String? = nil,
+             imageURL: String? = nil,
+             defaultPlaceholder: UIImage? = nil,
+             displayShareButton: Bool = false) {
+            self.title = tiile
+            self.subtitle = subtitle
+            self.positionNumber = positionNumber
+            self.imageURL = imageURL
+            self.defaultPlaceholder = defaultPlaceholder
+            self.displayShareButton = displayShareButton
+        }
+        
+    }
+    
+    // MARK: - UI
+    
+    private lazy var contentStackView = makeStackView(
+        axis: .horizontal
+    )(
+        iconImageContainerView, positionNumberView, labelsView, View(), shareButton
+    )
+
+    private let iconImageContainerView = View()
+    
+    private let iconImageView = UIImageView()
+        .backgroundColor(color: .systemGray)
+        .setCornerRadius(6)
+        .maskToBounds(true)
+    
+    private let positionNumberView = View()
+    
+    private let positionNumberLabel = UILabel()
+        .set(numberOfLines: 1)
+        .text(font: .systemFont(ofSize: 18, weight: .bold))
+        .text(alignment: .center)
+    
+    let labelsView = View()
+    
+    private lazy var labelsStackView = makeStackView(
+        axis: .vertical,
+        distibution: .fillProportionally
+    )(
+        titleLabel,
+        subtitileLabel
+    )
+    
+    private let titleLabel = UILabel()
+        .set(numberOfLines: 1)
+    
+    private let subtitileLabel = UILabel()
+        .set(numberOfLines: 1)
+        .textColor(.secondaryLabel)
+        .text(alignment: .center)
+    
+    private let emptyView = View()
+    
+    private let shareButton = Button(type: .system)
+        .setImage(UIImage(systemName: "square.and.arrow.up"))
+    
+    // MARK: - Lifecycle
+    
+    override func setup() {
+        super.setup()
+        
+        shareButton.whenTap { [weak self] in
+            guard let indexPath = self?.cellIndexPath else { return }
+            
+            self?.delegate?.didTapShareButton(indexPath)
+        }
+    }
+    
+    override func setupSubviews() {
+        super.setupSubviews()
+        
+        iconImageContainerView.addSubview(iconImageView)
+        positionNumberView.addSubview(positionNumberLabel)
+        labelsView.addSubviews(labelsStackView)
+        contentView.addSubview(contentStackView)
+    }
+    
+    override func defineLayout() {
+        super.defineLayout()
+        
+        contentStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        iconImageContainerView.snp.makeConstraints {
+            $0.width.equalTo(Self.iconImageContainerWidth)
+        }
+        
+        iconImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview()
+            $0.trailing.bottom.equalToSuperview().offset(-10)
+        }
+        
+        positionNumberLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(25)
+        }
+        
+        labelsStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.width.equalTo(50)
+        }
+    }
+    
+    // MARK: - Private
+    
+    private var cellIndexPath: IndexPath? = nil
+    private weak var delegate: MediaItemDelegate?
+    private var titleLabelCenterY: ConstraintMakerEditable?
+    
+}
+
+// MARK: - Set
+
+extension MediaTableViewCell {
+    
+    @discardableResult
+    func set(state: State) -> Self {
+        contentStackView.setCustomSpacing(state.positionNumber == nil ? 0 : 10, after: positionNumberView)
+        
+        positionNumberView.hidden(state.positionNumber == nil)
+        
+        positionNumberLabel
+            .text(state.positionNumber)
+            .hidden(state.positionNumber == nil)
+        
+        titleLabel
+            .text(state.title)
+        
+        subtitileLabel
+            .text(state.subtitle)
+            .hidden(state.subtitle == nil)
+        
+        if let imageURL = state.imageURL {
+            
+        } else {
+            iconImageView.setImage(state.defaultPlaceholder)
+        }
+        
+        shareButton.hidden(!state.displayShareButton)
+        return self
+    }
+    
+    @discardableResult
+    func set(delegate mediaItemDelegate: MediaItemDelegate, indexPath: IndexPath) -> Self {
+        cellIndexPath = indexPath
+        delegate = mediaItemDelegate
+        return self
+    }
+    
+}

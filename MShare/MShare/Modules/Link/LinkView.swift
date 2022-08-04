@@ -12,7 +12,7 @@ protocol LinkViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
-    func setServiceItems(_ items: [ServiceItem])
+    func setServiceItems(_ items: [MediaItem])
 }
 
 class LinkView: ViewController<LinkContentView> {
@@ -40,7 +40,7 @@ class LinkView: ViewController<LinkContentView> {
     
     // MARK: - Private
     
-    private var serviceItems = [ServiceItem]()
+    private var serviceItems = [MediaItem]()
 
 }
 
@@ -60,7 +60,7 @@ private extension LinkView {
     }
     
     func setupActionHandlers() {
-        contentView.searchOnLinkAction = { [unowned self] in            
+        contentView.searchButton.whenTap { [unowned self] in
             presenter?.getServices()
         }
     }
@@ -78,8 +78,10 @@ extension LinkView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sericeItem = serviceItems[indexPath.row]
         
-        let cell = tableView.dequeue(ServiceTableViewCell.self, for: indexPath)
-        return cell.set(state: sericeItem)
+        let cell = tableView.dequeue(MediaTableViewCell.self, for: indexPath)
+        return cell
+            .set(state: sericeItem)
+            .accessoryType(.disclosureIndicator)
     }
     
 }
@@ -114,7 +116,7 @@ extension LinkView: LinkViewProtocol {
         contentView.setLinkText(linkString)
     }
     
-    func setServiceItems(_ items: [ServiceItem]) {
+    func setServiceItems(_ items: [MediaItem]) {
         serviceItems.removeAll()
         serviceItems = items
         

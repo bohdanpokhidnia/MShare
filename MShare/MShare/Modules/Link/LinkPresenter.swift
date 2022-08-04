@@ -47,7 +47,9 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     }
     
     func didFetchServices(_ serviceEntities: [ServiceEntity]) {
-        let serviceItem: [ServiceItem] = serviceEntities.map { .init(title: $0.name, imageURL: "") }
+        var serviceItem = [MediaItem]()
+        serviceItem.append(.init(tiile: serviceEntities.first!.name, defaultPlaceholder: .appleMusicLogo))
+        serviceItem.append(.init(tiile: serviceEntities.last!.name, defaultPlaceholder: .spotifyLogo))
         
         view?.setServiceItems(serviceItem)
     }
