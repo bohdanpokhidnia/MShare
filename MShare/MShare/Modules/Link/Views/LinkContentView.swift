@@ -10,8 +10,6 @@ import SnapKit
 
 class LinkContentView: View {
     
-    var searchOnLinkAction: (() -> Void) = { }
-    
     // MARK: - UI
     
     private lazy var contentStackView = makeStackView(
@@ -36,13 +34,12 @@ class LinkContentView: View {
             $0.adjustsFontSizeToFitWidth = true
         }
     
-    private lazy var searchButton = UIButton(type: .system)
+    private(set) var searchButton = Button(type: .system)
         .maskToBounds(true)
         .setCornerRadius(6)
         .make {
             $0.setTitle("Search", for: .normal)
             $0.backgroundColor = .secondarySystemBackground
-            $0.addTarget(self, action: #selector(didTapSearchButton(_:)), for: .touchUpInside)
         }
     
     private(set) var servicesTableView = ServicesTableView()
@@ -72,27 +69,12 @@ class LinkContentView: View {
     
 }
 
-// MARK: - User interactions
-
-private extension LinkContentView {
-    
-    @objc
-    func didTapSearchButton(_ sender: UIButton) {
-        searchOnLinkAction()
-    }
-    
-}
-
 // MARK: - Set
 
 extension LinkContentView {
     
     func setLinkText(_ text: String) {
         linkTextField.text = text
-    }
-    
-    func closeKeyboard() {
-        linkTextField.resignFirstResponder()
     }
     
 }
