@@ -39,3 +39,15 @@ class TableViewCell: UITableViewCell, ViewLayoutableProtocol {
     }
     
 }
+
+// MARK: - Set
+
+extension TableViewCell {
+    
+    @discardableResult
+    func accessoryType(_ cellAccessoryType: UITableViewCell.AccessoryType) -> Self {
+        accessoryType = cellAccessoryType
+        return self
+    }
+    
+}
