@@ -22,7 +22,7 @@ final class SongListPresenter {
     var interactor: SongListInteractorIntputProtocol?
     var router: SongListRouterProtocol?
     
-    private var songs = [MediaItem]()
+    private var songList = [SongListEntity]()
 }
 
 // MARK: - SongListPresenterProtocol
@@ -34,12 +34,13 @@ extension SongListPresenter: SongListPresenterProtocol {
     }
     
     func numberOfRows() -> Int {
-        return songs.count
+        return songList.count
     }
     
     func itemForRow(at indexPath: IndexPath) -> MediaItem {
-        let song = songs[indexPath.row]
-        return song
+        let song = songList[indexPath.row]
+        
+        return .init(tiile: song.songName, subtitle: song.artistName, displayShareButton: true)
     }
     
 }
@@ -49,11 +50,8 @@ extension SongListPresenter: SongListPresenterProtocol {
 extension SongListPresenter: SongListInteractorOutputProtocol {
     
     func didLoadSongList(_ songList: [SongListEntity]) {
-        songs.removeAll()
-        songs = songList.map { .init(tiile: $0.songName,
-                                     subtitle: $0.artistName,
-                                     positionNumber: String($0.positionNumber),
-                                     displayShareButton: true) }
+        self.songList.removeAll()
+        self.songList = songList
         
         view?.reloadData()
     }
