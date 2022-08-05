@@ -16,8 +16,8 @@ protocol LinkRouterProtocol {
 class LinkRouter: LinkRouterProtocol {
     
     static func createModule() -> UIViewController {
-        let view: LinkViewProtocol = LinkView()
         let presenter: LinkPresenterProtocol & LinkInteractorOutputProtocol = LinkPresenter()
+        let view: LinkViewProtocol = LinkView(presenter: presenter)
         var interactor: LinkInteractorIntputProtocol = LinkInteractor()
         let router = LinkRouter()
         
