@@ -53,8 +53,9 @@ final class MediaTableViewCell: TableViewCell {
     private let iconImageContainerView = View()
     
     private let iconImageView = UIImageView()
+        .setContentMode(.scaleToFill)
         .backgroundColor(color: .systemGray)
-        .setCornerRadius(6)
+        .setCornerRadius(5)
         .maskToBounds(true)
     
     private let positionNumberView = View()
@@ -168,7 +169,7 @@ extension MediaTableViewCell {
             .hidden(state.subtitle == nil)
         
         if let imageURL = state.imageURL {
-            
+            iconImageView.setImage(imageURL, placeholder: nil)
         } else {
             iconImageView.setImage(state.defaultPlaceholder)
         }
