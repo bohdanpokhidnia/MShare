@@ -22,7 +22,7 @@ final class SongListPresenter {
     var interactor: SongListInteractorIntputProtocol?
     var router: SongListRouterProtocol?
     
-    private var songList = [SongListEntity]()
+    private var songList = [MediaItem]()
 }
 
 // MARK: - SongListPresenterProtocol
@@ -51,7 +51,10 @@ extension SongListPresenter: SongListInteractorOutputProtocol {
     
     func didLoadSongList(_ songList: [SongListEntity]) {
         self.songList.removeAll()
-        self.songList = songList
+        self.songList = songList.map { .init(tiile: $0.songName,
+                                             subtitle: $0.artistName,
+                                             imageURL: $0.coverURL,
+                                             displayShareButton: true) }
         
         view?.reloadData()
     }

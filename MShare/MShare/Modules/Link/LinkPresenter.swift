@@ -24,7 +24,7 @@ final class LinkPresenter {
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
     
-    private var services = [ServiceEntity]()
+    private var services = [MediaItem]()
 }
 
 // MARK: - LinkPresenterProtocol
@@ -41,8 +41,7 @@ extension LinkPresenter: LinkPresenterProtocol {
     
     func itemForRow(at indexPath: IndexPath) -> MediaItem {
         let service = services[indexPath.row]
-        
-        return .init(tiile: service.name, defaultPlaceholder: service.imageLogo)
+        return service
     }
     
     func getServices() {
@@ -70,7 +69,7 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     
     func didFetchServices(_ serviceEntities: [ServiceEntity]) {
         services.removeAll()
-        services = serviceEntities
+        services = serviceEntities.map { .init(tiile: $0.name, defaultPlaceholder: $0.imageLogo) }
         
         view?.reloadData()
     }
