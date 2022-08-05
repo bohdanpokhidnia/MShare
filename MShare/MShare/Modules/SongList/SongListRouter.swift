@@ -9,6 +9,8 @@ import UIKit
 
 protocol SongListRouterProtocol {
     static func createModule(_ songList: [SongListEntity]) -> UIViewController
+    
+    func present(from view: SongListViewProtocol, _ activityViewController: UIActivityViewController)
 }
 
 class SongListRouter: SongListRouterProtocol {
@@ -26,6 +28,10 @@ class SongListRouter: SongListRouterProtocol {
         interactor.presenter = presenter
         
         return view.viewController
+    }
+    
+    func present(from view: SongListViewProtocol, _ activityViewController: UIActivityViewController) {
+        view.viewController.present(activityViewController, animated: true)
     }
     
 }

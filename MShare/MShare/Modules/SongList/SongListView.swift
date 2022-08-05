@@ -77,6 +77,7 @@ extension SongListView: UITableViewDataSource {
         return cell
             .set(state: song)
             .set(delegate: self, indexPath: indexPath)
+            .accessoryType(.disclosureIndicator)
     }
     
 }
@@ -96,7 +97,7 @@ extension SongListView: UITableViewDelegate {
 extension SongListView: MediaItemDelegate {
     
     func didTapShareButton(_ indexPath: IndexPath) {
-        print("[dev] \(#function)")
+        presenter.shareSong(at: indexPath)
     }
     
 }

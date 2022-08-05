@@ -15,6 +15,7 @@ protocol SongListPresenterProtocol: AnyObject {
     func viewDidLoad()
     func numberOfRows() -> Int
     func itemForRow(at indexPath: IndexPath) -> MediaItem
+    func shareSong(at indexPath: IndexPath)
 }
 
 final class SongListPresenter {
@@ -39,8 +40,15 @@ extension SongListPresenter: SongListPresenterProtocol {
     
     func itemForRow(at indexPath: IndexPath) -> MediaItem {
         let song = songList[indexPath.row]
+        return song
+    }
+    
+    func shareSong(at indexPath: IndexPath) {
+        guard let shareActivityViewController = interactor?.makeShareView(at: indexPath),
+              let view = view
+        else { return }
         
-        return .init(tiile: song.songName, subtitle: song.artistName, displayShareButton: true)
+        router?.present(from: view, shareActivityViewController)
     }
     
 }

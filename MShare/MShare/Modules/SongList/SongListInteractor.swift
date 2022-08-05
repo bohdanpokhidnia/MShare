@@ -5,13 +5,14 @@
 //  Created by Bohdan Pokhidnia on 04.08.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol SongListInteractorIntputProtocol {
     var songList: [SongListEntity] { get set }
     var presenter: SongListInteractorOutputProtocol? { get set }
     
     func loadSongList()
+    func makeShareView(at indexPath: IndexPath) -> UIActivityViewController
 }
 
 protocol SongListInteractorOutputProtocol: AnyObject {
@@ -33,6 +34,13 @@ extension SongListInteractor: SongListInteractorIntputProtocol {
     
     func loadSongList() {
         presenter?.didLoadSongList(songList)
+    }
+    
+    func makeShareView(at indexPath: IndexPath) -> UIActivityViewController {
+        let link = songList[indexPath.row].sourceLink
+        
+        let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+        return activityViewController
     }
     
 }
