@@ -8,18 +8,31 @@
 import UIKit
 
 protocol LinkViewProtocol: AnyObject {
-    var presenter: LinkPresenterProtocol? { get set }
+    var presenter: LinkPresenterProtocol { get set }
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
-    func setServiceItems(_ items: [MediaItem])
+    func reloadData()
 }
 
 class LinkView: ViewController<LinkContentView> {
     
-    var presenter: LinkPresenterProtocol?
+    var presenter: LinkPresenterProtocol
     var viewController: UIViewController {
         return self
+    }
+    
+    // MARK: - Initializers
+    
+    init(presenter: LinkPresenterProtocol) {
+        self.presenter = presenter
+        
+        super.init()
+    }
+    
+    @available(*, unavailable)
+    required init() {
+        fatalError("init() has not been implemented")
     }
     
     // MARK: - Lifecycle
@@ -35,12 +48,8 @@ class LinkView: ViewController<LinkContentView> {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter?.viewDidAppear()
+        presenter.viewDidAppear()
     }
-    
-    // MARK: - Private
-    
-    private var serviceItems = [MediaItem]()
 
 }
 
@@ -61,7 +70,7 @@ private extension LinkView {
     
     func setupActionHandlers() {
         contentView.searchButton.whenTap { [unowned self] in
-            presenter?.getServices()
+            presenter.getServices()
         }
     }
     
@@ -72,11 +81,11 @@ private extension LinkView {
 extension LinkView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return serviceItems.count
+        return presenter.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sericeItem = serviceItems[indexPath.row]
+        let sericeItem = presenter.itemForRow(at: indexPath)
         
         let cell = tableView.dequeue(MediaTableViewCell.self, for: indexPath)
         return cell
@@ -93,7 +102,7 @@ extension LinkView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        presenter?.showSongList(at: indexPath)
+        presenter.showSongList(at: indexPath)
     }
     
 }
@@ -118,10 +127,7 @@ extension LinkView: LinkViewProtocol {
         contentView.setLinkText(linkString)
     }
     
-    func setServiceItems(_ items: [MediaItem]) {
-        serviceItems.removeAll()
-        serviceItems = items
-        
+    func reloadData() {
         contentView.servicesTableView.tableView.reloadData()
     }
     

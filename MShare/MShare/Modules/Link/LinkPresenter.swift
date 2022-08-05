@@ -13,6 +13,8 @@ protocol LinkPresenterProtocol: AnyObject {
     var router: LinkRouterProtocol? { get set }
     
     func viewDidAppear()
+    func numberOfRows() -> Int
+    func itemForRow(at indexPath: IndexPath) -> MediaItem
     func getServices()
     func showSongList(at indexPath: IndexPath)
 }
@@ -31,6 +33,16 @@ extension LinkPresenter: LinkPresenterProtocol {
     
     func viewDidAppear() {
         interactor?.setupNotification()
+    }
+    
+    func numberOfRows() -> Int {
+        return services.count
+    }
+    
+    func itemForRow(at indexPath: IndexPath) -> MediaItem {
+        let service = services[indexPath.row]
+        
+        return .init(tiile: service.name, defaultPlaceholder: service.imageLogo)
     }
     
     func getServices() {
@@ -60,11 +72,7 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         services.removeAll()
         services = serviceEntities
         
-        var serviceItem = [MediaItem]()
-        serviceItem.append(.init(tiile: serviceEntities.first!.name, defaultPlaceholder: .appleMusicLogo))
-        serviceItem.append(.init(tiile: serviceEntities.last!.name, defaultPlaceholder: .spotifyLogo))
-        
-        view?.setServiceItems(serviceItem)
+        view?.reloadData()
     }
     
 }
