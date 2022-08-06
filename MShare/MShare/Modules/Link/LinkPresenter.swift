@@ -52,7 +52,7 @@ extension LinkPresenter: LinkPresenterProtocol {
         guard let view = view else { return }
         let service = services[indexPath.row]
         
-        router?.pushSongListScreen(from: view, for: [.mock])
+        router?.pushSongListScreen(from: view, for: [.mock, .mock1])
     }
     
 }

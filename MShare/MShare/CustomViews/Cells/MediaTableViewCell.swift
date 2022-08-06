@@ -81,6 +81,7 @@ final class MediaTableViewCell: TableViewCell {
     private let subtitileLabel = UILabel()
         .set(numberOfLines: 1)
         .textColor(.secondaryLabel)
+        .adjustsFontSizeToFitWidth(true)
     
     private let shareButton = Button(type: .system)
         .setImage(UIImage(systemName: "square.and.arrow.up"))

@@ -45,4 +45,10 @@ extension UILabel {
         return self
     }
     
+    @discardableResult
+    func adjustsFontSizeToFitWidth(_ toFitWitdth: Bool) -> Self {
+        adjustsFontSizeToFitWidth = toFitWitdth
+        return self
+    }
+    
 }
