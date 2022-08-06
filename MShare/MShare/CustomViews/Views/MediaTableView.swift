@@ -12,10 +12,26 @@ final class MediaTableView: View {
     
     // MARK: - UI
     
-    private(set) lazy var tableView = TableView()
-        .register(class: MediaTableViewCell.self)
-        .set(inset: .init(aLeft: MediaTableViewCell.iconImageContainerWidth))
+    private(set) var tableView: TableView
+
+    // MARK: - Initializers
     
+    required init(tableViewStyle: UITableView.Style) {
+        tableView = TableView(style: tableViewStyle)
+        tableView.register(class: MediaTableViewCell.self)
+        
+        super.init()
+    }
+    
+    @available(*, unavailable)
+    required init() {
+        fatalError("init() has not been implemented")
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     
@@ -48,6 +64,18 @@ extension MediaTableView {
     @discardableResult
     func enableScroll(_ isEnabled: Bool) -> Self {
         tableView.enableScroll(isEnabled)
+        return self
+    }
+    
+    @discardableResult
+    func set(inset: UIEdgeInsets) -> Self {
+        tableView.set(inset: inset)
+        return self
+    }
+    
+    @discardableResult
+    func set(separatorStyle: UITableViewCell.SeparatorStyle) -> Self {
+        tableView.separatorStyle = separatorStyle
         return self
     }
     

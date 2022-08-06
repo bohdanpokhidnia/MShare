@@ -14,8 +14,9 @@ class SongListContentView: View {
     
     private let contentView = View()
     
-    private(set) var songsTableView = MediaTableView()
+    private(set) var songsTableView = MediaTableView(tableViewStyle: .insetGrouped)
         .set(rowHeight: 80)
+        .set(inset: UIEdgeInsets(aLeft: MediaTableViewCell.iconImageContainerWidth))
     
     // MARK: - Lifecycle
     
@@ -41,7 +42,7 @@ class SongListContentView: View {
         }
         
         songsTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(UIEdgeInsets(aTop: 16, aLeft: 16, aRight: 16))
+            $0.edges.equalToSuperview()
         }
     }
     

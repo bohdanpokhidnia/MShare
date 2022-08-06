@@ -9,6 +9,17 @@ import UIKit
 
 class TableView: UITableView {
     
+    init(style: UITableView.Style) {
+        super.init(frame: .zero, style: style)
+        
+        backgroundColor(color: .systemBackground)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
 // MARK: - Set

@@ -42,8 +42,9 @@ class LinkContentView: View {
             $0.backgroundColor = .secondarySystemBackground
         }
     
-    private(set) var servicesTableView = MediaTableView()
+    private(set) var servicesTableView = MediaTableView(tableViewStyle: .plain)
         .set(rowHeight: 80)
+        .set(inset: .init(aLeft: MediaTableViewCell.iconImageContainerWidth))
         .enableScroll(false)
     
     // MARK: - Lifecycle
@@ -61,7 +62,7 @@ class LinkContentView: View {
         contentStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(UIEdgeInsets(aTop: 16))
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
-            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
         }
         
         searchButton.snp.makeConstraints {
