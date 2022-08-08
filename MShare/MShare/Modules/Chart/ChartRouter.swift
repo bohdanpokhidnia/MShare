@@ -25,7 +25,8 @@ final class ChartRouter: ChartRouterProtocol {
         presenter.router = router
         interactor.presenter = presenter
         
-        return view.viewController
+        let navigationController = UINavigationController(rootViewController: view.viewController)
+        return navigationController
     }
     
 }

@@ -32,13 +32,9 @@ class MainRouter: MainRouterProtocol {
     }
     
     static func createTabModules() -> [UIViewController] {
-        let appleMusicChartView = AppleMusicChartRouter.createModule()
-        appleMusicChartView.title = "Apple Music"
-        appleMusicChartView.tabBarItem.image = UIImage(systemName: "chart.bar")
-        
-        let spotifyChartView = SpotifyChartRouter.createModule()
-        spotifyChartView.title = "Spotify"
-        spotifyChartView.tabBarItem.image = UIImage(systemName: "chart.bar")
+        let chart = ChartRouter.createModule()
+        chart.title = "Chart"
+        chart.tabBarItem.image = UIImage(systemName: "chart.bar")
         
         let linkView = LinkRouter.createModule()
         linkView.title = "Link"
@@ -52,8 +48,7 @@ class MainRouter: MainRouterProtocol {
         settingsView.title = "Settings"
         settingsView.tabBarItem.image = UIImage(systemName: "gear")
         
-        let views = [appleMusicChartView,
-                     spotifyChartView,
+        let views = [chart,
                      linkView,
                      searchView,
                      settingsView]

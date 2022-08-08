@@ -25,8 +25,19 @@ final class ChartView: ViewController<ChartContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
     }
 
+}
+
+// MARK: - Setup
+
+private extension ChartView {
+    
+    func setupNavigationBar() {
+        title = "Chart"
+    }
+    
 }
 
 // MARK: - ChartViewProtocol

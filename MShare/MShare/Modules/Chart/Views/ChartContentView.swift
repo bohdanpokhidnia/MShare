@@ -11,6 +11,12 @@ final class ChartContentView: View {
     
     // MARK: - Lifecycle
 
+    override func setup() {
+        super.setup()
+        
+        backgroundColor(color: .systemPink)
+    }
+    
     override func setupSubviews() {
         super.setupSubviews()
         

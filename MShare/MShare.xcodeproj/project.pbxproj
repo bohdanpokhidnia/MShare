@@ -8,12 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F7002751289C3B470075C133 /* MediaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002750289C3B470075C133 /* MediaTableView.swift */; };
-		F700275E289C41720075C133 /* SongListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002757289C41720075C133 /* SongListInteractor.swift */; };
-		F700275F289C41720075C133 /* SongListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002758289C41720075C133 /* SongListRouter.swift */; };
-		F7002760289C41720075C133 /* SongListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002759289C41720075C133 /* SongListPresenter.swift */; };
-		F7002761289C41720075C133 /* SongListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700275B289C41720075C133 /* SongListContentView.swift */; };
-		F7002762289C41720075C133 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700275C289C41720075C133 /* SongListView.swift */; };
-		F7002763289C41720075C133 /* SongListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700275D289C41720075C133 /* SongListEntity.swift */; };
 		F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F6289563D4008D7702 /* CollectionViewCell.swift */; };
 		F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F828956838008D7702 /* UICollectionView+Ext.swift */; };
 		F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FA2895775C008D7702 /* UITableView+Ext.swift */; };
@@ -36,18 +30,18 @@
 		F774B94C2891B33A00438A37 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B94B2891B33A00438A37 /* View.swift */; };
 		F774B94E2891B37A00438A37 /* ViewLayoutableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B94D2891B37A00438A37 /* ViewLayoutableProtocol.swift */; };
 		F774B9502891B3BB00438A37 /* MakeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B94F2891B3BB00438A37 /* MakeProtocol.swift */; };
-		F774B95E2891BB4400438A37 /* AppleMusicChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B9572891BB4400438A37 /* AppleMusicChartView.swift */; };
-		F774B95F2891BB4400438A37 /* AppleMusicChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B9582891BB4400438A37 /* AppleMusicChartRouter.swift */; };
-		F774B9602891BB4400438A37 /* AppleMusicChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B9592891BB4400438A37 /* AppleMusicChartPresenter.swift */; };
-		F774B9612891BB4400438A37 /* AppleMusicChartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B95A2891BB4400438A37 /* AppleMusicChartEntity.swift */; };
-		F774B9622891BB4400438A37 /* AppleMusicChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B95B2891BB4400438A37 /* AppleMusicChartInteractor.swift */; };
-		F774B9632891BB4400438A37 /* AppleMusicChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B95D2891BB4400438A37 /* AppleMusicChartContentView.swift */; };
-		F783BB912891BDFB004D2A6E /* SpotifyChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB8A2891BDFB004D2A6E /* SpotifyChartRouter.swift */; };
-		F783BB922891BDFB004D2A6E /* SpotifyChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB8B2891BDFB004D2A6E /* SpotifyChartPresenter.swift */; };
-		F783BB932891BDFB004D2A6E /* SpotifyChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB8C2891BDFB004D2A6E /* SpotifyChartInteractor.swift */; };
-		F783BB942891BDFB004D2A6E /* SpotifyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB8D2891BDFB004D2A6E /* SpotifyChartView.swift */; };
-		F783BB952891BDFB004D2A6E /* SpotifyChartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB8E2891BDFB004D2A6E /* SpotifyChartEntity.swift */; };
-		F783BB962891BDFB004D2A6E /* SpotifyChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F783BB902891BDFB004D2A6E /* SpotifyChartContentView.swift */; };
+		F777BE4A289E479600595ACA /* DetailSongPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE43289E479600595ACA /* DetailSongPresenter.swift */; };
+		F777BE4B289E479600595ACA /* DetailSongRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE44289E479600595ACA /* DetailSongRouter.swift */; };
+		F777BE4C289E479600595ACA /* DetailSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE45289E479600595ACA /* DetailSongView.swift */; };
+		F777BE4D289E479600595ACA /* DetailSongInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE46289E479600595ACA /* DetailSongInteractor.swift */; };
+		F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE48289E479600595ACA /* DetailSongContentView.swift */; };
+		F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE49289E479600595ACA /* DetailSongEntity.swift */; };
+		F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0DFF28A18EFE00FF4644 /* ChartView.swift */; };
+		F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0028A18EFE00FF4644 /* ChartEntity.swift */; };
+		F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0128A18EFE00FF4644 /* ChartPresenter.swift */; };
+		F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */; };
+		F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */; };
+		F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
 		F790280B289309320058CC19 /* ServiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* ServiceEntity.swift */; };
@@ -100,12 +94,6 @@
 
 /* Begin PBXFileReference section */
 		F7002750289C3B470075C133 /* MediaTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableView.swift; sourceTree = "<group>"; };
-		F7002757289C41720075C133 /* SongListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListInteractor.swift; sourceTree = "<group>"; };
-		F7002758289C41720075C133 /* SongListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListRouter.swift; sourceTree = "<group>"; };
-		F7002759289C41720075C133 /* SongListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListPresenter.swift; sourceTree = "<group>"; };
-		F700275B289C41720075C133 /* SongListContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListContentView.swift; sourceTree = "<group>"; };
-		F700275C289C41720075C133 /* SongListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
-		F700275D289C41720075C133 /* SongListEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListEntity.swift; sourceTree = "<group>"; };
 		F72E82F6289563D4008D7702 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F72E82F828956838008D7702 /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		F72E82FA2895775C008D7702 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
@@ -129,18 +117,18 @@
 		F774B94B2891B33A00438A37 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F774B94D2891B37A00438A37 /* ViewLayoutableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLayoutableProtocol.swift; sourceTree = "<group>"; };
 		F774B94F2891B3BB00438A37 /* MakeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeProtocol.swift; sourceTree = "<group>"; };
-		F774B9572891BB4400438A37 /* AppleMusicChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicChartView.swift; sourceTree = "<group>"; };
-		F774B9582891BB4400438A37 /* AppleMusicChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicChartRouter.swift; sourceTree = "<group>"; };
-		F774B9592891BB4400438A37 /* AppleMusicChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicChartPresenter.swift; sourceTree = "<group>"; };
-		F774B95A2891BB4400438A37 /* AppleMusicChartEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicChartEntity.swift; sourceTree = "<group>"; };
-		F774B95B2891BB4400438A37 /* AppleMusicChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicChartInteractor.swift; sourceTree = "<group>"; };
-		F774B95D2891BB4400438A37 /* AppleMusicChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicChartContentView.swift; sourceTree = "<group>"; };
-		F783BB8A2891BDFB004D2A6E /* SpotifyChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartRouter.swift; sourceTree = "<group>"; };
-		F783BB8B2891BDFB004D2A6E /* SpotifyChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartPresenter.swift; sourceTree = "<group>"; };
-		F783BB8C2891BDFB004D2A6E /* SpotifyChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartInteractor.swift; sourceTree = "<group>"; };
-		F783BB8D2891BDFB004D2A6E /* SpotifyChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartView.swift; sourceTree = "<group>"; };
-		F783BB8E2891BDFB004D2A6E /* SpotifyChartEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartEntity.swift; sourceTree = "<group>"; };
-		F783BB902891BDFB004D2A6E /* SpotifyChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyChartContentView.swift; sourceTree = "<group>"; };
+		F777BE43289E479600595ACA /* DetailSongPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongPresenter.swift; sourceTree = "<group>"; };
+		F777BE44289E479600595ACA /* DetailSongRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongRouter.swift; sourceTree = "<group>"; };
+		F777BE45289E479600595ACA /* DetailSongView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongView.swift; sourceTree = "<group>"; };
+		F777BE46289E479600595ACA /* DetailSongInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongInteractor.swift; sourceTree = "<group>"; };
+		F777BE48289E479600595ACA /* DetailSongContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongContentView.swift; sourceTree = "<group>"; };
+		F777BE49289E479600595ACA /* DetailSongEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongEntity.swift; sourceTree = "<group>"; };
+		F77A0DFF28A18EFE00FF4644 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		F77A0E0028A18EFE00FF4644 /* ChartEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartEntity.swift; sourceTree = "<group>"; };
+		F77A0E0128A18EFE00FF4644 /* ChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPresenter.swift; sourceTree = "<group>"; };
+		F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartRouter.swift; sourceTree = "<group>"; };
+		F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartContentView.swift; sourceTree = "<group>"; };
+		F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInteractor.swift; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
 		F7902804289309320058CC19 /* ServiceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceEntity.swift; sourceTree = "<group>"; };
@@ -191,27 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				F7002750289C3B470075C133 /* MediaTableView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F7002756289C41720075C133 /* SongList */ = {
-			isa = PBXGroup;
-			children = (
-				F700275A289C41720075C133 /* Views */,
-				F700275C289C41720075C133 /* SongListView.swift */,
-				F7002757289C41720075C133 /* SongListInteractor.swift */,
-				F7002759289C41720075C133 /* SongListPresenter.swift */,
-				F700275D289C41720075C133 /* SongListEntity.swift */,
-				F7002758289C41720075C133 /* SongListRouter.swift */,
-			);
-			path = SongList;
-			sourceTree = "<group>";
-		};
-		F700275A289C41720075C133 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F700275B289C41720075C133 /* SongListContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,9 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				F774B93C2891B16600438A37 /* Main */,
-				F7002756289C41720075C133 /* SongList */,
-				F774B9562891BB4400438A37 /* AppleMusicChart */,
-				F783BB892891BDFB004D2A6E /* SpotifyChart */,
+				F777BE42289E479600595ACA /* DetailSong */,
+				F77A0DFE28A18EFE00FF4644 /* Chart */,
 				F7902801289309320058CC19 /* Link */,
 				F79028112893095D0058CC19 /* Search */,
 				F7902821289309940058CC19 /* Settings */,
@@ -340,44 +306,44 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		F774B9562891BB4400438A37 /* AppleMusicChart */ = {
+		F777BE42289E479600595ACA /* DetailSong */ = {
 			isa = PBXGroup;
 			children = (
-				F774B95C2891BB4400438A37 /* Views */,
-				F774B9572891BB4400438A37 /* AppleMusicChartView.swift */,
-				F774B95B2891BB4400438A37 /* AppleMusicChartInteractor.swift */,
-				F774B9592891BB4400438A37 /* AppleMusicChartPresenter.swift */,
-				F774B95A2891BB4400438A37 /* AppleMusicChartEntity.swift */,
-				F774B9582891BB4400438A37 /* AppleMusicChartRouter.swift */,
+				F777BE47289E479600595ACA /* Views */,
+				F777BE45289E479600595ACA /* DetailSongView.swift */,
+				F777BE46289E479600595ACA /* DetailSongInteractor.swift */,
+				F777BE43289E479600595ACA /* DetailSongPresenter.swift */,
+				F777BE49289E479600595ACA /* DetailSongEntity.swift */,
+				F777BE44289E479600595ACA /* DetailSongRouter.swift */,
 			);
-			path = AppleMusicChart;
+			path = DetailSong;
 			sourceTree = "<group>";
 		};
-		F774B95C2891BB4400438A37 /* Views */ = {
+		F777BE47289E479600595ACA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F774B95D2891BB4400438A37 /* AppleMusicChartContentView.swift */,
+				F777BE48289E479600595ACA /* DetailSongContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F783BB892891BDFB004D2A6E /* SpotifyChart */ = {
+		F77A0DFE28A18EFE00FF4644 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				F783BB8F2891BDFB004D2A6E /* Views */,
-				F783BB8D2891BDFB004D2A6E /* SpotifyChartView.swift */,
-				F783BB8C2891BDFB004D2A6E /* SpotifyChartInteractor.swift */,
-				F783BB8B2891BDFB004D2A6E /* SpotifyChartPresenter.swift */,
-				F783BB8E2891BDFB004D2A6E /* SpotifyChartEntity.swift */,
-				F783BB8A2891BDFB004D2A6E /* SpotifyChartRouter.swift */,
+				F77A0E0328A18EFE00FF4644 /* Views */,
+				F77A0DFF28A18EFE00FF4644 /* ChartView.swift */,
+				F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */,
+				F77A0E0128A18EFE00FF4644 /* ChartPresenter.swift */,
+				F77A0E0028A18EFE00FF4644 /* ChartEntity.swift */,
+				F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */,
 			);
-			path = SpotifyChart;
+			path = Chart;
 			sourceTree = "<group>";
 		};
-		F783BB8F2891BDFB004D2A6E /* Views */ = {
+		F77A0E0328A18EFE00FF4644 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F783BB902891BDFB004D2A6E /* SpotifyChartContentView.swift */,
+				F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -594,62 +560,56 @@
 				F774B94E2891B37A00438A37 /* ViewLayoutableProtocol.swift in Sources */,
 				F774B9462891B16600438A37 /* MainView.swift in Sources */,
 				F790281B2893095D0058CC19 /* SearchInteractor.swift in Sources */,
-				F774B9602891BB4400438A37 /* AppleMusicChartPresenter.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
-				F7002761289C41720075C133 /* SongListContentView.swift in Sources */,
+				F777BE4A289E479600595ACA /* DetailSongPresenter.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
-				F7002763289C41720075C133 /* SongListEntity.swift in Sources */,
-				F7002760289C41720075C133 /* SongListPresenter.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
 				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
-				F774B9632891BB4400438A37 /* AppleMusicChartContentView.swift in Sources */,
 				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
+				F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */,
 				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
-				F783BB932891BDFB004D2A6E /* SpotifyChartInteractor.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
-				F783BB922891BDFB004D2A6E /* SpotifyChartPresenter.swift in Sources */,
+				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
-				F774B9612891BB4400438A37 /* AppleMusicChartEntity.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
-				F774B95F2891BB4400438A37 /* AppleMusicChartRouter.swift in Sources */,
-				F783BB952891BDFB004D2A6E /* SpotifyChartEntity.swift in Sources */,
+				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
+				F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */,
+				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
+				F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */,
 				F790280B289309320058CC19 /* ServiceEntity.swift in Sources */,
-				F700275E289C41720075C133 /* SongListInteractor.swift in Sources */,
-				F774B95E2891BB4400438A37 /* AppleMusicChartView.swift in Sources */,
+				F777BE4C289E479600595ACA /* DetailSongView.swift in Sources */,
 				F774B9502891B3BB00438A37 /* MakeProtocol.swift in Sources */,
-				F700275F289C41720075C133 /* SongListRouter.swift in Sources */,
 				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
+				F777BE4B289E479600595ACA /* DetailSongRouter.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,
-				F774B9622891BB4400438A37 /* AppleMusicChartInteractor.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
-				F783BB912891BDFB004D2A6E /* SpotifyChartRouter.swift in Sources */,
+				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
-				F7002762289C41720075C133 /* SongListView.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
+				F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
 				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
+				F777BE4D289E479600595ACA /* DetailSongInteractor.swift in Sources */,
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
 				F790281E2893095D0058CC19 /* SearchContentView.swift in Sources */,
 				F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */,
-				F783BB962891BDFB004D2A6E /* SpotifyChartContentView.swift in Sources */,
 				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
-				F783BB942891BDFB004D2A6E /* SpotifyChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,17 +15,17 @@ protocol MainViewProtocol: AnyObject {
     func selectedTab(_ tabItemIndex: MainView.TabItemIndex)
 }
 
-class MainView: UITabBarController {
+final class MainView: UITabBarController {
     
     enum TabItemIndex: Int {
-        case appleMusic
-        case spotify
+        case chart
         case link
         case search
         case settings
     }
     
     var presenter: MainPresenterProtocol?
+    
     var viewController: UITabBarController {
         return self
     }
