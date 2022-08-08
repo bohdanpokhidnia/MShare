@@ -11,6 +11,8 @@ protocol DetailSongPresenterProtocol: AnyObject {
     var view: DetailSongViewProtocol? { get set }
     var interactor: DetailSongInteractorIntputProtocol? { get set }
     var router: DetailSongRouterProtocol? { get set }
+    
+    func viewDidLoad()
 }
 
 final class DetailSongPresenter {
@@ -23,10 +25,16 @@ final class DetailSongPresenter {
 
 extension DetailSongPresenter: DetailSongPresenterProtocol {
     
+    func viewDidLoad() {
+        
+    }
+    
 }
 
 // MARK: - DetailSongInteractorOutputProtocol
 
 extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
+    
+    
     
 }

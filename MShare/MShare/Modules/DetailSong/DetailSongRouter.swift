@@ -10,8 +10,8 @@ import UIKit
 protocol DetailSongRouterProtocol {
     static func createModule() -> UIViewController
 }
-
-class DetailSongRouter: DetailSongRouterProtocol {
+ 
+final class DetailSongRouter: DetailSongRouterProtocol {
     
     static func createModule() -> UIViewController {
         let view: DetailSongViewProtocol = DetailSongView()
