@@ -12,7 +12,7 @@ protocol SearchViewProtocol: AnyObject {
     var viewController: UIViewController { get }
 }
 
-class SearchView: ViewController<SearchContentView> {
+final class SearchView: ViewController<SearchContentView> {
     
     var presenter: SearchPresenterProtocol?
     var viewController: UIViewController {

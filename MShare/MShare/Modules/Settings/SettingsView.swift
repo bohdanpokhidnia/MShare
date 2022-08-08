@@ -12,7 +12,7 @@ protocol SettingsViewProtocol: AnyObject {
     var viewController: UIViewController { get }
 }
 
-class SettingsView: ViewController<SettingsContentView> {
+final class SettingsView: ViewController<SettingsContentView> {
     
     var presenter: SettingsPresenterProtocol?
     var viewController: UIViewController {

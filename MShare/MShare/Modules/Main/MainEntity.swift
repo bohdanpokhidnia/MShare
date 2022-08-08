@@ -7,6 +7,6 @@
 
 import Foundation
 
-final class MainEntity {
+struct MainEntity {
     
 }

@@ -16,7 +16,6 @@ protocol LinkPresenterProtocol: AnyObject {
     func numberOfRows() -> Int
     func itemForRow(at indexPath: IndexPath) -> MediaItem
     func getServices()
-    func showSongList(at indexPath: IndexPath)
 }
 
 final class LinkPresenter {
@@ -46,13 +45,6 @@ extension LinkPresenter: LinkPresenterProtocol {
     
     func getServices() {
         interactor?.requestServices()
-    }
-    
-    func showSongList(at indexPath: IndexPath) {
-        guard let view = view else { return }
-        let service = services[indexPath.row]
-        
-        router?.pushSongListScreen(from: view, for: [.mock, .mock1])
     }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LinkContentView: View {
+final class LinkContentView: View {
     
     // MARK: - UI
     

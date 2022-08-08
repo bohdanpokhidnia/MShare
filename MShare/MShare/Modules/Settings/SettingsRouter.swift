@@ -11,7 +11,7 @@ protocol SettingsRouterProtocol {
     static func createModule() -> UIViewController
 }
 
-class SettingsRouter: SettingsRouterProtocol {
+final class SettingsRouter: SettingsRouterProtocol {
     
     static func createModule() -> UIViewController {
         let view: SettingsViewProtocol = SettingsView()

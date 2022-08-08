@@ -11,7 +11,7 @@ protocol SearchRouterProtocol {
     static func createModule() -> UIViewController
 }
 
-class SearchRouter: SearchRouterProtocol {
+final class SearchRouter: SearchRouterProtocol {
     
     static func createModule() -> UIViewController {
         let view: SearchViewProtocol = SearchView()

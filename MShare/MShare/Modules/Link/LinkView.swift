@@ -15,7 +15,7 @@ protocol LinkViewProtocol: AnyObject {
     func reloadData()
 }
 
-class LinkView: ViewController<LinkContentView> {
+final class LinkView: ViewController<LinkContentView> {
     
     var presenter: LinkPresenterProtocol
     var viewController: UIViewController {
@@ -102,7 +102,6 @@ extension LinkView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        presenter.showSongList(at: indexPath)
     }
     
 }

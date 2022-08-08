@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchContentView: View {
+final class SearchContentView: View {
     
     // MARK: - Lifecycle
 

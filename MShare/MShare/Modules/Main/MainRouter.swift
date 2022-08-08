@@ -12,7 +12,7 @@ protocol MainRouterProtocol {
     static func createTabModules() -> [UIViewController]
 }
 
-class MainRouter: MainRouterProtocol {
+final class MainRouter: MainRouterProtocol {
     
     static func createModule() -> MainViewProtocol {
         let view: MainViewProtocol = MainView()

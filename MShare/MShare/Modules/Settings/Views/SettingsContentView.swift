@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsContentView: View {
+final class SettingsContentView: View {
     
     // MARK: - Lifecycle
 
