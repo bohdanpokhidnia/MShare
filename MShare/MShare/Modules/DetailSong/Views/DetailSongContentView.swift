@@ -1,13 +1,13 @@
 //
-//  AppleMusicChartContentView.swift
+//  DetailSongContentView.swift
 //  MShare
 //
-//  Created by Bohdan Pokhidnia on 27.07.2022.
+//  Created by Bohdan Pokhidnia on 06.08.2022.
 //
 
 import UIKit
 
-class AppleMusicChartContentView: View {
+class DetailSongContentView: View {
     
     // MARK: - Lifecycle
 

@@ -1,13 +1,13 @@
 //
-//  SpotifyChartContentView.swift
+//  ChartContentView.swift
 //  MShare
 //
-//  Created by Bohdan Pokhidnia on 27.07.2022.
+//  Created by Bohdan Pokhidnia on 08.08.2022.
 //
 
 import UIKit
 
-class SpotifyChartContentView: View {
+final class ChartContentView: View {
     
     // MARK: - Lifecycle
 
