@@ -9,6 +9,8 @@ import UIKit
 
 protocol LinkRouterProtocol {
     static func createModule() -> UIViewController
+    
+    func presentShareLinkView(from view: LinkViewProtocol?, shareLinkView: UIActivityViewController)
 }
 
 class LinkRouter: LinkRouterProtocol {
@@ -28,6 +30,10 @@ class LinkRouter: LinkRouterProtocol {
         let navigationController = UINavigationController(rootViewController: view.viewController)
         navigationController.interactivePopGestureRecognizer?.delegate = nil
         return navigationController
+    }
+    
+    func presentShareLinkView(from view: LinkViewProtocol?, shareLinkView: UIActivityViewController) {
+        view?.viewController.present(shareLinkView, animated: true)
     }
     
 }

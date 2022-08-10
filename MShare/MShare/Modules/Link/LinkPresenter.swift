@@ -16,6 +16,7 @@ protocol LinkPresenterProtocol: AnyObject {
     func numberOfRows() -> Int
     func itemForRow(at indexPath: IndexPath) -> MediaItem
     func getServices()
+    func getShareLink(at indexPath: IndexPath)
 }
 
 final class LinkPresenter {
@@ -47,6 +48,10 @@ extension LinkPresenter: LinkPresenterProtocol {
         interactor?.requestServices()
     }
     
+    func getShareLink(at indexPath: IndexPath) {
+        interactor?.takeSourceURL(at: indexPath)
+    }
+    
 }
 
 // MARK: - LinkInteractorOutputProtocol
@@ -72,6 +77,12 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         }
         
         view?.reloadData()
+    }
+    
+    func giveSourceURL(_ sourceURL: String) {
+        guard let shareLinkView = interactor?.makeShareLinkView(sourceURL) else { return }
+        
+        router?.presentShareLinkView(from: view, shareLinkView: shareLinkView)
     }
     
 }

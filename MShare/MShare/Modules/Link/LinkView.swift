@@ -96,6 +96,7 @@ extension LinkView: UITableViewDataSource {
         return cell
             .set(state: sericeItem)
             .accessoryType(.disclosureIndicator)
+            .set(delegate: self, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -112,7 +113,6 @@ extension LinkView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
 }
@@ -125,6 +125,16 @@ extension LinkView: UITextFieldDelegate {
         textField.resignFirstResponder()
         
         return true
+    }
+    
+}
+
+// MARK: - MediaItemDelegate
+
+extension LinkView: MediaItemDelegate {
+    
+    func didTapShareButton(_ indexPath: IndexPath) {
+        presenter.getShareLink(at: indexPath)
     }
     
 }
