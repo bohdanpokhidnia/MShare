@@ -26,7 +26,7 @@ final class DetailSongPresenter {
 extension DetailSongPresenter: DetailSongPresenterProtocol {
     
     func viewDidLoad() {
-        
+        interactor?.requestSong()
     }
     
 }
@@ -35,6 +35,8 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
 
 extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     
-    
+    func didLoadSong(_ song: DetailSongEntity) {
+        view?.setupContent(with: .init(coverURL: song.coverURL, artistName: song.artistName, songName: song.songName))
+    }
     
 }

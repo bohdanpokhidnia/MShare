@@ -17,6 +17,7 @@ protocol LinkPresenterProtocol: AnyObject {
     func itemForRow(at indexPath: IndexPath) -> MediaItem
     func getServices()
     func getShareLink(at indexPath: IndexPath)
+    func didTapSong(at indexPath: IndexPath)
 }
 
 final class LinkPresenter {
@@ -49,7 +50,11 @@ extension LinkPresenter: LinkPresenterProtocol {
     }
     
     func getShareLink(at indexPath: IndexPath) {
-        interactor?.takeSourceURL(at: indexPath)
+        interactor?.giveSourceURL(at: indexPath)
+    }
+    
+    func didTapSong(at indexPath: IndexPath) {
+        interactor?.giveSong(at: indexPath)
     }
     
 }
@@ -79,10 +84,14 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         view?.reloadData()
     }
     
-    func giveSourceURL(_ sourceURL: String) {
+    func takeSourceURL(_ sourceURL: String) {
         guard let shareLinkView = interactor?.makeShareLinkView(sourceURL) else { return }
         
         router?.presentShareLinkView(from: view, shareLinkView: shareLinkView)
+    }
+    
+    func takeSong(_ song: DetailSongEntity) {
+        router?.pushDetailSongScreen(from: view, for: song)
     }
     
 }

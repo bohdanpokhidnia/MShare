@@ -12,14 +12,16 @@ protocol LinkInteractorIntputProtocol {
     
     func setupNotification()
     func requestServices()
-    func takeSourceURL(at indexPath: IndexPath)
+    func giveSourceURL(at indexPath: IndexPath)
     func makeShareLinkView(_ sourceURL: String) -> UIActivityViewController
+    func giveSong(at indexPath: IndexPath)
 }
 
 protocol LinkInteractorOutputProtocol: AnyObject {
     func didCatchURL(_ urlString: String)
     func didFetchServices(_ serviceEntities: [ServiceEntity])
-    func giveSourceURL(_ sourceURL: String)
+    func takeSourceURL(_ sourceURL: String)
+    func takeSong(_ song: DetailSongEntity)
 }
 
 final class LinkInteractor {
@@ -42,6 +44,19 @@ final class LinkInteractor {
     
 }
 
+// MARK: - Private Methods
+
+private extension LinkInteractor {
+    
+    func getSong(by indexPath: IndexPath) -> DetailSongEntity {
+        let service = services[indexPath.section]
+        let song = service.songs[indexPath.row]
+        
+        return song
+    }
+    
+}
+
 // MARK: - LinkInteractorInputProtocol
 
 extension LinkInteractor: LinkInteractorIntputProtocol {
@@ -60,18 +75,23 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
         presenter?.didFetchServices(services)
     }
     
-    func takeSourceURL(at indexPath: IndexPath) {
-        let songs = services[indexPath.section].songs
-        let song = songs[indexPath.row]
+    func giveSourceURL(at indexPath: IndexPath) {
+        let song = getSong(by: indexPath)
         let sourceURL = song.sourceURL
         
-        presenter?.giveSourceURL(sourceURL)
+        presenter?.takeSourceURL(sourceURL)
     }
     
     func makeShareLinkView(_ sourceURL: String) -> UIActivityViewController {
         let items = [sourceURL]
         
         return UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+    
+    func giveSong(at indexPath: IndexPath) {
+        let song = getSong(by: indexPath)
+        
+        presenter?.takeSong(song)
     }
     
 }

@@ -11,6 +11,7 @@ protocol LinkRouterProtocol {
     static func createModule() -> UIViewController
     
     func presentShareLinkView(from view: LinkViewProtocol?, shareLinkView: UIActivityViewController)
+    func pushDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity)
 }
 
 class LinkRouter: LinkRouterProtocol {
@@ -34,6 +35,13 @@ class LinkRouter: LinkRouterProtocol {
     
     func presentShareLinkView(from view: LinkViewProtocol?, shareLinkView: UIActivityViewController) {
         view?.viewController.present(shareLinkView, animated: true)
+    }
+    
+    func pushDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity) {
+        let detailSongScreen = DetailSongRouter.createModule(song: song)
+        detailSongScreen.hidesBottomBarWhenPushed = true
+        
+        view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
     }
     
 }

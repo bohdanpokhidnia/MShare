@@ -8,15 +8,15 @@
 import UIKit
 
 protocol DetailSongRouterProtocol {
-    static func createModule() -> UIViewController
+    static func createModule(song: DetailSongEntity) -> UIViewController
 }
  
 final class DetailSongRouter: DetailSongRouterProtocol {
     
-    static func createModule() -> UIViewController {
+    static func createModule(song: DetailSongEntity) -> UIViewController {
         let view: DetailSongViewProtocol = DetailSongView()
         let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
-        var interactor: DetailSongInteractorIntputProtocol = DetailSongInteractor()
+        var interactor: DetailSongInteractorIntputProtocol = DetailSongInteractor(song)
         let router = DetailSongRouter()
         
         view.presenter = presenter
