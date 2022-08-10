@@ -16,10 +16,12 @@ final class LinkContentView: View {
         axis: .vertical,
         spacing: 10
     )(
-        controlsStackView,
+        controlsContainerView,
         servicesTableView,
         View()
     )
+    
+    private let controlsContainerView = View()
     
     private lazy var controlsStackView = makeStackView(
         axis: .horizontal,
@@ -37,22 +39,27 @@ final class LinkContentView: View {
     private(set) var searchButton = Button(type: .system)
         .maskToBounds(true)
         .setCornerRadius(6)
+        .backgroundColor(color: .secondarySystemBackground)
         .make {
             $0.setTitle("Search", for: .normal)
-            $0.backgroundColor = .secondarySystemBackground
         }
     
-    private(set) var servicesTableView = MediaTableView(tableViewStyle: .plain)
+    private(set) var servicesTableView = MediaTableView(tableViewStyle: .grouped)
         .set(rowHeight: 80)
         .set(inset: .init(aLeft: MediaTableViewCell.iconImageContainerWidth))
-        .enableScroll(false)
     
     // MARK: - Lifecycle
+    
+    override func setup() {
+        super.setup()
+        
+        backgroundColor(color: .systemBackground)
+    }
 
     override func setupSubviews() {
         super.setupSubviews()
         
-        backgroundColor = .systemBackground
+        controlsContainerView.addSubview(controlsStackView)
         addSubview(contentStackView)
     }
     
@@ -60,9 +67,13 @@ final class LinkContentView: View {
         super.defineLayout()
         
         contentStackView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(UIEdgeInsets(aTop: 16))
-            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+        
+        controlsStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(aTop: 16, aLeft: 16, aRight: 16))
         }
         
         searchButton.snp.makeConstraints {

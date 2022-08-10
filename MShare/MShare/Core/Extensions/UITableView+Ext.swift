@@ -9,7 +9,6 @@ import UIKit
 
 extension UITableView {
     
-    /// Register nib for reuse
     @discardableResult
     func register<T: UITableViewCell>(nib cell: T.Type) -> Self {
         let className = String(describing: cell)
@@ -17,7 +16,6 @@ extension UITableView {
         return self
     }
     
-    /// Register class for reuse
     @discardableResult
     func register<T: UITableViewCell>(class cell: T.Type) -> Self {
         let className = String(describing: cell)
@@ -31,11 +29,23 @@ extension UITableView {
         return self
     }
     
-    /// Returns reusable cell
+    @discardableResult
+    func register<T: UITableViewHeaderFooterView>(classForHeaderFooter cell: T.Type) -> Self {
+        let className = String(describing: cell)
+        register(cell.self, forHeaderFooterViewReuseIdentifier: className)
+        return self
+    }
+    
     func dequeue<T: UITableViewCell>(_ cell: T.Type, for indexPath: IndexPath) -> T {
         let className = String(describing: cell)
         let cell = dequeueReusableCell(withIdentifier: className, for: indexPath)
         return cell as! T
+    }
+    
+    @discardableResult
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(withClass view: T.Type) -> T {
+        let className = String(describing: view)
+        return dequeueReusableHeaderFooterView(withIdentifier: className) as! T
     }
     
 }

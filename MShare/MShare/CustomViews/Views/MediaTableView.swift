@@ -18,7 +18,11 @@ final class MediaTableView: View {
     
     required init(tableViewStyle: UITableView.Style) {
         tableView = TableView(style: tableViewStyle)
+        tableView.register(classForHeaderFooter: ServiceHeaderView.self)
         tableView.register(class: MediaTableViewCell.self)
+        tableView.make {
+            $0.sectionHeaderHeight = 50
+        }
         
         super.init()
     }

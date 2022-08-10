@@ -16,7 +16,7 @@ typealias MediaItem = MediaTableViewCell.State
 
 final class MediaTableViewCell: TableViewCell {
     
-    static let iconImageContainerWidth: CGFloat = 70
+    static let iconImageContainerWidth: CGFloat = 80
     
     struct State {
         let title: String
@@ -119,8 +119,7 @@ final class MediaTableViewCell: TableViewCell {
         }
         
         iconImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
-            $0.leading.equalToSuperview()
+            $0.top.leading.equalToSuperview().offset(10)
             $0.trailing.bottom.equalToSuperview().offset(-10)
         }
         

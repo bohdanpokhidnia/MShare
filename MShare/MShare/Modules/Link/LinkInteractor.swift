@@ -49,7 +49,7 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     }
     
     func requestServices() {
-        presenter?.didFetchServices([.mock, .mock1])
+        presenter?.didFetchServices([.mock])
     }
     
 }

@@ -23,7 +23,7 @@ final class LinkPresenter {
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
     
-    private var services = [MediaItem]()
+    private var songs = [MediaItem]()
 }
 
 // MARK: - LinkPresenterProtocol
@@ -35,12 +35,12 @@ extension LinkPresenter: LinkPresenterProtocol {
     }
     
     func numberOfRows() -> Int {
-        return services.count
+        return songs.count
     }
     
     func itemForRow(at indexPath: IndexPath) -> MediaItem {
-        let service = services[indexPath.row]
-        return service
+        let song = songs[indexPath.row]
+        return song
     }
     
     func getServices() {
@@ -60,8 +60,16 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     }
     
     func didFetchServices(_ serviceEntities: [ServiceEntity]) {
-        services.removeAll()
-        services = serviceEntities.map { .init(tiile: $0.name, defaultPlaceholder: $0.imageLogo) }
+        songs.removeAll()
+        
+        for serviceEntity in serviceEntities {
+            view?.setHeaderTitle(serviceEntity.name)
+            
+            songs.append(contentsOf: serviceEntity.songs.map { .init(tiile: $0.songName,
+                                                                     subtitle: $0.artistName,
+                                                                     imageURL: $0.coverURL,
+                                                                     displayShareButton: true) })
+        }
         
         view?.reloadData()
     }

@@ -7,32 +7,13 @@
 
 import UIKit
 
-enum ServiceLogo: String {
-    case appleMusic = "appleMusic"
-    case spotify = "spotify"
-}
-
 struct ServiceEntity: Decodable {
     let name: String
-    let type: String
-    
-    var imageLogo: UIImage? {
-        switch ServiceLogo(rawValue: type) {
-        case .appleMusic:
-            return UIImage(named: "appleMusicLogo")
-            
-        case .spotify:
-            return UIImage(named: "spotifyLogo")
-            
-        case .none:
-            return nil
-        }
-    }
+    let songs: [DetailSongEntity]
 }
 
 extension ServiceEntity {
     
-    static let mock = ServiceEntity(name: "Apple Music", type: "appleMusic")
-    static let mock1 = ServiceEntity(name: "Spotify", type: "spotify")
+    static let mock = ServiceEntity(name: "Apple Music", songs: [.mock, .mock1])
     
 }

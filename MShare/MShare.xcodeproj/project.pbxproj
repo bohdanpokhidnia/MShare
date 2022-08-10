@@ -42,6 +42,7 @@
 		F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */; };
 		F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */; };
 		F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */; };
+		F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
 		F790280B289309320058CC19 /* ServiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* ServiceEntity.swift */; };
@@ -129,6 +130,7 @@
 		F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartRouter.swift; sourceTree = "<group>"; };
 		F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartContentView.swift; sourceTree = "<group>"; };
 		F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInteractor.swift; sourceTree = "<group>"; };
+		F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHeaderView.swift; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
 		F7902804289309320058CC19 /* ServiceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceEntity.swift; sourceTree = "<group>"; };
@@ -348,6 +350,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F77A0E0E28A192C700FF4644 /* HeaderFooterViews */ = {
+			isa = PBXGroup;
+			children = (
+				F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */,
+			);
+			path = HeaderFooterViews;
+			sourceTree = "<group>";
+		};
 		F7902801289309320058CC19 /* Link */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +437,7 @@
 		F7D589BF289ABD310073709D /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				F77A0E0E28A192C700FF4644 /* HeaderFooterViews */,
 				F7D589C2289ABDF90073709D /* Cells */,
 				F7002752289C3B4A0075C133 /* Views */,
 			);
@@ -610,6 +621,7 @@
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
+				F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

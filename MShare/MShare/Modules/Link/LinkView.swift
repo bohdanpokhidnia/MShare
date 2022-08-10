@@ -12,12 +12,14 @@ protocol LinkViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
+    func setHeaderTitle(_ title: String)
     func reloadData()
 }
 
 final class LinkView: ViewController<LinkContentView> {
     
     var presenter: LinkPresenterProtocol
+    
     var viewController: UIViewController {
         return self
     }
@@ -59,8 +61,11 @@ private extension LinkView {
     
     func setupViews() {
         contentView.linkTextField.delegate = self
-        contentView.servicesTableView.tableView.dataSource = self
-        contentView.servicesTableView.tableView.delegate = self
+        
+        contentView.servicesTableView.tableView.make {
+            $0.dataSource = self
+            $0.delegate = self
+        }
     }
     
     func setupNavigationBar() {
@@ -91,6 +96,12 @@ extension LinkView: UITableViewDataSource {
         return cell
             .set(state: sericeItem)
             .accessoryType(.disclosureIndicator)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withClass: ServiceHeaderView.self)
+        
+        return headerView
     }
     
 }
@@ -124,6 +135,12 @@ extension LinkView: LinkViewProtocol {
     
     func setLink(_ linkString: String) {
         contentView.setLinkText(linkString)
+    }
+    
+    func setHeaderTitle(_ title: String) {
+        let headerView = contentView.servicesTableView.tableView.headerView(forSection: 0) as? ServiceHeaderView
+        
+        headerView?.set(title)
     }
     
     func reloadData() {
