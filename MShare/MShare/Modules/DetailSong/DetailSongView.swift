@@ -27,6 +27,7 @@ final class DetailSongView: ViewController<DetailSongContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupViews()
         presenter?.viewDidLoad()
     }
     
@@ -48,6 +49,10 @@ final class DetailSongView: ViewController<DetailSongContentView> {
 
 private extension DetailSongView {
     
+    func setupViews() {
+        contentView.horizontalActionMenuView.delegare = self
+    }
+    
 }
 
 // MARK: - DetailSongViewProtocol
@@ -56,6 +61,16 @@ extension DetailSongView: DetailSongViewProtocol {
     
     func setupContent(with state: DetailSongState) {
         contentView.set(state: state)
+    }
+    
+}
+
+// MARK: - HorizontalActionMenuDelegate
+
+extension DetailSongView: HorizontalActionMenuDelegate {
+    
+    func didTapActionItem(_ action: HorizontalMenuAction) {
+        print("[dev] tapped on: \(action.title)")
     }
     
 }

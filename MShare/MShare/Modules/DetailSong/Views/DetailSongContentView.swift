@@ -12,6 +12,8 @@ typealias DetailSongState = DetailSongContentView.State
 
 final class DetailSongContentView: View {
     
+    static let horizontalActionMenuHeight: CGFloat = 130
+    
     struct State {
         let coverURL: String
         let artistName: String
@@ -20,88 +22,55 @@ final class DetailSongContentView: View {
     
     // MARK: - UI
     
-    private lazy var contentStack = makeStackView(
-        axis: .vertical,
-        spacing: 16
-    )(
-        imageContainer,
-        songNameContainer,
-        View()
-    )
+    private let backgroundImageView = UIImageView()
+        .setContentMode(.center)
+        .addBlur()
     
-    private let imageContainer = View()
+    private let coverView = CoverView()
     
-    private let coverImageView = UIImageView()
-        .setContentMode(.scaleToFill)
-        .backgroundColor(color: .gray)
-
-    private lazy var imageBottomStackView = makeStackView(
-        axis: .horizontal,
-        spacing: 10
-    ) (
-        artistNameLabel, View(), shareButton
-    )
+    private let horizontalActionMenuContainer = View()
+        .setCornerRadius(12)
+        .maskToBounds(true)
+        .backgroundColor(color: .white)
     
-    private let artistNameLabel = UILabel()
-        .text(font: .systemFont(ofSize: 32, weight: .black))
-        .set(numberOfLines: 1)
-        .adjustsFontSizeToFitWidth(true)
-        .textColor(.black)
-    
-    private(set) var shareButton = Button(type: .system)
-        .setImage(UIImage(systemName: "square.and.arrow.up.circle.fill"))
-        .make {
-            $0.contentHorizontalAlignment = .fill
-            $0.contentVerticalAlignment = .fill
-        }
-    
-    private let songNameContainer = View()
-    
-    private let songNameLabel = UILabel()
-        .text(font: .systemFont(ofSize: 22, weight: .light))
+    private(set) var horizontalActionMenuView = HorizontalActionMenuView()
     
     // MARK: - Lifecycle
+    
+    override func setupSubviews() {
+        super.setupSubviews()
+    
+        horizontalActionMenuContainer.addSubview(horizontalActionMenuView)
+        addSubviews(backgroundImageView, coverView, horizontalActionMenuContainer)
+    }
     
     override func setup() {
         super.setup()
         
-        backgroundColor(color: .systemBackground)
-    }
-
-    override func setupSubviews() {
-        super.setupSubviews()
-        
-        imageContainer.addSubviews(coverImageView, imageBottomStackView)
-        songNameContainer.addSubview(songNameLabel)
-        addSubview(contentStack)
+        backgroundColor(color: .red)
+        maskToBounds(true)
     }
     
     override func defineLayout() {
         super.defineLayout()
         
-        contentStack.snp.makeConstraints {
+        backgroundImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        imageContainer.snp.makeConstraints {
-            $0.height.equalTo(UIScreen.main.bounds.width)
+        coverView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-50)
         }
         
-        coverImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        shareButton.snp.makeConstraints {
-            $0.width.height.equalTo(50)
-        }
-        
-        imageBottomStackView.snp.makeConstraints {
+        horizontalActionMenuContainer.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
-            $0.bottom.equalToSuperview().inset(UIEdgeInsets(aBottom: 16))
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
+            $0.height.equalTo(Self.horizontalActionMenuHeight)
         }
         
-        songNameLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+        horizontalActionMenuView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
@@ -113,11 +82,9 @@ extension DetailSongContentView {
     
     @discardableResult
     func set(state: State) -> Self {
-        coverImageView.setImage(state.coverURL, placeholder: nil)
+        backgroundImageView.setImage(state.coverURL)
+        coverView.set(state: state)
         
-        artistNameLabel.text(state.artistName.uppercased())
-        
-        songNameLabel.text(state.songName)
         return self
     }
     

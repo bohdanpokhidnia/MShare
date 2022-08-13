@@ -17,7 +17,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    func setImage(_ urlString: String, placeholder: UIImage?) -> Self {
+    func setImage(_ urlString: String, placeholder: UIImage? = nil) -> Self {
         guard let imageURL = URL(string: urlString) else {
             image = placeholder
             return self
