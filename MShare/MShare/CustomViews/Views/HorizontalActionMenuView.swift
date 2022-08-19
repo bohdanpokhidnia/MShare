@@ -76,8 +76,6 @@ final class HorizontalActionMenuView: View {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
         collectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        collectionViewFlowLayout.minimumLineSpacing = 10
-        collectionViewFlowLayout.minimumInteritemSpacing = 10
         collectionViewFlowLayout.sectionInset = .init(horizontal: 16)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
@@ -153,7 +151,7 @@ extension HorizontalActionMenuView: UICollectionViewDelegate {
 extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = collectionView.bounds.width / 4
+        let width: CGFloat = collectionView.bounds.width / 5
         let height: CGFloat = collectionView.bounds.height
         
         return .init(width: width, height: height)

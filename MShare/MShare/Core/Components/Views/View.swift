@@ -20,7 +20,7 @@ enum ViewState {
 
 class View: UIView, ViewLayoutableProtocol {
 
-    var shadowLayers: Set<CAShapeLayer> = []
+    var shadowLayers = Set<CAShapeLayer>()
 
     required init() {
         super.init(frame: .init(origin: .zero, size: kDefaultViewSize))

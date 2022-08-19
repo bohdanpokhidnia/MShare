@@ -8,14 +8,27 @@
 import UIKit
 
 protocol Blurable {
-    func addBlur() -> Self
+    func addBlur(style: UIBlurEffect.Style) -> Self
+    func addClearBackgroundBlur(style: UIBlurEffect.Style) -> Self
 }
 
-extension Blurable where Self: UIImageView {
+extension Blurable where Self: UIView {
     
     @discardableResult
-    func addBlur() -> Self {
-        let blurEffect = UIBlurEffect(style: .dark)
+    func addBlur(style: UIBlurEffect.Style) -> Self {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        addSubview(blurEffectView)
+        return self
+    }
+    
+    @discardableResult
+    func addClearBackgroundBlur(style: UIBlurEffect.Style) -> Self {
+        let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         blurEffectView.frame = bounds
@@ -25,8 +38,7 @@ extension Blurable where Self: UIImageView {
         addSubview(blurEffectView)
         return self
     }
-    
 }
 
-extension UIImageView: Blurable {}
+extension UIView: Blurable {}
 

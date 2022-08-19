@@ -12,7 +12,7 @@ typealias DetailSongState = DetailSongContentView.State
 
 final class DetailSongContentView: View {
     
-    static let horizontalActionMenuHeight: CGFloat = 130
+    static let horizontalActionMenuHeight: CGFloat = 135
     
     struct State {
         let coverURL: String
@@ -24,14 +24,17 @@ final class DetailSongContentView: View {
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.center)
-        .addBlur()
+        .addClearBackgroundBlur(style: .regular)
+    
+    private let coverViewContainer = View()
+        .maskToBounds(false)
+        .setCornerRadius(28)
+        .addShadow(color: .black, offset: .init(width: 4, height: 4), opacity: 0.3, radius: 10)
     
     private let coverView = CoverView()
     
     private let horizontalActionMenuContainer = View()
-        .setCornerRadius(12)
-        .maskToBounds(true)
-        .backgroundColor(color: .white)
+        .setAlpha(0)
     
     private(set) var horizontalActionMenuView = HorizontalActionMenuView()
     
@@ -39,15 +42,16 @@ final class DetailSongContentView: View {
     
     override func setupSubviews() {
         super.setupSubviews()
-    
+        
+        coverViewContainer.addSubview(coverView)
         horizontalActionMenuContainer.addSubview(horizontalActionMenuView)
-        addSubviews(backgroundImageView, coverView, horizontalActionMenuContainer)
+        addSubviews(backgroundImageView, coverViewContainer, horizontalActionMenuContainer)
     }
     
     override func setup() {
         super.setup()
         
-        backgroundColor(color: .red)
+        backgroundColor(color: .white)
         maskToBounds(true)
     }
     
@@ -58,19 +62,24 @@ final class DetailSongContentView: View {
             $0.edges.equalToSuperview()
         }
         
-        coverView.snp.makeConstraints {
+        coverViewContainer.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(50)
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-50)
+        }
+        
+        coverView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         horizontalActionMenuContainer.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
-            $0.height.equalTo(Self.horizontalActionMenuHeight)
+            $0.top.equalTo(coverView.snp.bottom).offset(50)
+            
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         horizontalActionMenuView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Self.horizontalActionMenuHeight)
         }
     }
     

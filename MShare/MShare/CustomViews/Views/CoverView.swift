@@ -12,15 +12,15 @@ final class CoverView: View {
     
     // MARK: - UI
     
-    private let contentView = UIView()
-        .setCornerRadius(12)
+    private let gradientBackgroundView = GradientView()
+        .set(colors: [.appPink, .appPink, .appBlue, .appBlue])
+        .setCornerRadius(28)
         .maskToBounds(true)
-        .backgroundColor(color: .white)
     
     private let coverImageView = UIImageView()
         .setContentMode(.scaleToFill)
-        .backgroundColor(color: .gray)
-        .setCornerRadius(10)
+        .backgroundColor(color: .systemBlue)
+        .setCornerRadius(12)
         .maskToBounds(true)
         .borderWidth(1, color: .black)
     
@@ -32,15 +32,15 @@ final class CoverView: View {
     private(set) var songNameLabel = UILabel()
         .text(font: .systemFont(ofSize: 32, weight: .bold))
         .text(alignment: .center)
-        .textColor(.black)
+        .textColor(.white)
         .set(numberOfLines: 2)
         .adjustsFontSizeToFitWidth(true)
     
     private let artistNameLabel = UILabel()
-        .text(font: .systemFont(ofSize: 22, weight: .regular))
+        .text(font: .systemFont(ofSize: 20, weight: .regular))
         .text(alignment: .center)
-        .textColor(.black)
-        .set(numberOfLines: 2)
+        .textColor(UIColor(hex: "#f0f0f0"))
+        .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     
     override var intrinsicContentSize: CGSize {
@@ -58,14 +58,14 @@ final class CoverView: View {
     override func setupSubviews() {
         super.setupSubviews()
         
-        contentView.addSubviews(coverImageView, namesLabelStackView)
-        addSubview(contentView)
+        gradientBackgroundView.addSubviews(coverImageView, namesLabelStackView)
+        addSubview(gradientBackgroundView)
     }
     
     override func defineLayout() {
         super.defineLayout()
         
-        contentView.snp.makeConstraints {
+        gradientBackgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -86,7 +86,7 @@ final class CoverView: View {
     
     private let coverViewTopOffset: CGFloat = 16
     private let labelsViewTopOffset: CGFloat = 4
-    private let viewBottomOffset: CGFloat = 16
+    private let viewBottomOffset: CGFloat = 22
     private let coverImageWidth: CGFloat = UIScreen.main.bounds.width / 1.5
     
 }

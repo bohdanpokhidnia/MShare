@@ -9,6 +9,8 @@ import UIKit
 
 class TableView: UITableView {
     
+    // MARK: - Initializers
+    
     init(style: UITableView.Style) {
         super.init(frame: .zero, style: style)
         

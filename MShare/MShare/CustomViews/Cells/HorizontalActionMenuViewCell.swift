@@ -23,8 +23,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .setContentMode(.scaleAspectFit)
         .setCornerRadius(18)
         .maskToBounds(true)
-        .borderWidth(1, color: .black)
-        .backgroundColor(color: .white)
+        .backgroundColor(color: .red)
     
     private let actionTitleLabel = UILabel()
         .text(alignment: .center)
@@ -33,6 +32,13 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .adjustsFontSizeToFitWidth(true)
     
     // MARK: - Lifecycle
+    
+    override func setup() {
+        super.setup()
+        
+        backgroundColor(color: .white)
+        setCornerRadius(8)
+    }
     
     override func setupSubviews() {
         super.setupSubviews()
@@ -49,14 +55,14 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         }
         
         actionImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(80)
         }
 
         actionTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(actionImageView.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-10)
         }
     }
     
