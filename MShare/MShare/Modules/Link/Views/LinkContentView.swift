@@ -32,6 +32,7 @@ final class LinkContentView: View {
     
     private(set) var linkTextField = UITextField()
         .make {
+            $0.clearButtonMode = .whileEditing
             $0.placeholder = "Link for search song"
             $0.adjustsFontSizeToFitWidth = true
         }
