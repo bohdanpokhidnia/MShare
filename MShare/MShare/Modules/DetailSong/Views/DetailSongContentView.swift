@@ -12,8 +12,6 @@ typealias DetailSongState = DetailSongContentView.State
 
 final class DetailSongContentView: View {
     
-    static let horizontalActionMenuHeight: CGFloat = 135
-    
     struct State {
         let coverURL: String
         let artistName: String
@@ -33,9 +31,6 @@ final class DetailSongContentView: View {
     
     private let coverView = CoverView()
     
-    private let horizontalActionMenuContainer = View()
-        .setAlpha(0)
-    
     private(set) var horizontalActionMenuView = HorizontalActionMenuView()
     
     // MARK: - Lifecycle
@@ -44,8 +39,7 @@ final class DetailSongContentView: View {
         super.setupSubviews()
         
         coverViewContainer.addSubview(coverView)
-        horizontalActionMenuContainer.addSubview(horizontalActionMenuView)
-        addSubviews(backgroundImageView, coverViewContainer, horizontalActionMenuContainer)
+        addSubviews(backgroundImageView, coverViewContainer, horizontalActionMenuView)
     }
     
     override func setup() {
@@ -63,7 +57,7 @@ final class DetailSongContentView: View {
         }
         
         coverViewContainer.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(50)
+            $0.centerY.equalToSuperview().offset(-coverView.frame.height / 7)
             $0.centerX.equalToSuperview()
         }
         
@@ -71,15 +65,10 @@ final class DetailSongContentView: View {
             $0.edges.equalToSuperview()
         }
         
-        horizontalActionMenuContainer.snp.makeConstraints {
-            $0.top.equalTo(coverView.snp.bottom).offset(50)
-            
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
-        
         horizontalActionMenuView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(Self.horizontalActionMenuHeight)
+            $0.top.equalTo(coverViewContainer.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(HorizontalActionMenuView.HorizontalActionMenuWidth)
         }
     }
     

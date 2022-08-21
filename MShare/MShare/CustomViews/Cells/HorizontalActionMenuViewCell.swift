@@ -19,16 +19,17 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     
     private let containerView = View()
     
+    private let actionImageContrainerView = View()
+    
     private let actionImageView = UIImageView()
         .setContentMode(.scaleAspectFit)
-        .setCornerRadius(18)
-        .maskToBounds(true)
-        .backgroundColor(color: .red)
+        .backgroundColor(color: .gray)
     
     private let actionTitleLabel = UILabel()
         .text(alignment: .center)
-        .textColor(.black)
-        .set(numberOfLines: 1)
+        .text(font: UIFont.systemFont(ofSize: 15, weight: .heavy))
+        .textColor(.white)
+        .set(numberOfLines: 0)
         .adjustsFontSizeToFitWidth(true)
     
     // MARK: - Lifecycle
@@ -36,14 +37,15 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     override func setup() {
         super.setup()
         
-        backgroundColor(color: .white)
-        setCornerRadius(8)
+        setCornerRadius(cellCornerRadius)
+        maskToBounds(true)
     }
     
     override func setupSubviews() {
         super.setupSubviews()
         
-        containerView.addSubviews(actionImageView, actionTitleLabel)
+        actionImageContrainerView.addSubview(actionImageView)
+        containerView.addSubviews(actionImageContrainerView, actionTitleLabel)
         contentView.addSubview(containerView)
     }
     
@@ -54,17 +56,23 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
+        actionImageContrainerView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
         actionImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(80)
+            $0.edges.equalToSuperview()
         }
 
         actionTitleLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 5))
             $0.bottom.equalToSuperview().offset(-10)
         }
     }
+    
+    // MARK: - Private
+    
+    private let cellCornerRadius: CGFloat = 12
     
 }
 

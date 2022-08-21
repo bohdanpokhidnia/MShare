@@ -13,60 +13,41 @@ protocol HorizontalActionMenuDelegate: AnyObject {
 }
 
 enum HorizontalMenuAction: CaseIterable {
-    case shareLink
+    case shareAppleMusicLink
+    case shareSpotifyLink
     case shareCover
-    case shareLink1
-    case shareCover1
-    case shareLink2
-    case shareCover2
     
     var image: UIImage? {
         switch self {
-        case .shareLink:
-            return UIImage(systemName: "link")
+        case .shareAppleMusicLink:
+            return UIImage(named: "appleMusicLogo")
+            
+        case .shareSpotifyLink:
+            return UIImage(named: "spotifyLogo")
             
         case .shareCover:
-            return UIImage(systemName: "photo.artframe")
-            
-        case .shareLink1:
-            return UIImage(systemName: "link")
-            
-        case .shareCover1:
-            return UIImage(systemName: "photo.artframe")
-            
-        case .shareLink2:
-            return UIImage(systemName: "link")
-            
-        case .shareCover2:
-            return UIImage(systemName: "photo.artframe")
+            return nil
         }
     }
     
     var title: String {
         switch self {
-        case .shareLink:
-            return "Link"
+        case .shareAppleMusicLink:
+            return "Apple Music"
+            
+        case .shareSpotifyLink:
+            return "Spotify"
             
         case .shareCover:
-            return "Cover"
-            
-        case .shareLink1:
-            return "Link 1"
-            
-        case .shareCover1:
-            return "Cover 1"
-            
-        case .shareLink2:
-            return "Link 2"
-            
-        case .shareCover2:
-            return "Cover 2"
+            return "Share cover"
         }
-        
     }
+    
 }
 
 final class HorizontalActionMenuView: View {
+    
+    static let HorizontalActionMenuWidth: CGFloat = UIScreen.main.bounds.width / 2
     
     weak var delegare: HorizontalActionMenuDelegate?
     
@@ -75,13 +56,12 @@ final class HorizontalActionMenuView: View {
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionViewFlowLayout.sectionInset = .init(horizontal: 16)
+        collectionViewFlowLayout.minimumLineSpacing = 20
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.register(class: HorizontalActionMenuViewCell.self)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.decelerationRate = .normal
         collectionView.backgroundColor(color: .clear)
         return collectionView
     }()
@@ -151,8 +131,8 @@ extension HorizontalActionMenuView: UICollectionViewDelegate {
 extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = collectionView.bounds.width / 5
-        let height: CGFloat = collectionView.bounds.height
+        let width: CGFloat = Self.HorizontalActionMenuWidth
+        let height: CGFloat = width
         
         return .init(width: width, height: height)
     }
