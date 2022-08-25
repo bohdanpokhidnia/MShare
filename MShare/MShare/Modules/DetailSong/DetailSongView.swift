@@ -27,20 +27,9 @@ final class DetailSongView: ViewController<DetailSongContentView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
         setupViews()
         presenter?.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
 }
@@ -49,8 +38,26 @@ final class DetailSongView: ViewController<DetailSongContentView> {
 
 private extension DetailSongView {
     
+    func setupNavigationBar() {
+        title = "Share"
+        UINavigationBar.configure(style: .transcelent)
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapDismissBarButton))
+    }
+    
     func setupViews() {
         contentView.horizontalActionMenuView.delegare = self
+    }
+    
+}
+
+// MARK: - User interactions
+
+private extension DetailSongView {
+    
+    @objc
+    func didTapDismissBarButton() {
+        presenter?.dismissAction()
     }
     
 }
@@ -71,6 +78,17 @@ extension DetailSongView: HorizontalActionMenuDelegate {
     
     func didTapActionItem(_ action: HorizontalMenuAction) {
         print("[dev] tapped on: \(action.title)")
+        
+        switch action {
+        case .shareAppleMusicLink:
+            break
+            
+        case .shareSpotifyLink:
+            break
+            
+        case .shareCover:
+            break
+        }
     }
     
 }
