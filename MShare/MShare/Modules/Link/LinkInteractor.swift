@@ -11,17 +11,12 @@ protocol LinkInteractorIntputProtocol {
     var presenter: LinkInteractorOutputProtocol? { get set }
     
     func setupNotification()
-    func requestServices()
-    func giveSourceURL(at indexPath: IndexPath)
-    func makeShareLinkView(_ sourceURL: String) -> UIActivityViewController
-    func giveSong(at indexPath: IndexPath)
+    func requestSong(urlString: String)
 }
 
 protocol LinkInteractorOutputProtocol: AnyObject {
     func didCatchURL(_ urlString: String)
-    func didFetchServices(_ serviceEntities: [ServiceEntity])
-    func takeSourceURL(_ sourceURL: String)
-    func takeSong(_ song: DetailSongEntity)
+    func didFetchSong(_ detailSong: DetailSongEntity)
 }
 
 final class LinkInteractor {
@@ -44,19 +39,6 @@ final class LinkInteractor {
     
 }
 
-// MARK: - Private Methods
-
-private extension LinkInteractor {
-    
-    func getSong(by indexPath: IndexPath) -> DetailSongEntity {
-        let service = services[indexPath.section]
-        let song = service.songs[indexPath.row]
-        
-        return song
-    }
-    
-}
-
 // MARK: - LinkInteractorInputProtocol
 
 extension LinkInteractor: LinkInteractorIntputProtocol {
@@ -68,30 +50,10 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                                                object: nil)
     }
     
-    func requestServices() {
-        services.removeAll()
-        services = [.mock]
+    func requestSong(urlString: String) {
+        let song = DetailSongEntity.mock
         
-        presenter?.didFetchServices(services)
-    }
-    
-    func giveSourceURL(at indexPath: IndexPath) {
-        let song = getSong(by: indexPath)
-        let sourceURL = song.sourceURL
-        
-        presenter?.takeSourceURL(sourceURL)
-    }
-    
-    func makeShareLinkView(_ sourceURL: String) -> UIActivityViewController {
-        let items = [sourceURL]
-        
-        return UIActivityViewController(activityItems: items, applicationActivities: nil)
-    }
-    
-    func giveSong(at indexPath: IndexPath) {
-        let song = getSong(by: indexPath)
-        
-        presenter?.takeSong(song)
+        presenter?.didFetchSong(song)
     }
     
 }

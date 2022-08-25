@@ -12,8 +12,6 @@ protocol LinkViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
-    func setHeaderTitle(_ title: String)
-    func reloadData()
 }
 
 final class LinkView: ViewController<LinkContentView> {
@@ -61,11 +59,6 @@ private extension LinkView {
     
     func setupViews() {
         contentView.linkTextField.delegate = self
-        
-        contentView.servicesTableView.tableView.make {
-            $0.dataSource = self
-            $0.delegate = self
-        }
     }
     
     func setupNavigationBar() {
@@ -75,49 +68,12 @@ private extension LinkView {
     
     func setupActionHandlers() {
         contentView.searchButton.whenTap { [unowned self] in
-            presenter.getServices()
+            presenter.getSong(urlString: "some link from text field")
         }
     }
     
 }
 
-// MARK: - UICollectionViewDataSource
-
-extension LinkView: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.numberOfRows()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sericeItem = presenter.itemForRow(at: indexPath)
-        
-        let cell = tableView.dequeue(MediaTableViewCell.self, for: indexPath)
-        return cell
-            .set(state: sericeItem)
-            .accessoryType(.disclosureIndicator)
-            .set(delegate: self, indexPath: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withClass: ServiceHeaderView.self)
-        
-        return headerView
-    }
-    
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension LinkView: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        presenter.didTapSong(at: indexPath)
-    }
-    
-}
 
 // MARK: - UITextFieldDelegate
 
@@ -131,32 +87,12 @@ extension LinkView: UITextFieldDelegate {
     
 }
 
-// MARK: - MediaItemDelegate
-
-extension LinkView: MediaItemDelegate {
-    
-    func didTapShareButton(_ indexPath: IndexPath) {
-        presenter.getShareLink(at: indexPath)
-    }
-    
-}
-
 // MARK: - LinkViewProtocol
 
 extension LinkView: LinkViewProtocol {
     
     func setLink(_ linkString: String) {
         contentView.setLinkText(linkString)
-    }
-    
-    func setHeaderTitle(_ title: String) {
-        let headerView = contentView.servicesTableView.tableView.headerView(forSection: 0) as? ServiceHeaderView
-        
-        headerView?.set(title)
-    }
-    
-    func reloadData() {
-        contentView.servicesTableView.tableView.reloadData()
     }
     
 }

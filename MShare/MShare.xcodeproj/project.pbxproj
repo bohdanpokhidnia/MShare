@@ -69,6 +69,7 @@
 		F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902834289322EB0058CC19 /* UIStackView+Ext.swift */; };
 		F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12C28A811E3009DFC96 /* CoverView.swift */; };
 		F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12E28A82539009DFC96 /* Blurable.swift */; };
+		F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */; };
 		F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */; };
 		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
 		F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C5289ADD870073709D /* UIImageView+Ext.swift */; };
@@ -163,6 +164,7 @@
 		F7902834289322EB0058CC19 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		F79ED12C28A811E3009DFC96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		F79ED12E28A82539009DFC96 /* Blurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blurable.swift; sourceTree = "<group>"; };
+		F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C5289ADD870073709D /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				F7D589C3289AC26C0073709D /* UILabel+Ext.swift */,
 				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
 				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
+				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
+				F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */,
 				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,

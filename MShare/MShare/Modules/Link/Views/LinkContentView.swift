@@ -12,17 +12,6 @@ final class LinkContentView: View {
     
     // MARK: - UI
     
-    private lazy var contentStackView = makeStackView(
-        axis: .vertical,
-        spacing: 10
-    )(
-        controlsContainerView,
-        servicesTableView,
-        View()
-    )
-    
-    private let controlsContainerView = View()
-    
     private lazy var controlsStackView = makeStackView(
         axis: .horizontal,
         spacing: 12
@@ -45,10 +34,6 @@ final class LinkContentView: View {
             $0.setTitle("Search", for: .normal)
         }
     
-    private(set) var servicesTableView = MediaTableView(tableViewStyle: .grouped)
-        .set(rowHeight: 80)
-        .set(inset: .init(aLeft: MediaTableViewCell.iconImageContainerWidth))
-    
     // MARK: - Lifecycle
     
     override func setup() {
@@ -60,21 +45,16 @@ final class LinkContentView: View {
     override func setupSubviews() {
         super.setupSubviews()
         
-        controlsContainerView.addSubview(controlsStackView)
-        addSubview(contentStackView)
+        addSubview(controlsStackView)
     }
     
     override func defineLayout() {
         super.defineLayout()
         
-        contentStackView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
-        
         controlsStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(UIEdgeInsets(aTop: 16, aLeft: 16, aRight: 16))
+            $0.top.equalTo(safeAreaLayoutGuide).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            $0.height.equalTo(35)
         }
         
         searchButton.snp.makeConstraints {
