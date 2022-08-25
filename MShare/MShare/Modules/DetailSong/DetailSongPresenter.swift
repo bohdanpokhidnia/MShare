@@ -13,6 +13,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     var router: DetailSongRouterProtocol? { get set }
     
     func viewDidLoad()
+    func dismissAction()
 }
 
 final class DetailSongPresenter {
@@ -27,6 +28,10 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
     
     func viewDidLoad() {
         interactor?.requestSong()
+    }
+    
+    func dismissAction() {
+        router?.dismissModule(view: view)
     }
     
 }

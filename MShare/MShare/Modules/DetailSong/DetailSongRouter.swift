@@ -9,6 +9,8 @@ import UIKit
 
 protocol DetailSongRouterProtocol {
     static func createModule(song: DetailSongEntity) -> UIViewController
+    
+    func dismissModule(view: DetailSongViewProtocol?)
 }
  
 final class DetailSongRouter: DetailSongRouterProtocol {
@@ -26,6 +28,12 @@ final class DetailSongRouter: DetailSongRouterProtocol {
         interactor.presenter = presenter
         
         return view.viewController
+    }
+    
+    func dismissModule(view: DetailSongViewProtocol?) {
+        UINavigationBar.configure(style: .defaultBackground)
+        
+        view?.viewController.dismiss(animated: true)
     }
     
 }
