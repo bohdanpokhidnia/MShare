@@ -22,14 +22,14 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     private let actionImageContrainerView = View()
     
     private let actionImageView = UIImageView()
-        .setContentMode(.scaleAspectFit)
+        .setContentMode(.scaleAspectFill)
         .backgroundColor(color: .gray)
     
     private let actionTitleLabel = UILabel()
         .text(alignment: .center)
-        .text(font: UIFont.systemFont(ofSize: 15, weight: .heavy))
+        .text(font: UIFont.systemFont(ofSize: 18, weight: .medium))
         .textColor(.white)
-        .set(numberOfLines: 0)
+        .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     
     // MARK: - Lifecycle
@@ -66,7 +66,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
 
         actionTitleLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 5))
-            $0.bottom.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().offset(-3)
         }
     }
     
