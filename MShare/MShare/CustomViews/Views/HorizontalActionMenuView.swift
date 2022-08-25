@@ -47,7 +47,8 @@ enum HorizontalMenuAction: CaseIterable {
 
 final class HorizontalActionMenuView: View {
     
-    static let HorizontalActionMenuWidth: CGFloat = UIScreen.main.bounds.width / 2
+    static let HorizontalActionMenuWidth: CGFloat = (UIScreen.main.bounds.width / 3) - 20
+    static let HorizontalActionMenuHeight: CGFloat = (UIScreen.main.bounds.width / 3)
     
     weak var delegare: HorizontalActionMenuDelegate?
     
@@ -57,7 +58,7 @@ final class HorizontalActionMenuView: View {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
         collectionViewFlowLayout.sectionInset = .init(horizontal: 16)
-        collectionViewFlowLayout.minimumLineSpacing = 20
+        collectionViewFlowLayout.minimumLineSpacing = 10
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.register(class: HorizontalActionMenuViewCell.self)
@@ -132,7 +133,7 @@ extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = Self.HorizontalActionMenuWidth
-        let height: CGFloat = width
+        let height: CGFloat = Self.HorizontalActionMenuHeight
         
         return .init(width: width, height: height)
     }
