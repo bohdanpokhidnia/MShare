@@ -67,7 +67,8 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     private let loadingLabel = UILabel()
         .text("Loading")
         .text(alignment: .center)
-        .text(font: UIFont.systemFont(ofSize: 18, weight: .medium))
+        .text(font: UIFont.systemFont(ofSize: 18, weight: .semibold))
+        .textColor(.secondaryLabel)
     
     // MARK: - Lifecycle
     
