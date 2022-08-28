@@ -76,9 +76,7 @@ extension DetailSongView: DetailSongViewProtocol {
 
 extension DetailSongView: HorizontalActionMenuDelegate {
     
-    func didTapActionItem(_ action: HorizontalMenuAction) {
-        print("[dev] tapped on: \(action.title)")
-        
+    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView, action: HorizontalMenuAction, didSelectItemAt indexPath: IndexPath) {
         switch action {
         case .shareAppleMusicLink:
             break
@@ -88,6 +86,10 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             
         case .shareCover:
             break
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            horizontalActionMenuView.set(animationStyle: .normal)
         }
     }
     

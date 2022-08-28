@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol HorizontalActionMenuDelegate: AnyObject {
-    func didTapActionItem(_ action: HorizontalMenuAction)
+    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView, action: HorizontalMenuAction, didSelectItemAt indexPath: IndexPath)
 }
 
 enum HorizontalMenuAction: CaseIterable {
@@ -94,7 +94,42 @@ final class HorizontalActionMenuView: View {
     
     // MARK: - Private
     
+    private var selectedIndexPath: IndexPath?
     private var menuActions = [HorizontalMenuAction]()
+    
+}
+
+// MARK: - Set
+
+extension HorizontalActionMenuView {
+    
+    @discardableResult
+    func set(animationStyle: HorizontalActionAnimationType) -> Self {
+        switch animationStyle {
+        case .blurred:
+            changeAnimationActionMenu(by: selectedIndexPath, animationStyle: .blurred)
+            
+        case .normal:
+            changeAnimationActionMenu(by: selectedIndexPath, animationStyle: .normal)
+            selectedIndexPath = nil
+        }
+        
+        return self
+    }
+    
+}
+
+// MARK: - Private Methods
+
+private extension HorizontalActionMenuView {
+    
+    func changeAnimationActionMenu(by indexPath: IndexPath?, animationStyle: HorizontalActionAnimationType) {
+        guard let indexPath = indexPath,
+              let cell = collectionView.cellForItem(at: indexPath) as? HorizontalActionMenuViewCell
+        else { return }
+        
+        cell.set(style: animationStyle)
+    }
     
 }
 
@@ -122,7 +157,10 @@ extension HorizontalActionMenuView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let action = menuActions[indexPath.row]
         
-        delegare?.didTapActionItem(action)
+        selectedIndexPath = indexPath
+        set(animationStyle: .blurred)
+        
+        delegare?.didTapActionItem(self, action: action, didSelectItemAt: indexPath)
     }
     
 }

@@ -38,6 +38,7 @@ extension Blurable where Self: UIView {
         addSubview(blurEffectView)
         return self
     }
+    
 }
 
 extension UIView: Blurable {}
