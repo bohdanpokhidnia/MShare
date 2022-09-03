@@ -47,8 +47,8 @@ enum HorizontalMenuAction: CaseIterable {
 
 final class HorizontalActionMenuView: View {
     
-    static let HorizontalActionMenuWidth: CGFloat = (UIScreen.main.bounds.width / 3) - 20
-    static let HorizontalActionMenuHeight: CGFloat = (UIScreen.main.bounds.width / 3)
+    static let HorizontalActionMenuWidth: CGFloat = (UIScreen.main.bounds.width / 3)
+    static let HorizontalActionMenuHeight: CGFloat = (UIScreen.main.bounds.height / 4)
     
     weak var delegare: HorizontalActionMenuDelegate?
     
