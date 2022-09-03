@@ -19,7 +19,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         var animation: CGAffineTransform {
             switch self {
             case .blurred:
-                return .identity.scaledBy(x: 0.95, y: 0.95)
+                return .identity.scaledBy(x: 0.98, y: 0.98)
                 
             case .normal:
                 return .identity
@@ -51,25 +51,11 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .addBlur(style: .regular)
         .setAlpha(0)
     
-    private lazy var loadingStackView = makeStackView(
-        axis: .vertical,
-        spacing: 10
-    )(
-        loadingIndicator,
-        loadingLabel
-    )
-    
     private let loadingIndicator = UIActivityIndicatorView(style: .large)
         .make {
             $0.hidesWhenStopped = true
         }
-    
-    private let loadingLabel = UILabel()
-        .text("Loading")
-        .text(alignment: .center)
-        .text(font: UIFont.systemFont(ofSize: 18, weight: .semibold))
-        .textColor(.secondaryLabel)
-    
+
     // MARK: - Lifecycle
     
     override func setup() {
@@ -77,8 +63,6 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         
         setCornerRadius(cellCornerRadius)
         maskToBounds(true)
-        
-        loadingStackView.setAlpha(0)
     }
     
     override func setupSubviews() {
@@ -87,7 +71,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         containerView.addSubviews(actionImageView,
                                   actionTitleLabel,
                                   blurredView,
-                                  loadingStackView)
+                                  loadingIndicator)
         contentView.addSubview(containerView)
     }
     
@@ -104,14 +88,14 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
 
         actionTitleLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 5))
-            $0.bottom.equalToSuperview().offset(-3)
+            $0.bottom.equalToSuperview().offset(-10)
         }
         
         blurredView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        loadingStackView.snp.makeConstraints {
+        loadingIndicator.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
         }
@@ -150,12 +134,10 @@ extension HorizontalActionMenuViewCell {
             case .blurred:
                 self.loadingIndicator.startAnimating()
                 self.blurredView.setAlpha(1)
-                self.loadingStackView.setAlpha(1)
                 
             case .normal:
                 self.loadingIndicator.stopAnimating()
                 self.blurredView.setAlpha(0)
-                self.loadingStackView.setAlpha(0)
             }
             
         })
