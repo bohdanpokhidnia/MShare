@@ -47,6 +47,7 @@
 		F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */; };
 		F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */; };
 		F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */; };
+		F785E3A128C3998200DE1BC0 /* UIScreen+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E3A028C3998200DE1BC0 /* UIScreen+Ext.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
 		F790280B289309320058CC19 /* ServiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* ServiceEntity.swift */; };
@@ -142,6 +143,7 @@
 		F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartContentView.swift; sourceTree = "<group>"; };
 		F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInteractor.swift; sourceTree = "<group>"; };
 		F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHeaderView.swift; sourceTree = "<group>"; };
+		F785E3A028C3998200DE1BC0 /* UIScreen+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Ext.swift"; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
 		F7902804289309320058CC19 /* ServiceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceEntity.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
 				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
 				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
+				F785E3A028C3998200DE1BC0 /* UIScreen+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
 				F790281E2893095D0058CC19 /* SearchContentView.swift in Sources */,
+				F785E3A128C3998200DE1BC0 /* UIScreen+Ext.swift in Sources */,
 				F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */,
 				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
