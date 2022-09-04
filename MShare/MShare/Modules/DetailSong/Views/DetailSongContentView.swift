@@ -66,8 +66,8 @@ final class DetailSongContentView: View {
         }
         
         horizontalActionMenuView.snp.makeConstraints {
-            $0.top.equalTo(coverViewContainer.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
             $0.height.equalTo(HorizontalActionMenuView.HorizontalActionMenuHeight)
         }
     }
