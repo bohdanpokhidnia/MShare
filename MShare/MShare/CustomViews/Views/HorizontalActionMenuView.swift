@@ -47,8 +47,8 @@ enum HorizontalMenuAction: CaseIterable {
 
 final class HorizontalActionMenuView: View {
     
-    static let HorizontalActionMenuWidth: CGFloat = calculateSize(by: UIScreen.phone).width
-    static let HorizontalActionMenuHeight: CGFloat = calculateSize(by: UIScreen.phone).height
+    static let HorizontalActionMenuWidth: CGFloat = calculateSize(forPhone: UIScreen.phone).width
+    static let HorizontalActionMenuHeight: CGFloat = calculateSize(forPhone: UIScreen.phone).height
     
     weak var delegare: HorizontalActionMenuDelegate?
     
@@ -131,7 +131,7 @@ private extension HorizontalActionMenuView {
         cell.set(style: animationStyle)
     }
     
-    static func calculateSize(by phone: UIScreen.Phone) -> CGSize {
+    static func calculateSize(forPhone phone: UIScreen.Phone) -> CGSize {
         var width: CGFloat = 0
         var height: CGFloat = 0
         
@@ -148,19 +148,7 @@ private extension HorizontalActionMenuView {
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
             
-        case .iPhoneX_11Pro_12Mini_13Mini:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
-            
-        case .iPhoneXr_XsMax_11_12:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
-            
-        case .iPhone12Pro_13_13Pro:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
-            
-        case .iPhone12_13ProMax:
+        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax:
             width = UIScreen.main.bounds.width / 3 - 10
             height = UIScreen.main.bounds.height / 5
             
@@ -212,7 +200,7 @@ extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = Self.HorizontalActionMenuWidth
-        let height: CGFloat = Self.HorizontalActionMenuHeight
+        let height: CGFloat = Self.HorizontalActionMenuHeight - 1
         
         return .init(width: width, height: height)
     }
