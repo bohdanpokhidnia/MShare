@@ -57,7 +57,8 @@ final class DetailSongContentView: View {
         }
         
         coverViewContainer.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(60)
+            defineLayoutForCoverView($0, forPhone: UIScreen.phone)
+            
             $0.centerX.equalToSuperview()
         }
         
@@ -84,6 +85,31 @@ extension DetailSongContentView {
         coverView.set(state: state)
         
         return self
+    }
+    
+}
+
+// MARK: - Private Methods
+
+private extension DetailSongContentView {
+    
+    func defineLayoutForCoverView(_ constraint: ConstraintMaker, forPhone phone: UIScreen.Phone) {
+        switch phone {
+        case .iPhoneSE1:
+            constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
+            
+        case .iPhone6_7_8_SE2_SE3:
+            constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
+            
+        case .iPhone6_7_8Plus:
+            constraint.centerY.equalToSuperview().offset(-80)
+            
+        case .iPhoneXr_XsMax_11_12, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12Pro_13_13Pro, .iPhone12_13ProMax:
+            constraint.centerY.equalToSuperview().offset(-60)
+            
+        case .unknown:
+            constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
+        }
     }
     
 }
