@@ -200,7 +200,7 @@ extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = Self.HorizontalActionMenuWidth
-        let height: CGFloat = Self.HorizontalActionMenuHeight - 1
+        let height: CGFloat = Self.HorizontalActionMenuHeight
         
         return .init(width: width, height: height)
     }
