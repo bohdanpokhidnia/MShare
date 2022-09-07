@@ -69,7 +69,7 @@ final class DetailSongContentView: View {
         horizontalActionMenuView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            $0.height.equalTo(HorizontalActionMenuView.HorizontalActionMenuHeight)
+            $0.height.equalTo(HorizontalActionMenuView.HorizontalActionMenuHeight + 50)
         }
     }
     
@@ -99,13 +99,13 @@ private extension DetailSongContentView {
             constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
             
         case .iPhone6_7_8_SE2_SE3:
-            constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
+            constraint.top.equalTo(safeAreaLayoutGuide).offset(40)
             
         case .iPhone6_7_8Plus:
             constraint.centerY.equalToSuperview().offset(-80)
             
         case .iPhoneXr_XsMax_11_12, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12Pro_13_13Pro, .iPhone12_13ProMax:
-            constraint.centerY.equalToSuperview().offset(-60)
+            constraint.centerY.equalToSuperview().offset(-130)
             
         case .unknown:
             constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
