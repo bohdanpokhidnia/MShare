@@ -61,8 +61,16 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     override func setup() {
         super.setup()
         
-        setCornerRadius(cellCornerRadius)
-        maskToBounds(true)
+        contentView.layer.cornerRadius = cellCornerRadius
+        contentView.layer.masksToBounds = true
+
+        layer.cornerRadius = cellCornerRadius
+        layer.masksToBounds = false
+        
+        layer.shadowRadius = 4
+        layer.shadowOpacity = 0.3
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 4, height: 4)
     }
     
     override func setupSubviews() {
@@ -100,6 +108,14 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
             $0.leading.trailing.equalToSuperview()
         }
 
+    }
+    
+    // MARK: - Override methods
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cellCornerRadius).cgPath
     }
     
     // MARK: - Private
