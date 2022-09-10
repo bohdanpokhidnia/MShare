@@ -10,6 +10,8 @@ import SnapKit
 
 final class LinkContentView: View {
     
+    var tapCopyButtonAction: (() -> Void) = {}
+    
     // MARK: - UI
     
     private lazy var controlsStackView = makeStackView(
@@ -19,20 +21,27 @@ final class LinkContentView: View {
         linkTextField, searchButton
     )
     
-    private(set) var linkTextField = UITextField()
+    private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    private lazy var copyButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
+    
+    private lazy var toolBar = UIToolbar(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width, height: 40)))
+        .make {
+            $0.items = [flexibleSpace, copyButton, flexibleSpace]
+        }
+    
+    private(set) lazy var linkTextField = UITextField()
         .make {
             $0.clearButtonMode = .whileEditing
             $0.placeholder = "Link for search song"
             $0.adjustsFontSizeToFitWidth = true
+            $0.inputAccessoryView = toolBar
         }
     
     private(set) var searchButton = Button(type: .system)
         .maskToBounds(true)
         .setCornerRadius(6)
         .backgroundColor(color: .secondarySystemBackground)
-        .make {
-            $0.setTitle("Search", for: .normal)
-        }
+        .setTitle("Search")
     
     // MARK: - Lifecycle
     
@@ -64,12 +73,27 @@ final class LinkContentView: View {
     
 }
 
+// MARK: - User interactions
+
+private extension LinkContentView {
+    
+    @objc
+    func didTapDoneButton() {
+        tapCopyButtonAction()
+    }
+    
+}
+
 // MARK: - Set
 
 extension LinkContentView {
     
     func setLinkText(_ text: String) {
         linkTextField.text = text
+    }
+    
+    func setCopyButtonTitle(_ title: String) {
+        copyButton.title = title
     }
     
 }

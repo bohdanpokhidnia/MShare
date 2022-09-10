@@ -28,14 +28,23 @@ extension Button {
     
     @discardableResult
     func whenTap(action: @escaping () -> Void) -> Self {
-        self.didTapAction = action
+        didTapAction = action
         addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        
         return self
     }
     
     @discardableResult
     func setImage(_ image: UIImage?, forState state: UIControl.State = .normal) -> Self {
         setImage(image, for: state)
+        
+        return self
+    }
+    
+    @discardableResult
+    func setTitle(_ title: String, forState state: UIControl.State = .normal) -> Self {
+        setTitle(title, for: state)
+        
         return self
     }
     

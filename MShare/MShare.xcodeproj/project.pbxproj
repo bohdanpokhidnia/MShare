@@ -75,6 +75,7 @@
 		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
 		F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C5289ADD870073709D /* UIImageView+Ext.swift */; };
 		F7D589C8289AEC1A0073709D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C7289AEC1A0073709D /* Button.swift */; };
+		F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DB96C128CCE4850031FD22 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C5289ADD870073709D /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C7289AEC1A0073709D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F7DB96C128CCE4850031FD22 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,15 +446,8 @@
 		F790283328931E9E0058CC19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */,
-				F7902834289322EB0058CC19 /* UIStackView+Ext.swift */,
-				F72E82F828956838008D7702 /* UICollectionView+Ext.swift */,
-				F72E82FA2895775C008D7702 /* UITableView+Ext.swift */,
-				F7D589C3289AC26C0073709D /* UILabel+Ext.swift */,
-				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
-				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
-				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
-				F785E3A028C3998200DE1BC0 /* UIScreen+Ext.swift */,
+				F7DB96C028CCE4770031FD22 /* Foundation */,
+				F7DB96BF28CCE4700031FD22 /* UIKit */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,6 +469,30 @@
 				F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F7DB96BF28CCE4700031FD22 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */,
+				F7902834289322EB0058CC19 /* UIStackView+Ext.swift */,
+				F72E82F828956838008D7702 /* UICollectionView+Ext.swift */,
+				F72E82FA2895775C008D7702 /* UITableView+Ext.swift */,
+				F7D589C3289AC26C0073709D /* UILabel+Ext.swift */,
+				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
+				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
+				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
+				F785E3A028C3998200DE1BC0 /* UIScreen+Ext.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		F7DB96C028CCE4770031FD22 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F7DB96C128CCE4850031FD22 /* String+Ext.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,6 +647,7 @@
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
+				F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */,
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,

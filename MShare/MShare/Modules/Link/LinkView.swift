@@ -12,6 +12,8 @@ protocol LinkViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
+    func setLinkTitle(_ title: String)
+    func hideSetLink(_ hidden: Bool)
 }
 
 final class LinkView: ViewController<LinkContentView> {
@@ -70,6 +72,10 @@ private extension LinkView {
         contentView.searchButton.whenTap { [unowned self] in
             presenter.getSong(urlString: "some link from text field")
         }
+        
+        contentView.tapCopyButtonAction = { [unowned self] in
+            presenter.pasteTextFromBuffer()
+        }
     }
     
 }
@@ -93,6 +99,14 @@ extension LinkView: LinkViewProtocol {
     
     func setLink(_ linkString: String) {
         contentView.setLinkText(linkString)
+    }
+    
+    func setLinkTitle(_ title: String) {
+        contentView.setCopyButtonTitle(title)
+    }
+    
+    func hideSetLink(_ hidden: Bool) {
+        contentView.linkTextField.inputAccessoryView?.isHidden = hidden
     }
     
 }

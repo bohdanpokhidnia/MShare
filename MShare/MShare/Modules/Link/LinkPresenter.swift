@@ -13,6 +13,7 @@ protocol LinkPresenterProtocol: AnyObject {
     var router: LinkRouterProtocol? { get set }
     
     func viewDidAppear()
+    func pasteTextFromBuffer()
     func getSong(urlString: String)
 }
 
@@ -20,6 +21,8 @@ final class LinkPresenter {
     var view: LinkViewProtocol?
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
+    
+    private var stringFromBuffer: String?
 }
 
 // MARK: - LinkPresenterProtocol
@@ -27,7 +30,15 @@ final class LinkPresenter {
 extension LinkPresenter: LinkPresenterProtocol {
     
     func viewDidAppear() {
-        interactor?.setupNotification()
+        interactor?.setupNotifications()
+    }
+    
+    func pasteTextFromBuffer() {
+        guard let stringFromBuffer = stringFromBuffer else { return }
+        
+        view?.setLink(stringFromBuffer)
+        self.stringFromBuffer = nil
+        view?.hideSetLink(true)
     }
     
     func getSong(urlString: String) {
@@ -44,6 +55,12 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         view?.setLink(urlString)
         
         interactor?.requestSong(urlString: urlString)
+    }
+    
+    func didCatchStringFromBuffer(_ stringFromBuffer: String) {
+        view?.hideSetLink(!stringFromBuffer.isValidURL)
+        self.stringFromBuffer = stringFromBuffer
+        view?.setLinkTitle(stringFromBuffer)
     }
     
     func didFetchSong(_ detailSong: DetailSongEntity) {
