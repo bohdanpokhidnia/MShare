@@ -35,6 +35,7 @@ final class LinkContentView: View {
             $0.placeholder = "Link for search song"
             $0.adjustsFontSizeToFitWidth = true
             $0.inputAccessoryView = toolBar
+            $0.inputAccessoryView?.isHidden = true
         }
     
     private(set) var searchButton = Button(type: .system)
