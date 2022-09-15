@@ -71,6 +71,7 @@
 		F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12C28A811E3009DFC96 /* CoverView.swift */; };
 		F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12E28A82539009DFC96 /* Blurable.swift */; };
 		F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */; };
+		F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */; };
 		F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */; };
 		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
 		F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C5289ADD870073709D /* UIImageView+Ext.swift */; };
@@ -168,6 +169,7 @@
 		F79ED12C28A811E3009DFC96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		F79ED12E28A82539009DFC96 /* Blurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blurable.swift; sourceTree = "<group>"; };
 		F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
+		F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCircleView.swift; sourceTree = "<group>"; };
 		F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C5289ADD870073709D /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				F7002750289C3B470075C133 /* MediaTableView.swift */,
 				F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */,
 				F710245128AD5C1F0012CE0B /* GradientView.swift */,
+				F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */,
 				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
+				F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */,
 				F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,

@@ -40,6 +40,10 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .setContentMode(.scaleAspectFill)
         .backgroundColor(color: .systemBlue)
     
+    private let shareCircleView = ShareCircleView()
+        .setCornerRadius(15)
+        .maskToBounds(true)
+    
     private let actionTitleLabel = UILabel()
         .text(alignment: .center)
         .text(font: UIFont.systemFont(ofSize: 18, weight: .medium))
@@ -77,6 +81,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         super.setupSubviews()
         
         containerView.addSubviews(actionImageView,
+                                  shareCircleView,
                                   actionTitleLabel,
                                   blurredView,
                                   loadingIndicator)
@@ -92,6 +97,12 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
 
         actionImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        shareCircleView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.trailing.equalToSuperview().offset(-8)
+            $0.width.height.equalTo(30)
         }
 
         actionTitleLabel.snp.makeConstraints {
