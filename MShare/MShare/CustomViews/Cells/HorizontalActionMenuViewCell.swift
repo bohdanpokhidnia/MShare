@@ -40,6 +40,10 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .setContentMode(.scaleAspectFill)
         .backgroundColor(color: .systemBlue)
     
+    private let backgroundShadowGradientView = GradientView()
+        .set(colors: [.clear, .black.withAlphaComponent(0.3)])
+        .set(startPoint: .top, endPoint: .bottom)
+    
     private let shareCircleView = ShareCircleView()
         .setCornerRadius(15)
         .maskToBounds(true)
@@ -82,6 +86,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         super.setupSubviews()
         
         containerView.addSubviews(actionImageView,
+                                  backgroundShadowGradientView,
                                   shareCircleView,
                                   actionTitleLabel,
                                   blurredView,
@@ -97,6 +102,10 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         }
 
         actionImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        backgroundShadowGradientView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
