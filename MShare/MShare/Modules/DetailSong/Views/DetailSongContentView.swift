@@ -101,10 +101,10 @@ private extension DetailSongContentView {
         case .iPhone6_7_8_SE2_SE3:
             constraint.top.equalTo(safeAreaLayoutGuide).offset(40)
             
-        case .iPhone6_7_8Plus:
+        case .iPhone6_7_8Plus, .iPhone14Pro:
             constraint.centerY.equalToSuperview().offset(-80)
             
-        case .iPhoneXr_XsMax_11_12, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12Pro_13_13Pro, .iPhone12_13ProMax:
+        case .iPhoneXr_XsMax_11_12, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12Pro_13_13Pro_14, .iPhone12_13ProMax_14Plus, .iPhone14ProMax:
             constraint.centerY.equalToSuperview().offset(-130)
             
         case .unknown:

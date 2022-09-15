@@ -15,8 +15,10 @@ extension UIScreen {
         case iPhone6_7_8Plus = 736
         case iPhoneX_11Pro_12Mini_13Mini = 812
         case iPhoneXr_XsMax_11_12 = 896
-        case iPhone12Pro_13_13Pro = 844
-        case iPhone12_13ProMax = 926
+        case iPhone12Pro_13_13Pro_14 = 844
+        case iPhone12_13ProMax_14Plus = 926
+        case iPhone14Pro = 852
+        case iPhone14ProMax = 932
         case unknown
     }
     

@@ -148,11 +148,12 @@ private extension HorizontalActionMenuView {
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
             
-        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax:
+        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
             width = UIScreen.main.bounds.width / 3 - 10
             height = UIScreen.main.bounds.height / 5
             
         case .unknown:
+            print("[dev]  \(UIScreen.main.bounds.height)")
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
         }
