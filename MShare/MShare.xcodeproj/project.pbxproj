@@ -17,6 +17,7 @@
 		F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E8300289578A2008D7702 /* TableViewCell.swift */; };
 		F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */; };
 		F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */; };
+		F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A8BF128D39D4800EAB5BD /* Label.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91D2891AEDC00438A37 /* AppDelegate.swift */; };
@@ -114,6 +115,7 @@
 		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuView.swift; sourceTree = "<group>"; };
 		F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuViewCell.swift; sourceTree = "<group>"; };
+		F75A8BF128D39D4800EAB5BD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				F774B9482891B24400438A37 /* ViewController.swift */,
 				F72E82FC2895777F008D7702 /* TableView.swift */,
 				F7D589C7289AEC1A0073709D /* Button.swift */,
+				F75A8BF128D39D4800EAB5BD /* Label.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */,
 				F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */,
+				F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,

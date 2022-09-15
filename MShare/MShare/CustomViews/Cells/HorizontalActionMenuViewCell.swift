@@ -44,10 +44,11 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .setCornerRadius(15)
         .maskToBounds(true)
     
-    private let actionTitleLabel = UILabel()
+    private let actionTitleLabel = Label()
         .text(alignment: .center)
         .text(font: UIFont.systemFont(ofSize: 18, weight: .medium))
         .textColor(.white)
+        .set(characterSpacing: 1.1)
         .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     
