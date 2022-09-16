@@ -170,7 +170,7 @@ extension HorizontalActionMenuViewCell {
             switch style {
             case .blurred:
                 self.loadingIndicator.startAnimating()
-                self.blurredView.setAlpha(1)
+                self.blurredView.setAlpha(0.8)
                 
             case .normal:
                 self.loadingIndicator.stopAnimating()
