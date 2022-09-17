@@ -20,6 +20,11 @@
 		F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A8BF128D39D4800EAB5BD /* Label.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F773111A28D59F4700642926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F773111928D59F4700642926 /* GoogleService-Info.plist */; };
+		F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F773111C28D5A10300642926 /* FirebaseAnalytics */; };
+		F773111F28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */; };
+		F773112128D5A10300642926 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F773112028D5A10300642926 /* FirebaseAnalyticsSwift */; };
+		F773112328D5A10300642926 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F773112228D5A10300642926 /* FirebaseCrashlytics */; };
 		F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91D2891AEDC00438A37 /* AppDelegate.swift */; };
 		F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91F2891AEDC00438A37 /* SceneDelegate.swift */; };
 		F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F774B9262891AEDD00438A37 /* Assets.xcassets */; };
@@ -119,6 +124,7 @@
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F773111928D59F4700642926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F774B91A2891AEDC00438A37 /* MShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F774B91D2891AEDC00438A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F774B91F2891AEDC00438A37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +199,10 @@
 			files = (
 				F774B9332891B00500438A37 /* Kingfisher in Frameworks */,
 				F774B9362891B01D00438A37 /* SnapKit in Frameworks */,
+				F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */,
+				F773112328D5A10300642926 /* FirebaseCrashlytics in Frameworks */,
+				F773111F28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				F773112128D5A10300642926 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +296,7 @@
 			children = (
 				F774B9262891AEDD00438A37 /* Assets.xcassets */,
 				F774B92B2891AEDD00438A37 /* Info.plist */,
+				F773111928D59F4700642926 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -529,6 +540,7 @@
 				F774B9172891AEDC00438A37 /* Frameworks */,
 				F774B9182891AEDC00438A37 /* Resources */,
 				F7653FBA289452A200FC47FA /* Embed App Extensions */,
+				F773112428D5A22C00642926 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -539,6 +551,10 @@
 			packageProductDependencies = (
 				F774B9322891B00500438A37 /* Kingfisher */,
 				F774B9352891B01D00438A37 /* SnapKit */,
+				F773111C28D5A10300642926 /* FirebaseAnalytics */,
+				F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */,
+				F773112028D5A10300642926 /* FirebaseAnalyticsSwift */,
+				F773112228D5A10300642926 /* FirebaseCrashlytics */,
 			);
 			productName = MShare;
 			productReference = F774B91A2891AEDC00438A37 /* MShare.app */;
@@ -574,6 +590,7 @@
 			packageReferences = (
 				F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F774B9342891B01D00438A37 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = F774B91B2891AEDC00438A37 /* Products */;
 			projectDirPath = "";
@@ -599,10 +616,33 @@
 			files = (
 				F774B92A2891AEDD00438A37 /* LaunchScreen.storyboard in Resources */,
 				F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */,
+				F773111A28D59F4700642926 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F773112428D5A22C00642926 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/MShare/Resources/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F7653FAB289452A200FC47FA /* Sources */ = {
@@ -792,7 +832,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -962,6 +1002,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -981,6 +1029,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F773111C28D5A10300642926 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		F773112028D5A10300642926 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		F773112228D5A10300642926 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		F774B9322891B00500438A37 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */;
