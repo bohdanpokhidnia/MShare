@@ -77,6 +77,12 @@
 		F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12C28A811E3009DFC96 /* CoverView.swift */; };
 		F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12E28A82539009DFC96 /* Blurable.swift */; };
 		F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */; };
+		F7D1479F28D684B600655F19 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1479E28D684B600655F19 /* NetworkService.swift */; };
+		F7D147A228D684E700655F19 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A128D684E700655F19 /* NetworkError.swift */; };
+		F7D147A428D6858700655F19 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A328D6858700655F19 /* EndpointProtocol.swift */; };
+		F7D147A828D685E800655F19 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A728D685E800655F19 /* RequestBuilder.swift */; };
+		F7D147AA28D6866600655F19 /* GetSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A928D6866600655F19 /* GetSong.swift */; };
+		F7D147AC28D68ACE00655F19 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147AB28D68ACE00655F19 /* Song.swift */; };
 		F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */; };
 		F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */; };
 		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
@@ -177,6 +183,12 @@
 		F79ED12C28A811E3009DFC96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		F79ED12E28A82539009DFC96 /* Blurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blurable.swift; sourceTree = "<group>"; };
 		F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
+		F7D1479E28D684B600655F19 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F7D147A128D684E700655F19 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F7D147A328D6858700655F19 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
+		F7D147A728D685E800655F19 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		F7D147A928D6866600655F19 /* GetSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSong.swift; sourceTree = "<group>"; };
+		F7D147AB28D68ACE00655F19 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCircleView.swift; sourceTree = "<group>"; };
 		F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
@@ -275,7 +287,9 @@
 				F774B9372891B03700438A37 /* Application */,
 				F774B9472891B20F00438A37 /* Core */,
 				F7D589BF289ABD310073709D /* CustomViews */,
+				F7D147AD28D68AD300655F19 /* Models */,
 				F774B9392891B10B00438A37 /* Modules */,
+				F7D147A028D684BC00655F19 /* Services */,
 				F774B9382891B04600438A37 /* Resources */,
 			);
 			path = MShare;
@@ -467,6 +481,42 @@
 				F7DB96BF28CCE4700031FD22 /* UIKit */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F7D147A028D684BC00655F19 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F7D147A528D685A700655F19 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F7D147A528D685A700655F19 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F7D147A128D684E700655F19 /* NetworkError.swift */,
+				F7D1479E28D684B600655F19 /* NetworkService.swift */,
+				F7D147A728D685E800655F19 /* RequestBuilder.swift */,
+				F7D147A628D685B900655F19 /* Endpoints */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F7D147A628D685B900655F19 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				F7D147A328D6858700655F19 /* EndpointProtocol.swift */,
+				F7D147A928D6866600655F19 /* GetSong.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		F7D147AD28D68AD300655F19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7D147AB28D68ACE00655F19 /* Song.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F7D589BF289ABD310073709D /* CustomViews */ = {
@@ -672,6 +722,7 @@
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
 				F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */,
 				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
+				F7D147A828D685E800655F19 /* RequestBuilder.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */,
 				F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */,
@@ -679,6 +730,7 @@
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
+				F7D1479F28D684B600655F19 /* NetworkService.swift in Sources */,
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
@@ -692,6 +744,7 @@
 				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
 				F777BE4B289E479600595ACA /* DetailSongRouter.swift in Sources */,
 				F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */,
+				F7D147AC28D68ACE00655F19 /* Song.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
@@ -707,10 +760,12 @@
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
+				F7D147A228D684E700655F19 /* NetworkError.swift in Sources */,
 				F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */,
 				F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
 				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
+				F7D147AA28D6866600655F19 /* GetSong.swift in Sources */,
 				F777BE4D289E479600595ACA /* DetailSongInteractor.swift in Sources */,
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
@@ -721,6 +776,7 @@
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
+				F7D147A428D6858700655F19 /* EndpointProtocol.swift in Sources */,
 				F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

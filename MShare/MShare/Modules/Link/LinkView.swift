@@ -70,7 +70,9 @@ private extension LinkView {
     
     func setupActionHandlers() {
         contentView.searchButton.whenTap { [unowned self] in
-            presenter.getSong(urlString: "some link from text field")
+            guard let songUrlString = contentView.linkTextField.text else { return }
+            
+            presenter.getSong(urlString: songUrlString)
         }
         
         contentView.tapCopyButtonAction = { [unowned self] in

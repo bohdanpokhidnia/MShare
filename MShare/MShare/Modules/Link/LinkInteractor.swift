@@ -24,11 +24,20 @@ final class LinkInteractor {
     
     weak var presenter: LinkInteractorOutputProtocol?
     
+    // MARK: - Initializers
+    
+    init() {
+        networkService = NetworkService()
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: - Private
+    
     private var services = [ServiceEntity]()
+    private let networkService: NetworkServiceProtocol
     
 }
 
@@ -70,9 +79,23 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     }
     
     func requestSong(urlString: String) {
-        let song = DetailSongEntity.mock
-        
-        presenter?.didFetchSong(song)
+        networkService.request(endpoint: GetSong(byUrl: urlString)) { [weak presenter] (response: Song?, error) in
+            guard error == nil else {
+                print("[dev] \(error!)")
+                return
+            }
+            
+            guard let song = response else { return }
+            
+            let detailSong = DetailSongEntity(songName: song.songName,
+                                              artistName: song.artistName,
+                                              coverURL: song.coverImageUrl,
+                                              sourceURL: song.songUrl)
+            
+            DispatchQueue.main.async {
+                presenter?.didFetchSong(detailSong)
+            }
+        }
     }
     
 }
