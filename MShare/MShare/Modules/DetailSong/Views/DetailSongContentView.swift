@@ -21,7 +21,7 @@ final class DetailSongContentView: View {
     // MARK: - UI
     
     private let backgroundImageView = UIImageView()
-        .setContentMode(.center)
+        .setContentMode(.scaleAspectFill)
         .addClearBackgroundBlur(style: .regular)
     
     private let coverViewContainer = View()
