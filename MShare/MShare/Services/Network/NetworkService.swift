@@ -19,10 +19,13 @@ final class NetworkService: NetworkServiceProtocol {
     var apiBaseURL: URL { URL(string: "http://95.179.252.251")! }
     
     var baseHttpHeaders: [String : String] {
+        let regionCode = Locale.current.regionCode ?? "US"
+        
         return [
             "mshare-os-name": "iOS",
             "mshare-os-version": UIDevice.current.systemVersion,
-            "mshare-device-id": UIDevice.current.identifierForVendor!.uuidString
+            "mshare-device-id": UIDevice.current.identifierForVendor!.uuidString,
+            "mshare-store-region": regionCode
         ]
     }
     
