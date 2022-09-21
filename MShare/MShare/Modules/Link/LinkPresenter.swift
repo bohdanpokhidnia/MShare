@@ -64,7 +64,9 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     }
     
     func didFetchSong(_ detailSong: DetailSongEntity) {
-        router?.presentDetailSongScreen(from: view, for: detailSong)
+        router?.presentDetailSongScreen(from: view, for: detailSong) { [weak view] in
+            view?.cleaningLinkTextField()
+        }
     }
     
     func didCatchError(_ error: NetworkError) {

@@ -10,7 +10,7 @@ import UIKit
 protocol LinkRouterProtocol {
     static func createModule() -> UIViewController
     
-    func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity)
+    func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity, completion: (() -> Void)?)
 }
 
 class LinkRouter: LinkRouterProtocol {
@@ -32,12 +32,12 @@ class LinkRouter: LinkRouterProtocol {
         return navigationController
     }
     
-    func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity) {
+    func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity, completion: (() -> Void)?) {
         let detailSongScreen = DetailSongRouter.createModule(song: song)
         let navigationController = UINavigationController(rootViewController: detailSongScreen)
         navigationController.modalPresentationStyle = .fullScreen
         
-        view?.viewController.present(navigationController, animated: true)
+        view?.viewController.present(navigationController, animated: true, completion: completion)
     }
     
 }

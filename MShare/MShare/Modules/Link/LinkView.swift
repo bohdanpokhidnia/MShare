@@ -13,6 +13,7 @@ protocol LinkViewProtocol: AnyObject {
     
     func setLink(_ linkString: String)
     func setLinkTitle(_ title: String)
+    func cleaningLinkTextField()
     func hideSetLink(_ hidden: Bool)
     func showError(title: String?, message: String)
 }
@@ -131,6 +132,10 @@ extension LinkView: LinkViewProtocol {
     
     func setLinkTitle(_ title: String) {
         contentView.setCopyButtonTitle(title)
+    }
+    
+    func cleaningLinkTextField() {
+        contentView.linkTextField.text = nil
     }
     
     func hideSetLink(_ hidden: Bool) {
