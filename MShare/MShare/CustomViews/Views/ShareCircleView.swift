@@ -13,6 +13,7 @@ final class ShareCircleView: View {
     
     private let gradientView = GradientView()
         .set(colors: [.appPink, .appPink, .appBlue, .appBlue])
+        .set(startPoint: .topLeading, endPoint: .bottomTrailing)
     
     private let shareImageView = UIImageView()
         .setImage(UIImage(systemName: "square.and.arrow.up"))

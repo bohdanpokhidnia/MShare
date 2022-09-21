@@ -15,10 +15,12 @@ final class LinkContentView: View {
     // MARK: - UI
     
     private lazy var controlsStackView = makeStackView(
-        axis: .horizontal,
-        spacing: 12
+        axis: .vertical,
+        distibution: .fillEqually,
+        spacing: 16
     )(
-        linkTextField, searchButton
+        linkTextField,
+        searchButton
     )
     
     private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -29,11 +31,16 @@ final class LinkContentView: View {
             $0.items = [flexibleSpace, copyButton, flexibleSpace]
         }
     
-    private(set) lazy var linkTextField = UITextField()
+    private(set) lazy var linkTextField = PaddedTextField()
         .make {
             $0.clearButtonMode = .whileEditing
             $0.placeholder = "Link for search song"
+            $0.font = .systemFont(ofSize: 14, weight: .medium)
             $0.adjustsFontSizeToFitWidth = true
+            $0.textInsets = .init(aLeft: 16, aRight: 24)
+            $0.customCornerRadius = 12
+            $0.borderWidth = 1
+            $0.borderColor = .appGray
             $0.inputAccessoryView = toolBar
             $0.inputAccessoryView?.isHidden = true
             $0.returnKeyType = .search
@@ -41,9 +48,13 @@ final class LinkContentView: View {
     
     private(set) var searchButton = Button(type: .system)
         .maskToBounds(true)
-        .setCornerRadius(6)
-        .backgroundColor(color: .secondarySystemBackground)
+        .setCornerRadius(12)
+        .backgroundColor(color: .systemBlue)
         .setTitle("Search")
+        .setTitleColor(.white)
+        .set(font: .systemFont(ofSize: 14, weight: .semibold))
+        .set(colors: [.appPink, .appPink, .appBlue, .appBlue])
+        .set(startPoint: .topLeading, endPoint: .trailing)
     
     // MARK: - Lifecycle
     
@@ -65,11 +76,7 @@ final class LinkContentView: View {
         controlsStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(16)
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
-            $0.height.equalTo(35)
-        }
-        
-        searchButton.snp.makeConstraints {
-            $0.width.equalTo(80)
+            $0.height.equalTo(112)
         }
     }
     

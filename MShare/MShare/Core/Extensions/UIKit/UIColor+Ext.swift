@@ -41,5 +41,6 @@ extension UIColor {
     
     static let appPink = UIColor(hex: "#d12d9c")
     static let appBlue = UIColor(hex: "#5ea2ef")
+    static let appGray = UIColor(hex: "#D0D1D3")
     
 }

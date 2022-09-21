@@ -14,6 +14,7 @@ final class CoverView: View {
     
     private let gradientBackgroundView = GradientView()
         .set(colors: [.appPink, .appPink, .appBlue, .appBlue])
+        .set(startPoint: .topLeading, endPoint: .bottomTrailing)
         .setCornerRadius(28)
         .maskToBounds(true)
     

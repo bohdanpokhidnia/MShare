@@ -7,50 +7,50 @@
 
 import UIKit
 
-final class GradientView: View {
+enum GradientPoint {
+    case topLeading
+    case leading
+    case bottomLeading
+    case top
+    case center
+    case bottom
+    case topTrailing
+    case trailing
+    case bottomTrailing
     
-    enum GradientPoint {
-        case topLeading
-        case leading
-        case bottomLeading
-        case top
-        case center
-        case bottom
-        case topTrailing
-        case trailing
-        case bottomTrailing
-        
-        var point: CGPoint {
-            switch self {
-            case .topLeading:
-                return .init(x: 0, y: 0)
-                
-            case .leading:
-                return .init(x: 0, y: 0.5)
-                
-            case .bottomLeading:
-                return .init(x: 0, y: 1.0)
-                
-            case .top:
-                return .init(x: 0.5, y: 0)
-                
-            case .center:
-                return .init(x: 0.5, y: 0.5)
-                
-            case .bottom:
-                return .init(x: 0.5, y: 1.0)
-                
-            case .topTrailing:
-                return .init(x: 1.0, y: 0)
-                
-            case .trailing:
-                return .init(x: 1.0, y: 0.5)
-                
-            case .bottomTrailing:
-                return .init(x: 1.0, y: 1.0)
-            }
+    var point: CGPoint {
+        switch self {
+        case .topLeading:
+            return .init(x: 0, y: 0)
+            
+        case .leading:
+            return .init(x: 0, y: 0.5)
+            
+        case .bottomLeading:
+            return .init(x: 0, y: 1.0)
+            
+        case .top:
+            return .init(x: 0.5, y: 0)
+            
+        case .center:
+            return .init(x: 0.5, y: 0.5)
+            
+        case .bottom:
+            return .init(x: 0.5, y: 1.0)
+            
+        case .topTrailing:
+            return .init(x: 1.0, y: 0)
+            
+        case .trailing:
+            return .init(x: 1.0, y: 0.5)
+            
+        case .bottomTrailing:
+            return .init(x: 1.0, y: 1.0)
         }
     }
+}
+
+final class GradientView: View {
     
     // MARK: - Override property
     
@@ -62,15 +62,13 @@ final class GradientView: View {
     
     private var colors = [CGColor]()
     
-    private lazy var gradientLayer: CAGradientLayer = {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.startPoint =  CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer.colors = colors
-        gradientLayer.zPosition = -1000
-        layer.insertSublayer(gradientLayer, at: 0)
-        return gradientLayer
-    }()
+    private lazy var gradientLayer = CAGradientLayer()
+        .make {
+            $0.colors = colors
+            $0.zPosition = -1000
+            
+            layer.insertSublayer($0, at: 0)
+        }
 
 }
 
