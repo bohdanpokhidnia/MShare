@@ -67,4 +67,8 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         router?.presentDetailSongScreen(from: view, for: detailSong)
     }
     
+    func didCatchError(_ error: NetworkError) {
+        view?.showError(title: error.title, message: error.localizedDescription)
+    }
+    
 }

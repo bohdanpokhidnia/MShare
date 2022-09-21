@@ -31,3 +31,17 @@ class ViewController<ContentView: View>: UIViewController {
     }
     
 }
+
+// MARK: - Alerts
+
+extension ViewController {
+    
+    func showAlert(title: String? = nil, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert).make {
+            $0.addAction(.init(title: "OK", style: .default))
+        }
+        
+        present(alertController, animated: true)
+    }
+    
+}

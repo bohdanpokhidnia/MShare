@@ -24,3 +24,5 @@ extension MakeProtocol {
 extension UIView: MakeProtocol {}
 
 extension UISearchController: MakeProtocol {}
+
+extension UIAlertController: MakeProtocol {}

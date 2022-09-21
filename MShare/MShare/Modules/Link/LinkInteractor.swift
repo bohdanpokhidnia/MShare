@@ -18,6 +18,7 @@ protocol LinkInteractorOutputProtocol: AnyObject {
     func didCatchURL(_ urlString: String)
     func didCatchStringFromBuffer(_ stringFromBuffer: String)
     func didFetchSong(_ detailSong: DetailSongEntity)
+    func didCatchError(_ error: NetworkError)
 }
 
 final class LinkInteractor {
@@ -80,19 +81,20 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     
     func requestSong(urlString: String) {
         networkService.request(endpoint: GetSong(byUrl: urlString)) { [weak presenter] (response: Song?, error) in
-            guard error == nil else {
-                print("[dev] \(error!)")
-                return
-            }
-            
-            guard let song = response else { return }
-            
-            let detailSong = DetailSongEntity(songName: song.songName,
-                                              artistName: song.artistName,
-                                              coverURL: song.coverImageUrl,
-                                              sourceURL: song.songUrl)
-            
             DispatchQueue.main.async {
+                guard error == nil else {
+                    presenter?.didCatchError(error!)
+                    return
+                }
+                
+                guard let song = response else { return }
+                
+                let detailSong = DetailSongEntity(songName: song.songName,
+                                                  artistName: song.artistName,
+                                                  coverURL: song.coverImageUrl,
+                                                  sourceURL: song.songUrl)
+                
+                
                 presenter?.didFetchSong(detailSong)
             }
         }

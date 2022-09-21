@@ -14,6 +14,7 @@ protocol LinkViewProtocol: AnyObject {
     func setLink(_ linkString: String)
     func setLinkTitle(_ title: String)
     func hideSetLink(_ hidden: Bool)
+    func showError(title: String?, message: String)
 }
 
 final class LinkView: ViewController<LinkContentView> {
@@ -70,14 +71,24 @@ private extension LinkView {
     
     func setupActionHandlers() {
         contentView.searchButton.whenTap { [unowned self] in
-            guard let songUrlString = contentView.linkTextField.text else { return }
-            
-            presenter.getSong(urlString: songUrlString)
+            getSong()
         }
         
         contentView.tapCopyButtonAction = { [unowned self] in
             presenter.pasteTextFromBuffer()
         }
+    }
+    
+}
+
+// MARK: - Private Methods
+
+private extension LinkView {
+    
+    func getSong() {
+        guard let songUrlString = contentView.linkTextField.text, songUrlString != "" else { return }
+        
+        presenter.getSong(urlString: songUrlString)
     }
     
 }
@@ -88,7 +99,19 @@ private extension LinkView {
 extension LinkView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        getSong()
         textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        contentView.enableSearchButton(string.count > 0 || range.location > 0)
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        contentView.enableSearchButton(false)
         
         return true
     }
@@ -101,6 +124,9 @@ extension LinkView: LinkViewProtocol {
     
     func setLink(_ linkString: String) {
         contentView.setLinkText(linkString)
+        contentView.enableSearchButton(true)
+        
+        getSong()
     }
     
     func setLinkTitle(_ title: String) {
@@ -109,6 +135,10 @@ extension LinkView: LinkViewProtocol {
     
     func hideSetLink(_ hidden: Bool) {
         contentView.linkTextField.inputAccessoryView?.isHidden = hidden
+    }
+    
+    func showError(title: String?, message: String) {
+        showAlert(title: title, message: message)
     }
     
 }

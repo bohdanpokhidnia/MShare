@@ -39,7 +39,7 @@ final class NetworkService: NetworkServiceProtocol {
         
         let jsonDecoder = endpoint.decoder
         
-        URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, _, error) in
             guard error == nil else {
                 completion(nil, .error(error!))
                 return
@@ -54,9 +54,32 @@ final class NetworkService: NetworkServiceProtocol {
                 let response = try jsonDecoder.decode(T.self, from: data)
                 completion(response, nil)
             } catch {
-                completion(nil, .error(error))
+                self?.decodeErrorResponse(from: data, with: endpoint.decoder) { (result) in
+                    switch result {
+                    case .success(let networkErrorResponse):
+                        completion(nil, .networkError(networkErrorResponse))
+                        
+                    case .failure(let error):
+                        completion(nil, .error(error))
+                    }
+                }
             }
         }.resume()
+    }
+    
+}
+
+// MARK: - Private Methods
+
+private extension NetworkService {
+    
+    func decodeErrorResponse(from data: Data, with decoder: JSONDecoder, completion: ((Result<NetworkErrorResponse, Error>) -> Void)) {
+        do {
+            let erroResponse = try decoder.decode(NetworkErrorResponse.self, from: data)
+            completion(.success(erroResponse))
+        } catch {
+            completion(.failure(error))
+        }
     }
     
 }

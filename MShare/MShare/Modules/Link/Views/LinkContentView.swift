@@ -36,6 +36,7 @@ final class LinkContentView: View {
             $0.adjustsFontSizeToFitWidth = true
             $0.inputAccessoryView = toolBar
             $0.inputAccessoryView?.isHidden = true
+            $0.returnKeyType = .search
         }
     
     private(set) var searchButton = Button(type: .system)
@@ -95,6 +96,10 @@ extension LinkContentView {
     
     func setCopyButtonTitle(_ title: String) {
         copyButton.title = title
+    }
+    
+    func enableSearchButton(_ enabled: Bool) {
+        searchButton.isEnabled = enabled
     }
     
 }
