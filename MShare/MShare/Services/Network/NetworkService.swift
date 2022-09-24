@@ -22,7 +22,7 @@ final class NetworkService: NetworkServiceProtocol {
         let regionCode = Locale.current.regionCode ?? "US"
         
         return [
-            "mshare-os-name": "iOS",
+            "mshare-os-name": UIDevice.current.systemName,
             "mshare-os-version": UIDevice.current.systemVersion,
             "mshare-device-id": UIDevice.current.identifierForVendor!.uuidString,
             "mshare-store-region": regionCode
