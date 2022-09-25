@@ -36,9 +36,11 @@ class ViewController<ContentView: View>: UIViewController {
 
 extension ViewController {
     
-    func showAlert(title: String? = nil, message: String) {
+    func showAlert(title: String? = nil, message: String, alertAction: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert).make {
-            $0.addAction(.init(title: "OK", style: .default))
+            $0.addAction(.init(title: "OK", style: .default, handler: { _ in
+                alertAction?()
+            }))
         }
         
         present(alertController, animated: true)

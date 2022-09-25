@@ -12,6 +12,7 @@ protocol NetworkServiceProtocol {
     var baseHttpHeaders: [String: String] { get }
     
     func request<T: Decodable>(endpoint: EndpointProtocol, completion: @escaping ((_ response: T?, NetworkError?) -> Void))
+    func request(urlString: String, completion: @escaping (Data?, NetworkError?) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -64,6 +65,27 @@ final class NetworkService: NetworkServiceProtocol {
                     }
                 }
             }
+        }.resume()
+    }
+    
+    func request(urlString: String, completion: @escaping (Data?, NetworkError?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(nil, .message("bad url"))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard error == nil else {
+                completion(nil, .error(error!))
+                return
+            }
+            
+            guard let data else {
+                completion(nil, .message("without data"))
+                return
+            }
+            
+            completion(data, nil)
         }.resume()
     }
     

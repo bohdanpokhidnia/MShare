@@ -15,7 +15,19 @@ protocol LinkViewProtocol: AnyObject {
     func setLinkTitle(_ title: String)
     func cleaningLinkTextField()
     func hideSetLink(_ hidden: Bool)
-    func showError(title: String?, message: String)
+    func showError(title: String?, message: String, action: (() -> Void)?)
+    func setOffsetLinkTextField(_ keyboardFrame: CGRect)
+    func resetPositionLinkTextField()
+    func showLoading()
+    func hideLoading(completion: (() -> Void)?)
+}
+
+extension LinkViewProtocol {
+    
+    func showError(title: String?, message: String, action: (() -> Void)? = nil) {
+        showError(title: title, message: message, action: action)
+    }
+    
 }
 
 final class LinkView: ViewController<LinkContentView> {
@@ -49,10 +61,16 @@ final class LinkView: ViewController<LinkContentView> {
         setupActionHandlers()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        presenter.viewDidAppear()
+        presenter.viewWillAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter.viewWillDisappear()
     }
 
 }
@@ -142,8 +160,56 @@ extension LinkView: LinkViewProtocol {
         contentView.linkTextField.inputAccessoryView?.isHidden = hidden
     }
     
-    func showError(title: String?, message: String) {
-        showAlert(title: title, message: message)
+    func showError(title: String?, message: String, action: (() -> Void)? = nil) {
+        showAlert(title: title, message: message, alertAction: action)
+    }
+    
+    func setOffsetLinkTextField(_ keyboardFrame: CGRect) {
+//        let viewFrame = contentView.controlsStackView.frame
+//        
+//        if viewFrame.origin.y + viewFrame.height > keyboardFrame.origin.y {
+//            let viewHeight = viewFrame.origin.y + viewFrame.height
+//            let offSet = viewHeight - keyboardFrame.origin.y
+//            
+//            UIView.animate(withDuration: 0.3) {
+//                self.contentView.frame.origin.y -= offSet + self.contentView.controlsStackView.spacing
+//            }
+//        }
+    }
+    
+    func resetPositionLinkTextField() {
+        UIView.animate(withDuration: 0.1) {
+            self.contentView.frame.origin.y = 0
+        }
+    }
+    
+    func showLoading() {
+        contentView.linkTextField.isHidden = true
+        
+        var startFrame = contentView.searchButton.frame
+        startFrame.size = .init(width: 64, height: 64)
+        startFrame.origin = .init(x: contentView.center.x - startFrame.width / 2, y: contentView.center.y - startFrame.height / 2)
+        let cornerRadius = (startFrame.width + startFrame.height) / 4
+        
+        contentView.searchButton.make {
+            $0.bounds = startFrame
+            $0.set(animationState: .start, finalFrame: startFrame, cornerRadius: cornerRadius)
+        }
+    }
+    
+    func hideLoading(completion: (() -> Void)? = nil) {
+        contentView.linkTextField.isHidden = false
+        
+        var endFrame = contentView.searchButton.frame
+        endFrame.size = .init(width: UIScreen.main.bounds.width - contentView.controlsPadding * 2, height: contentView.controlsHeight)
+        endFrame.origin = .init(x: contentView.center.x - endFrame.width / 2, y: contentView.center.y - endFrame.height / 2)
+        
+        contentView.searchButton
+            .make {
+                $0.bounds = endFrame
+                $0.set(animationState: .end, finalFrame: endFrame, cornerRadius: 12, completion: completion)
+            }
+            
     }
     
 }

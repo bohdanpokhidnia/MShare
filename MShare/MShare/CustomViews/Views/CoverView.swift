@@ -98,7 +98,7 @@ extension CoverView {
     
     @discardableResult
     func set(state: DetailSongState) -> Self {
-        coverImageView.setImage(state.coverURL)
+        coverImageView.setImage(state.cover)
         songNameLabel.text(state.songName)
         artistNameLabel.text(state.artistName)
         

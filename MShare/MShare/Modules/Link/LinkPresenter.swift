@@ -12,7 +12,8 @@ protocol LinkPresenterProtocol: AnyObject {
     var interactor: LinkInteractorIntputProtocol? { get set }
     var router: LinkRouterProtocol? { get set }
     
-    func viewDidAppear()
+    func viewWillAppear()
+    func viewWillDisappear()
     func pasteTextFromBuffer()
     func getSong(urlString: String)
 }
@@ -29,8 +30,12 @@ final class LinkPresenter {
 
 extension LinkPresenter: LinkPresenterProtocol {
     
-    func viewDidAppear() {
+    func viewWillAppear() {
         interactor?.setupNotifications()
+    }
+    
+    func viewWillDisappear() {
+        interactor?.removeNotifications()
     }
     
     func pasteTextFromBuffer() {
@@ -42,6 +47,8 @@ extension LinkPresenter: LinkPresenterProtocol {
     }
     
     func getSong(urlString: String) {
+        view?.showLoading()
+        
         interactor?.requestSong(urlString: urlString)
     }
     
@@ -63,14 +70,27 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         view?.setLinkTitle(stringFromBuffer)
     }
     
+    func didShowKeyboard(_ keyboardFrame: NSValue) {
+        view?.setOffsetLinkTextField(keyboardFrame.cgRectValue)
+    }
+    
+    func didHideKeyboard(_ keyboardFrame: NSValue) {
+        view?.resetPositionLinkTextField()
+    }
+    
     func didFetchSong(_ detailSong: DetailSongEntity) {
         router?.presentDetailSongScreen(from: view, for: detailSong) { [weak view] in
             view?.cleaningLinkTextField()
+            view?.hideLoading(completion: nil)
         }
     }
     
     func didCatchError(_ error: NetworkError) {
-        view?.showError(title: error.title, message: error.localizedDescription)
+        DispatchQueue.main.async { [weak view] in
+            view?.showError(title: error.title, message: error.localizedDescription) { [weak view] in
+                view?.hideLoading(completion: nil)
+            }
+        }
     }
     
 }

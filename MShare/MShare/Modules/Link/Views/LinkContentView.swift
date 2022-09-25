@@ -14,19 +14,14 @@ final class LinkContentView: View {
     
     // MARK: - UI
     
-    private lazy var controlsStackView = makeStackView(
-        axis: .vertical,
-        distibution: .fillEqually,
-        spacing: 16
-    )(
-        linkTextField,
-        searchButton
-    )
+    private(set) lazy var controlsWidth = UIScreen.main.bounds.width - controlsPadding * 2
+    let controlsHeight: CGFloat = 48
+    let controlsPadding: CGFloat = 16
     
     private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     private lazy var copyButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
     
-    private lazy var toolBar = UIToolbar(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width, height: 40)))
+    private lazy var toolBar = UIToolbar(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width, height: toolBarHeight)))
         .make {
             $0.items = [flexibleSpace, copyButton, flexibleSpace]
         }
@@ -46,7 +41,7 @@ final class LinkContentView: View {
             $0.returnKeyType = .search
         }
     
-    private(set) var searchButton = Button(type: .system)
+    private(set) var searchButton = LoadingButton(type: .custom)
         .maskToBounds(true)
         .setCornerRadius(12)
         .backgroundColor(color: .systemBlue)
@@ -67,18 +62,24 @@ final class LinkContentView: View {
     override func setupSubviews() {
         super.setupSubviews()
         
-        addSubview(controlsStackView)
+        addSubviews(linkTextField, searchButton)
     }
     
     override func defineLayout() {
         super.defineLayout()
         
-        controlsStackView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(16)
-            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
-            $0.height.equalTo(112)
-        }
+        let controlsSize = CGSize(width: controlsWidth, height: controlsHeight)
+
+        linkTextField.frame = .init(origin: .init(x: controlsPadding, y: center.y + controlsHeight + controlsSpacing),
+                                    size: controlsSize)
+        searchButton.frame = .init(origin: .init(x: controlsPadding, y: linkTextField.frame.origin.y + controlsHeight + controlsSpacing),
+                                   size: controlsSize)
+        
+        searchButton.bounds = searchButton.frame
     }
+    
+    private let controlsSpacing: CGFloat = 16
+    private(set) var toolBarHeight: CGFloat = 40
     
 }
 

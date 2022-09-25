@@ -13,7 +13,7 @@ typealias DetailSongState = DetailSongContentView.State
 final class DetailSongContentView: View {
     
     struct State {
-        let coverURL: String
+        let cover: UIImage?
         let artistName: String
         let songName: String
     }
@@ -57,7 +57,7 @@ final class DetailSongContentView: View {
         }
         
         coverViewContainer.snp.makeConstraints {
-            defineLayoutForCoverView($0, forPhone: UIScreen.phone)
+            defineLayoutForCoverView($0, forPhone: UIDevice.phone)
             
             $0.centerX.equalToSuperview()
         }
@@ -81,7 +81,7 @@ extension DetailSongContentView {
     
     @discardableResult
     func set(state: State) -> Self {
-        backgroundImageView.setImage(state.coverURL)
+        backgroundImageView.setImage(state.cover)
         coverView.set(state: state)
         
         return self
@@ -93,21 +93,24 @@ extension DetailSongContentView {
 
 private extension DetailSongContentView {
     
-    func defineLayoutForCoverView(_ constraint: ConstraintMaker, forPhone phone: UIScreen.Phone) {
+    func defineLayoutForCoverView(_ constraint: ConstraintMaker, forPhone phone: UIDevice.Phone) {
         switch phone {
-        case .iPhoneSE1:
+        case .iPhoneSE:
             constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
             
-        case .iPhone6_7_8_SE2_SE3:
-            constraint.top.equalTo(safeAreaLayoutGuide).offset(40)
+//        case .iPhone6_7_8_SE2_SE3
+        case .iPhone6, .iPhone6S, .iPhone7, .iPhone8:
+            constraint.top.equalTo(safeAreaLayoutGuide).offset(20)
             
-        case .iPhone6_7_8Plus, .iPhone14Pro:
+//        case .iPhone6_7_8Plus:
+        case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
             constraint.centerY.equalToSuperview().offset(-80)
             
-        case .iPhoneXr_XsMax_11_12, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12Pro_13_13Pro_14, .iPhone12_13ProMax_14Plus, .iPhone14ProMax:
+//        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
+        case .iPhoneXR, .iPhoneXS, .iPhoneXSMax, .iPhone11, .iPhone11ProMax, .iPhone12, .iPhone12Pro, .iPhone12ProMax, .iPhone13, .iPhone13Pro, .iPhone14, .iPhoneX, .iPhone11Pro, .iPhone12Mini, .iPhone13Mini, .iPhone13ProMax, .iPhone14Plus, .iPhone14Pro, .iPhone14ProMax:
             constraint.centerY.equalToSuperview().offset(-130)
             
-        case .unknown:
+        case .simulator, .unrecognized:
             constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
         }
     }

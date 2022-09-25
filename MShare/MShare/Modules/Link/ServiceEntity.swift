@@ -7,13 +7,7 @@
 
 import UIKit
 
-struct ServiceEntity: Decodable {
+struct ServiceEntity {
     let name: String
     let songs: [DetailSongEntity]
-}
-
-extension ServiceEntity {
-    
-    static let mock = ServiceEntity(name: "Apple Music", songs: [.mock, .mock1])
-    
 }

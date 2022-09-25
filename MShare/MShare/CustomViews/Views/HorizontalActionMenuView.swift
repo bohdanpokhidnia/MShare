@@ -47,8 +47,8 @@ enum HorizontalMenuAction: CaseIterable {
 
 final class HorizontalActionMenuView: View {
     
-    static let HorizontalActionMenuWidth: CGFloat = calculateSize(forPhone: UIScreen.phone).width
-    static let HorizontalActionMenuHeight: CGFloat = calculateSize(forPhone: UIScreen.phone).height
+    static let HorizontalActionMenuWidth: CGFloat = calculateSize(forPhone: UIDevice.phone).width
+    static let HorizontalActionMenuHeight: CGFloat = calculateSize(forPhone: UIDevice.phone).height
     
     weak var delegare: HorizontalActionMenuDelegate?
     
@@ -131,28 +131,31 @@ private extension HorizontalActionMenuView {
         cell.set(style: animationStyle)
     }
     
-    static func calculateSize(forPhone phone: UIScreen.Phone) -> CGSize {
+    static func calculateSize(forPhone phone: UIDevice.Phone) -> CGSize {
         var width: CGFloat = 0
         var height: CGFloat = 0
         
         switch phone {
-        case .iPhoneSE1:
+        case .iPhoneSE:
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
             
-        case .iPhone6_7_8_SE2_SE3:
+//        case .iPhone6_7_8_SE2_SE3
+        case .iPhone6, .iPhone6S, .iPhone7, .iPhone8:
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
             
-        case .iPhone6_7_8Plus:
+//        case .iPhone6_7_8Plus:
+        case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
             
-        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
+//        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
+        case .iPhoneXR, .iPhoneXS, .iPhoneXSMax, .iPhone11, .iPhone11ProMax, .iPhone12, .iPhone12Pro, .iPhone12ProMax, .iPhone13, .iPhone13Pro, .iPhone14, .iPhoneX, .iPhone11Pro, .iPhone12Mini, .iPhone13Mini, .iPhone13ProMax, .iPhone14Plus, .iPhone14Pro, .iPhone14ProMax:
             width = UIScreen.main.bounds.width / 3 - 10
             height = UIScreen.main.bounds.height / 5
             
-        case .unknown:
+        case .simulator, .unrecognized:
             print("[dev]  \(UIScreen.main.bounds.height)")
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4

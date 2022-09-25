@@ -7,12 +7,41 @@
 
 import UIKit
 
-final class Button: UIButton {
+class Button: UIButton, ViewLayoutableProtocol {
     
     // MARK: - Override property
     
     override var bounds: CGRect {
         didSet { gradientLayer.frame = bounds }
+    }
+    
+    // MARK: - Initializers
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+        setupSubviews()
+        defineLayout()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - ViewLayoutableProtocol
+    
+    func setup() {
+        
+    }
+    
+    func setupSubviews() {
+        
+    }
+    
+    func defineLayout() {
+        
     }
     
     // MARK: - Private
