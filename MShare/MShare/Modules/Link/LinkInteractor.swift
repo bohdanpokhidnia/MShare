@@ -101,29 +101,40 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     
     func requestSong(urlString: String) {
         let group = DispatchGroup()
-        var song: Song?
+        var mediaResponse: MediaResponse?
         
         group.enter()
-        networkService.request(endpoint: GetSong(byUrl: urlString)) { [weak self] (response: Song?, error) in
+        networkService.request(endpoint: GetSong(byUrl: urlString)) { [weak self] (response: MediaResponse?, error) in
                 guard error == nil else {
                     self?.presenter?.didCatchError(error!)
                     group.leave()
                     return
+                
                 }
                 
-                guard let songResponse = response else {
+                guard let response else {
                     group.leave()
                     return
                 }
             
-            song = songResponse
+            mediaResponse = response
             group.leave()
         }
         
         group.notify(queue: .main) { [weak self] in
-            guard let song else { return }
+            guard let mediaResponse else {
+                print("[dev] bad media response: \(mediaResponse)")
+                self?.presenter?.didCatchError(.message("bad media response"))
+                return
+            }
             
-            self?.networkService.request(urlString: song.coverImageUrl) { (imageData, error) in
+            guard let coverUrlString = mediaResponse.coverUrlString else {
+                print("[dev] bad media cover url: \(mediaResponse)")
+                self?.presenter?.didCatchError(.message("bad media cover url"))
+                return
+            }
+            
+            self?.networkService.request(urlString: coverUrlString) { (imageData, error) in
                 guard error == nil else {
                     self?.presenter?.didCatchError(.error(error!))
                     return
@@ -131,17 +142,32 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                 
                 guard let imageData,
                       let cover = UIImage(data: imageData) else {
-                    self?.presenter?.didCatchError(.message("bad cover url \(song.coverImageUrl)"))
+                    self?.presenter?.didCatchError(.message("bad cover url"))
                     return
                 }
                 
-                let detailSong = DetailSongEntity(songName: song.songName,
-                                                  artistName: song.artistName,
-                                                  image: cover,
-                                                  sourceURL: song.songUrl)
-                
-                DispatchQueue.main.async {
-                    self?.presenter?.didFetchSong(detailSong)
+                switch mediaResponse.mediaType {
+                case .song:
+                    guard let song = mediaResponse.song else { return }
+                    let detailSong = DetailSongEntity(songName: song.songName,
+                                                      artistName: song.artistName,
+                                                      image: cover,
+                                                      sourceURL: song.songUrl)
+                    
+                    DispatchQueue.main.async {
+                        self?.presenter?.didFetchSong(detailSong)
+                    }
+                    
+                case .album:
+                    guard let album = mediaResponse.album else { return }
+                    let detailAlbum = DetailSongEntity(songName: album.albumName,
+                                                      artistName: album.artistName,
+                                                      image: cover,
+                                                      sourceURL: album.albumUrl)
+                    
+                    DispatchQueue.main.async {
+                        self?.presenter?.didFetchSong(detailAlbum)
+                    }
                 }
             }
         }

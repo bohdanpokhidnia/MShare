@@ -7,6 +7,28 @@
 
 import Foundation
 
+enum MediaType: String, Decodable {
+    case song = "Song"
+    case album = "Album"
+}
+
+struct MediaResponse: Decodable {
+    let mediaType: MediaType
+    let song: Song?
+    let album: Album?
+    let services: [SongService]
+    
+    var coverUrlString: String? {
+        switch mediaType {
+        case .song:
+            return song?.coverImageUrl
+            
+        case .album:
+            return album?.coverImageUrl
+        }
+    }
+}
+
 struct Song: Decodable {
     let songSourceId: String
     let songUrl: String
@@ -15,7 +37,15 @@ struct Song: Decodable {
     let albumName: String
     let coverImageUrl: String
     let serviceType: String
-    let services: [SongService]
+}
+
+struct Album: Decodable {
+    let albumSourceId: String
+    let albumUrl: String
+    let albumName: String
+    let artistName: String
+    let coverImageUrl: String
+    let serviceType: String
 }
 
 struct SongService: Decodable {
