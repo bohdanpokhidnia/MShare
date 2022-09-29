@@ -18,9 +18,14 @@ class ShareViewController: UIViewController {
         super.viewDidAppear(animated)
         
         guard let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
-              let itemProvider = extensionItem.attachments?.first else {
+              let itemProvider = extensionItem.attachments?.last else {
             self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
             return
+        }
+        
+        //for catch apple music share song from playlist and etc.
+        if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+            itemProvider.loadDataRepresentation(forTypeIdentifier: "public.url") { (_, _) in }
         }
         
         if itemProvider.hasItemConformingToTypeIdentifier(typeText.identifier) {
@@ -28,6 +33,7 @@ class ShareViewController: UIViewController {
         } else if itemProvider.hasItemConformingToTypeIdentifier(typeURL.identifier) {
             handleIncomingURL(itemProvider: itemProvider)
         } else {
+            print("[dev] unknown UTType")
             self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
         }
     }
@@ -64,7 +70,6 @@ class ShareViewController: UIViewController {
             }
             
             self.appURLString += urlString
-            
             self.openMainApp()
         }
     }
