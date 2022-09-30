@@ -11,6 +11,7 @@ protocol DetailSongRouterProtocol {
     static func createModule(song: DetailSongEntity) -> UIViewController
     
     func dismissModule(view: DetailSongViewProtocol?)
+    func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?)
 }
  
 final class DetailSongRouter: DetailSongRouterProtocol {
@@ -34,6 +35,16 @@ final class DetailSongRouter: DetailSongRouterProtocol {
         UINavigationBar.configure(style: .defaultBackground)
         
         view?.viewController.dismiss(animated: true)
+    }
+    
+    func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?) {
+        let imageToShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.saveToCameraRoll]
+        
+        view?.viewController.present(activityViewController, animated: true) {
+            completion?()
+        }
     }
     
 }

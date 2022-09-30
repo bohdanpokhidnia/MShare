@@ -327,11 +327,11 @@
 			isa = PBXGroup;
 			children = (
 				F774B93C2891B16600438A37 /* Main */,
-				F777BE42289E479600595ACA /* DetailSong */,
 				F77A0DFE28A18EFE00FF4644 /* Chart */,
 				F7902801289309320058CC19 /* Link */,
 				F79028112893095D0058CC19 /* Search */,
 				F7902821289309940058CC19 /* Settings */,
+				F777BE42289E479600595ACA /* DetailSong */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

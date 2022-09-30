@@ -79,6 +79,27 @@ extension DetailSongContentView {
         return self
     }
     
+    func makeImage() -> UIImage? {
+        horizontalActionMenuView.isHidden = true
+        
+        let oldCenter = coverViewContainer.center
+        coverViewContainer.center = center
+        
+        defer {
+            horizontalActionMenuView.isHidden = false
+            coverViewContainer.center = oldCenter
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        context.saveGState()
+        layer.render(in: context)
+        context.restoreGState()
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
 }
 
 // MARK: - Private Methods

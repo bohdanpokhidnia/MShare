@@ -5,7 +5,7 @@
 //  Created by Bohdan Pokhidnia on 06.08.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol DetailSongPresenterProtocol: AnyObject {
     var view: DetailSongViewProtocol? { get set }
@@ -14,6 +14,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func dismissAction()
+    func shareCover(cover: UIImage, completion: (() -> Void)?)
 }
 
 final class DetailSongPresenter {
@@ -32,6 +33,10 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
     
     func dismissAction() {
         router?.dismissModule(view: view)
+    }
+    
+    func shareCover(cover: UIImage, completion: (() -> Void)?) {
+        router?.shareImage(view: view, image: cover, completion: completion)
     }
     
 }

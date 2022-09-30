@@ -78,18 +78,18 @@ extension DetailSongView: HorizontalActionMenuDelegate {
     
     func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView, action: HorizontalMenuAction, didSelectItemAt indexPath: IndexPath) {
         switch action {
-        case .shareAppleMusicLink:
-            break
             
-        case .shareSpotifyLink:
-            break
+        case .shareAppleMusicLink, .shareSpotifyLink:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                horizontalActionMenuView.set(animationStyle: .normal)
+            }
             
         case .shareCover:
-            break
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            horizontalActionMenuView.set(animationStyle: .normal)
+            guard let coverImage = contentView.makeImage() else { return }
+            
+            presenter?.shareCover(cover: coverImage) {
+                horizontalActionMenuView.set(animationStyle: .normal)
+            }
         }
     }
     
