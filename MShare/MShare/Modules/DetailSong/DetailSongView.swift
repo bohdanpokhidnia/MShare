@@ -78,7 +78,6 @@ extension DetailSongView: HorizontalActionMenuDelegate {
     
     func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView, action: HorizontalMenuAction, didSelectItemAt indexPath: IndexPath) {
         switch action {
-            
         case .shareAppleMusicLink, .shareSpotifyLink:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 horizontalActionMenuView.set(animationStyle: .normal)
