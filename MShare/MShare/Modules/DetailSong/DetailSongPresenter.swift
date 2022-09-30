@@ -41,7 +41,7 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
 extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     
     func didLoadSong(_ song: DetailSongEntity) {
-        view?.setupContent(with: .init(cover: song.image, artistName: song.artistName, songName: song.songName))
+        view?.setupContent(with: song)
     }
     
 }

@@ -11,7 +11,7 @@ protocol DetailSongViewProtocol: AnyObject {
     var presenter: DetailSongPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
-    func setupContent(with state: DetailSongState)
+    func setupContent(with state: DetailSongEntity)
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
@@ -66,7 +66,7 @@ private extension DetailSongView {
 
 extension DetailSongView: DetailSongViewProtocol {
     
-    func setupContent(with state: DetailSongState) {
+    func setupContent(with state: DetailSongEntity) {
         contentView.set(state: state)
     }
     

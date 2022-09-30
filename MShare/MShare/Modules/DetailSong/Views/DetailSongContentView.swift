@@ -8,15 +8,7 @@
 import UIKit
 import SnapKit
 
-typealias DetailSongState = DetailSongContentView.State
-
 final class DetailSongContentView: View {
-    
-    struct State {
-        let cover: UIImage?
-        let artistName: String
-        let songName: String
-    }
     
     // MARK: - UI
     
@@ -80,8 +72,8 @@ final class DetailSongContentView: View {
 extension DetailSongContentView {
     
     @discardableResult
-    func set(state: State) -> Self {
-        backgroundImageView.setImage(state.cover)
+    func set(state: DetailSongEntity) -> Self {
+        backgroundImageView.setImage(state.image)
         coverView.set(state: state)
         
         return self
