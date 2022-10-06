@@ -202,12 +202,11 @@ extension LinkView: LinkViewProtocol {
         contentView.linkTextField.alpha = 0
         
         var startFrame = contentView.searchButton.frame
-        startFrame.size = .init(width: 64, height: 64)
+        startFrame.size.width = startFrame.height
         startFrame.origin = .init(x: contentView.center.x - startFrame.width / 2, y: contentView.center.y - startFrame.height / 2)
         let cornerRadius = (startFrame.width + startFrame.height) / 4
         
         contentView.searchButton.make {
-            $0.bounds = startFrame
             $0.set(animationState: animationState, finalFrame: startFrame, cornerRadius: cornerRadius)
         }
     }
