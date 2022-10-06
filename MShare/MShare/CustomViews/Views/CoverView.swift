@@ -10,6 +10,8 @@ import SnapKit
 
 final class CoverView: View {
     
+    var whenTap: (() -> Void) = { }
+    
     // MARK: - UI
     
     private let gradientBackgroundView = GradientView()
@@ -56,6 +58,12 @@ final class CoverView: View {
     
     // MARK: - Lifecycle
     
+    override func setup() {
+        super.setup()
+        
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     override func setupSubviews() {
         super.setupSubviews()
         
@@ -89,6 +97,18 @@ final class CoverView: View {
     private let labelsViewTopOffset: CGFloat = 4
     private let viewBottomOffset: CGFloat = 22
     private let coverImageWidth: CGFloat = UIScreen.main.bounds.width / 1.5
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCoverView))
+    
+}
+
+// MARK: - User interactions
+
+private extension CoverView {
+    
+    @objc
+    func didTapCoverView() {
+        whenTap()
+    }
     
 }
 

@@ -44,7 +44,7 @@ final class LinkContentView: View {
     private(set) var searchButton = LoadingButton(type: .custom)
         .maskToBounds(true)
         .setCornerRadius(12)
-        .backgroundColor(color: .systemBlue)
+        .backgroundColor(color: .clear)
         .setTitle("Search")
         .setTitleColor(.white)
         .set(font: .systemFont(ofSize: 14, weight: .semibold))

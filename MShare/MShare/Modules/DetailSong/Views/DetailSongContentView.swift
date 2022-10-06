@@ -21,7 +21,7 @@ final class DetailSongContentView: View {
         .setCornerRadius(28)
         .addShadow(color: .black, offset: .init(width: 4, height: 4), opacity: 0.3, radius: 10)
     
-    private let coverView = CoverView()
+    private(set) var coverView = CoverView()
     
     private(set) var horizontalActionMenuView = HorizontalActionMenuView()
     
@@ -90,11 +90,7 @@ extension DetailSongContentView {
             coverViewContainer.center = oldCoverCenter
         }
         
-        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
-        drawHierarchy(in: bounds, afterScreenUpdates: true)
-        let snapshotImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
+        let snapshotImage = makeSnapShotImage(withBackground: true)
         return snapshotImage
     }
     

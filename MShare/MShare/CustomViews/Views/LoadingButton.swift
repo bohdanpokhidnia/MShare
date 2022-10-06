@@ -16,7 +16,7 @@ final class LoadingButton: Button {
         var duration: CGFloat {
             switch self {
             case .start:
-                return 0.3
+                return 0.2
                 
             case .end:
                 return 0.2
@@ -63,23 +63,42 @@ extension LoadingButton {
     
     @discardableResult
     func set(animationState: AnimationState, finalFrame: CGRect, cornerRadius: CGFloat = 0, completion: (() -> Void)? = nil) -> Self {
+        
+        switch animationState {
+        case .start:
+            titleLabel?.alpha = 0
+            
+        case .end:
+            break
+        }
+        
         UIView.animate(withDuration: animationState.duration, animations: {
+            self.frame = finalFrame
+            self.bounds = finalFrame
+            self.setCornerRadius(cornerRadius)
+            
             switch animationState {
             case .start:
-                self.titleLabel?.alpha = 0
                 self.loadingIndicator.startAnimating()
                 self.loadingIndicator.isHidden = false
                 
             case .end:
-                self.titleLabel?.alpha = 1
-                self.loadingIndicator.stopAnimating()
+                break
             }
             
-            self.frame = finalFrame
-            self.setCornerRadius(cornerRadius)
-            
         }) { _ in
-            completion?()
+            UIView.animate(withDuration: 0.35) {
+                switch animationState {
+                case .start:
+                    break
+                    
+                case .end:
+                    self.titleLabel?.alpha = 1
+                    self.loadingIndicator.stopAnimating()
+                }
+            } completion: { _ in
+                completion?()
+            }
         }
         
         return self

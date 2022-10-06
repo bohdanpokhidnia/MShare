@@ -13,6 +13,7 @@ protocol LinkInteractorIntputProtocol {
     func setupNotifications()
     func removeNotifications()
     func requestSong(urlString: String)
+    func copyImageToBuffer(_ image: UIImage)
 }
 
 protocol LinkInteractorOutputProtocol: AnyObject {
@@ -109,12 +110,6 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                     self?.presenter?.didCatchError(error!)
                     group.leave()
                     return
-                
-                }
-                
-                guard let response else {
-                    group.leave()
-                    return
                 }
             
             mediaResponse = response
@@ -123,54 +118,50 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
         
         group.notify(queue: .main) { [weak self] in
             guard let mediaResponse else {
-                print("[dev] bad media response: \(mediaResponse)")
-                self?.presenter?.didCatchError(.message("bad media response"))
+                print("[dev] without media response")
                 return
             }
             
             guard let coverUrlString = mediaResponse.coverUrlString else {
                 print("[dev] bad media cover url: \(mediaResponse)")
-                self?.presenter?.didCatchError(.message("bad media cover url"))
                 return
             }
             
             self?.networkService.request(urlString: coverUrlString) { (imageData, error) in
-                guard error == nil else {
-                    self?.presenter?.didCatchError(.error(error!))
-                    return
-                }
+                guard error == nil else { return }
                 
                 guard let imageData,
-                      let cover = UIImage(data: imageData) else {
-                    self?.presenter?.didCatchError(.message("bad cover url"))
-                    return
-                }
+                      let cover = UIImage(data: imageData) else { return }
                 
-                switch mediaResponse.mediaType {
-                case .song:
-                    guard let song = mediaResponse.song else { return }
-                    let detailSong = DetailSongEntity(songName: song.songName,
-                                                      artistName: song.artistName,
-                                                      image: cover,
-                                                      sourceURL: song.songUrl)
-                    
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    switch mediaResponse.mediaType {
+                    case .song:
+                        guard let song = mediaResponse.song else { return }
+                        let detailSong = DetailSongEntity(songName: song.songName,
+                                                          artistName: song.artistName,
+                                                          image: cover,
+                                                          sourceURL: song.songUrl)
+                        
+                        
                         self?.presenter?.didFetchSong(detailSong)
-                    }
-                    
-                case .album:
-                    guard let album = mediaResponse.album else { return }
-                    let detailAlbum = DetailSongEntity(songName: album.albumName,
-                                                      artistName: album.artistName,
-                                                      image: cover,
-                                                      sourceURL: album.albumUrl)
-                    
-                    DispatchQueue.main.async {
+                        
+                        
+                    case .album:
+                        guard let album = mediaResponse.album else { return }
+                        let detailAlbum = DetailSongEntity(songName: album.albumName,
+                                                           artistName: album.artistName,
+                                                           image: cover,
+                                                           sourceURL: album.albumUrl)
+                        
                         self?.presenter?.didFetchSong(detailAlbum)
                     }
                 }
             }
         }
+    }
+    
+    func copyImageToBuffer(_ image: UIImage) {
+        UIPasteboard.general.image = image
     }
     
 }

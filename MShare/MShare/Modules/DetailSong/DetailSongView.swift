@@ -29,6 +29,7 @@ final class DetailSongView: ViewController<DetailSongContentView> {
 
         setupNavigationBar()
         setupViews()
+        setupActionsHandler()
         presenter?.viewDidLoad()
     }
 
@@ -47,6 +48,12 @@ private extension DetailSongView {
     
     func setupViews() {
         contentView.horizontalActionMenuView.delegare = self
+    }
+    
+    func setupActionsHandler() {
+        contentView.coverView.whenTap = { [unowned self] in
+            presenter?.copyCoverToBuffer(fromView: contentView.coverView)
+        }
     }
     
 }

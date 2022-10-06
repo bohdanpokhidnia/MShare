@@ -5,12 +5,13 @@
 //  Created by Bohdan Pokhidnia on 06.08.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol DetailSongInteractorIntputProtocol {
     var presenter: DetailSongInteractorOutputProtocol? { get set }
     
     func requestSong()
+    func copyImageToBuffer(_ image: UIImage?)
 }
 
 protocol DetailSongInteractorOutputProtocol: AnyObject {
@@ -33,6 +34,10 @@ extension DetailSongInteractor: DetailSongInteractorIntputProtocol {
     
     func requestSong() {
         presenter?.didLoadSong(song)
+    }
+    
+    func copyImageToBuffer(_ image: UIImage?) {
+        UIPasteboard.general.image = image
     }
     
 }

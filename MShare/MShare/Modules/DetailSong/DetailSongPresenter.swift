@@ -14,6 +14,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func dismissAction()
+    func copyCoverToBuffer(fromView view: View)
     func shareCover(cover: UIImage, completion: (() -> Void)?)
 }
 
@@ -33,6 +34,12 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
     
     func dismissAction() {
         router?.dismissModule(view: view)
+    }
+    
+    func copyCoverToBuffer(fromView view: View) {
+        let image = view.makeSnapShotImage(withBackground: false)
+        
+        interactor?.copyImageToBuffer(image)
     }
     
     func shareCover(cover: UIImage, completion: (() -> Void)?) {

@@ -185,6 +185,26 @@ extension UIView {
         return self
     }
 
+    func makeSnapShotImage(withBackground background: Bool) -> UIImage? {
+        var snapShotImage: UIImage?
+        
+        if background {
+            UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
+            snapShotImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+        } else {
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
+            guard let context = UIGraphicsGetCurrentContext() else { return nil }
+            context.saveGState()
+            layer.render(in: context)
+            context.restoreGState()
+            snapShotImage = UIGraphicsGetImageFromCurrentImageContext()
+        }
+        
+        return snapShotImage
+    }
+
 }
 
 extension UIView {

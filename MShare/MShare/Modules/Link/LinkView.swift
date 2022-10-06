@@ -19,7 +19,8 @@ protocol LinkViewProtocol: AnyObject {
     func setOffsetLinkTextField(_ keyboardFrame: CGRect)
     func resetPositionLinkTextField()
     func showLoading()
-    func hideLoading(completion: (() -> Void)?)
+    func hideLoading(error: Bool, completion: (() -> Void)?)
+    func resetLinkTextFieldBorderColor(animated: Bool)
 }
 
 extension LinkViewProtocol {
@@ -58,7 +59,7 @@ final class LinkView: ViewController<LinkContentView> {
         
         setupViews()
         setupNavigationBar()
-        setupActionHandlers()
+        setupActionsHandlers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +82,7 @@ private extension LinkView {
     
     func setupViews() {
         contentView.linkTextField.delegate = self
+        contentView.linkTextField.addTarget(self, action: #selector(UIResponder.becomeFirstResponder), for: .editingDidEndOnExit)
     }
     
     func setupNavigationBar() {
@@ -88,8 +90,9 @@ private extension LinkView {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setupActionHandlers() {
+    func setupActionsHandlers() {
         contentView.searchButton.whenTap { [unowned self] in
+            contentView.endEditing(true)
             getSong()
         }
         
@@ -118,8 +121,8 @@ private extension LinkView {
 extension LinkView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        contentView.endEditing(true)
         getSong()
-        textField.resignFirstResponder()
         
         return true
     }
@@ -184,7 +187,19 @@ extension LinkView: LinkViewProtocol {
     }
     
     func showLoading() {
-        contentView.linkTextField.isHidden = true
+        let animationState: LoadingButton.AnimationState = .start
+        
+        switch animationState {
+        case .start:
+            UIView.animate(withDuration: animationState.duration) {
+                self.contentView.linkTextField.alpha = 0
+            }
+            
+        case .end:
+            break
+        }
+        
+        contentView.linkTextField.alpha = 0
         
         var startFrame = contentView.searchButton.frame
         startFrame.size = .init(width: 64, height: 64)
@@ -193,23 +208,47 @@ extension LinkView: LinkViewProtocol {
         
         contentView.searchButton.make {
             $0.bounds = startFrame
-            $0.set(animationState: .start, finalFrame: startFrame, cornerRadius: cornerRadius)
+            $0.set(animationState: animationState, finalFrame: startFrame, cornerRadius: cornerRadius)
         }
     }
     
-    func hideLoading(completion: (() -> Void)? = nil) {
-        contentView.linkTextField.isHidden = false
+    func hideLoading(error: Bool, completion: (() -> Void)? = nil) {
+        let animationState: LoadingButton.AnimationState = .end
         
-        var endFrame = contentView.searchButton.frame
-        endFrame.size = .init(width: UIScreen.main.bounds.width - contentView.controlsPadding * 2, height: contentView.controlsHeight)
-        endFrame.origin = .init(x: contentView.center.x - endFrame.width / 2, y: contentView.center.y - endFrame.height / 2)
-        
-        contentView.searchButton
-            .make {
-                $0.bounds = endFrame
-                $0.set(animationState: .end, finalFrame: endFrame, cornerRadius: 12, completion: completion)
-            }
+        switch animationState {
+        case .start:
+            break
             
+        case .end:
+            UIView.animate(withDuration: animationState.duration) {
+                self.contentView.linkTextField.alpha = 1
+            } completion: { _ in
+                UIView.animate(withDuration: animationState.duration) {
+                    guard error else { return }
+                    self.contentView.linkTextField.borderColor = .red
+                } completion: { _ in
+                    var endFrame = self.contentView.searchButton.frame
+                    endFrame.size = .init(width: UIScreen.main.bounds.width - self.contentView.controlsPadding * 2, height: self.contentView.controlsHeight)
+                    endFrame.origin = .init(x: self.contentView.center.x - endFrame.width / 2, y: self.contentView.center.y - endFrame.height / 2)
+                    
+                    self.contentView.searchButton.set(animationState: animationState,
+                                                 finalFrame: endFrame,
+                                                 cornerRadius: 12,
+                                                 completion: completion)
+                }
+            }
+
+        }
+    }
+    
+    func resetLinkTextFieldBorderColor(animated: Bool) {
+        if animated {
+            UIView.animate(withDuration: 0.25) {
+                self.contentView.linkTextField.borderColor = .appGray
+            }
+        } else {
+            contentView.linkTextField.borderColor = .appGray
+        }
     }
     
 }

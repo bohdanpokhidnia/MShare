@@ -81,14 +81,16 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     func didFetchSong(_ detailSong: DetailSongEntity) {
         router?.presentDetailSongScreen(from: view, for: detailSong) { [weak view] in
             view?.cleaningLinkTextField()
-            view?.hideLoading(completion: nil)
+            view?.hideLoading(error: false, completion: nil)
         }
     }
     
     func didCatchError(_ error: NetworkError) {
         DispatchQueue.main.async { [weak view] in
-            view?.showError(title: error.title, message: error.localizedDescription) { [weak view] in
-                view?.hideLoading(completion: nil)
+            view?.hideLoading(error: true) {
+                view?.showError(title: error.title, message: error.localizedDescription, action: {
+                    view?.resetLinkTextFieldBorderColor(animated: true)
+                })
             }
         }
     }
