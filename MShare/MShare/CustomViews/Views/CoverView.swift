@@ -8,9 +8,26 @@
 import UIKit
 import SnapKit
 
+typealias CoverViewAnimation = CoverView.AnimationState
+
 final class CoverView: View {
     
     var whenTap: (() -> Void) = { }
+    
+    enum AnimationState {
+        case pressed
+        case unpressed
+        
+        var animation: CGAffineTransform {
+            switch self {
+            case .pressed:
+                return .identity.scaledBy(x: 0.95, y: 0.95)
+                
+            case .unpressed:
+                return .identity
+            }
+        }
+    }
     
     // MARK: - UI
     

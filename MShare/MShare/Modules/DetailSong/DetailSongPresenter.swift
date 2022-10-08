@@ -36,10 +36,17 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         router?.dismissModule(view: view)
     }
     
-    func copyCoverToBuffer(fromView view: View) {
-        let image = view.makeSnapShotImage(withBackground: false)
-        
+    func copyCoverToBuffer(fromView: View) {
+        let image = fromView.makeSnapShotImage(withBackground: false)
         interactor?.copyImageToBuffer(image)
+        
+        view?.showToast()
+        
+        view?.setCoverAnimation(animationState: .pressed) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                self?.view?.setCoverAnimation(animationState: .unpressed, completion: nil)
+            }
+        }
     }
     
     func shareCover(cover: UIImage, completion: (() -> Void)?) {

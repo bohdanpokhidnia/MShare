@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F7002751289C3B470075C133 /* MediaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002750289C3B470075C133 /* MediaTableView.swift */; };
+		F700AAEE28F223C7005390E4 /* NotificationToast in Frameworks */ = {isa = PBXBuildFile; productRef = F700AAED28F223C7005390E4 /* NotificationToast */; };
 		F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710244F28AD4D920012CE0B /* UIColor+Ext.swift */; };
 		F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710245128AD5C1F0012CE0B /* GradientView.swift */; };
 		F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F6289563D4008D7702 /* CollectionViewCell.swift */; };
@@ -220,6 +221,7 @@
 				F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */,
 				F773112328D5A10300642926 /* FirebaseCrashlytics in Frameworks */,
 				F773111F28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				F700AAEE28F223C7005390E4 /* NotificationToast in Frameworks */,
 				F773112128D5A10300642926 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +616,7 @@
 				F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */,
 				F773112028D5A10300642926 /* FirebaseAnalyticsSwift */,
 				F773112228D5A10300642926 /* FirebaseCrashlytics */,
+				F700AAED28F223C7005390E4 /* NotificationToast */,
 			);
 			productName = MShare;
 			productReference = F774B91A2891AEDC00438A37 /* MShare.app */;
@@ -650,6 +653,7 @@
 				F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F774B9342891B01D00438A37 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */,
 			);
 			productRefGroup = F774B91B2891AEDC00438A37 /* Products */;
 			projectDirPath = "";
@@ -1070,6 +1074,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PhilippeWeidmann/NotificationToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1097,6 +1109,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F700AAED28F223C7005390E4 /* NotificationToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */;
+			productName = NotificationToast;
+		};
 		F773111C28D5A10300642926 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

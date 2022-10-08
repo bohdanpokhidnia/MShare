@@ -12,6 +12,8 @@ protocol DetailSongViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setupContent(with state: DetailSongEntity)
+    func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?)
+    func showToast()
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
@@ -52,7 +54,7 @@ private extension DetailSongView {
     
     func setupActionsHandler() {
         contentView.coverView.whenTap = { [unowned self] in
-            presenter?.copyCoverToBuffer(fromView: contentView.coverView)
+            presenter?.copyCoverToBuffer(fromView: self.contentView.coverView)
         }
     }
     
@@ -75,6 +77,14 @@ extension DetailSongView: DetailSongViewProtocol {
     
     func setupContent(with state: DetailSongEntity) {
         contentView.set(state: state)
+    }
+    
+    func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?) {
+        contentView.set(animationState: animationState, completion: completion)
+    }
+    
+    func showToast() {
+        contentView.toast.show(haptic: .success)
     }
     
 }

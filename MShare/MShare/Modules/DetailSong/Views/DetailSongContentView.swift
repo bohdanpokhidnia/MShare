@@ -7,10 +7,20 @@
 
 import UIKit
 import SnapKit
+import NotificationToast
 
 final class DetailSongContentView: View {
     
     // MARK: - UI
+    
+    private(set) var toast = ToastView(
+        title: "Cover copied",
+        titleFont: .systemFont(ofSize: 13, weight: .regular),
+        icon: UIImage(systemName: "doc.on.doc.fill"),
+        iconSpacing: 16,
+        position: .top,
+        onTap: { print("Tapped!") }
+    )
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
@@ -75,6 +85,23 @@ extension DetailSongContentView {
     func set(state: DetailSongEntity) -> Self {
         backgroundImageView.setImage(state.image)
         coverView.set(state: state)
+        
+        return self
+    }
+    
+    @discardableResult
+    func set(animationState: CoverViewAnimation, completion: (() -> Void)? = nil) -> Self {
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       usingSpringWithDamping: 0.3,
+                       initialSpringVelocity: 5,
+                       options: [.allowUserInteraction],
+                       animations: {
+            
+            self.coverViewContainer.transform = animationState.animation
+        }, completion: { _ in
+            completion?()
+        })
         
         return self
     }
