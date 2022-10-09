@@ -13,14 +13,17 @@ final class DetailSongContentView: View {
     
     // MARK: - UI
     
-    private(set) var toast = ToastView(
-        title: "Cover copied",
-        titleFont: .systemFont(ofSize: 13, weight: .regular),
-        icon: UIImage(systemName: "doc.on.doc.fill"),
-        iconSpacing: 16,
-        position: .top,
-        onTap: { print("Tapped!") }
-    )
+    private(set) var copiedToast = ToastView(title: "Cover copied",
+                                             titleFont: .systemFont(ofSize: 13, weight: .regular),
+                                             icon: UIImage(systemName: "doc.on.doc.fill"),
+                                             iconSpacing: 16,
+                                             position: .top)
+    
+    private(set) var unvailableToast = ToastView(title: "Service is don't avalailble now",
+                                                 titleFont: .systemFont(ofSize: 13, weight: .regular),
+                                                 icon: UIImage(systemName: "xmark"),
+                                                 iconSpacing: 12,
+                                                 position: .bottom)
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)

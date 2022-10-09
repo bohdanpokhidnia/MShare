@@ -57,7 +57,7 @@
 		F785E3A128C3998200DE1BC0 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
-		F790280B289309320058CC19 /* ServiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* ServiceEntity.swift */; };
+		F790280B289309320058CC19 /* LinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* LinkEntity.swift */; };
 		F790280C289309320058CC19 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902805289309320058CC19 /* LinkView.swift */; };
 		F790280D289309320058CC19 /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902806289309320058CC19 /* LinkPresenter.swift */; };
 		F790280E289309320058CC19 /* LinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902808289309320058CC19 /* LinkContentView.swift */; };
@@ -166,7 +166,7 @@
 		F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
-		F7902804289309320058CC19 /* ServiceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceEntity.swift; sourceTree = "<group>"; };
+		F7902804289309320058CC19 /* LinkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkEntity.swift; sourceTree = "<group>"; };
 		F7902805289309320058CC19 /* LinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		F7902806289309320058CC19 /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
 		F7902808289309320058CC19 /* LinkContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkContentView.swift; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 				F7902805289309320058CC19 /* LinkView.swift */,
 				F7902803289309320058CC19 /* LinkInteractor.swift */,
 				F7902806289309320058CC19 /* LinkPresenter.swift */,
-				F7902804289309320058CC19 /* ServiceEntity.swift */,
+				F7902804289309320058CC19 /* LinkEntity.swift */,
 				F7902802289309320058CC19 /* LinkRouter.swift */,
 			);
 			path = Link;
@@ -751,7 +751,7 @@
 				F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */,
 				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
 				F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */,
-				F790280B289309320058CC19 /* ServiceEntity.swift in Sources */,
+				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
 				F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */,
 				F777BE4C289E479600595ACA /* DetailSongView.swift in Sources */,
 				F774B9502891B3BB00438A37 /* MakeProtocol.swift in Sources */,

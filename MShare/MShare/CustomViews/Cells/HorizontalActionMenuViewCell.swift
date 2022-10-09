@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+typealias HorizontalActionMenuItem = HorizontalActionMenuViewCell.State
 typealias HorizontalActionAnimationType = HorizontalActionMenuViewCell.Style
 
 final class HorizontalActionMenuViewCell: CollectionViewCell {
@@ -28,8 +29,17 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     }
    
     struct State {
+        let action: HorizontalMenuAction
         let image: UIImage?
         let title: String
+        let active: Bool
+        
+        init(horizontalMenuAction: HorizontalMenuAction, available: Bool) {
+            action = horizontalMenuAction
+            image = action.image
+            title = action.title
+            active = available
+        }
     }
     
     // MARK: - UI
@@ -153,6 +163,9 @@ extension HorizontalActionMenuViewCell {
     func set(state: State) -> Self {
         actionImageView.setImage(state.image)
         actionTitleLabel.text(state.title)
+        
+        blurredView.setAlpha(state.active ? 0 : 0.8)
+        
         return self
     }
     

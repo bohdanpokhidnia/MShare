@@ -11,9 +11,10 @@ protocol DetailSongViewProtocol: AnyObject {
     var presenter: DetailSongPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
-    func setupContent(with state: DetailSongEntity)
+    func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem])
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?)
-    func showToast()
+    func showCopiedToast()
+    func showUnavailableToast()
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
@@ -75,16 +76,24 @@ private extension DetailSongView {
 
 extension DetailSongView: DetailSongViewProtocol {
     
-    func setupContent(with state: DetailSongEntity) {
-        contentView.set(state: state)
+    func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem]) {
+        contentView
+            .set(state: state)
+            .make {
+                $0.horizontalActionMenuView.set(menuItems: horizontalActionMenuItem)
+            }
     }
     
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?) {
         contentView.set(animationState: animationState, completion: completion)
     }
     
-    func showToast() {
-        contentView.toast.show(haptic: .success)
+    func showCopiedToast() {
+        contentView.copiedToast.show(haptic: .success)
+    }
+    
+    func showUnavailableToast() {
+        contentView.unvailableToast.show(haptic: .warning)
     }
     
 }
@@ -93,9 +102,17 @@ extension DetailSongView: DetailSongViewProtocol {
 
 extension DetailSongView: HorizontalActionMenuDelegate {
     
-    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView, action: HorizontalMenuAction, didSelectItemAt indexPath: IndexPath) {
+    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView,
+                          action: HorizontalMenuAction,
+                          available: Bool,
+                          didSelectItemAt indexPath: IndexPath) {
+        guard available else {
+            showUnavailableToast()
+            return
+        }
+        
         switch action {
-        case .shareAppleMusicLink, .shareSpotifyLink:
+        case .shareAppleMusicLink, .shareSpotifyLink, .shareYouTubeMusicLink:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 horizontalActionMenuView.set(animationStyle: .normal)
             }

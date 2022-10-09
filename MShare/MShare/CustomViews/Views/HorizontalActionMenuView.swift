@@ -9,12 +9,16 @@ import UIKit
 import SnapKit
 
 protocol HorizontalActionMenuDelegate: AnyObject {
-    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView, action: HorizontalMenuAction, didSelectItemAt indexPath: IndexPath)
+    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView,
+                          action: HorizontalMenuAction,
+                          available: Bool,
+                          didSelectItemAt indexPath: IndexPath)
 }
 
-enum HorizontalMenuAction: CaseIterable {
-    case shareAppleMusicLink
-    case shareSpotifyLink
+enum HorizontalMenuAction: String, CaseIterable {
+    case shareAppleMusicLink = "AppleMusic"
+    case shareSpotifyLink = "Spotify"
+    case shareYouTubeMusicLink = "YoutubeMusic"
     case shareCover
     
     var image: UIImage? {
@@ -24,6 +28,9 @@ enum HorizontalMenuAction: CaseIterable {
             
         case .shareSpotifyLink:
             return UIImage(named: "spotifyLogo")
+            
+        case .shareYouTubeMusicLink:
+            return UIImage(named: "youtubeMusicLogo")
             
         case .shareCover:
             return nil
@@ -37,6 +44,9 @@ enum HorizontalMenuAction: CaseIterable {
             
         case .shareSpotifyLink:
             return "Spotify"
+            
+        case .shareYouTubeMusicLink:
+            return "YouTube Music"
             
         case .shareCover:
             return "Share cover"
@@ -74,8 +84,6 @@ final class HorizontalActionMenuView: View {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        menuActions = HorizontalMenuAction.allCases
     }
     
     override func setupSubviews() {
@@ -95,13 +103,19 @@ final class HorizontalActionMenuView: View {
     // MARK: - Private
     
     private var selectedIndexPath: IndexPath?
-    private var menuActions = [HorizontalMenuAction]()
+    private var menuItems = [HorizontalActionMenuItem]()
     
 }
 
 // MARK: - Set
 
 extension HorizontalActionMenuView {
+    
+    @discardableResult
+    func set(menuItems: [HorizontalActionMenuItem]) -> Self {
+        self.menuItems = menuItems
+        return self
+    }
     
     @discardableResult
     func set(animationStyle: HorizontalActionAnimationType) -> Self {
@@ -171,14 +185,14 @@ private extension HorizontalActionMenuView {
 extension HorizontalActionMenuView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuActions.count
+        return menuItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let action = menuActions[indexPath.row]
+        let menuItem = menuItems[indexPath.row]
         
         let cell = collectionView.dequeue(HorizontalActionMenuViewCell.self, for: indexPath)
-        return cell.set(state: .init(image: action.image, title: action.title))
+        return cell.set(state: menuItem)
     }
     
 }
@@ -188,12 +202,14 @@ extension HorizontalActionMenuView: UICollectionViewDataSource {
 extension HorizontalActionMenuView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let action = menuActions[indexPath.row]
-        
+        let menuItem = menuItems[indexPath.row]
         selectedIndexPath = indexPath
-        set(animationStyle: .blurred)
         
-        delegare?.didTapActionItem(self, action: action, didSelectItemAt: indexPath)
+        if menuItem.active {
+            set(animationStyle: .blurred)
+        }
+        
+        delegare?.didTapActionItem(self, action: menuItem.action, available: menuItem.active, didSelectItemAt: indexPath)
     }
     
 }

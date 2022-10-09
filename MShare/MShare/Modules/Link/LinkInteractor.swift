@@ -41,7 +41,6 @@ final class LinkInteractor {
     
     // MARK: - Private
     
-    private var services = [ServiceEntity]()
     private let networkService: NetworkServiceProtocol
     
 }
@@ -117,13 +116,10 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
         }
         
         group.notify(queue: .main) { [weak self] in
-            guard let mediaResponse else {
+            guard let mediaResponse,
+                  let coverUrlString = mediaResponse.coverUrlString
+            else {
                 print("[dev] without media response")
-                return
-            }
-            
-            guard let coverUrlString = mediaResponse.coverUrlString else {
-                print("[dev] bad media cover url: \(mediaResponse)")
                 return
             }
             
@@ -140,7 +136,8 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                         let detailSong = DetailSongEntity(songName: song.songName,
                                                           artistName: song.artistName,
                                                           image: cover,
-                                                          sourceURL: song.songUrl)
+                                                          sourceURL: song.songUrl,
+                                                          services: mediaResponse.services)
                         
                         
                         self?.presenter?.didFetchSong(detailSong)
@@ -151,7 +148,8 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                         let detailAlbum = DetailSongEntity(songName: album.albumName,
                                                            artistName: album.artistName,
                                                            image: cover,
-                                                           sourceURL: album.albumUrl)
+                                                           sourceURL: album.albumUrl,
+                                                           services: mediaResponse.services)
                         
                         self?.presenter?.didFetchSong(detailAlbum)
                     }
