@@ -19,7 +19,7 @@ protocol LinkViewProtocol: AnyObject {
     func setOffsetLinkTextField(_ keyboardFrame: CGRect)
     func resetPositionLinkTextField()
     func showLoading()
-    func hideLoading(error: Bool, completion: (() -> Void)?)
+    func hideLoading(completion: (() -> Void)?)
     func resetLinkTextFieldBorderColor(animated: Bool)
 }
 
@@ -211,7 +211,7 @@ extension LinkView: LinkViewProtocol {
         }
     }
     
-    func hideLoading(error: Bool, completion: (() -> Void)? = nil) {
+    func hideLoading(completion: (() -> Void)? = nil) {
         let animationState: LoadingButton.AnimationState = .end
         
         switch animationState {
@@ -222,19 +222,15 @@ extension LinkView: LinkViewProtocol {
             UIView.animate(withDuration: animationState.duration) {
                 self.contentView.linkTextField.alpha = 1
             } completion: { _ in
-                UIView.animate(withDuration: animationState.duration) {
-                    guard error else { return }
-                    self.contentView.linkTextField.borderColor = .red
-                } completion: { _ in
-                    var endFrame = self.contentView.searchButton.frame
-                    endFrame.size = .init(width: UIScreen.main.bounds.width - self.contentView.controlsPadding * 2, height: self.contentView.controlsHeight)
-                    endFrame.origin = .init(x: self.contentView.center.x - endFrame.width / 2, y: self.contentView.center.y - endFrame.height / 2)
-                    
-                    self.contentView.searchButton.set(animationState: animationState,
-                                                 finalFrame: endFrame,
-                                                 cornerRadius: 12,
-                                                 completion: completion)
-                }
+                var endFrame = self.contentView.searchButton.frame
+                endFrame.size = .init(width: UIScreen.main.bounds.width - self.contentView.controlsPadding * 2, height: self.contentView.controlsHeight)
+                endFrame.origin = .init(x: self.contentView.center.x - endFrame.width / 2, y: self.contentView.center.y - endFrame.height / 2)
+                
+                self.contentView.searchButton.set(animationState: animationState,
+                                             finalFrame: endFrame,
+                                             cornerRadius: 12,
+                                             completion: completion)
+
             }
 
         }
