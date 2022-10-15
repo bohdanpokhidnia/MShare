@@ -29,11 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         window = UIWindow(windowScene: windowScene)
-        #if DEBUG
-        window?.rootViewController = DetailSongRouter.createModule(song: .mock)
-        #else
+//        #if DEBUG
+//        window?.rootViewController = DetailSongRouter.createModule(song: .mock)
+//        #else
         window?.rootViewController = mainView?.viewController
-        #endif
+//        #endif
         window?.backgroundColor(color: .systemBackground)
         window?.makeKeyAndVisible()
     }
@@ -81,9 +81,7 @@ private extension SceneDelegate {
             parameters[$0.name] = $0.value
         }
         
-        guard let urlString = parameters["url"] else {
-            return
-        }
+        guard let urlString = parameters["url"] else { return }
         
         mainView?.selectedTab(.link)
         UserDefaults().set(urlString, forKey: "incomingURL")

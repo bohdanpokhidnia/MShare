@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol SettingsRouterProtocol {
-    static func createModule() -> UIViewController
-}
+protocol SettingsRouterProtocol: ModuleRouterProtocol { }
 
 final class SettingsRouter: SettingsRouterProtocol {
     
@@ -27,6 +25,10 @@ final class SettingsRouter: SettingsRouterProtocol {
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
+    }
+    
+    func createModule() -> UIViewController {
+        return SettingsRouter.createModule()
     }
     
 }

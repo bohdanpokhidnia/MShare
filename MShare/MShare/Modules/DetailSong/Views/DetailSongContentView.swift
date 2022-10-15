@@ -19,7 +19,7 @@ final class DetailSongContentView: View {
                                              iconSpacing: 16,
                                              position: .top)
     
-    private(set) var unvailableToast = ToastView(title: "Service is don't avalailble now",
+    private(set) var unvailableToast = ToastView(title: "The service will be available soon",
                                                  titleFont: .systemFont(ofSize: 13, weight: .regular),
                                                  icon: UIImage(systemName: "xmark"),
                                                  iconSpacing: 12,

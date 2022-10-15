@@ -32,26 +32,18 @@ final class MainRouter: MainRouterProtocol {
     }
     
     static func createTabModules() -> [UIViewController] {
-        let chart = ChartRouter.createModule()
-        chart.title = "Chart"
-        chart.tabBarItem.image = UIImage(systemName: "chart.bar")
+        var views = [UIViewController]()
         
-        let linkView = LinkRouter.createModule()
-        linkView.title = "Link"
-        linkView.tabBarItem.image = UIImage(systemName: "link")
+        for tabBarModule in MainView.TabItemIndex.allCases {
+            let view = tabBarModule.router.createModule()
+                .make {
+                    $0.title = tabBarModule.title
+                    $0.tabBarItem.image = tabBarModule.icon
+                }
+            
+            views.append(view)
+        }
         
-        let searchView = SearchRouter.createModule()
-        searchView.title = "Search"
-        searchView.tabBarItem.image = UIImage(systemName: "magnifyingglass")
-        
-        let settingsView = SettingsRouter.createModule()
-        settingsView.title = "Settings"
-        settingsView.tabBarItem.image = UIImage(systemName: "gear")
-        
-        let views = [chart,
-                     linkView,
-                     searchView,
-                     settingsView]
         return views
     }
     

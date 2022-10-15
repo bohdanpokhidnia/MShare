@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol ChartRouterProtocol {
-    static func createModule() -> UIViewController
-}
+protocol ChartRouterProtocol: ModuleRouterProtocol { }
 
 final class ChartRouter: ChartRouterProtocol {
     
@@ -27,6 +25,10 @@ final class ChartRouter: ChartRouterProtocol {
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
+    }
+    
+    func createModule() -> UIViewController {
+        return ChartRouter.createModule()
     }
     
 }

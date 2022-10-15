@@ -91,6 +91,13 @@
 		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
 		F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C5289ADD870073709D /* UIImageView+Ext.swift */; };
 		F7D589C8289AEC1A0073709D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C7289AEC1A0073709D /* Button.swift */; };
+		F7D9852928FA977500F54E24 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852228FA977500F54E24 /* FavoritesView.swift */; };
+		F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852328FA977500F54E24 /* FavoritesInteractor.swift */; };
+		F7D9852B28FA977500F54E24 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852428FA977500F54E24 /* FavoritesRouter.swift */; };
+		F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852628FA977500F54E24 /* FavoritesContentView.swift */; };
+		F7D9852D28FA977500F54E24 /* FavoritesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852728FA977500F54E24 /* FavoritesEntity.swift */; };
+		F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */; };
+		F7D9853028FA9C0500F54E24 /* ModuleRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */; };
 		F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DB96C128CCE4850031FD22 /* String+Ext.swift */; };
 		F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */; };
 /* End PBXBuildFile section */
@@ -200,6 +207,13 @@
 		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C5289ADD870073709D /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		F7D589C7289AEC1A0073709D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F7D9852228FA977500F54E24 /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		F7D9852328FA977500F54E24 /* FavoritesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesInteractor.swift; sourceTree = "<group>"; };
+		F7D9852428FA977500F54E24 /* FavoritesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
+		F7D9852628FA977500F54E24 /* FavoritesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesContentView.swift; sourceTree = "<group>"; };
+		F7D9852728FA977500F54E24 /* FavoritesEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesEntity.swift; sourceTree = "<group>"; };
+		F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRouterProtocol.swift; sourceTree = "<group>"; };
 		F7DB96C128CCE4850031FD22 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,6 +346,7 @@
 				F77A0DFE28A18EFE00FF4644 /* Chart */,
 				F7902801289309320058CC19 /* Link */,
 				F79028112893095D0058CC19 /* Search */,
+				F7D9852128FA977500F54E24 /* Favorites */,
 				F7902821289309940058CC19 /* Settings */,
 				F777BE42289E479600595ACA /* DetailSong */,
 			);
@@ -358,6 +373,7 @@
 				F774B94D2891B37A00438A37 /* ViewLayoutableProtocol.swift */,
 				F774B94F2891B3BB00438A37 /* MakeProtocol.swift */,
 				F79ED12E28A82539009DFC96 /* Blurable.swift */,
+				F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -547,6 +563,27 @@
 				F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F7D9852128FA977500F54E24 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				F7D9852528FA977500F54E24 /* Views */,
+				F7D9852228FA977500F54E24 /* FavoritesView.swift */,
+				F7D9852328FA977500F54E24 /* FavoritesInteractor.swift */,
+				F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */,
+				F7D9852728FA977500F54E24 /* FavoritesEntity.swift */,
+				F7D9852428FA977500F54E24 /* FavoritesRouter.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		F7D9852528FA977500F54E24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F7D9852628FA977500F54E24 /* FavoritesContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F7DB96BF28CCE4700031FD22 /* UIKit */ = {
@@ -740,6 +777,7 @@
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */,
 				F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */,
+				F7D9852928FA977500F54E24 /* FavoritesView.swift in Sources */,
 				F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
@@ -749,9 +787,11 @@
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
 				F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */,
+				F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */,
 				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
 				F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */,
 				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
+				F7D9853028FA9C0500F54E24 /* ModuleRouterProtocol.swift in Sources */,
 				F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */,
 				F777BE4C289E479600595ACA /* DetailSongView.swift in Sources */,
 				F774B9502891B3BB00438A37 /* MakeProtocol.swift in Sources */,
@@ -765,10 +805,12 @@
 				F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */,
 				F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */,
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
+				F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
 				F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */,
 				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
+				F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
@@ -780,8 +822,10 @@
 				F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */,
 				F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
+				F7D9852D28FA977500F54E24 /* FavoritesEntity.swift in Sources */,
 				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
 				F7D147AA28D6866600655F19 /* GetSong.swift in Sources */,
+				F7D9852B28FA977500F54E24 /* FavoritesRouter.swift in Sources */,
 				F777BE4D289E479600595ACA /* DetailSongInteractor.swift in Sources */,
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,

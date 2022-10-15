@@ -21,10 +21,12 @@ extension MakeProtocol {
 
 // MARK: - MakeProtocol
 
-extension UIView: MakeProtocol {}
+extension UIView: MakeProtocol { }
 
-extension UISearchController: MakeProtocol {}
+extension UIViewController: MakeProtocol { }
 
-extension UIAlertController: MakeProtocol {}
+extension UISearchController: MakeProtocol { }
 
-extension CAGradientLayer: MakeProtocol {}
+extension UIAlertController: MakeProtocol { }
+
+extension CAGradientLayer: MakeProtocol { }

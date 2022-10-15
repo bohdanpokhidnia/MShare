@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol LinkRouterProtocol {
-    static func createModule() -> UIViewController
-    
+protocol LinkRouterProtocol: ModuleRouterProtocol {
     func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity, completion: (() -> Void)?)
 }
 
@@ -30,6 +28,10 @@ class LinkRouter: LinkRouterProtocol {
         let navigationController = UINavigationController(rootViewController: view.viewController)
         navigationController.interactivePopGestureRecognizer?.delegate = nil
         return navigationController
+    }
+    
+    func createModule() -> UIViewController {
+        return LinkRouter.createModule()
     }
     
     func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity, completion: (() -> Void)?) {
