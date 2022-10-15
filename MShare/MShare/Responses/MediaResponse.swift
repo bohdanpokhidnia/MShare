@@ -1,5 +1,5 @@
 //
-//  Song.swift
+//  MediaResponse.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 18.09.2022.

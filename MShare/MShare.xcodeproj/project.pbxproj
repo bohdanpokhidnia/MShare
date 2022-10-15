@@ -85,7 +85,7 @@
 		F7D147A428D6858700655F19 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A328D6858700655F19 /* EndpointProtocol.swift */; };
 		F7D147A828D685E800655F19 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A728D685E800655F19 /* RequestBuilder.swift */; };
 		F7D147AA28D6866600655F19 /* GetSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A928D6866600655F19 /* GetSong.swift */; };
-		F7D147AC28D68ACE00655F19 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147AB28D68ACE00655F19 /* Song.swift */; };
+		F7D147AC28D68ACE00655F19 /* MediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147AB28D68ACE00655F19 /* MediaResponse.swift */; };
 		F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */; };
 		F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */; };
 		F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D589C3289AC26C0073709D /* UILabel+Ext.swift */; };
@@ -201,7 +201,7 @@
 		F7D147A328D6858700655F19 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
 		F7D147A728D685E800655F19 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		F7D147A928D6866600655F19 /* GetSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSong.swift; sourceTree = "<group>"; };
-		F7D147AB28D68ACE00655F19 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		F7D147AB28D68ACE00655F19 /* MediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaResponse.swift; sourceTree = "<group>"; };
 		F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCircleView.swift; sourceTree = "<group>"; };
 		F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		F7D589C3289AC26C0073709D /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 				F774B9372891B03700438A37 /* Application */,
 				F774B9472891B20F00438A37 /* Core */,
 				F7D589BF289ABD310073709D /* CustomViews */,
-				F7D147AD28D68AD300655F19 /* Models */,
+				F7D147AD28D68AD300655F19 /* Responses */,
 				F774B9392891B10B00438A37 /* Modules */,
 				F7D147A028D684BC00655F19 /* Services */,
 				F774B9382891B04600438A37 /* Resources */,
@@ -538,12 +538,12 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
-		F7D147AD28D68AD300655F19 /* Models */ = {
+		F7D147AD28D68AD300655F19 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				F7D147AB28D68ACE00655F19 /* Song.swift */,
+				F7D147AB28D68ACE00655F19 /* MediaResponse.swift */,
 			);
-			path = Models;
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		F7D589BF289ABD310073709D /* CustomViews */ = {
@@ -798,7 +798,7 @@
 				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
 				F777BE4B289E479600595ACA /* DetailSongRouter.swift in Sources */,
 				F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */,
-				F7D147AC28D68ACE00655F19 /* Song.swift in Sources */,
+				F7D147AC28D68ACE00655F19 /* MediaResponse.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
