@@ -23,6 +23,7 @@ final class MainRouter: MainRouterProtocol {
         
         view.presenter = presenter
         view.setTabControllers(tabViews)
+        
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router

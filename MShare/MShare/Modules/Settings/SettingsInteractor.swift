@@ -9,10 +9,12 @@ import Foundation
 
 protocol SettingsInteractorIntputProtocol {
     var presenter: SettingsInteractorOutputProtocol? { get set }
+    
+    func makeSettinsSections()
 }
 
 protocol SettingsInteractorOutputProtocol: AnyObject {
-    
+    func didCatchSettingsSections(_ settingsSection: [SettingsSection])
 }
 
 final class SettingsInteractor {
@@ -22,5 +24,12 @@ final class SettingsInteractor {
 // MARK: - SettingsInteractorInputProtocol
 
 extension SettingsInteractor: SettingsInteractorIntputProtocol {
+    
+    func makeSettinsSections() {
+        let settingsSections: [SettingsSection] = [.favorites([.firstFavorites]),
+                                                           .privacy([.aboutUs, .privacyPolicyAndTerms])]
+        
+        presenter?.didCatchSettingsSections(settingsSections)
+    }
     
 }

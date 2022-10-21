@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SafariServices
 
-protocol SettingsRouterProtocol: ModuleRouterProtocol { }
+protocol SettingsRouterProtocol: ModuleRouterProtocol {
+    func presentBrowserScreen(from view: SettingsViewProtocol, forUrlString urlString: String)
+}
 
 final class SettingsRouter: SettingsRouterProtocol {
     
@@ -29,6 +32,12 @@ final class SettingsRouter: SettingsRouterProtocol {
     
     func createModule() -> UIViewController {
         return SettingsRouter.createModule()
+    }
+    
+    func presentBrowserScreen(from view: SettingsViewProtocol, forUrlString urlString: String) {
+        let safariViewController = SFSafariViewController(url: URL(string: urlString)!)
+        
+        view.viewController.present(safariViewController, animated: true)
     }
     
 }

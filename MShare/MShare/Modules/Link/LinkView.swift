@@ -81,8 +81,10 @@ final class LinkView: ViewController<LinkContentView> {
 private extension LinkView {
     
     func setupViews() {
-        contentView.linkTextField.delegate = self
-        contentView.linkTextField.addTarget(self, action: #selector(UIResponder.becomeFirstResponder), for: .editingDidEndOnExit)
+        contentView.linkTextField.make {
+            $0.delegate = self
+            $0.addTarget(self, action: #selector(UIResponder.becomeFirstResponder), for: .editingDidEndOnExit)
+        }
     }
     
     func setupNavigationBar() {

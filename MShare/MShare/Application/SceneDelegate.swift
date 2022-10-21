@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         mainView = MainRouter.createModule()
         
         #if DEBUG
-        mainView?.selectedTab(.link)
+        mainView?.selectedTab(.settings)
         #endif
         
         if let url = connectionOptions.urlContexts.first?.url {
