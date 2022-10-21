@@ -13,16 +13,6 @@ enum SettingsSection {
     case favorites(SettingItems)
     case privacy(SettingItems)
     
-    var countOfSection: Int {
-        switch self {
-        case .favorites(let items):
-            return items.count
-            
-        case .privacy(let items):
-            return items.count
-        }
-    }
-    
     var items: SettingItems {
         switch self {
         case .favorites(let items):
@@ -31,6 +21,10 @@ enum SettingsSection {
         case .privacy(let items):
             return items
         }
+    }
+    
+    var countOfSection: Int {
+        return items.count
     }
     
     var title: String {
