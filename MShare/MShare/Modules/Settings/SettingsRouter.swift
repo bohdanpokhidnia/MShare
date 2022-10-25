@@ -9,6 +9,7 @@ import UIKit
 import SafariServices
 
 protocol SettingsRouterProtocol: ModuleRouterProtocol {
+    func pushAboutUsScreen(from view: SettingsViewProtocol)
     func presentBrowserScreen(from view: SettingsViewProtocol, forUrlString urlString: String)
 }
 
@@ -32,6 +33,12 @@ final class SettingsRouter: SettingsRouterProtocol {
     
     func createModule() -> UIViewController {
         return SettingsRouter.createModule()
+    }
+    
+    func pushAboutUsScreen(from view: SettingsViewProtocol) {
+        let aboutUs = AboutUsView()
+        
+        view.viewController.navigationController?.pushViewController(aboutUs, animated: true)
     }
     
     func presentBrowserScreen(from view: SettingsViewProtocol, forUrlString urlString: String) {

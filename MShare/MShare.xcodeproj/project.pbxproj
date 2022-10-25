@@ -17,6 +17,8 @@
 		F72E82FD2895777F008D7702 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FC2895777F008D7702 /* TableView.swift */; };
 		F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E8300289578A2008D7702 /* TableViewCell.swift */; };
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
+		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
+		F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */; };
 		F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */; };
 		F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */; };
 		F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A8BF128D39D4800EAB5BD /* Label.swift */; };
@@ -138,6 +140,8 @@
 		F72E82FC2895777F008D7702 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		F742652E2905318900B87BBF /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
 		F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuView.swift; sourceTree = "<group>"; };
 		F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuViewCell.swift; sourceTree = "<group>"; };
 		F75A8BF128D39D4800EAB5BD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -500,6 +504,7 @@
 		F7902827289309940058CC19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F742652E2905318900B87BBF /* AboutUsView.swift */,
 				F7902828289309940058CC19 /* SettingsContentView.swift */,
 			);
 			path = Views;
@@ -567,6 +572,7 @@
 				F7D589C0289ABDF60073709D /* MediaTableViewCell.swift */,
 				F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */,
 				F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */,
+				F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -797,6 +803,7 @@
 				F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */,
 				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
 				F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */,
+				F742652F2905318900B87BBF /* AboutUsView.swift in Sources */,
 				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
 				F7D9853028FA9C0500F54E24 /* ModuleRouterProtocol.swift in Sources */,
 				F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */,
@@ -814,6 +821,7 @@
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,
+				F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
 				F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */,
 				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,

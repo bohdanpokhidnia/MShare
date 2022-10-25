@@ -75,10 +75,10 @@ enum SettingіItem {
             return .disclosureIndicator
             
         case .aboutUs:
-            return .detailButton
+            return .disclosureIndicator
             
         case .privacyPolicyAndTerms:
-            return .detailDisclosureButton
+            return .disclosureIndicator
         }
     }
 }

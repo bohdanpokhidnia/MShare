@@ -71,11 +71,11 @@ extension SettingsPresenter: SettingsPresenterProtocol {
             break
             
         case .aboutUs:
-            break
+            guard let view else { return }
+            router?.pushAboutUsScreen(from: view)
             
         case .privacyPolicyAndTerms:
             guard let view else { return }
-            
             router?.presentBrowserScreen(from: view, forUrlString: "https://www.google.com.ua")
         }
     }
