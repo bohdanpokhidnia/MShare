@@ -39,7 +39,7 @@ final class LinkContentView: View {
             $0.inputAccessoryView = toolBar
             $0.inputAccessoryView?.isHidden = true
             $0.returnKeyType = .search
-            #if DEBUG
+            #if DEV
             $0.text = "https://music.apple.com/ua/album/demon-fire/1533816185?i=1533816334&l=uk"
             #endif
         }

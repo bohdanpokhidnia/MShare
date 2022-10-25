@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         mainView = MainRouter.createModule()
         
-        #if DEBUG
+        #if DEV
         mainView?.selectedTab(.settings)
         #endif
         
