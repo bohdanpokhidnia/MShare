@@ -67,6 +67,7 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
             menuItems.append(.init(horizontalMenuAction: action, available: $0.isAvailable))
         }
         menuItems.append(.init(horizontalMenuAction: .shareCover, available: true))
+        menuItems.append(.init(horizontalMenuAction: .saveToFavorite, available: true))
         
         view?.setupContent(withState: song, withHorizontalActionMenuItem: menuItems)
     }

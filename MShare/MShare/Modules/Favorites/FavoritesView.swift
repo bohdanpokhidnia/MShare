@@ -26,7 +26,6 @@ final class FavoritesView: ViewController<FavoritesContentView> {
         super.viewDidLoad()
         
         title = "Favorites"
-        contentView.backgroundColor = .systemOrange
     }
 
 }

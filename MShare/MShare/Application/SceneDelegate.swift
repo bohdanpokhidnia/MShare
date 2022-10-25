@@ -29,11 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         window = UIWindow(windowScene: windowScene)
-//        #if DEBUG
-//        window?.rootViewController = DetailSongRouter.createModule(song: .mock)
-//        #else
+        #if DETAIL
+        window?.rootViewController = DetailSongRouter.createModule(song: .mock)
+        #else
         window?.rootViewController = mainView?.viewController
-//        #endif
+        #endif
         window?.backgroundColor(color: .systemBackground)
         window?.makeKeyAndVisible()
     }

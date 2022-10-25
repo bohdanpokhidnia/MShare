@@ -113,9 +113,7 @@ extension DetailSongView: HorizontalActionMenuDelegate {
         
         switch action {
         case .shareAppleMusicLink, .shareSpotifyLink, .shareYouTubeMusicLink:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                horizontalActionMenuView.set(animationStyle: .normal)
-            }
+            stopLoadingAnimation(for: horizontalActionMenuView)
             
         case .shareCover:
             guard let coverImage = contentView.makeImage() else { return }
@@ -123,6 +121,20 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             presenter?.shareCover(cover: coverImage) {
                 horizontalActionMenuView.set(animationStyle: .normal)
             }
+        case .saveToFavorite:
+            stopLoadingAnimation(for: horizontalActionMenuView)
+        }
+    }
+    
+}
+
+// MARK: - Private Methods
+
+private extension DetailSongView {
+    
+    func stopLoadingAnimation(for horizontalActionMenuView: HorizontalActionMenuView) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            horizontalActionMenuView.set(animationStyle: .normal)
         }
     }
     

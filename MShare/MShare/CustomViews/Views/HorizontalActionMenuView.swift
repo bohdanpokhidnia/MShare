@@ -20,6 +20,7 @@ enum HorizontalMenuAction: String, CaseIterable {
     case shareSpotifyLink = "Spotify"
     case shareYouTubeMusicLink = "YoutubeMusic"
     case shareCover
+    case saveToFavorite
     
     var image: UIImage? {
         switch self {
@@ -34,6 +35,9 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .shareCover:
             return nil
+            
+        case .saveToFavorite:
+            return UIImage(named: "saveToFavorite")
         }
     }
     
@@ -50,6 +54,9 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .shareCover:
             return "Share cover"
+            
+        case .saveToFavorite:
+            return "Save"
         }
     }
     
@@ -67,7 +74,7 @@ final class HorizontalActionMenuView: View {
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.sectionInset = .init(horizontal: 16)
+        collectionViewFlowLayout.sectionInset = UIEdgeInsets(horizontal: 16)
         collectionViewFlowLayout.minimumLineSpacing = 20
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
