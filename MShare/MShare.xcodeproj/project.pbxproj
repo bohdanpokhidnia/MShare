@@ -19,6 +19,14 @@
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
 		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
 		F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */; };
+		F74B75BA290AF66200DBCD46 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75B9290AF66200DBCD46 /* DatabaseManager.swift */; };
+		F74B75BE290AF73100DBCD46 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F74B75BD290AF73100DBCD46 /* RealmSwift */; };
+		F74B75C0290AF7CC00DBCD46 /* DBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75BF290AF7CC00DBCD46 /* DBError.swift */; };
+		F74B75C3290AF87400DBCD46 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75C2290AF87400DBCD46 /* MediaModel.swift */; };
+		F74B75C5290B029700DBCD46 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75C4290B029700DBCD46 /* ServiceModel.swift */; };
+		F74B75C7290B045800DBCD46 /* DatabaseManager+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75C6290B045800DBCD46 /* DatabaseManager+Base.swift */; };
+		F74B75C9290B046500DBCD46 /* DatabaseManager+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75C8290B046500DBCD46 /* DatabaseManager+Media.swift */; };
+		F74B75CB290B0EA700DBCD46 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74B75CA290B0EA700DBCD46 /* MockData.swift */; };
 		F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */; };
 		F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */; };
 		F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A8BF128D39D4800EAB5BD /* Label.swift */; };
@@ -142,6 +150,13 @@
 		F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		F742652E2905318900B87BBF /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
+		F74B75B9290AF66200DBCD46 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		F74B75BF290AF7CC00DBCD46 /* DBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBError.swift; sourceTree = "<group>"; };
+		F74B75C2290AF87400DBCD46 /* MediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
+		F74B75C4290B029700DBCD46 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		F74B75C6290B045800DBCD46 /* DatabaseManager+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManager+Base.swift"; sourceTree = "<group>"; };
+		F74B75C8290B046500DBCD46 /* DatabaseManager+Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManager+Media.swift"; sourceTree = "<group>"; };
+		F74B75CA290B0EA700DBCD46 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		F756924A28A5774700119BD8 /* HorizontalActionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuView.swift; sourceTree = "<group>"; };
 		F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuViewCell.swift; sourceTree = "<group>"; };
 		F75A8BF128D39D4800EAB5BD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -238,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74B75BE290AF73100DBCD46 /* RealmSwift in Frameworks */,
 				F774B9332891B00500438A37 /* Kingfisher in Frameworks */,
 				F774B9362891B01D00438A37 /* SnapKit in Frameworks */,
 				F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */,
@@ -286,6 +302,26 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F74B75BB290AF66400DBCD46 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F74B75BF290AF7CC00DBCD46 /* DBError.swift */,
+				F74B75B9290AF66200DBCD46 /* DatabaseManager.swift */,
+				F74B75C6290B045800DBCD46 /* DatabaseManager+Base.swift */,
+				F74B75C8290B046500DBCD46 /* DatabaseManager+Media.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		F74B75C1290AF85800DBCD46 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F74B75C2290AF87400DBCD46 /* MediaModel.swift */,
+				F74B75C4290B029700DBCD46 /* ServiceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F7653FB0289452A200FC47FA /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +356,7 @@
 				F774B9472891B20F00438A37 /* Core */,
 				F7D589BF289ABD310073709D /* CustomViews */,
 				F7D147AD28D68AD300655F19 /* Responses */,
+				F74B75C1290AF85800DBCD46 /* Models */,
 				F774B9392891B10B00438A37 /* Modules */,
 				F7D147A028D684BC00655F19 /* Services */,
 				F774B9382891B04600438A37 /* Resources */,
@@ -523,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				F7D147A528D685A700655F19 /* Network */,
+				F74B75BB290AF66400DBCD46 /* Database */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -534,6 +572,7 @@
 				F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */,
 				F7D1479E28D684B600655F19 /* NetworkService.swift */,
 				F7D147A728D685E800655F19 /* RequestBuilder.swift */,
+				F74B75CA290B0EA700DBCD46 /* MockData.swift */,
 				F7D147A628D685B900655F19 /* Endpoints */,
 			);
 			path = Network;
@@ -666,6 +705,7 @@
 				F773112028D5A10300642926 /* FirebaseAnalyticsSwift */,
 				F773112228D5A10300642926 /* FirebaseCrashlytics */,
 				F700AAED28F223C7005390E4 /* NotificationToast */,
+				F74B75BD290AF73100DBCD46 /* RealmSwift */,
 			);
 			productName = MShare;
 			productReference = F774B91A2891AEDC00438A37 /* MShare.app */;
@@ -703,6 +743,7 @@
 				F774B9342891B01D00438A37 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */,
+				F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = F774B91B2891AEDC00438A37 /* Products */;
 			projectDirPath = "";
@@ -777,6 +818,7 @@
 				F7C85DFE28DBA3AF007D0170 /* LoadingButton.swift in Sources */,
 				F777BE4A289E479600595ACA /* DetailSongPresenter.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
+				F74B75BA290AF66200DBCD46 /* DatabaseManager.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
 				F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */,
@@ -793,6 +835,7 @@
 				F7D9852928FA977500F54E24 /* FavoritesView.swift in Sources */,
 				F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
+				F74B75CB290B0EA700DBCD46 /* MockData.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
 				F7D1479F28D684B600655F19 /* NetworkService.swift in Sources */,
@@ -812,10 +855,14 @@
 				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
 				F777BE4B289E479600595ACA /* DetailSongRouter.swift in Sources */,
 				F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */,
+				F74B75C3290AF87400DBCD46 /* MediaModel.swift in Sources */,
+				F74B75C5290B029700DBCD46 /* ServiceModel.swift in Sources */,
+				F74B75C9290B046500DBCD46 /* DatabaseManager+Media.swift in Sources */,
 				F7D147AC28D68ACE00655F19 /* MediaResponse.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
+				F74B75C0290AF7CC00DBCD46 /* DBError.swift in Sources */,
 				F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */,
 				F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */,
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
@@ -824,6 +871,7 @@
 				F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
 				F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */,
+				F74B75C7290B045800DBCD46 /* DatabaseManager+Base.swift in Sources */,
 				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
 				F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
@@ -1261,6 +1309,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.32.1;
+			};
+		};
 		F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1292,6 +1348,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */;
 			productName = NotificationToast;
+		};
+		F74B75BD290AF73100DBCD46 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		F773111C28D5A10300642926 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

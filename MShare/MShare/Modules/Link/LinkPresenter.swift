@@ -5,7 +5,7 @@
 //  Created by Bohdan Pokhidnia on 28.07.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol LinkPresenterProtocol: AnyObject {
     var view: LinkViewProtocol? { get set }
@@ -78,8 +78,10 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         view?.resetPositionLinkTextField()
     }
     
-    func didFetchSong(_ detailSong: DetailSongEntity) {
-        router?.presentDetailSongScreen(from: view, for: detailSong) { [weak view] in
+    func didFetchMedia(mediaResponse: MediaResponse, cover: UIImage?) {
+        guard let cover else { return }
+        
+        router?.presentDetailSongScreen(from: view, mediaResponse: mediaResponse, cover: cover) { [weak view] in
             view?.cleaningLinkTextField()
             view?.hideLoading(completion: nil)
         }

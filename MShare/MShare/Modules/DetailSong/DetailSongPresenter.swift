@@ -9,18 +9,19 @@ import UIKit
 
 protocol DetailSongPresenterProtocol: AnyObject {
     var view: DetailSongViewProtocol? { get set }
-    var interactor: DetailSongInteractorIntputProtocol? { get set }
+    var interactor: DetailSongInteractorInputProtocol? { get set }
     var router: DetailSongRouterProtocol? { get set }
     
     func viewDidLoad()
     func dismissAction()
     func copyCoverToBuffer(fromView view: View)
     func shareCover(cover: UIImage, completion: (() -> Void)?)
+    func saveToFavorite()
 }
 
 final class DetailSongPresenter {
     var view: DetailSongViewProtocol?
-    var interactor: DetailSongInteractorIntputProtocol?
+    var interactor: DetailSongInteractorInputProtocol?
     var router: DetailSongRouterProtocol?
 }
 
@@ -29,7 +30,7 @@ final class DetailSongPresenter {
 extension DetailSongPresenter: DetailSongPresenterProtocol {
     
     func viewDidLoad() {
-        interactor?.requestSong()
+        interactor?.requestMedia()
     }
     
     func dismissAction() {
@@ -53,23 +54,27 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         router?.shareImage(view: view, image: cover, completion: completion)
     }
     
+    func saveToFavorite() {
+        interactor?.saveToDatabase()
+    }
+    
 }
 
 // MARK: - DetailSongInteractorOutputProtocol
 
 extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     
-    func didLoadSong(_ song: DetailSongEntity) {
+    func didLoadDetailMedia(_ detailMedia: DetailSongEntity) {
         var menuItems = [HorizontalActionMenuItem]()
         
-        song.services.forEach {
+        detailMedia.services.forEach {
             guard let action = HorizontalMenuAction(rawValue: $0.type) else { return }
             menuItems.append(.init(horizontalMenuAction: action, available: $0.isAvailable))
         }
         menuItems.append(.init(horizontalMenuAction: .shareCover, available: true))
         menuItems.append(.init(horizontalMenuAction: .saveToFavorite, available: true))
         
-        view?.setupContent(withState: song, withHorizontalActionMenuItem: menuItems)
+        view?.setupContent(withState: detailMedia, withHorizontalActionMenuItem: menuItems)
     }
     
 }

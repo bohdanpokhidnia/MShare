@@ -21,7 +21,7 @@ protocol LinkInteractorOutputProtocol: AnyObject {
     func didCatchStringFromBuffer(_ stringFromBuffer: String)
     func didShowKeyboard(_ keyboardFrame: NSValue)
     func didHideKeyboard(_ keyboardFrame: NSValue)
-    func didFetchSong(_ detailSong: DetailSongEntity)
+    func didFetchMedia(mediaResponse: MediaResponse, cover: UIImage?)
     func didCatchError(_ error: NetworkError)
 }
 
@@ -130,29 +130,7 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                       let cover = UIImage(data: imageData) else { return }
                 
                 DispatchQueue.main.async {
-                    switch mediaResponse.mediaType {
-                    case .song:
-                        guard let song = mediaResponse.song else { return }
-                        let detailSong = DetailSongEntity(songName: song.songName,
-                                                          artistName: song.artistName,
-                                                          image: cover,
-                                                          sourceURL: song.songUrl,
-                                                          services: mediaResponse.services)
-                        
-                        
-                        self?.presenter?.didFetchSong(detailSong)
-                        
-                        
-                    case .album:
-                        guard let album = mediaResponse.album else { return }
-                        let detailAlbum = DetailSongEntity(songName: album.albumName,
-                                                           artistName: album.artistName,
-                                                           image: cover,
-                                                           sourceURL: album.albumUrl,
-                                                           services: mediaResponse.services)
-                        
-                        self?.presenter?.didFetchSong(detailAlbum)
-                    }
+                    self?.presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: cover)
                 }
             }
         }

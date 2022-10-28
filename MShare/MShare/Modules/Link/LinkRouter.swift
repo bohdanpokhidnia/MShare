@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LinkRouterProtocol: ModuleRouterProtocol {
-    func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity, completion: (() -> Void)?)
+    func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?)
 }
 
 class LinkRouter: LinkRouterProtocol {
@@ -34,8 +34,8 @@ class LinkRouter: LinkRouterProtocol {
         return LinkRouter.createModule()
     }
     
-    func presentDetailSongScreen(from view: LinkViewProtocol?, for song: DetailSongEntity, completion: (() -> Void)?) {
-        let detailSongScreen = DetailSongRouter.createModule(song: song)
+    func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
+        let detailSongScreen = DetailSongRouter.createModule(mediaResponse: mediaResponse, cover: cover)
         let navigationController = UINavigationController(rootViewController: detailSongScreen)
         navigationController.modalPresentationStyle = .fullScreen
         

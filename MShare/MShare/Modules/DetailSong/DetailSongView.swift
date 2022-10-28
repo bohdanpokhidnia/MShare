@@ -122,6 +122,7 @@ extension DetailSongView: HorizontalActionMenuDelegate {
                 horizontalActionMenuView.set(animationStyle: .normal)
             }
         case .saveToFavorite:
+            presenter?.saveToFavorite()
             stopLoadingAnimation(for: horizontalActionMenuView)
         }
     }

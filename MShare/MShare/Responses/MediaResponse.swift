@@ -16,7 +16,7 @@ struct MediaResponse: Decodable {
     let mediaType: MediaType
     let song: Song?
     let album: Album?
-    let services: [SongService]
+    let services: [MediaService]
     
     var coverUrlString: String? {
         switch mediaType {
@@ -48,7 +48,7 @@ struct Album: Decodable {
     let serviceType: String
 }
 
-struct SongService: Decodable {
+struct MediaService: Decodable {
     let name: String
     let type: String
     let isAvailable: Bool

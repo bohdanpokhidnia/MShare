@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailSongRouterProtocol {
-    static func createModule(song: DetailSongEntity) -> UIViewController
+    static func createModule(mediaResponse: MediaResponse, cover: UIImage) -> UIViewController
     
     func dismissModule(view: DetailSongViewProtocol?)
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?)
@@ -16,10 +16,10 @@ protocol DetailSongRouterProtocol {
  
 final class DetailSongRouter: DetailSongRouterProtocol {
     
-    static func createModule(song: DetailSongEntity) -> UIViewController {
+    static func createModule(mediaResponse: MediaResponse, cover: UIImage) -> UIViewController {
         let view: DetailSongViewProtocol = DetailSongView()
         let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
-        var interactor: DetailSongInteractorIntputProtocol = DetailSongInteractor(song)
+        var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(mediaResponse: mediaResponse, cover: cover)
         let router = DetailSongRouter()
         
         view.presenter = presenter
