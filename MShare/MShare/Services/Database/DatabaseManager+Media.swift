@@ -11,6 +11,9 @@ import Foundation
 
 extension DatabaseManager: DatabaseManagerMediaProtocol {
     
-    
+    func getMediaModels(by mediaType: MediaType) -> [MediaModel] {
+        let mediaModels = getObjects(MediaModel.self, filter: "mediaType = '\(mediaType.rawValue)'")
+        return mediaModels
+    }
     
 }

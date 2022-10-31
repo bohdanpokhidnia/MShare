@@ -26,13 +26,13 @@ final class MediaTableViewCell: TableViewCell {
         let defaultPlaceholder: UIImage?
         let displayShareButton: Bool
         
-        init(tiile: String,
+        init(title: String,
              subtitle: String? = nil,
              positionNumber: String? = nil,
              imageURL: String? = nil,
              defaultPlaceholder: UIImage? = nil,
              displayShareButton: Bool = false) {
-            self.title = tiile
+            self.title = title
             self.subtitle = subtitle
             self.positionNumber = positionNumber
             self.imageURL = imageURL
@@ -53,8 +53,8 @@ final class MediaTableViewCell: TableViewCell {
     private let iconImageContainerView = View()
     
     private let iconImageView = UIImageView()
-        .setContentMode(.scaleToFill)
-        .backgroundColor(color: .systemGray)
+        .setContentMode(.scaleAspectFit)
+        .backgroundColor(color: .blue)
         .setCornerRadius(5)
         .maskToBounds(true)
     

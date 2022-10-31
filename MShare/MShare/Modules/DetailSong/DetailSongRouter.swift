@@ -40,7 +40,7 @@ final class DetailSongRouter: DetailSongRouterProtocol {
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?) {
         let imageToShare = [image]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.saveToCameraRoll]
+            .make { $0.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.saveToCameraRoll] }
         
         view?.viewController.present(activityViewController, animated: true) {
             completion?()

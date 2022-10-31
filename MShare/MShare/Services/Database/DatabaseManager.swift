@@ -24,7 +24,7 @@ protocol DatabaseManagerBaseProtocol {
 }
 
 protocol DatabaseManagerMediaProtocol {
-    
+    func getMediaModels(by: MediaType) -> [MediaModel]
 }
 
 typealias DatabaseManagerProtocol = DatabaseManagerBaseProtocol & DatabaseManagerMediaProtocol

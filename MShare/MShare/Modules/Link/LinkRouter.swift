@@ -37,7 +37,7 @@ class LinkRouter: LinkRouterProtocol {
     func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
         let detailSongScreen = DetailSongRouter.createModule(mediaResponse: mediaResponse, cover: cover)
         let navigationController = UINavigationController(rootViewController: detailSongScreen)
-        navigationController.modalPresentationStyle = .fullScreen
+            .make { $0.modalPresentationStyle = .fullScreen }
         
         view?.viewController.present(navigationController, animated: true, completion: completion)
     }
