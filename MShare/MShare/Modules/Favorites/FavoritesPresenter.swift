@@ -17,7 +17,8 @@ protocol FavoritesPresenterProtocol: AnyObject {
     func mediaCount(by mediaType: MediaType) -> Int
     func metdiaItem(forIndexPath indexPath: IndexPath) -> MediaItem?
     func shareUrl(forIndexPath indexPath: IndexPath)
-    func didTapMediaItem(forIndexPath indexPath: IndexPath)
+    func tapOnMediaItem(forIndexPath indexPath: IndexPath)
+    func removeMediaItem(forIndexPath indexPath: IndexPath)
 }
 
 final class FavoritesPresenter {
@@ -71,10 +72,16 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
         router?.shareUrl(view: view, urlString: mediaModel.url)
     }
     
-    func didTapMediaItem(forIndexPath indexPath: IndexPath) {
+    func tapOnMediaItem(forIndexPath indexPath: IndexPath) {
         guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
         
         router?.presentDetailSongScreen(fromView: view, mediaModel: mediaModel)
+    }
+    
+    func removeMediaItem(forIndexPath indexPath: IndexPath) {
+        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
+        
+        interactor?.removeMedia(forIndexPath: indexPath, mediaModel)
     }
     
 }
@@ -89,6 +96,28 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
         
         self.songs = songs
         self.albums = albums
+        
+        view?.reloadData()
+    }
+    
+    func didRemoveMedia(forIndexPath indexPath: IndexPath, error: DBError?) {
+        guard error == nil else {
+            view?.showError(error!)
+            return
+        }
+        
+        guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else { return }
+        let row = indexPath.row
+
+        switch section {
+        case .song:
+            songs.remove(at: row)
+
+        case .album:
+            albums.remove(at: row)
+        }
+        
+        reloadData(forIndexPath: indexPath)
     }
     
 }
@@ -111,6 +140,26 @@ private extension FavoritesPresenter {
         }
         
         return mediaModel
+    }
+    
+    func reloadData(forIndexPath indexPath: IndexPath) {
+        guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else { return }
+        
+        switch section {
+        case .song:
+            if songs.isEmpty {
+                view?.reloadData()
+                return
+            }
+            
+        case .album:
+            if albums.isEmpty {
+                view?.reloadData()
+                return
+            }
+        }
+        
+        view?.deleteRow(forIndexPath: indexPath)
     }
     
 }
