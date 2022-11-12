@@ -32,7 +32,7 @@ final class DeveloperTableViewCell: TableViewCell {
     
     private lazy var nameStackView = makeStackView(
         axis: .horizontal,
-        spacing: 60
+        spacing: 40
     )(
         avatarImageView, nameLabel, View()
     )
@@ -45,9 +45,10 @@ final class DeveloperTableViewCell: TableViewCell {
     )
     
     private let avatarImageView = UIImageView()
-        .setCornerRadius(20)
+        .setContentMode(.scaleAspectFill)
+        .backgroundColor(color: .purple)
+        .setCornerRadius(30)
         .maskToBounds(true)
-        .backgroundColor(color: .red)
     
     private let nameLabel = UILabel()
     
@@ -84,7 +85,7 @@ final class DeveloperTableViewCell: TableViewCell {
         }
         
         avatarImageView.snp.makeConstraints {
-            $0.width.height.equalTo(40)
+            $0.width.height.equalTo(60)
         }
     }
     
@@ -112,13 +113,12 @@ private extension DeveloperTableViewCell {
         let attributedString = NSMutableAttributedString(string: instagram.name,
                                                          attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.blue.cgColor])
         attributedString.addAttribute(.link, value: instagram.link, range: NSRange(location: 0, length: instagram.name.count))
-        
         instagramTextView.attributedText = attributedString
         
         let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
-                let size = sizeThatFits(fittingSize)
+        let size = sizeThatFits(fittingSize)
         let topOffset = (bounds.size.height - size.height * instagramTextView.zoomScale) / 2
-                let positiveTopOffset = max(1, topOffset)
+        let positiveTopOffset = max(1, topOffset)
         instagramTextView.contentOffset.y = -positiveTopOffset
     }
     

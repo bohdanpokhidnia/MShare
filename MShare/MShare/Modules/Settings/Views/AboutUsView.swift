@@ -9,6 +9,13 @@ import UIKit
 
 final class AboutUsView: UIViewController {
     
+    struct AboutItem {
+        let name: String
+        let avatar: UIImage?
+        let instagramUserName: String
+        let instagramLink: String
+    }
+    
     // MARK: - UI
     
     private(set) lazy var developersTableView = TableView(style: .plain)
@@ -27,6 +34,17 @@ final class AboutUsView: UIViewController {
         setupViews()
         defineLayout()
     }
+    
+    // MARK: - Private
+    
+    private let aboutItems: [AboutItem] = [.init(name: "Bohdan Pokhidnia",
+                                                 avatar: UIImage(named: "bohdanAvatar"),
+                                                 instagramUserName: "@bohdan.pokhidnia",
+                                                 instagramLink: "https://www.instagram.com/bohdan.pokhidnia"),
+                                           .init(name: "Petro Kopyl",
+                                                 avatar: UIImage(named: "petroAvatar"),
+                                                 instagramUserName: "@petia.kopyl",
+                                                 instagramLink: "https://www.instagram.com/petia.kopyl/")]
     
 }
 
@@ -55,15 +73,18 @@ private extension AboutUsView {
 extension AboutUsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return aboutItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(DeveloperTableViewCell.self, for: indexPath)
-        return cell.set(state: .init(name: "Bohdan Pokhidnia",
-                                     avatar: nil,
-                                     instagram: .init(name: "@bohdan.pokhidnia",
-                                                      link: "https://www.instagram.com/bohdan.pokhidnia")))
+        let item = aboutItems[indexPath.row]
+        
+        return cell.set(state: .init(
+            name: item.name,
+            avatar: item.avatar,
+            instagram: .init(name: item.instagramUserName, link: item.instagramLink)
+        ))
     }
     
 }
