@@ -13,8 +13,6 @@ class TableView: UITableView {
     
     init(style: UITableView.Style) {
         super.init(frame: .zero, style: style)
-        
-        backgroundColor(color: .systemBackground)
     }
     
     @available(*, unavailable)

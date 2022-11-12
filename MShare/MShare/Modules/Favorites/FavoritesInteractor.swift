@@ -12,18 +12,20 @@ protocol FavoritesInteractorIntputProtocol {
     
     func loadMedia()
     func removeMedia(forIndexPath indexPath: IndexPath, _ mediaModel: MediaModel)
+    func loadFavoriteSection()
 }
 
 protocol FavoritesInteractorOutputProtocol: AnyObject {
     func didLoadMedia(_ songs: [MediaModel], _ albums: [MediaModel])
     func didRemoveMedia(forIndexPath indexPath: IndexPath, error: DBError?)
+    func didLoadFavoriteSection(_ sectionIndex: Int)
 }
 
 final class FavoritesInteractor {
     weak var presenter: FavoritesInteractorOutputProtocol?
+    
     private let databaseManager: DatabaseManagerProtocol = DatabaseManager()
-    
-    
+    private var userManager: UserManagerProtocol = UserManager()
 }
 
 // MARK: - FavoritesInteractorInputProtocol
@@ -41,6 +43,12 @@ extension FavoritesInteractor: FavoritesInteractorIntputProtocol {
         databaseManager.delete(mediaModel) { [weak presenter] (error) in
             presenter?.didRemoveMedia(forIndexPath: indexPath, error: error)
         }
+    }
+    
+    func loadFavoriteSection() {
+        let sectionIndex = userManager.favoriteFirstSection ?? 0
+        
+        presenter?.didLoadFavoriteSection(sectionIndex)
     }
     
 }

@@ -12,6 +12,7 @@ protocol DetailSongViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem])
+    func setFavoriteStatus(_ isSaved: Bool)
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?)
     func showCopiedToast()
     func showUnavailableToast()
@@ -46,7 +47,7 @@ private extension DetailSongView {
         title = "Share"
         UINavigationBar.configure(style: .transcelent)
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapDismissBarButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapDismissBarButton))
     }
     
     func setupViews() {
@@ -70,6 +71,12 @@ private extension DetailSongView {
         presenter?.dismissAction()
     }
     
+    @objc
+    func didTapAddToFavorite() {
+        presenter?.saveToFavorite()
+        presenter?.viewDidLoad()
+    }
+    
 }
 
 // MARK: - DetailSongViewProtocol
@@ -82,6 +89,13 @@ extension DetailSongView: DetailSongViewProtocol {
             .make {
                 $0.horizontalActionMenuView.set(menuItems: horizontalActionMenuItem)
             }
+    }
+    
+    func setFavoriteStatus(_ isSaved: Bool) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: isSaved ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(didTapAddToFavorite))
     }
     
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?) {
@@ -121,9 +135,6 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             presenter?.shareCover(cover: coverImage) {
                 horizontalActionMenuView.set(animationStyle: .normal)
             }
-        case .saveToFavorite:
-            presenter?.saveToFavorite()
-            stopLoadingAnimation(for: horizontalActionMenuView)
         }
     }
     

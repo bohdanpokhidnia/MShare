@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         #if DEV
         mainView?.selectedTab(.favorites)
+        #else
+        mainView?.selectedTab(.link)
         #endif
         
         if let url = connectionOptions.urlContexts.first?.url {
@@ -30,8 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         #if DETAIL
-        window?.rootViewController = DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse,
-                                                                   cover: UIImage(named: "mockCover")!)
+        window?.rootViewController = UINavigationController(rootViewController: DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse,
+                                                                                                              cover: UIImage(named: "mockCover")!))
         #else
         window?.rootViewController = mainView?.viewController
         #endif

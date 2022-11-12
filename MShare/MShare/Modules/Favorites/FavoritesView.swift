@@ -14,6 +14,7 @@ protocol FavoritesViewProtocol: AnyObject {
     func showError(_ error: Error)
     func reloadData()
     func deleteRow(forIndexPath indexPath: IndexPath)
+    func setupFavoriteSection(_ sectionIndex: Int)
 }
 
 final class FavoritesView: ViewController<FavoritesContentView> {
@@ -72,12 +73,17 @@ private extension FavoritesView {
     
     func setupNavigationBar() {
         title = "Favorites"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupSubviews() {
         contentView.favotitesTableView.make {
             $0.dataSource = self
             $0.delegate = self
+        }
+        
+        contentView.segmentedControl.didSelectItemWith = { [weak presenter] (index, _) in
+            presenter?.didSelectSection(index)
         }
     }
 
@@ -87,17 +93,8 @@ private extension FavoritesView {
 
 extension FavoritesView: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let count = presenter?.mediaSectionsCount() else { return 0 }
-        return count
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let favoriteSection = FavoriteSection(rawValue: section),
-              let count = presenter?.mediaCount(by: favoriteSection.mediaType)
-        else { return 0 }
-
-        return count
+        return presenter?.mediaCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,11 +105,6 @@ extension FavoritesView: UITableViewDataSource {
             .set(delegate: self, indexPath: indexPath)
             .set(state: mediaItem)
         
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let favoriteSection = FavoriteSection(rawValue: section)
-        return favoriteSection?.title
     }
     
 }
@@ -167,6 +159,10 @@ extension FavoritesView: FavoritesViewProtocol {
     
     func deleteRow(forIndexPath indexPath: IndexPath) {
         contentView.favotitesTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func setupFavoriteSection(_ sectionIndex: Int) {
+        contentView.segmentedControl.selectItemAt(index: sectionIndex, animated: true)
     }
     
 }

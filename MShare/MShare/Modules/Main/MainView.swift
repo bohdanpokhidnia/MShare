@@ -18,22 +18,21 @@ protocol MainViewProtocol: AnyObject {
 final class MainView: UITabBarController {
     
     enum TabItemIndex: Int, CaseIterable {
-        case chart
+//        case chart
+        case favorites
         case link
 //        case search
-        case favorites
         case settings
         
         var title: String {
             switch self {
-            case .chart:
-                return "Chart"
+            case .favorites:
+                return "Favorites"
+//            case .chart:
+//                return "Chart"
             
             case .link:
                 return "Link"
-                
-            case .favorites:
-                return "Favorites"
                 
             case .settings:
                 return "Settings"
@@ -42,14 +41,14 @@ final class MainView: UITabBarController {
         
         var icon: UIImage? {
             switch self {
-            case .chart:
-                return UIImage(systemName: "chart.bar")
-                
-            case .link:
-                return UIImage(systemName: "link")
+//            case .chart:
+//                return UIImage(systemName: "chart.bar")
                 
             case .favorites:
                 return UIImage(systemName: "heart")
+                
+            case .link:
+                return UIImage(systemName: "link")
                 
             case .settings:
                 return UIImage(systemName: "gear")
@@ -58,14 +57,14 @@ final class MainView: UITabBarController {
         
         var router: ModuleRouterProtocol {
             switch self {
-            case .chart:
-                return ChartRouter()
-                
-            case .link:
-                return LinkRouter()
+//            case .chart:
+//                return ChartRouter()
                 
             case .favorites:
                 return FavoritesRouter()
+                
+            case .link:
+                return LinkRouter()
                 
             case .settings:
                 return SettingsRouter()

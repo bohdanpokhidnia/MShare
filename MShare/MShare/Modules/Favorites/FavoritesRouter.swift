@@ -35,9 +35,8 @@ final class FavoritesRouter: FavoritesRouterProtocol {
     }
     
     func shareUrl(view: FavoritesViewProtocol?, urlString: String) {
-        let urlToShare = [urlString]
-        let activityViewController = UIActivityViewController(activityItems: urlToShare, applicationActivities: nil)
-            .make { $0.excludedActivityTypes = [.airDrop, .addToReadingList, .message, .postToTwitter, .copyToPasteboard] }
+        let shareItems = [URL(string: urlString)]
+        let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         
         view?.viewController.present(activityViewController, animated: true)
     }

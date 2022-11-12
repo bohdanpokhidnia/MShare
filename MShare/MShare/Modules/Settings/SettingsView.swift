@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SettingsViewProtocol: AnyObject {
+protocol SettingsViewProtocol: FirstFavoritesDelegate {
     var presenter: SettingsPresenterProtocol? { get set }
     var viewController: UIViewController { get }
 }
@@ -62,7 +62,6 @@ extension SettingsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let countOfSection = presenter?.settingsItemsCount(atSection: section)
-        
         return countOfSection ?? 0
     }
     
@@ -78,7 +77,6 @@ extension SettingsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let title = presenter?.settingsSectionTitle(atSection: section)
-        
         return title
     }
     
@@ -99,5 +97,9 @@ extension SettingsView: UITableViewDelegate {
 // MARK: - SettingsViewProtocol
 
 extension SettingsView: SettingsViewProtocol {
+    
+    func didSelectFavoritesSection(_ sectionIndex: Int) {
+        presenter?.didSelectFavoriteSection(sectionIndex)
+    }
     
 }

@@ -18,6 +18,7 @@ protocol SettingsPresenterProtocol: AnyObject {
     func settingsItemsCount(atSection section: Int) -> Int
     func settingsItemStateInSection(atSection section: Int, andIndex index: Int) -> SettingsItemState
     func didTapSettingItem(atSection section: Int, andIndex index: Int)
+    func didSelectFavoriteSection(_ sectionIndex: Int)
 }
 
 final class SettingsPresenter {
@@ -68,16 +69,18 @@ extension SettingsPresenter: SettingsPresenterProtocol {
         
         switch settingsItem {
         case .firstFavorites:
-            break
+            interactor?.loadFavoritesSectionIndex()
             
         case .aboutUs:
-            guard let view else { return }
             router?.pushAboutUsScreen(from: view)
             
         case .privacyPolicyAndTerms:
-            guard let view else { return }
             router?.presentBrowserScreen(from: view, forUrlString: "https://www.google.com.ua")
         }
+    }
+    
+    func didSelectFavoriteSection(_ sectionIndex: Int) {
+        interactor?.saveFavoritesSectionIndex(sectionIndex)
     }
     
 }
@@ -89,6 +92,10 @@ extension SettingsPresenter: SettingsInteractorOutputProtocol {
     func didCatchSettingsSections(_ settingsSection: [SettingsSection]) {
         self.settingsSections.removeAll()
         self.settingsSections = settingsSection
+    }
+    
+    func didLoadFavoriteSectionIndex(_ sectionIndex: Int) {
+        router?.pushFirstFavoritesScreen(fromView: view, favoriteSectionIndex: sectionIndex, firstFavoritesDelegate: view!)
     }
     
 }

@@ -54,7 +54,7 @@ class View: UIView, ViewLayoutableProtocol {
         super.layoutSubviews()
 
         shadowLayers.forEach {
-            $0.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+            $0.path = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
             $0.shadowPath = $0.path
         }
     }
@@ -127,8 +127,6 @@ extension UIView {
         
         return self
     }
-
-    var cornerRadius: CGFloat { return layer.cornerRadius }
 
     @discardableResult
     func setCornerRadius(_ radius: CGFloat) -> Self {

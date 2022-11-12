@@ -20,7 +20,6 @@ enum HorizontalMenuAction: String, CaseIterable {
     case shareSpotifyLink = "Spotify"
     case shareYouTubeMusicLink = "YoutubeMusic"
     case shareCover
-    case saveToFavorite
     
     var image: UIImage? {
         switch self {
@@ -35,9 +34,6 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .shareCover:
             return nil
-            
-        case .saveToFavorite:
-            return UIImage(named: "saveToFavorite")
         }
     }
     
@@ -54,9 +50,6 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .shareCover:
             return "Share cover"
-            
-        case .saveToFavorite:
-            return "Save"
         }
     }
     

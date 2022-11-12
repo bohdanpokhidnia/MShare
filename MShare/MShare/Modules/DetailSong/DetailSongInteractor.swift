@@ -13,10 +13,12 @@ protocol DetailSongInteractorInputProtocol {
     func requestMedia()
     func copyImageToBuffer(_ image: UIImage?)
     func saveToDatabase()
+    func hasMediaInDatabase()
 }
 
 protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didLoadDetailMedia(_ detailMedia: DetailSongEntity)
+    func hasMediaInDatabase(_ isSaved: Bool)
 }
 
 final class DetailSongInteractor {
@@ -74,13 +76,36 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         
         let mediaModel = MediaModel(mediaResponse: mediaResponse, coverData: coverData)
         
-        databaseManager.save(mediaModel) { (error) in
-            if let error {
-                print("[dev] error: \(error.localizedDescription)")
-            } else {
-                print("[dev] media success saved")
+        if let savedMediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: mediaModel.sourceId) {
+            databaseManager.delete(savedMediaModel) { (error) in
+                print("[dev] \(error?.localizedDescription)")
+            }
+        } else {
+            databaseManager.save(mediaModel) { (error) in
+                if let error {
+                    print("[dev] error: \(error.localizedDescription)")
+                } else {
+                    print("[dev] media success saved")
+                }
             }
         }
+    }
+    
+    func hasMediaInDatabase() {
+        var mediaModel: MediaModel?
+        
+        switch mediaResponse.mediaType {
+        case .song:
+            guard let song = mediaResponse.song else { return }
+            mediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: song.songSourceId)
+            
+        case .album:
+            guard let album = mediaResponse.album else { return }
+            mediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: album.albumSourceId)
+        }
+        
+        let isSaved = mediaModel != nil
+        presenter?.hasMediaInDatabase(isSaved)
     }
     
 }

@@ -13,12 +13,12 @@ protocol FavoritesPresenterProtocol: AnyObject {
     var router: FavoritesRouterProtocol? { get set }
     
     func viewWillAppear()
-    func mediaSectionsCount() -> Int
-    func mediaCount(by mediaType: MediaType) -> Int
+    func mediaCount() -> Int
     func metdiaItem(forIndexPath indexPath: IndexPath) -> MediaItem?
     func shareUrl(forIndexPath indexPath: IndexPath)
     func tapOnMediaItem(forIndexPath indexPath: IndexPath)
     func removeMediaItem(forIndexPath indexPath: IndexPath)
+    func didSelectSection(_ sectionIndex: Int)
 }
 
 final class FavoritesPresenter {
@@ -26,6 +26,7 @@ final class FavoritesPresenter {
     var interactor: FavoritesInteractorIntputProtocol?
     var router: FavoritesRouterProtocol?
     
+    private var favoriteSection: FavoritesView.FavoriteSection = .song
     private var songs = [MediaModel]()
     private var albums = [MediaModel]()
 }
@@ -36,19 +37,11 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
     
     func viewWillAppear() {
         interactor?.loadMedia()
+        interactor?.loadFavoriteSection()
     }
-    
-    func mediaSectionsCount() -> Int {
-        var count = 0
-        
-        count += songs.count > 0 ? 1 : 0
-        count += albums.count > 0 ? 1 : 0
-        
-        return count
-    }
-    
-    func mediaCount(by mediaType: MediaType) -> Int {
-        switch mediaType {
+
+    func mediaCount() -> Int {
+        switch favoriteSection {
         case .song:
             return songs.count
             
@@ -58,7 +51,17 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
     }
     
     func metdiaItem(forIndexPath indexPath: IndexPath) -> MediaItem? {
-        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return nil }
+        let mediaModel: MediaModel?
+        
+        switch favoriteSection {
+        case .song:
+            mediaModel = songs[indexPath.row]
+
+        case .album:
+            mediaModel = albums[indexPath.row]
+        }
+        
+        guard let mediaModel else { return nil }
         let mediaItem = MediaItem(title: mediaModel.name,
                                   subtitle: mediaModel.artistName,
                                   imageURL: mediaModel.coverImageUrl,
@@ -82,6 +85,13 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
         guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
         
         interactor?.removeMedia(forIndexPath: indexPath, mediaModel)
+    }
+    
+    func didSelectSection(_ sectionIndex: Int) {
+        guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else { return }
+        
+        favoriteSection = section
+        view?.reloadData()
     }
     
 }
@@ -120,6 +130,13 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
         reloadData(forIndexPath: indexPath)
     }
     
+    func didLoadFavoriteSection(_ sectionIndex: Int) {
+        guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else { return }
+        
+        favoriteSection = section
+        view?.setupFavoriteSection(sectionIndex)
+    }
+    
 }
 
 // MARK: - Private Methods
@@ -128,6 +145,7 @@ private extension FavoritesPresenter {
     
     func getMediaModel(forIndexPath indexPath: IndexPath) -> MediaModel? {
         guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else { return nil }
+        
         let row = indexPath.row
         var mediaModel: MediaModel?
         

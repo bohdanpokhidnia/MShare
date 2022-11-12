@@ -50,10 +50,12 @@ private extension AboutUsView {
     
 }
 
+// MARK: - UITableViewDataSource
+
 extension AboutUsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

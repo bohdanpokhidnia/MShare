@@ -9,8 +9,9 @@ import UIKit
 import SafariServices
 
 protocol SettingsRouterProtocol: ModuleRouterProtocol {
-    func pushAboutUsScreen(from view: SettingsViewProtocol)
-    func presentBrowserScreen(from view: SettingsViewProtocol, forUrlString urlString: String)
+    func pushAboutUsScreen(from view: SettingsViewProtocol?)
+    func presentBrowserScreen(from view: SettingsViewProtocol?, forUrlString urlString: String)
+    func pushFirstFavoritesScreen(fromView view: SettingsViewProtocol?, favoriteSectionIndex: Int, firstFavoritesDelegate: FirstFavoritesDelegate)
 }
 
 final class SettingsRouter: SettingsRouterProtocol {
@@ -35,16 +36,28 @@ final class SettingsRouter: SettingsRouterProtocol {
         return SettingsRouter.createModule()
     }
     
-    func pushAboutUsScreen(from view: SettingsViewProtocol) {
+    func pushAboutUsScreen(from view: SettingsViewProtocol?) {
         let aboutUs = AboutUsView()
+            .make { $0.hidesBottomBarWhenPushed = true }
         
-        view.viewController.navigationController?.pushViewController(aboutUs, animated: true)
+        view?.viewController.navigationController?.pushViewController(aboutUs, animated: true)
     }
     
-    func presentBrowserScreen(from view: SettingsViewProtocol, forUrlString urlString: String) {
+    func presentBrowserScreen(from view: SettingsViewProtocol?, forUrlString urlString: String) {
         let safariViewController = SFSafariViewController(url: URL(string: urlString)!)
         
-        view.viewController.present(safariViewController, animated: true)
+        view?.viewController.present(safariViewController, animated: true)
+    }
+    
+    func pushFirstFavoritesScreen(fromView view: SettingsViewProtocol?, favoriteSectionIndex: Int, firstFavoritesDelegate: FirstFavoritesDelegate) {
+        let firstFavoriritesView = FirstFavoritesView()
+            .make {
+                $0.delegate = firstFavoritesDelegate
+                $0.favoriteSectionIndex = favoriteSectionIndex
+                $0.hidesBottomBarWhenPushed = true
+            }
+        
+        view?.viewController.navigationController?.pushViewController(firstFavoriritesView, animated: true)
     }
     
 }
