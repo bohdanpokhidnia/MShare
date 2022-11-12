@@ -116,10 +116,9 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
             return
         }
         
-        guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else { return }
         let row = indexPath.row
 
-        switch section {
+        switch favoriteSection {
         case .song:
             songs.remove(at: row)
 
@@ -144,12 +143,10 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
 private extension FavoritesPresenter {
     
     func getMediaModel(forIndexPath indexPath: IndexPath) -> MediaModel? {
-        guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else { return nil }
-        
-        let row = indexPath.row
         var mediaModel: MediaModel?
+        let row = indexPath.row
         
-        switch section {
+        switch favoriteSection {
         case .song:
             mediaModel = songs[row]
             
