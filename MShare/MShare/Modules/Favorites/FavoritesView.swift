@@ -162,7 +162,8 @@ extension FavoritesView: FavoritesViewProtocol {
     }
     
     func setupFavoriteSection(_ sectionIndex: Int) {
-        contentView.segmentedControl.selectItemAt(index: sectionIndex, animated: true)
+        contentView.segmentedControl.selectItemAt(index: sectionIndex)
+        reloadData()
     }
     
 }
