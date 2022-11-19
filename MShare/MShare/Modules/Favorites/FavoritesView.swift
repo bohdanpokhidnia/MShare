@@ -57,6 +57,7 @@ final class FavoritesView: ViewController<FavoritesContentView> {
         
         setupNavigationBar()
         setupSubviews()
+        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {

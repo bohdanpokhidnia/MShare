@@ -12,6 +12,7 @@ protocol FavoritesPresenterProtocol: AnyObject {
     var interactor: FavoritesInteractorIntputProtocol? { get set }
     var router: FavoritesRouterProtocol? { get set }
     
+    func viewDidLoad()
     func viewWillAppear()
     func mediaCount() -> Int
     func metdiaItem(forIndexPath indexPath: IndexPath) -> MediaItem?
@@ -35,9 +36,12 @@ final class FavoritesPresenter {
 
 extension FavoritesPresenter: FavoritesPresenterProtocol {
     
+    func viewDidLoad() {
+        interactor?.loadFavoriteSection()
+    }
+    
     func viewWillAppear() {
         interactor?.loadMedia()
-        interactor?.loadFavoriteSection()
     }
 
     func mediaCount() -> Int {

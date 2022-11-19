@@ -37,6 +37,7 @@
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F773111A28D59F4700642926 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F773111928D59F4700642926 /* GoogleService-Info.plist */; };
+		F769EFB22928B14700EDEED2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F769EFB12928B14700EDEED2 /* UIViewController.swift */; };
 		F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F773111C28D5A10300642926 /* FirebaseAnalytics */; };
 		F773111F28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */; };
 		F773112128D5A10300642926 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F773112028D5A10300642926 /* FirebaseAnalyticsSwift */; };
@@ -172,6 +173,7 @@
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F773111928D59F4700642926 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F769EFB12928B14700EDEED2 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F774B91A2891AEDC00438A37 /* MShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F774B91D2891AEDC00438A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F774B91F2891AEDC00438A37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
 				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
 				F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */,
+				F769EFB12928B14700EDEED2 /* UIViewController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
+				F769EFB22928B14700EDEED2 /* UIViewController.swift in Sources */,
 				F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */,
 				F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */,
 				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
