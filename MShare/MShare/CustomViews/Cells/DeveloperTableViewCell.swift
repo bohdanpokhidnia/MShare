@@ -22,19 +22,23 @@ final class DeveloperTableViewCell: TableViewCell {
     
     // MARK: - UI
     
+    private let contentContainerView = View()
+    
     private lazy var contentStackView = makeStackView(
-        axis: .vertical,
+        axis: .horizontal,
         spacing: 10
     )(
-        nameStackView,
-        instagramStackView
+        avatarImageView,
+        nameStackView
     )
     
     private lazy var nameStackView = makeStackView(
-        axis: .horizontal,
-        spacing: 40
+        axis: .vertical,
+        distibution: .fillProportionally,
+        spacing: 10
     )(
-        avatarImageView, nameLabel, View()
+        nameContainer,
+        roleContainer
     )
     
     private lazy var instagramStackView = makeStackView(
@@ -47,10 +51,23 @@ final class DeveloperTableViewCell: TableViewCell {
     private let avatarImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
         .backgroundColor(color: .purple)
-        .setCornerRadius(30)
+        .setCornerRadius(10)
         .maskToBounds(true)
     
+    private let nameContainer = View()
+    
     private let nameLabel = UILabel()
+        .make {
+            $0.set(numberOfLines: 2)
+            $0.lineBreakMode = .byWordWrapping
+        }
+    
+    private let roleContainer = View()
+    
+    private let roleLabel = UILabel()
+        .make {
+            $0.text = "Developer"
+        }
     
     private let instagramLabel = UILabel()
         .text("Instagram:")
@@ -74,18 +91,36 @@ final class DeveloperTableViewCell: TableViewCell {
     override func setupSubviews() {
         super.setupSubviews()
         
-        contentView.addSubview(contentStackView)
+        nameContainer.addSubview(nameLabel)
+        roleContainer.addSubview(roleLabel)
+        contentContainerView.addSubview(contentStackView)
+        contentView.addSubview(contentContainerView)
     }
     
     override func defineLayout() {
         super.defineLayout()
         
-        contentStackView.snp.makeConstraints {
+        contentContainerView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(all: 16))
         }
         
+        contentStackView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
+        
         avatarImageView.snp.makeConstraints {
-            $0.width.height.equalTo(60)
+            $0.top.bottom.equalToSuperview()
+            $0.width.equalTo(100)
+        }
+        
+        nameLabel.snp.makeConstraints {
+            $0.leading.bottom.equalToSuperview()
+            $0.width.equalTo(80)
+        }
+        
+        roleLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
         }
     }
     
@@ -98,7 +133,9 @@ extension DeveloperTableViewCell {
     @discardableResult
     func set(state: State) -> Self {
         avatarImageView.image = state.avatar
-        nameLabel.text(state.name)
+        nameLabel
+            .text(state.name)
+            .setLineHeight(lineHeight: 5)
         setupInstagramTextView(instagram: state.instagram)
         return self
     }

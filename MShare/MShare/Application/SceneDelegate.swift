@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         mainView = MainRouter.createModule()
         
         #if DEV
-        mainView?.selectedTab(.favorites)
+        mainView?.selectedTab(.settings)
         #else
         mainView?.selectedTab(.link)
         #endif

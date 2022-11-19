@@ -21,6 +21,8 @@ final class AboutUsView: UIViewController {
     private(set) lazy var developersTableView = TableView(style: .plain)
         .make {
             $0.register(class: DeveloperTableViewCell.self)
+            $0.rowHeight = 180
+            $0.separatorStyle = .none
             $0.dataSource = self
             $0.isScrollEnabled = false
         }
@@ -54,6 +56,7 @@ private extension AboutUsView {
     
     func setupNavigationBar() {
         title = "About"
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func setupViews() {
