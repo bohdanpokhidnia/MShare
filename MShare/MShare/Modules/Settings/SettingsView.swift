@@ -41,6 +41,7 @@ private extension SettingsView {
     
     func setupNavigationBar() {
         title = "Settings"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupViews() {
