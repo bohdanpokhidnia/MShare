@@ -86,6 +86,16 @@ private extension SceneDelegate {
         
         guard let urlString = parameters["url"] else { return }
         
+        if let detailSongView = mainView?.viewController.topMostViewController as? DetailSongView {
+            detailSongView.dismiss(animated: false) { [weak self] in
+                self?.selectLinkTab(withUrlString: urlString)
+            }
+        } else {
+            selectLinkTab(withUrlString: urlString)
+        }
+    }
+    
+    func selectLinkTab(withUrlString urlString: String) {
         mainView?.selectedTab(.link)
         UserDefaults().set(urlString, forKey: "incomingURL")
     }
