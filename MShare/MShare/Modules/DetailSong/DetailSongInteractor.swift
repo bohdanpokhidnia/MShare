@@ -78,7 +78,10 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         
         if let savedMediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: mediaModel.sourceId) {
             databaseManager.delete(savedMediaModel) { (error) in
-                print("[dev] \(error?.localizedDescription)")
+                guard error == nil else {
+                    print("[dev] error: \(error)")
+                    return
+                }
             }
         } else {
             databaseManager.save(mediaModel) { (error) in
