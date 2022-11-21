@@ -29,7 +29,10 @@ final class FavoritesContentView: View {
             $0.containerBackgroundColor = .tertiarySystemBackground
             $0.thumbColor = .systemBlue
             $0.useShadow = false
-            $0.useGradient = false
+            $0.useGradient = true
+            $0.thumbGradientColors = [.appPink, .appPink, .appBlue, .appBlue]
+            $0.gradientStartPoint = GradientPoint.topLeading.point
+            $0.gradientEndPoint = GradientPoint.bottomTrailing.point
         }
     
     // MARK: - Lifecycle

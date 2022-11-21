@@ -11,6 +11,11 @@ import UIKit
 @IBDesignable
 open class TTSegmentedControl: UIView {
     
+    // MARK: - My settings
+    
+    open var gradientStartPoint: CGPoint = CGPoint(x: 0.5, y: 0.0)
+    open var gradientEndPoint: CGPoint = CGPoint(x: 0.5, y: 1.0)
+    
     //Version: 0.4.10
     //Configure the options to for a custom design
     @IBInspectable open var defaultTextFont: UIFont = UIFont.helveticaNeueLight(12)
@@ -237,8 +242,8 @@ extension TTSegmentedControl {
         }
         
         if thumbGradientColors != nil && self.useGradient {
-            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+            gradientLayer.startPoint = gradientStartPoint
+            gradientLayer.endPoint = gradientEndPoint
             gradientLayer.backgroundColor = thumbColor.cgColor
             gradientLayer.colors = thumbGradientColors!.map({$0.cgColor})
             thumbView.backgroundColor = UIColor.clear
@@ -772,7 +777,6 @@ extension TTSegmentedControl {
         gradientLayer.colors = thumbGradientColors!.map({$0.cgColor})
     }
 }
-
 
 
 //MARK: - UIView Extension
