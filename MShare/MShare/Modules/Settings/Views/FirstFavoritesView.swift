@@ -53,6 +53,8 @@ private extension FirstFavoritesView {
     
     func setupNavigationBar() {
         title = "First Favorites"
+        
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func setupSubviews() {
