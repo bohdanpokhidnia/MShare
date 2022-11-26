@@ -17,6 +17,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     func copyCoverToBuffer(fromView view: View)
     func shareCover(cover: UIImage, completion: (() -> Void)?)
     func saveToFavorite()
+    func didTapShareMedia(for destinationService: String)
 }
 
 final class DetailSongPresenter {
@@ -59,6 +60,10 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         interactor?.saveToDatabase()
     }
     
+    func didTapShareMedia(for destinationService: String) {
+        interactor?.requestShareMedia(for: destinationService)
+    }
+    
 }
 
 // MARK: - DetailSongInteractorOutputProtocol
@@ -75,6 +80,21 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         menuItems.append(.init(horizontalMenuAction: .shareCover, available: true))
         
         view?.setupContent(withState: detailMedia, withHorizontalActionMenuItem: menuItems)
+    }
+    
+    func didLoadShareMedia(_ shareMedia: ShareMediaResponse) {
+        guard !shareMedia.isEmpty else { return }
+        
+        guard shareMedia.count == 1 else {
+            view?.showAlertShareCount(for: shareMedia)
+            return
+        }
+        
+        guard let shareMediaItem = shareMedia.items.first else { return }
+        
+        router?.shareUrl(view: view, urlString: shareMediaItem.songUrl) { [weak view] in
+            view?.stopShareLoading()
+        }
     }
     
     func hasMediaInDatabase(_ isSaved: Bool) {

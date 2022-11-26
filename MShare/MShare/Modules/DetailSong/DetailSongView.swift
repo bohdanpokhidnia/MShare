@@ -16,6 +16,8 @@ protocol DetailSongViewProtocol: AnyObject {
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?)
     func showCopiedToast()
     func showUnavailableToast()
+    func stopShareLoading()
+    func showAlertShareCount(for shareMedia: ShareMediaResponse)
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
@@ -110,6 +112,16 @@ extension DetailSongView: DetailSongViewProtocol {
         contentView.unvailableToast.show(haptic: .warning)
     }
     
+    func stopShareLoading() {
+        contentView.horizontalActionMenuView.set(animationStyle: .normal)
+    }
+    
+    func showAlertShareCount(for shareMedia: ShareMediaResponse) {
+        let sourceIds = shareMedia.items.map { $0.songSourceId }
+        
+        showAlert(title: "Sorry, we have problem", message: "Make and send screenshot to us \nids:\(sourceIds)")
+    }
+    
 }
 
 // MARK: - HorizontalActionMenuDelegate
@@ -126,7 +138,10 @@ extension DetailSongView: HorizontalActionMenuDelegate {
         }
         
         switch action {
-        case .shareAppleMusicLink, .shareSpotifyLink, .shareYouTubeMusicLink:
+        case .shareAppleMusicLink, .shareSpotifyLink:
+            presenter?.didTapShareMedia(for: action.rawValue)
+            
+        case .shareYouTubeMusicLink:
             stopLoadingAnimation(for: horizontalActionMenuView)
             
         case .shareCover:

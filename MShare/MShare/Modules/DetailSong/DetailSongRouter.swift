@@ -11,6 +11,7 @@ protocol DetailSongRouterProtocol {
     static func createModule(mediaResponse: MediaResponse, cover: UIImage) -> UIViewController
     
     func dismissModule(view: DetailSongViewProtocol?)
+    func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?)
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?)
 }
  
@@ -35,6 +36,15 @@ final class DetailSongRouter: DetailSongRouterProtocol {
         UINavigationBar.configure(style: .defaultBackground)
         
         view?.viewController.dismiss(animated: true)
+    }
+    
+    func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?) {
+        let shareItems = [URL(string: urlString)]
+        let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        
+        DispatchQueue.main.async { [weak view] in
+            view?.viewController.present(activityViewController, animated: true, completion: completion)
+        }
     }
     
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?) {

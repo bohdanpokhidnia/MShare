@@ -11,6 +11,7 @@ protocol DetailSongInteractorInputProtocol {
     var presenter: DetailSongInteractorOutputProtocol? { get set }
     
     func requestMedia()
+    func requestShareMedia(for destinationService: String)
     func copyImageToBuffer(_ image: UIImage?)
     func saveToDatabase()
     func hasMediaInDatabase()
@@ -18,6 +19,7 @@ protocol DetailSongInteractorInputProtocol {
 
 protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didLoadDetailMedia(_ detailMedia: DetailSongEntity)
+    func didLoadShareMedia(_ shareMedia: ShareMediaResponse)
     func hasMediaInDatabase(_ isSaved: Bool)
 }
 
@@ -27,6 +29,7 @@ final class DetailSongInteractor {
     private let mediaResponse: MediaResponse
     private let cover: UIImage
     private let databaseManager: DatabaseManagerProtocol = DatabaseManager()
+    private let networkService: NetworkServiceProtocol = NetworkService()
     
     init(mediaResponse: MediaResponse, cover: UIImage) {
         self.mediaResponse = mediaResponse
@@ -61,6 +64,29 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
                                                services: mediaResponse.services)
             
             presenter?.didLoadDetailMedia(detailAlbum)
+        }
+    }
+    
+    func requestShareMedia(for destinationService: String) {
+        switch mediaResponse.mediaType {
+        case .song:
+            guard let song = mediaResponse.song else { return }
+            
+            networkService.request(endpoint: GetShareMedia(originService: song.serviceType,
+                                                           sourceId: song.songSourceId,
+                                                           destinationService: destinationService))
+            { [weak presenter] (response: ShareMediaResponse?, error) in
+                guard error == nil else {
+                    print("[dev] error: \(error!)")
+                    return
+                }
+                
+                guard let response else { return }
+                presenter?.didLoadShareMedia(response)
+            }
+            
+        case .album:
+            break
         }
     }
     

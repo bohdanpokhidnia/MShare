@@ -12,6 +12,8 @@
 		F7081F36291D7CDC005DF33D /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */; };
 		F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710244F28AD4D920012CE0B /* UIColor+Ext.swift */; };
 		F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710245128AD5C1F0012CE0B /* GradientView.swift */; };
+		F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710AE1D293216E300C758E8 /* ShareMediaResponse.swift */; };
+		F710AE202932183C00C758E8 /* GetShareMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710AE1F2932183C00C758E8 /* GetShareMedia.swift */; };
 		F71412FE2915C60100D569E2 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71412FD2915C60100D569E2 /* UserDefault.swift */; };
 		F71413002915C63600D569E2 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71412FF2915C63600D569E2 /* UserManager.swift */; };
 		F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82F6289563D4008D7702 /* CollectionViewCell.swift */; };
@@ -148,6 +150,8 @@
 		F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSegmentedControl.swift; sourceTree = "<group>"; };
 		F710244F28AD4D920012CE0B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		F710245128AD5C1F0012CE0B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		F710AE1D293216E300C758E8 /* ShareMediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMediaResponse.swift; sourceTree = "<group>"; };
+		F710AE1F2932183C00C758E8 /* GetShareMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetShareMedia.swift; sourceTree = "<group>"; };
 		F71412FD2915C60100D569E2 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		F71412FF2915C63600D569E2 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		F72E82F6289563D4008D7702 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -597,6 +601,7 @@
 			children = (
 				F7D147A328D6858700655F19 /* EndpointProtocol.swift */,
 				F7D147A928D6866600655F19 /* GetSong.swift */,
+				F710AE1F2932183C00C758E8 /* GetShareMedia.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				F7D147AB28D68ACE00655F19 /* MediaResponse.swift */,
+				F710AE1D293216E300C758E8 /* ShareMediaResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -834,6 +840,7 @@
 				F777BE4A289E479600595ACA /* DetailSongPresenter.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
 				F74B75BA290AF66200DBCD46 /* DatabaseManager.swift in Sources */,
+				F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
 				F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */,
@@ -909,6 +916,7 @@
 				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
 				F7D147AA28D6866600655F19 /* GetSong.swift in Sources */,
 				F7D9852B28FA977500F54E24 /* FavoritesRouter.swift in Sources */,
+				F710AE202932183C00C758E8 /* GetShareMedia.swift in Sources */,
 				F777BE4D289E479600595ACA /* DetailSongInteractor.swift in Sources */,
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
