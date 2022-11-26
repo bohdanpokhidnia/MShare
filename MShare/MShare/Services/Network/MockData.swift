@@ -21,16 +21,17 @@ extension NetworkService {
                                                            ])
         
         static let songMediaResponse = MediaResponse(mediaType: .song,
-                                                     song: .init(songSourceId: "1556035501",
-                                                                 songUrl: "https://music.apple.com/ua/album/lividi-sui-gomiti/1556035498?i=1556035501&uo=4",
-                                                                 songName: "LIVIDI SUI GOMITI",
-                                                                 artistName: "Måneskin",
-                                                                 albumName: "Teatro d'Ira - Vol. I",
-                                                                 coverImageUrl: "https://is2-ssl.mzstatic.com/image/thumb/Music115/v4/4b/1a/72/4b1a7220-bee2-8664-7153-adffa8d3df1e/886449063819.jpg/640x640bb.jpg",
+                                                     song: .init(songSourceId: "1479105644",
+                                                                 songUrl: "https://music.apple.com/ua/album/%D1%82%D0%B2%D1%96%D0%B9-%D0%BD%D0%B0-100/1479103809?i=1479105644",
+                                                                 songName: "Твій на 100%",
+                                                                 artistName: "Boombox",
+                                                                 albumName: "Таємний код. Рубікон, Частина 1",
+                                                                 coverImageUrl: "https://is3-ssl.mzstatic.com/image/thumb/Music113/v4/3f/83/79/3f8379c8-f8b1-f77e-6dec-6cfcd6d2e740/cover.jpg/640x640bb.jpg",
                                                                  serviceType: "AppleMusic"),
                                                      album: nil,
-                                                     services: [.init(name: "Apple Music", type: "AppleMusic", isAvailable: true),
-                                                                .init(name: "Spotify", type: "Spotify", isAvailable: false),
+                                                     services: [
+                                                        .init(name: "Spotify", type: "Spotify", isAvailable: true),
+                                                        .init(name: "Apple Music", type: "AppleMusic", isAvailable: true),
                                                                 .init(name: "Youtube Music", type: "YoutubeMusic", isAvailable: false)])
     }
     

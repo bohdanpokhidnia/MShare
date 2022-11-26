@@ -33,7 +33,7 @@ enum HorizontalMenuAction: String, CaseIterable {
             return UIImage(named: "youtubeMusicLogo")
             
         case .shareCover:
-            return nil
+            return UIImage(named: "coverShareIcon")
         }
     }
     
