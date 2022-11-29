@@ -10,6 +10,7 @@ import UIKit
 protocol Blurable {
     func addBlur(style: UIBlurEffect.Style) -> Self
     func addClearBackgroundBlur(style: UIBlurEffect.Style) -> Self
+    func addClipBlur(style: UIBlurEffect.Style, cornerRadius: CGFloat) -> Self
 }
 
 extension Blurable where Self: UIView {
@@ -33,6 +34,20 @@ extension Blurable where Self: UIView {
         
         blurEffectView.frame = bounds
         blurEffectView.backgroundColor = .clear
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        addSubview(blurEffectView)
+        return self
+    }
+    
+    @discardableResult
+    func addClipBlur(style: UIBlurEffect.Style, cornerRadius: CGFloat) -> Self {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.frame = bounds
+        blurEffectView.layer.cornerRadius = cornerRadius
+        blurEffectView.clipsToBounds = true
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         addSubview(blurEffectView)

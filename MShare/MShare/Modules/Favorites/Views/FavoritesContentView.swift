@@ -33,6 +33,7 @@ final class FavoritesContentView: View {
             $0.thumbGradientColors = [.appPink, .appPink, .appBlue, .appBlue]
             $0.gradientStartPoint = GradientPoint.topLeading.point
             $0.gradientEndPoint = GradientPoint.bottomTrailing.point
+            $0.isBlurBackground = true
         }
     
     // MARK: - Lifecycle

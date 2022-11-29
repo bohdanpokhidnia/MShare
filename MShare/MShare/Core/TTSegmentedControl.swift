@@ -15,6 +15,7 @@ open class TTSegmentedControl: UIView {
     
     open var gradientStartPoint: CGPoint = CGPoint(x: 0.5, y: 0.0)
     open var gradientEndPoint: CGPoint = CGPoint(x: 0.5, y: 1.0)
+    open var isBlurBackground: Bool = false
     
     //Version: 0.4.10
     //Configure the options to for a custom design
@@ -252,7 +253,13 @@ extension TTSegmentedControl {
     }
     
     fileprivate func configureContainerView() {
-        containerView.backgroundColor = containerBackgroundColor
+        if isBlurBackground {
+            let blurCornerRadius = cornerRadius < 0 ? 0.5 * containerView.frame.size.height : cornerRadius
+            containerView.addClipBlur(style: .systemChromeMaterial, cornerRadius: blurCornerRadius)
+        } else {
+            containerView.backgroundColor = containerBackgroundColor
+        }
+        
         self.addSubview(containerView)
     }
     
