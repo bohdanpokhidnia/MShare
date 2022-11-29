@@ -20,6 +20,7 @@ protocol DetailSongInteractorInputProtocol {
 protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didLoadDetailMedia(_ detailMedia: DetailSongEntity)
     func didLoadShareMedia(_ shareMedia: ShareMediaResponse)
+    func didCatchError(_ error: NetworkError)
     func hasMediaInDatabase(_ isSaved: Bool)
 }
 
@@ -77,11 +78,15 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
                                                            destinationService: destinationService))
             { [weak presenter] (response: ShareMediaResponse?, error) in
                 guard error == nil else {
-                    print("[dev] error: \(error!)")
+                    presenter?.didCatchError(error!)
                     return
                 }
                 
-                guard let response else { return }
+                guard let response else {
+                    presenter?.didCatchError(.message("Without response"))
+                    return
+                }
+                
                 presenter?.didLoadShareMedia(response)
             }
             

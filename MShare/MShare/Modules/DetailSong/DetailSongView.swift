@@ -17,6 +17,7 @@ protocol DetailSongViewProtocol: AnyObject {
     func showCopiedToast()
     func showUnavailableToast()
     func stopShareLoading()
+    func showError(_ error: String)
     func showAlertShareCount(for shareMedia: ShareMediaResponse)
 }
 
@@ -114,6 +115,10 @@ extension DetailSongView: DetailSongViewProtocol {
     
     func stopShareLoading() {
         contentView.horizontalActionMenuView.set(animationStyle: .normal)
+    }
+    
+    func showError(_ error: String) {
+        showAlert(title: "Ooops...", message: error, alertAction: stopShareLoading)
     }
     
     func showAlertShareCount(for shareMedia: ShareMediaResponse) {

@@ -101,4 +101,10 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         view?.setFavoriteStatus(isSaved)
     }
     
+    func didCatchError(_ error: NetworkError) {
+        DispatchQueue.main.async { [weak view] in
+            view?.showError(error.localizedDescription)
+        }
+    }
+    
 }

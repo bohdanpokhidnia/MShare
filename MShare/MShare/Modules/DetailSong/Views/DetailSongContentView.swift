@@ -157,7 +157,7 @@ private extension DetailSongContentView {
         var height: CGFloat
         
         switch UIDevice.phone {
-        case .iPhoneSE, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .simulator:
+        case .iPhoneSE, .iPhone6, .iPhone6S, .iPhone7, .iPhone8/*, .simulator*/:
             bottomOffset = 0
             height = HorizontalActionMenuView.HorizontalActionMenuHeight + 30
             
