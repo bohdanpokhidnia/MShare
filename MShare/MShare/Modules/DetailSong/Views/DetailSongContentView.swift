@@ -73,8 +73,8 @@ final class DetailSongContentView: View {
         
         horizontalActionMenuView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            $0.height.equalTo(HorizontalActionMenuView.HorizontalActionMenuHeight + 50)
+            
+            defineLayoutForHorizontalMenu($0, forPhone: UIDevice.phone)
         }
     }
     
@@ -136,8 +136,8 @@ private extension DetailSongContentView {
             constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
             
 //        case .iPhone6_7_8_SE2_SE3
-        case .iPhone6, .iPhone6S, .iPhone7, .iPhone8:
-            constraint.top.equalTo(safeAreaLayoutGuide).offset(20)
+        case .iPhone6, .iPhone6S, .iPhone7, .iPhone8/*, .simulator*/:
+            constraint.top.equalTo(safeAreaLayoutGuide).offset(10)
             
 //        case .iPhone6_7_8Plus:
         case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
@@ -150,6 +150,24 @@ private extension DetailSongContentView {
         case .simulator, .unrecognized:
             constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
         }
+    }
+    
+    func defineLayoutForHorizontalMenu(_ constraint: ConstraintMaker, forPhone phone: UIDevice.Phone) {
+        var bottomOffset: CGFloat
+        var height: CGFloat
+        
+        switch UIDevice.phone {
+        case .iPhoneSE, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .simulator:
+            bottomOffset = 0
+            height = HorizontalActionMenuView.HorizontalActionMenuHeight + 30
+            
+        default:
+            bottomOffset = -20
+            height = HorizontalActionMenuView.HorizontalActionMenuHeight + 50
+        }
+        
+        constraint.bottom.equalTo(safeAreaLayoutGuide).offset(bottomOffset)
+        constraint.height.equalTo(height)
     }
     
 }

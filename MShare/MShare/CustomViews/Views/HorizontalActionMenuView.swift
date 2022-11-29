@@ -170,7 +170,6 @@ private extension HorizontalActionMenuView {
             height = UIScreen.main.bounds.height / 5
             
         case .simulator, .unrecognized:
-            print("[dev]  \(UIScreen.main.bounds.height)")
             width = UIScreen.main.bounds.width / 3
             height = UIScreen.main.bounds.height / 4
         }
