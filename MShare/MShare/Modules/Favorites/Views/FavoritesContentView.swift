@@ -15,7 +15,7 @@ final class FavoritesContentView: View {
         .register(class: MediaTableViewCell.self)
         .setRowHeight(80)
         .make {
-            $0.contentInset = UIEdgeInsets(aTop: 16)
+            $0.contentInset = UIEdgeInsets(aTop: 16, aBottom: 48)
         }
     
     private(set) var segmentedControl = TTSegmentedControl()
