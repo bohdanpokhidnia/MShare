@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         mainView = MainRouter.createModule()
         
         #if DEV
-        mainView?.selectedTab(.settings)
+        mainView?.selectedTab(.link)
         #else
         mainView?.selectedTab(.link)
         #endif
@@ -32,8 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         #if DETAIL
-        window?.rootViewController = UINavigationController(rootViewController: DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse,
-                                                                                                              cover: UIImage(named: "mockCover")!))
+        window?.rootViewController = UINavigationController(rootViewController: DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse, cover: UIImage(named: "mockCover")!))
         #else
         window?.rootViewController = mainView?.viewController
         #endif
