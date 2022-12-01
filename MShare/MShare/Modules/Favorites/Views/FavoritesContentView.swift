@@ -18,6 +18,22 @@ final class FavoritesContentView: View {
             $0.contentInset = UIEdgeInsets(aTop: 16, aBottom: 48)
         }
     
+    private lazy var infoStackView = makeStackView(axis: .vertical)(
+        infoImageView,
+        infoLabel
+    )
+    
+    private let infoImageView = UIImageView()
+        .setImage(UIImage(named: "dog"))
+        .setContentMode(.scaleAspectFit)
+    
+    private let infoLabel = UILabel()
+        .set(numberOfLines: 1)
+        .text("You haven't added any songs yet")
+        .text(font: .systemFont(ofSize: 16, weight: .light))
+        .text(alignment: .center)
+        .textColor(.secondaryLabel)
+    
     private(set) var segmentedControl = TTSegmentedControl()
         .make {
             $0.itemTitles = FavoritesView.FavoriteSection.allCases.map { $0.title }
@@ -37,11 +53,18 @@ final class FavoritesContentView: View {
         }
     
     // MARK: - Lifecycle
+    
+    override func setup() {
+        super.setup()
+        
+        infoStackView.hidden(true)
+    }
 
     override func setupSubviews() {
         super.setupSubviews()
         
         addSubviews(favotitesTableView,
+                    infoStackView,
                     segmentedControl)
     }
     
@@ -52,11 +75,38 @@ final class FavoritesContentView: View {
             $0.edges.equalToSuperview()
         }
         
+        infoImageView.snp.makeConstraints {
+            $0.height.equalTo(120)
+        }
+        
+        infoStackView.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+        }
+        
         segmentedControl.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIEdgeInsets(aBottom: 16))
             $0.height.equalTo(50)
         }
+    }
+    
+}
+
+// MARK: - Set
+
+extension FavoritesContentView {
+    
+    @discardableResult
+    func showEmptyInfo(_ show: Bool) -> Self {
+        infoStackView.hidden(!show)
+        return self
+    }
+    
+    @discardableResult
+    func set(infoText: String) -> Self {
+        infoLabel.text = infoText
+        return self
     }
     
 }

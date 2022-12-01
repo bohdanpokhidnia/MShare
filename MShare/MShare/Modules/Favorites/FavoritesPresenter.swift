@@ -93,8 +93,10 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
     
     func didSelectSection(_ sectionIndex: Int) {
         guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else { return }
-        
+
         favoriteSection = section
+        
+        isEmptySection(favoriteSection)
         view?.reloadData()
     }
     
@@ -111,6 +113,7 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
         self.songs = songs
         self.albums = albums
         
+        isEmptySection(favoriteSection)
         view?.reloadData()
     }
     
@@ -130,6 +133,7 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
             albums.remove(at: row)
         }
         
+        isEmptySection(favoriteSection)
         reloadData(forIndexPath: indexPath)
     }
     
@@ -179,6 +183,21 @@ private extension FavoritesPresenter {
         }
         
         view?.deleteRow(forIndexPath: indexPath)
+    }
+    
+    func isEmptySection(_ favoriteSection: FavoritesView.FavoriteSection) {
+        let isEmpty: Bool
+        
+        switch favoriteSection {
+        case .song:
+            isEmpty = songs.count == 0
+            
+        case .album:
+            isEmpty = albums.count == 0
+        }
+        
+        view?.setEmptyInfoText(favoriteSection.emptyText)
+        view?.displayEmptyInfo(isEmpty)
     }
     
 }

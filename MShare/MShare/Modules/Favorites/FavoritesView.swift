@@ -15,6 +15,8 @@ protocol FavoritesViewProtocol: AnyObject {
     func reloadData()
     func deleteRow(forIndexPath indexPath: IndexPath)
     func setupFavoriteSection(_ sectionIndex: Int)
+    func setEmptyInfoText(_ text: String)
+    func displayEmptyInfo(_ show: Bool)
 }
 
 final class FavoritesView: ViewController<FavoritesContentView> {
@@ -30,6 +32,16 @@ final class FavoritesView: ViewController<FavoritesContentView> {
 
             case .album:
                 return "Albums"
+            }
+        }
+        
+        var emptyText: String {
+            switch self {
+            case .song:
+                return "You haven't added any songs yet"
+                
+            case .album:
+                return "You haven't added any albums yet"
             }
         }
         
@@ -165,6 +177,14 @@ extension FavoritesView: FavoritesViewProtocol {
     func setupFavoriteSection(_ sectionIndex: Int) {
         contentView.segmentedControl.selectItemAt(index: sectionIndex)
         reloadData()
+    }
+    
+    func setEmptyInfoText(_ text: String) {
+        contentView.set(infoText: text)
+    }
+    
+    func displayEmptyInfo(_ show: Bool) {
+        contentView.showEmptyInfo(show)
     }
     
 }
