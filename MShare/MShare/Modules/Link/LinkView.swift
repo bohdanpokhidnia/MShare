@@ -73,6 +73,10 @@ final class LinkView: ViewController<LinkContentView> {
         
         presenter.viewWillDisappear()
     }
+    
+    // MARK: - Private
+    
+    private var baseButtonRect: CGRect = .zero
 
 }
 
@@ -203,7 +207,8 @@ extension LinkView: LinkViewProtocol {
         
         contentView.linkTextField.alpha = 0
         
-        var startFrame = contentView.searchButton.frame
+        baseButtonRect = contentView.searchButton.frame
+        var startFrame = baseButtonRect
         startFrame.size.width = startFrame.height
         startFrame.origin = .init(x: contentView.center.x - startFrame.width / 2, y: contentView.center.y - startFrame.height / 2)
         let cornerRadius = (startFrame.width + startFrame.height) / 4
@@ -224,15 +229,10 @@ extension LinkView: LinkViewProtocol {
             UIView.animate(withDuration: animationState.duration) {
                 self.contentView.linkTextField.alpha = 1
             } completion: { _ in
-                var endFrame = self.contentView.searchButton.frame
-                endFrame.size = .init(width: UIScreen.main.bounds.width - self.contentView.controlsPadding * 2, height: self.contentView.controlsHeight)
-                endFrame.origin = .init(x: self.contentView.center.x - endFrame.width / 2, y: self.contentView.center.y - endFrame.height / 2)
-                
                 self.contentView.searchButton.set(animationState: animationState,
-                                             finalFrame: endFrame,
-                                             cornerRadius: 12,
-                                             completion: completion)
-
+                                                  finalFrame: self.baseButtonRect,
+                                                  cornerRadius: 12,
+                                                  completion: completion)
             }
 
         }

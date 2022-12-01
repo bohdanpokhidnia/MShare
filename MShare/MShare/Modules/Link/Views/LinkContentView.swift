@@ -71,10 +71,17 @@ final class LinkContentView: View {
     override func defineLayout() {
         super.defineLayout()
         
+        let linkTextFieldOrigin: CGPoint
         let controlsSize = CGSize(width: controlsWidth, height: controlsHeight)
-
-        linkTextField.frame = .init(origin: .init(x: controlsPadding, y: center.y + controlsHeight + controlsSpacing),
-                                    size: controlsSize)
+        
+        switch UIDevice.phone {
+        case .iPhone6, .iPhone7, .iPhone8, .iPhoneSE, .simulator:
+            linkTextFieldOrigin = .init(x: controlsPadding, y: center.y + controlsHeight / 2 + controlsSpacing)
+        default:
+            linkTextFieldOrigin = .init(x: controlsPadding, y: center.y + controlsHeight + controlsSpacing)
+        }
+        
+        linkTextField.frame = .init(origin: linkTextFieldOrigin, size: controlsSize)
         searchButton.frame = .init(origin: .init(x: controlsPadding, y: linkTextField.frame.origin.y + controlsHeight + controlsSpacing),
                                    size: controlsSize)
         
