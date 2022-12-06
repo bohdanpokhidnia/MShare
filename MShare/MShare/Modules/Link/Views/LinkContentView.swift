@@ -29,7 +29,7 @@ final class LinkContentView: View {
     private(set) lazy var linkTextField = PaddedTextField()
         .make {
             $0.clearButtonMode = .whileEditing
-            $0.placeholder = "Link for search song"
+            $0.placeholder = "Link (song, album)"
             $0.font = .systemFont(ofSize: 14, weight: .medium)
             $0.adjustsFontSizeToFitWidth = true
             $0.textInsets = .init(aLeft: 16, aRight: 24)
