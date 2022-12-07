@@ -39,7 +39,8 @@ final class DetailSongRouter: DetailSongRouterProtocol {
     }
     
     func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?) {
-        let shareItems = [URL(string: urlString)]
+        let string = "Shared from MShare: \(urlString)"
+        let shareItems = [string]
         let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         
         DispatchQueue.main.async { [weak view] in
