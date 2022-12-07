@@ -32,6 +32,7 @@ extension SettingsInteractor: SettingsInteractorIntputProtocol {
     
     func makeSettinsSections() {
         let settingsSections: [SettingsSection] = [.favorites([.firstFavorites]),
+                                                   .access([.accessToGallery]),
                                                    .privacy([.aboutUs, .privacyPolicyAndTerms])]
         
         presenter?.didCatchSettingsSections(settingsSections)

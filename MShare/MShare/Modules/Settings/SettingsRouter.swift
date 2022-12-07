@@ -12,6 +12,7 @@ protocol SettingsRouterProtocol: ModuleRouterProtocol {
     func pushAboutUsScreen(from view: SettingsViewProtocol?)
     func presentBrowserScreen(from view: SettingsViewProtocol?, forUrlString urlString: String)
     func pushFirstFavoritesScreen(fromView view: SettingsViewProtocol?, favoriteSectionIndex: Int, firstFavoritesDelegate: FirstFavoritesDelegate)
+    func pushSystemSettings()
 }
 
 final class SettingsRouter: SettingsRouterProtocol {
@@ -58,6 +59,12 @@ final class SettingsRouter: SettingsRouterProtocol {
             }
         
         view?.viewController.navigationController?.pushViewController(firstFavoriritesView, animated: true)
+    }
+    
+    func pushSystemSettings() {
+        let settingsUrl = URL(string: UIApplication.openSettingsURLString)
+        
+        UIApplication.shared.open(settingsUrl!, options: [:], completionHandler: nil)
     }
     
 }

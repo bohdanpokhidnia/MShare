@@ -71,6 +71,9 @@ extension SettingsPresenter: SettingsPresenterProtocol {
         case .firstFavorites:
             interactor?.loadFavoritesSectionIndex()
             
+        case .accessToGallery:
+            router?.pushSystemSettings()
+            
         case .aboutUs:
             router?.pushAboutUsScreen(from: view)
             

@@ -19,10 +19,6 @@ final class SettingsView: ViewController<SettingsContentView> {
         return self
     }
     
-    // MARK: - UI
-    
-    private(set) lazy var settingsTable = TableView(style: .insetGrouped)
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {

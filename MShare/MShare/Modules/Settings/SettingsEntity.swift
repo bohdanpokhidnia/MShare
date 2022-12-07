@@ -12,6 +12,7 @@ enum SettingsSection {
     
     case favorites(SettingItems)
     case privacy(SettingItems)
+    case access(SettingItems)
     
     var items: SettingItems {
         switch self {
@@ -19,6 +20,9 @@ enum SettingsSection {
             return items
             
         case .privacy(let items):
+            return items
+            
+        case .access(let items):
             return items
         }
     }
@@ -34,12 +38,16 @@ enum SettingsSection {
             
         case .privacy(_):
             return "Information"
+            
+        case .access(_):
+            return "Access"
         }
     }
 }
 
 enum SettingіItem {
     case firstFavorites
+    case accessToGallery
     case aboutUs
     case privacyPolicyAndTerms
     
@@ -47,6 +55,9 @@ enum SettingіItem {
         switch self {
         case .firstFavorites:
             return "First Favorites"
+            
+        case .accessToGallery:
+            return "Access to gallery"
             
         case .aboutUs:
             return "About Us"
@@ -61,6 +72,9 @@ enum SettingіItem {
         case .firstFavorites:
             return UIImage(named: "hearth")
             
+        case .accessToGallery:
+            return UIImage(systemName: "photo.on.rectangle.angled")
+            
         case .aboutUs:
             return UIImage(named: "group")
             
@@ -72,6 +86,9 @@ enum SettingіItem {
     var accessoryType: UITableViewCell.AccessoryType {
         switch self {
         case .firstFavorites:
+            return .disclosureIndicator
+            
+        case .accessToGallery:
             return .disclosureIndicator
             
         case .aboutUs:
