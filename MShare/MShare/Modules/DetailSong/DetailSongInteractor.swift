@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 protocol DetailSongInteractorInputProtocol {
     var presenter: DetailSongInteractorOutputProtocol? { get set }
@@ -15,6 +16,7 @@ protocol DetailSongInteractorInputProtocol {
     func copyImageToBuffer(_ image: UIImage?)
     func saveToDatabase()
     func hasMediaInDatabase()
+    func requestAccessToGallery(_ image: UIImage, completion: (() -> Void)?)
 }
 
 protocol DetailSongInteractorOutputProtocol: AnyObject {
@@ -22,6 +24,7 @@ protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didLoadShareMedia(_ shareMedia: ShareMediaResponse)
     func didCatchError(_ error: NetworkError)
     func hasMediaInDatabase(_ isSaved: Bool)
+    func didRequestedAccessToGallery(_ image: UIImage, completion: (() -> Void)?)
 }
 
 final class DetailSongInteractor {
@@ -140,6 +143,31 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         
         let isSaved = mediaModel != nil
         presenter?.hasMediaInDatabase(isSaved)
+    }
+    
+    func requestAccessToGallery(_ image: UIImage, completion: (() -> Void)?) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        switch status {
+        case .authorized:
+            print("[dev] we are authorized")
+            
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { (status) in
+                switch status {
+                case .authorized:
+                    print("[dev] we give access to save in library")
+                    
+                default:
+                    print("[dev] status requested to gallery: \(status)")
+                }
+            }
+            
+        default:
+            print("[dev] we need say user open settings, status: \(status)")
+        }
+        
+        presenter?.didRequestedAccessToGallery(image, completion: completion)
     }
     
 }

@@ -53,7 +53,7 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
     }
     
     func shareCover(cover: UIImage, completion: (() -> Void)?) {
-        router?.shareImage(view: view, image: cover, completion: completion)
+        interactor?.requestAccessToGallery(cover, completion: completion)
     }
     
     func saveToFavorite() {
@@ -105,6 +105,10 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         DispatchQueue.main.async { [weak view] in
             view?.showError(error.localizedDescription)
         }
+    }
+    
+    func didRequestedAccessToGallery(_ image: UIImage, completion: (() -> Void)?) {
+        router?.shareImage(view: view, image: image, completion: completion)
     }
     
 }

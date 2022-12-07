@@ -151,7 +151,7 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             
         case .shareCover:
             guard let coverImage = contentView.makeImage() else { return }
-            
+
             presenter?.shareCover(cover: coverImage) {
                 horizontalActionMenuView.set(animationStyle: .normal)
             }
