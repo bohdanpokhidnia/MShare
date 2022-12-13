@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 protocol NetworkServiceProtocol {
     var apiBaseURL: URL { get }
@@ -20,13 +21,22 @@ final class NetworkService: NetworkServiceProtocol {
     var apiBaseURL: URL { URL(string: "http://95.179.252.251")! }
     
     var baseHttpHeaders: [String : String] {
-        let regionCode = Locale.current.regionCode ?? "US"
-        
+        let userLocate: String
+
+        if #available(iOS 16.0, *) {
+            userLocate = Locale.current.language.region?.identifier ?? "US"
+        } else {
+            userLocate = Locale.current.regionCode ?? "US"
+        }
+
+        let regionCode = SKPaymentQueue.default().storefront?.countryCode ?? "USA"
+
         return [
             "mshare-os-name": UIDevice.current.systemName,
             "mshare-os-version": UIDevice.current.systemVersion,
             "mshare-device-id": UIDevice.current.identifierForVendor!.uuidString,
-            "mshare-store-region": regionCode
+            "mshare-store-region": regionCode,
+            "mshare-user-locate": userLocate
         ]
     }
     
@@ -40,7 +50,9 @@ final class NetworkService: NetworkServiceProtocol {
         
         let jsonDecoder = endpoint.decoder
         
-        URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, _, error) in
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+            self?.logRequest(urlRequest: urlRequest, response: response, data: data, error: error)
+            
             guard error == nil else {
                 completion(nil, .error(error!))
                 return
@@ -102,6 +114,33 @@ private extension NetworkService {
         } catch {
             completion(.failure(error))
         }
+    }
+    
+    func logRequest(urlRequest: URLRequest?, response: URLResponse?, data: Data?, error: Error?) {
+        let methodWithUrl = "[\(urlRequest?.httpMethod ?? "Unknown method")] \(urlRequest?.url?.absoluteString ?? "Unknown url")"
+        let headers = (urlRequest?.allHTTPHeaderFields ?? ["": ""]).map { "\($0.key): \($0.value)" }
+        let body: String
+        
+        if let httpBody = urlRequest?.httpBody,
+           let stringBody = String(data: httpBody, encoding: .utf8) {
+            body = stringBody
+        } else {
+            body = "NONE"
+        }
+        
+        let error = error?.localizedDescription ?? "NONE"
+        let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+        let response: String
+        
+        if let data,
+           let stringResponse = String(data: data, encoding: .utf8) {
+            response = stringResponse
+        } else {
+            response = "NONE"
+        }
+        
+        let log = "ℹ️ [API] Request: \(methodWithUrl)\nHeaders: \(headers)\nBody: \(body)\nError: \(error)\nStatus code: \(statusCode)\nResponse: \(response)"
+        print(log)
     }
     
 }
