@@ -97,7 +97,7 @@ extension FirstFavoritesView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Test footer"
+        return "This category will display like first in favorites"
     }
     
 }
