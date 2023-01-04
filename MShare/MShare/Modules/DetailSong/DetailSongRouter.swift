@@ -12,7 +12,7 @@ protocol DetailSongRouterProtocol {
     
     func dismissModule(view: DetailSongViewProtocol?)
     func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?)
-    func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?)
+    func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?)
 }
  
 final class DetailSongRouter: DetailSongRouterProtocol {
@@ -48,9 +48,23 @@ final class DetailSongRouter: DetailSongRouterProtocol {
         }
     }
     
-    func shareImage(view: DetailSongViewProtocol?, image: UIImage, completion: (() -> Void)?) {
+    func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?) {
         let imageToShare = [image]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { (activityType, completed, array, error) in
+            guard let activityType,
+                  completed,
+                  error == nil
+            else { return }
+            
+            switch activityType {
+            case .saveToCameraRoll:
+                savedImage?()
+                
+            default:
+                break
+            }
+        }
         
         view?.viewController.present(activityViewController, animated: true) {
             completion?()

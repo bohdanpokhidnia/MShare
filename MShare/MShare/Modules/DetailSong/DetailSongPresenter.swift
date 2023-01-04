@@ -108,7 +108,10 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     }
     
     func didRequestedAccessToGallery(_ image: UIImage, completion: (() -> Void)?) {
-        router?.shareImage(view: view, image: image, completion: completion)
+        router?.shareImage(view: view,
+                           image: image,
+                           savedImage: view?.showSavedImage,
+                           completion: completion)
     }
     
 }

@@ -19,6 +19,7 @@ protocol DetailSongViewProtocol: AnyObject {
     func stopShareLoading()
     func showError(_ error: String)
     func showAlertShareCount(for shareMedia: ShareMediaResponse)
+    func showSavedImage()
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
@@ -125,6 +126,10 @@ extension DetailSongView: DetailSongViewProtocol {
         let sourceIds = shareMedia.items.map { $0.songSourceId }
         
         showAlert(title: "Sorry, we have problem", message: "Make and send screenshot to us \nids:\(sourceIds)")
+    }
+    
+    func showSavedImage() {
+        contentView.imageSavedToast.show(haptic: .success)
     }
     
 }

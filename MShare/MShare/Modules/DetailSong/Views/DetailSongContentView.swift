@@ -23,7 +23,13 @@ final class DetailSongContentView: View {
                                                  titleFont: .systemFont(ofSize: 13, weight: .regular),
                                                  icon: UIImage(systemName: "xmark"),
                                                  iconSpacing: 12,
-                                                 position: .bottom)
+                                                 position: .top)
+    
+    private(set) var imageSavedToast = ToastView(title: "Image saved successfuly",
+                                                 titleFont: .systemFont(ofSize: 13, weight: .regular),
+                                                 icon: UIImage(systemName: "photo.on.rectangle.angled"),
+                                                 iconSpacing: 14,
+                                                 position: .top)
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
