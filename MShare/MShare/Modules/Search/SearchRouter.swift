@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SearchRouterProtocol {
+protocol SearchRouterProtocol: ModuleRouterProtocol {
     static func createModule() -> UIViewController
 }
 
@@ -27,6 +27,10 @@ final class SearchRouter: SearchRouterProtocol {
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
+    }
+    
+    func createModule() -> UIViewController {
+        return SearchRouter.createModule()
     }
     
 }

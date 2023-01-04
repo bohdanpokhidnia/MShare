@@ -30,6 +30,9 @@ final class MainView: UITabBarController {
                 return "Favorites"
 //            case .chart:
 //                return "Chart"
+                
+//            case .search:
+//                return "Search"
             
             case .link:
                 return "Link"
@@ -41,6 +44,9 @@ final class MainView: UITabBarController {
         
         var icon: UIImage? {
             switch self {
+//            case .search:
+//                return nil
+                
 //            case .chart:
 //                return UIImage(systemName: "chart.bar")
                 
@@ -62,6 +68,9 @@ final class MainView: UITabBarController {
                 
             case .favorites:
                 return FavoritesRouter()
+                
+//            case .search:
+//                return SearchRouter()
                 
             case .link:
                 return LinkRouter()
