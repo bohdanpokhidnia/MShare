@@ -72,6 +72,7 @@
 		F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */; };
 		F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */; };
 		F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */; };
+		F77FAA66296F59640017BB33 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77FAA65296F59640017BB33 /* UIApplication.swift */; };
 		F785E3A128C3998200DE1BC0 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
@@ -206,6 +207,7 @@
 		F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartContentView.swift; sourceTree = "<group>"; };
 		F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInteractor.swift; sourceTree = "<group>"; };
 		F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHeaderView.swift; sourceTree = "<group>"; };
+		F77FAA65296F59640017BB33 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
 				F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */,
 				F769EFB12928B14700EDEED2 /* UIViewController.swift */,
+				F77FAA65296F59640017BB33 /* UIApplication.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				F7081F36291D7CDC005DF33D /* TTSegmentedControl.swift in Sources */,
 				F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
+				F77FAA66296F59640017BB33 /* UIApplication.swift in Sources */,
 				F74B75CB290B0EA700DBCD46 /* MockData.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,

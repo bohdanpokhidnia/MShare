@@ -113,7 +113,7 @@ final class CoverView: View {
     private let coverViewTopOffset: CGFloat = 16
     private let labelsViewTopOffset: CGFloat = 4
     private let viewBottomOffset: CGFloat = 22
-    private let coverImageWidth: CGFloat = UIScreen.main.bounds.width / 1.5
+    private let coverImageWidth: CGFloat = UIApplication.windowScene.screen.bounds.width / 1.5
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCoverView))
     
 }

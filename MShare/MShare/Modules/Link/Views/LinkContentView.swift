@@ -14,14 +14,15 @@ final class LinkContentView: View {
     
     // MARK: - UI
     
-    private(set) lazy var controlsWidth = UIScreen.main.bounds.width - controlsPadding * 2
+    private(set) lazy var controlsWidth = UIApplication.windowScene.screen.bounds.width - controlsPadding * 2
     let controlsHeight: CGFloat = 48
     let controlsPadding: CGFloat = 16
     
     private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     private lazy var copyButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
     
-    private lazy var toolBar = UIToolbar(frame: .init(origin: .zero, size: .init(width: UIScreen.main.bounds.width, height: toolBarHeight)))
+    private lazy var toolBar = UIToolbar(frame: .init(origin: .zero, size: .init(width: UIApplication.windowScene.screen.bounds.width,
+                                                                                 height: toolBarHeight)))
         .make {
             $0.items = [flexibleSpace, copyButton, flexibleSpace]
         }

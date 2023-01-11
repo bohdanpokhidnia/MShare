@@ -146,32 +146,36 @@ private extension HorizontalActionMenuView {
     }
     
     static func calculateSize(forPhone phone: UIDevice.Phone) -> CGSize {
+        let screenSize = UIApplication.windowScene.screen.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
         var width: CGFloat = 0
         var height: CGFloat = 0
         
         switch phone {
         case .iPhoneSE:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
+            width = screenWidth / 3
+            height = screenHeight / 4
             
 //        case .iPhone6_7_8_SE2_SE3
         case .iPhone6, .iPhone6S, .iPhone7, .iPhone8:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
+            width = screenWidth / 3
+            height = screenHeight / 4
             
 //        case .iPhone6_7_8Plus:
         case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
+            width = screenWidth / 3
+            height = screenHeight / 4
             
 //        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
         case .iPhoneXR, .iPhoneXS, .iPhoneXSMax, .iPhone11, .iPhone11ProMax, .iPhone12, .iPhone12Pro, .iPhone12ProMax, .iPhone13, .iPhone13Pro, .iPhone14, .iPhoneX, .iPhone11Pro, .iPhone12Mini, .iPhone13Mini, .iPhone13ProMax, .iPhone14Plus, .iPhone14Pro, .iPhone14ProMax:
-            width = UIScreen.main.bounds.width / 3 - 10
-            height = UIScreen.main.bounds.height / 5
+            width = screenWidth / 3 - 10
+            height = screenHeight / 5
             
         case .simulator, .unrecognized:
-            width = UIScreen.main.bounds.width / 3
-            height = UIScreen.main.bounds.height / 4
+            width = screenWidth / 3
+            height = screenHeight / 4
         }
         
         return .init(width: width, height: height)
