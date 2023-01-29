@@ -16,10 +16,12 @@ final class FavoritesRouter: FavoritesRouterProtocol {
     
     static func createModule() -> UIViewController {
         @Inject var userManager: UserManagerProtocol
+        @Inject var databaseManager: DatabaseManagerProtocol
         
         let view: FavoritesViewProtocol = FavoritesView()
         let presenter: FavoritesPresenterProtocol & FavoritesInteractorOutputProtocol = FavoritesPresenter()
-        var interactor: FavoritesInteractorIntputProtocol = FavoritesInteractor(userManager: userManager)
+        var interactor: FavoritesInteractorIntputProtocol = FavoritesInteractor(userManager: userManager,
+                                                                                databaseManager: databaseManager)
         let router = FavoritesRouter()
         
         view.presenter = presenter

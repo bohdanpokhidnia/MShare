@@ -32,10 +32,14 @@ final class DetailSongInteractor {
     
     private let mediaResponse: MediaResponse
     private let cover: UIImage
-    private let databaseManager: DatabaseManagerProtocol = DatabaseManager()
+
     private let networkService: NetworkServiceProtocol = NetworkService()
+    private let databaseManager: DatabaseManagerProtocol
     
-    init(mediaResponse: MediaResponse, cover: UIImage) {
+    init(databaseManager: DatabaseManagerProtocol,
+         mediaResponse: MediaResponse,
+         cover: UIImage) {
+        self.databaseManager = databaseManager
         self.mediaResponse = mediaResponse
         self.cover = cover
     }

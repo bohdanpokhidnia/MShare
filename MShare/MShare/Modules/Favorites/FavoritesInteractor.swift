@@ -24,11 +24,12 @@ protocol FavoritesInteractorOutputProtocol: AnyObject {
 final class FavoritesInteractor {
     weak var presenter: FavoritesInteractorOutputProtocol?
     
-    private let databaseManager: DatabaseManagerProtocol = DatabaseManager()
     private var userManager: UserManagerProtocol
+    private var databaseManager: DatabaseManagerProtocol
     
-    init(userManager: UserManagerProtocol) {
+    init(userManager: UserManagerProtocol, databaseManager: DatabaseManagerProtocol) {
         self.userManager = userManager
+        self.databaseManager = databaseManager
     }
 }
 

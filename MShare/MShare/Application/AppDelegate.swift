@@ -12,6 +12,7 @@ import FirebaseCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private lazy var userManager = UserManager()
+    private lazy var databaseManager = DatabaseManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         DependencyManager {
             Module { self.userManager as UserManagerProtocol }
+            Module { self.databaseManager as DatabaseManagerProtocol }
         }.build()
         
         return true
