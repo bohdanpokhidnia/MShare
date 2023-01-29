@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var onboarding: UIViewController?
     var mainView: MainViewProtocol?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,6 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         configureNavigationBarStyle()
         configureTabBarStyle()
         
+        @Inject var userManager: UserManagerProtocol
+        let displayOnboarding = userManager.displayOnboarding ?? false
+        
+        onboarding = OnboardingRouter.createModule()
         mainView = MainRouter.createModule()
         
         #if DEV
@@ -31,13 +36,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         window = UIWindow(windowScene: windowScene)
-        #if DETAIL
-        let detailScreen = DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse, cover: UIImage(named: "mockCover")!)
         
+        #if DETAIL
+        let detailScreen = DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse,
+                                                         cover: UIImage(named: "mockCover")!)
         window?.rootViewController = UINavigationController(rootViewController: detailScreen)
         #else
-        window?.rootViewController = mainView?.viewController
+        window?.rootViewController = displayOnboarding ? mainView?.viewController : onboarding
         #endif
+        
         window?.backgroundColor(color: .systemBackground)
         window?.makeKeyAndVisible()
     }
@@ -98,6 +105,7 @@ private extension SceneDelegate {
     
     func selectLinkTab(withUrlString urlString: String) {
         mainView?.selectedTab(.link)
+        
         UserDefaults().set(urlString, forKey: "incomingURL")
     }
     

@@ -25,7 +25,11 @@ final class FavoritesInteractor {
     weak var presenter: FavoritesInteractorOutputProtocol?
     
     private let databaseManager: DatabaseManagerProtocol = DatabaseManager()
-    private var userManager: UserManagerProtocol = UserManager()
+    private var userManager: UserManagerProtocol
+    
+    init(userManager: UserManagerProtocol) {
+        self.userManager = userManager
+    }
 }
 
 // MARK: - FavoritesInteractorInputProtocol

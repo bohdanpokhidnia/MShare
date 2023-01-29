@@ -79,6 +79,9 @@ extension SettingsPresenter: SettingsPresenterProtocol {
             
         case .privacyPolicyAndTerms:
             router?.presentBrowserScreen(from: view, forUrlString: "https://www.google.com.ua")
+            
+        case .versionApp:
+            interactor?.showOnboarding()
         }
     }
     
@@ -99,6 +102,10 @@ extension SettingsPresenter: SettingsInteractorOutputProtocol {
     
     func didLoadFavoriteSectionIndex(_ sectionIndex: Int) {
         router?.pushFirstFavoritesScreen(fromView: view, favoriteSectionIndex: sectionIndex, firstFavoritesDelegate: view!)
+    }
+    
+    func didShowOnboarding() {
+        router?.showOnboarding()
     }
     
 }

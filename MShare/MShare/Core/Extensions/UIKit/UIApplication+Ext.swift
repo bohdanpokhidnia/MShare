@@ -10,5 +10,15 @@ import UIKit
 extension UIApplication {
     
     static var windowScene: UIWindowScene { shared.connectedScenes.first as! UIWindowScene }
+    static var sceneDelegate: SceneDelegate { windowScene.delegate as! SceneDelegate }
+    
+    static func load(vc: UIViewController) {
+        let window = UIWindow(windowScene: Self.windowScene)
+        sceneDelegate.window = window
+        
+        window.rootViewController = vc
+        window.backgroundColor(color: .systemBackground)
+        window.makeKeyAndVisible()
+    }
     
 }

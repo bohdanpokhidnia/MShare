@@ -20,14 +20,26 @@ final class OnboardingView: ViewController<OnboardingContentView> {
         return self
     }
     
-    // MARK: - UI
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         add(child: contentView.pageController, to: contentView.containerPageController)
+        
+        setupActionHandlers()
+    }
+    
+}
+
+// MARK: - Setup
+
+private extension OnboardingView {
+    
+    func setupActionHandlers() {
+        contentView.startUseButton.whenTap { [weak self] in
+            self?.presenter?.didTapStartUse()
+        }
     }
     
 }

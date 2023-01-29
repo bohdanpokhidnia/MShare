@@ -25,6 +25,7 @@ extension SettingsTableViewCell {
             var cellConfig: UIListContentConfiguration = defaultContentConfiguration()
             cellConfig.text = state.title
             cellConfig.image = state.image
+            cellConfig.imageProperties.cornerRadius = 4
             
             contentConfiguration = cellConfig
         } else {

@@ -13,17 +13,24 @@ protocol SettingsInteractorIntputProtocol {
     func makeSettinsSections()
     func loadFavoritesSectionIndex()
     func saveFavoritesSectionIndex(_ sectionIndex: Int)
+    func showOnboarding()
 }
 
 protocol SettingsInteractorOutputProtocol: AnyObject {
     func didCatchSettingsSections(_ settingsSection: [SettingsSection])
     func didLoadFavoriteSectionIndex(_ sectionIndex: Int)
+    
+    func didShowOnboarding()
 }
 
 final class SettingsInteractor {
+    private var userManager: UserManagerProtocol
     weak var presenter: SettingsInteractorOutputProtocol?
     
-    private var userManager: UserManagerProtocol = UserManager()
+    init(userManager: UserManagerProtocol) {
+        self.userManager = userManager
+    }
+    
 }
 
 // MARK: - SettingsInteractorInputProtocol
@@ -31,9 +38,14 @@ final class SettingsInteractor {
 extension SettingsInteractor: SettingsInteractorIntputProtocol {
     
     func makeSettinsSections() {
+        guard let versionAppString = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        else { return }
+        
         let settingsSections: [SettingsSection] = [.favorites([.firstFavorites]),
                                                    .access([.accessToGallery]),
-                                                   .privacy([.aboutUs, .privacyPolicyAndTerms])]
+                                                   .privacy([.aboutUs,
+                                                             .privacyPolicyAndTerms,
+                                                             .versionApp(versionAppString)])]
         
         presenter?.didCatchSettingsSections(settingsSections)
     }
@@ -46,6 +58,12 @@ extension SettingsInteractor: SettingsInteractorIntputProtocol {
     
     func saveFavoritesSectionIndex(_ sectionIndex: Int) {
         userManager.favoriteFirstSection = sectionIndex
+    }
+    
+    func showOnboarding() {
+        userManager.displayOnboarding = false
+        
+        presenter?.didShowOnboarding()
     }
     
 }

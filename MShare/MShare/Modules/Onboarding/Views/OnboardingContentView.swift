@@ -32,7 +32,7 @@ final class OnboardingContentView: View {
             $0.isUserInteractionEnabled = false
         }
     
-    private lazy var startUseButton = Button(type: .custom)
+    private(set) lazy var startUseButton = Button(type: .custom)
         .setTitle("Start use")
         .set(font: .onboardingAction)
         .setTitleColor(.systemBlue, forState: .normal)

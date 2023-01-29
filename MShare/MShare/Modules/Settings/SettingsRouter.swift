@@ -13,14 +13,17 @@ protocol SettingsRouterProtocol: ModuleRouterProtocol {
     func presentBrowserScreen(from view: SettingsViewProtocol?, forUrlString urlString: String)
     func pushFirstFavoritesScreen(fromView view: SettingsViewProtocol?, favoriteSectionIndex: Int, firstFavoritesDelegate: FirstFavoritesDelegate)
     func pushSystemSettings()
+    func showOnboarding()
 }
 
 final class SettingsRouter: SettingsRouterProtocol {
     
     static func createModule() -> UIViewController {
+        @Inject var userManager: UserManagerProtocol
+        
         let view: SettingsViewProtocol = SettingsView()
         let presenter: SettingsPresenterProtocol & SettingsInteractorOutputProtocol = SettingsPresenter()
-        var interactor: SettingsInteractorIntputProtocol = SettingsInteractor()
+        var interactor: SettingsInteractorIntputProtocol = SettingsInteractor(userManager: userManager)
         let router = SettingsRouter()
         
         view.presenter = presenter
@@ -65,6 +68,12 @@ final class SettingsRouter: SettingsRouterProtocol {
         let settingsUrl = URL(string: UIApplication.openSettingsURLString)
         
         UIApplication.shared.open(settingsUrl!, options: [:], completionHandler: nil)
+    }
+    
+    func showOnboarding() {
+        let onboarding = OnboardingRouter.createModule()
+        
+        UIApplication.load(vc: onboarding)
     }
     
 }

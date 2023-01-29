@@ -50,6 +50,7 @@ enum SettingіItem {
     case accessToGallery
     case aboutUs
     case privacyPolicyAndTerms
+    case versionApp(String)
     
     var title: String {
         switch self {
@@ -64,6 +65,9 @@ enum SettingіItem {
             
         case .privacyPolicyAndTerms:
             return "Privacy Policy & Terms"
+            
+        case .versionApp(let version):
+            return "Version: \(version)"
         }
     }
     
@@ -80,6 +84,9 @@ enum SettingіItem {
             
         case .privacyPolicyAndTerms:
             return UIImage(named: "privacyPolicy")
+            
+        case .versionApp(_):
+            return UIImage(named: "AppIcon")
         }
     }
     
@@ -96,6 +103,9 @@ enum SettingіItem {
             
         case .privacyPolicyAndTerms:
             return .disclosureIndicator
+            
+        case .versionApp(_):
+            return .none
         }
     }
 }

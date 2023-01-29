@@ -9,14 +9,18 @@ import UIKit
 
 protocol OnboardingRouterProtocol {
     static func createModule() -> UIViewController
+    
+    func showMain()
 }
 
 final class OnboardingRouter: OnboardingRouterProtocol {
     
     static func createModule() -> UIViewController {
+        @Inject var userManager: UserManagerProtocol
+        
         let view: OnboardingViewProtocol = OnboardingView()
         let presenter: OnboardingPresenterProtocol & OnboardingInteractorOutputProtocol = OnboardingPresenter()
-        var interactor: OnboardingInteractorIntputProtocol = OnboardingInteractor()
+        var interactor: OnboardingInteractorIntputProtocol = OnboardingInteractor(userManager: userManager)
         let router = OnboardingRouter()
         
         view.presenter = presenter
@@ -26,6 +30,13 @@ final class OnboardingRouter: OnboardingRouterProtocol {
         interactor.presenter = presenter
         
         return view.viewController
+    }
+    
+    func showMain() {
+        let mainView = MainRouter.createModule()
+        mainView.selectedTab(.link)
+        
+        UIApplication.load(vc: mainView.viewController)
     }
     
 }

@@ -11,6 +11,8 @@ protocol OnboardingPresenterProtocol: AnyObject {
     var view: OnboardingViewProtocol? { get set }
     var interactor: OnboardingInteractorIntputProtocol? { get set }
     var router: OnboardingRouterProtocol? { get set }
+    
+    func didTapStartUse()
 }
 
 final class OnboardingPresenter {
@@ -23,10 +25,18 @@ final class OnboardingPresenter {
 
 extension OnboardingPresenter: OnboardingPresenterProtocol {
     
+    func didTapStartUse() {
+        interactor?.showMain()
+    }
+    
 }
 
 // MARK: - OnboardingInteractorOutputProtocol
 
 extension OnboardingPresenter: OnboardingInteractorOutputProtocol {
+    
+    func displayMain() {
+        router?.showMain()
+    }
     
 }

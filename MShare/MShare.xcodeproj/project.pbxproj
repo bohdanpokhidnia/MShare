@@ -34,6 +34,7 @@
 		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
 		F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73920172985896D00A773D7 /* UIStyleGuide.swift */; };
+		F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739201929866C1000A773D7 /* DependencyManager.swift */; };
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
 		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
 		F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */; };
@@ -187,6 +188,7 @@
 		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
 		F73920172985896D00A773D7 /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
+		F739201929866C1000A773D7 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		F742652E2905318900B87BBF /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 		F774B9392891B10B00438A37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F71E37CB297ABC0800BAF622 /* Onboarding */,
 				F774B93C2891B16600438A37 /* Main */,
 				F77A0DFE28A18EFE00FF4644 /* Chart */,
 				F7902801289309320058CC19 /* Link */,
@@ -490,7 +493,6 @@
 				F7D9852128FA977500F54E24 /* Favorites */,
 				F7902821289309940058CC19 /* Settings */,
 				F777BE42289E479600595ACA /* DetailSong */,
-				F71E37CB297ABC0800BAF622 /* Onboarding */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -520,6 +522,7 @@
 				F71412FD2915C60100D569E2 /* UserDefault.swift */,
 				F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */,
 				F73920172985896D00A773D7 /* UIStyleGuide.swift */,
+				F739201929866C1000A773D7 /* DependencyManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
+				F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */,
 				F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */,
 				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
 				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
