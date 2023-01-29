@@ -31,8 +31,8 @@ final class LinkInteractor {
     
     // MARK: - Initializers
     
-    init() {
-        networkService = NetworkService()
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
     }
     
     deinit {
