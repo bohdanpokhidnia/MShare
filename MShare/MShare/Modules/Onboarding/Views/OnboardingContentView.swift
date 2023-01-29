@@ -34,6 +34,7 @@ final class OnboardingContentView: View {
     
     private lazy var startUseButton = Button(type: .custom)
         .setTitle("Start use")
+        .set(font: .onboardingAction)
         .setTitleColor(.systemBlue, forState: .normal)
         .setTitleColor(.systemBlue.withAlphaComponent(0.7), forState: .highlighted)
         .backgroundColor(color: .white)

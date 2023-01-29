@@ -28,6 +28,7 @@ final class TwoPageViewController: UIViewController {
     
     private let titleLabel = UILabel()
         .text("Quickly get a song link from Apple Music to Spotify and vice versa")
+        .text(font: .onboardingDescription)
         .text(alignment: .center)
         .textColor(.white)
         .set(numberOfLines: 0)

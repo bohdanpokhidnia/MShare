@@ -27,12 +27,13 @@ final class FirstPageViewController: UIViewController {
     
     private let titleLabel = UILabel()
         .text("MShare")
-        .text(font: .systemFont(ofSize: 42))
+        .text(font: .appName)
         .text(alignment: .center)
         .textColor(.white)
     
     private let descriptionLabel = UILabel()
         .text("First mobile application, who give availability share songs between music platforms")
+        .text(font: .onboardingDescription)
         .text(alignment: .center)
         .set(numberOfLines: 0)
         .textColor(.white)

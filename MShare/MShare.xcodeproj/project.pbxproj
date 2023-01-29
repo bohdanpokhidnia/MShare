@@ -31,6 +31,9 @@
 		F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739200B29855C7600A773D7 /* ThirdPageViewController.swift */; };
 		F739201029855DC400A773D7 /* spotifyExample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F739200E29855DC400A773D7 /* spotifyExample.mp4 */; };
 		F739201129855DC400A773D7 /* appleMusicExample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F739200F29855DC400A773D7 /* appleMusicExample.mp4 */; };
+		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
+		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
+		F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73920172985896D00A773D7 /* UIStyleGuide.swift */; };
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
 		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
 		F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */; };
@@ -181,6 +184,9 @@
 		F739200B29855C7600A773D7 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		F739200E29855DC400A773D7 /* spotifyExample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = spotifyExample.mp4; sourceTree = "<group>"; };
 		F739200F29855DC400A773D7 /* appleMusicExample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = appleMusicExample.mp4; sourceTree = "<group>"; };
+		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
+		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
+		F73920172985896D00A773D7 /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
 		F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		F742652E2905318900B87BBF /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
@@ -381,6 +387,15 @@
 			path = OnboardingVideos;
 			sourceTree = "<group>";
 		};
+		F7392012298587A300A773D7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */,
+				F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F74B75BB290AF66400DBCD46 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				F739200D29855DB000A773D7 /* OnboardingVideos */,
+				F7392012298587A300A773D7 /* Fonts */,
 				F774B9262891AEDD00438A37 /* Assets.xcassets */,
 				F774B92B2891AEDD00438A37 /* Info.plist */,
 				F768EF31291065C5009D64A1 /* GoogleService-Info.plist */,
@@ -503,6 +519,7 @@
 				F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */,
 				F71412FD2915C60100D569E2 /* UserDefault.swift */,
 				F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */,
+				F73920172985896D00A773D7 /* UIStyleGuide.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -859,6 +876,8 @@
 				F739201129855DC400A773D7 /* appleMusicExample.mp4 in Resources */,
 				F739201029855DC400A773D7 /* spotifyExample.mp4 in Resources */,
 				F774B92A2891AEDD00438A37 /* LaunchScreen.storyboard in Resources */,
+				F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */,
+				F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */,
 				F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */,
 				F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */,
 			);
@@ -937,6 +956,7 @@
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
 				F7D1479F28D684B600655F19 /* NetworkService.swift in Sources */,
+				F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */,
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,

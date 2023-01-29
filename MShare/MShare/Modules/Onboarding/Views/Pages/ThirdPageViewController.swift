@@ -42,6 +42,7 @@ final class ThirdPageViewController: UIViewController {
     
     private let titleLabel = UILabel()
         .text("Easy share a link from your favorite music platform")
+        .text(font: .onboardingDescription)
         .text(alignment: .center)
         .textColor(.white)
         .set(numberOfLines: 0)
