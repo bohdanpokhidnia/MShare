@@ -49,8 +49,8 @@ final class AboutUsView: UIViewController {
                                            .init(name: "Petro Kopyl",
                                                  role: "Back-end developer",
                                                  avatar: UIImage(named: "petroAvatar"),
-                                                 instagramUserName: "@petia.kopyl",
-                                                 instagramLink: "https://www.instagram.com/petia.kopyl/")]
+                                                 instagramUserName: "@petro_kopyl",
+                                                 instagramLink: "https://www.instagram.com/petro_kopyl/")]
     
 }
 
@@ -60,7 +60,6 @@ private extension AboutUsView {
     
     func setupNavigationBar() {
         title = "About"
-//        navigationItem.largeTitleDisplayMode = .never
     }
     
     func setupViews() {
