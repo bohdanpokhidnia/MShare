@@ -29,8 +29,6 @@
 		F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E8300289578A2008D7702 /* TableViewCell.swift */; };
 		F7309C6E298196F2000DB4E9 /* TwoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */; };
 		F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739200B29855C7600A773D7 /* ThirdPageViewController.swift */; };
-		F739201029855DC400A773D7 /* spotifyExample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F739200E29855DC400A773D7 /* spotifyExample.mp4 */; };
-		F739201129855DC400A773D7 /* appleMusicExample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F739200F29855DC400A773D7 /* appleMusicExample.mp4 */; };
 		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
 		F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73920172985896D00A773D7 /* UIStyleGuide.swift */; };
@@ -113,6 +111,7 @@
 		F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */; };
 		F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C85DFB28DB94D5007D0170 /* PaddedTextField.swift */; };
 		F7C85DFE28DBA3AF007D0170 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */; };
+		F7CC78212987B7B1001CB59C /* appleMusicExample.mov in Resources */ = {isa = PBXBuildFile; fileRef = F7CC78202987B7B1001CB59C /* appleMusicExample.mov */; };
 		F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB647297AD2DB00DB7BF2 /* FirstPageViewController.swift */; };
 		F7D1479F28D684B600655F19 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1479E28D684B600655F19 /* NetworkService.swift */; };
 		F7D147A228D684E700655F19 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A128D684E700655F19 /* NetworkError.swift */; };
@@ -183,8 +182,6 @@
 		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageViewController.swift; sourceTree = "<group>"; };
 		F739200B29855C7600A773D7 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
-		F739200E29855DC400A773D7 /* spotifyExample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = spotifyExample.mp4; sourceTree = "<group>"; };
-		F739200F29855DC400A773D7 /* appleMusicExample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = appleMusicExample.mp4; sourceTree = "<group>"; };
 		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
 		F73920172985896D00A773D7 /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
@@ -263,6 +260,7 @@
 		F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
 		F7C85DFB28DB94D5007D0170 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		F7CC78202987B7B1001CB59C /* appleMusicExample.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = appleMusicExample.mov; sourceTree = "<group>"; };
 		F7CEB647297AD2DB00DB7BF2 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		F7D1479E28D684B600655F19 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F7D147A128D684E700655F19 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -383,8 +381,7 @@
 		F739200D29855DB000A773D7 /* OnboardingVideos */ = {
 			isa = PBXGroup;
 			children = (
-				F739200E29855DC400A773D7 /* spotifyExample.mp4 */,
-				F739200F29855DC400A773D7 /* appleMusicExample.mp4 */,
+				F7CC78202987B7B1001CB59C /* appleMusicExample.mov */,
 			);
 			path = OnboardingVideos;
 			sourceTree = "<group>";
@@ -876,9 +873,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F739201129855DC400A773D7 /* appleMusicExample.mp4 in Resources */,
-				F739201029855DC400A773D7 /* spotifyExample.mp4 in Resources */,
 				F774B92A2891AEDD00438A37 /* LaunchScreen.storyboard in Resources */,
+				F7CC78212987B7B1001CB59C /* appleMusicExample.mov in Resources */,
 				F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */,
 				F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */,
 				F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */,

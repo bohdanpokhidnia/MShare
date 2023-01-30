@@ -12,14 +12,21 @@ final class ThirdPageViewController: UIViewController {
     
     enum PreviewVideo: String {
         case appleMusic = "appleMusicExample"
-        case spotify = "spotifyExample"
         
         var url: URL {
             let resourceName = self.rawValue
-            guard let path = Bundle.main.path(forResource: resourceName, ofType: "mp4")
+            let resourceType = self.type
+            guard let path = Bundle.main.path(forResource: resourceName, ofType: resourceType)
             else { fatalError("video not found") }
             
             return URL(fileURLWithPath: path)
+        }
+        
+        var type: String {
+            switch self {
+            case .appleMusic:
+                return "mov"
+            }
         }
     }
     
@@ -52,7 +59,7 @@ final class ThirdPageViewController: UIViewController {
     private lazy var backgroundPlayerLayer = AVPlayerLayer(player: player)
     private lazy var playerLayer = AVPlayerLayer(player: player)
     
-    private var currentVideo: PreviewVideo = .spotify
+    private var currentVideo: PreviewVideo = .appleMusic
     
     // MARK: - Lifecycle
     
@@ -136,10 +143,10 @@ private extension ThirdPageViewController {
     
     @objc
     func didPlayingVideo() {
-        currentVideo = currentVideo == .appleMusic ? .spotify : .appleMusic
-        
-        let playerItem = AVPlayerItem(url: currentVideo.url)
-        player.replaceCurrentItem(with: playerItem)
+//        currentVideo = currentVideo == .appleMusic ? .spotify : .appleMusic
+//
+//        let playerItem = AVPlayerItem(url: currentVideo.url)
+//        player.replaceCurrentItem(with: playerItem)
         
         playVideoFromStart()
     }
