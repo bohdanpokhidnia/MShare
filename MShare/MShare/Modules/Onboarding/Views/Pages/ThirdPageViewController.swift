@@ -120,6 +120,13 @@ private extension ThirdPageViewController {
         contentStackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(aBottom: 16))
         }
+        
+        titleLabel.sizeToFit()
+        
+        let videoViewHeight = UIApplication.windowScene.screen.bounds.height - UIApplication.safeAreaInsets.top - 200 - (titleLabel.frame.height * 2) - 16 * 3
+        videoView.snp.makeConstraints {
+            $0.height.equalTo(videoViewHeight)
+        }
     }
     
     func setupBackgroundPlayerLayer() {
@@ -131,8 +138,9 @@ private extension ThirdPageViewController {
     }
     
     func setupPlayerLayer() {
-        playerLayer.frame = videoView.frame
-        contentView.layer.addSublayer(playerLayer)
+        videoView.layoutIfNeeded()
+        playerLayer.frame = .init(origin: .zero, size: videoView.frame.size)
+        videoView.layer.addSublayer(playerLayer)
     }
     
 }
