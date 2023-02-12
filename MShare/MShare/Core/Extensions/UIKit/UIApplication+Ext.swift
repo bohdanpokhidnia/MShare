@@ -21,7 +21,7 @@ extension UIApplication {
         sceneDelegate.window = window
         
         window.rootViewController = vc
-        window.backgroundColor(color: .systemBackground)
+        window.backgroundColor(color: .black)
         window.makeKeyAndVisible()
     }
     

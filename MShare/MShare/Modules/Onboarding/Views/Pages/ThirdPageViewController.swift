@@ -151,11 +151,6 @@ private extension ThirdPageViewController {
     
     @objc
     func didPlayingVideo() {
-//        currentVideo = currentVideo == .appleMusic ? .spotify : .appleMusic
-//
-//        let playerItem = AVPlayerItem(url: currentVideo.url)
-//        player.replaceCurrentItem(with: playerItem)
-        
         playVideoFromStart()
     }
     

@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = displayOnboarding ? mainView?.viewController : onboarding
         #endif
         
-        window?.backgroundColor(color: .systemBackground)
+        window?.backgroundColor(color: .black)
         window?.makeKeyAndVisible()
     }
     

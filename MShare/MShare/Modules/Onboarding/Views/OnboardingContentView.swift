@@ -32,17 +32,14 @@ final class OnboardingContentView: View {
             $0.isUserInteractionEnabled = false
         }
     
-    private(set) lazy var startUseButton = Button(type: .custom)
-        .setTitle("Start use")
+    private(set) lazy var letsGoButton = Button(type: .custom)
+        .setTitle("Let's go")
         .set(font: .onboardingAction)
         .setTitleColor(.systemBlue, forState: .normal)
         .setTitleColor(.systemBlue.withAlphaComponent(0.7), forState: .highlighted)
         .backgroundColor(color: .white)
         .setCornerRadius(8)
         .maskToBounds(true)
-        .whenTap {
-            print("[dev] did tap start use")
-        }
     
     // MARK: - Lifecycle
 
@@ -54,7 +51,7 @@ final class OnboardingContentView: View {
             controlsContainerView,
             containerPageController,
             pageControl,
-            startUseButton
+            letsGoButton
         )
         
         pageController.setViewControllers([pages.first!], direction: .forward, animated: true)
@@ -82,7 +79,7 @@ final class OnboardingContentView: View {
             $0.centerX.equalToSuperview()
         }
         
-        startUseButton.snp.makeConstraints {
+        letsGoButton.snp.makeConstraints {
             $0.top.equalTo(pageControl.snp.bottom).inset(UIEdgeInsets(aBottom: -16))
             $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
             $0.height.equalTo(48)
@@ -93,7 +90,8 @@ final class OnboardingContentView: View {
     
     private lazy var pages = [FirstPageViewController(),
                               TwoPageViewController(),
-                              ThirdPageViewController()]
+                              ThirdPageViewController(),
+                              FourPageViewController()]
     
 }
 

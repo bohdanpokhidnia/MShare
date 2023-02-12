@@ -98,6 +98,10 @@ extension Button {
     @discardableResult
     func setTitleColor(_ color: UIColor, forState state: UIControl.State = .normal) -> Self {
         setTitleColor(color, for: state)
+        
+        if state == .normal {
+            setTitleColor(color.withAlphaComponent(0.7), for: .highlighted)
+        }
         return self
     }
     

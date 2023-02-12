@@ -84,6 +84,14 @@
 		F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */; };
 		F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */; };
 		F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */; };
+		F77EE0D5298FAA6D002E7139 /* FourPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0D4298FAA6D002E7139 /* FourPageViewController.swift */; };
+		F77EE0E0298FCA86002E7139 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0D9298FCA86002E7139 /* SignInPresenter.swift */; };
+		F77EE0E1298FCA86002E7139 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DA298FCA86002E7139 /* SignInInteractor.swift */; };
+		F77EE0E2298FCA86002E7139 /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DB298FCA86002E7139 /* SignInRouter.swift */; };
+		F77EE0E3298FCA86002E7139 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DC298FCA86002E7139 /* SignInView.swift */; };
+		F77EE0E4298FCA86002E7139 /* SignInEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DD298FCA86002E7139 /* SignInEntity.swift */; };
+		F77EE0E5298FCA86002E7139 /* SignInContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DF298FCA86002E7139 /* SignInContentView.swift */; };
+		F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0E6298FD9C6002E7139 /* SignInCollectionViewCell.swift */; };
 		F77FAA66296F59640017BB33 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */; };
 		F785E3A128C3998200DE1BC0 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
@@ -233,6 +241,17 @@
 		F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartContentView.swift; sourceTree = "<group>"; };
 		F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInteractor.swift; sourceTree = "<group>"; };
 		F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHeaderView.swift; sourceTree = "<group>"; };
+		F77EE0D4298FAA6D002E7139 /* FourPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourPageViewController.swift; sourceTree = "<group>"; };
+		F77EE0D9298FCA86002E7139 /* SignInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		F77EE0DA298FCA86002E7139 /* SignInInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
+		F77EE0DB298FCA86002E7139 /* SignInRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
+		F77EE0DC298FCA86002E7139 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		F77EE0DD298FCA86002E7139 /* SignInEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInEntity.swift; sourceTree = "<group>"; };
+		F77EE0DF298FCA86002E7139 /* SignInContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInContentView.swift; sourceTree = "<group>"; };
+		F77EE0E6298FD9C6002E7139 /* SignInCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCollectionViewCell.swift; sourceTree = "<group>"; };
+		F77EE0E829900E32002E7139 /* MShareRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShareRelease.entitlements; sourceTree = "<group>"; };
+		F77EE0E929901815002E7139 /* MShareDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShareDebug.entitlements; sourceTree = "<group>"; };
+		F77EE0EA29901824002E7139 /* MShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShare.entitlements; sourceTree = "<group>"; };
 		F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
@@ -374,6 +393,7 @@
 				F7CEB647297AD2DB00DB7BF2 /* FirstPageViewController.swift */,
 				F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */,
 				F739200B29855C7600A773D7 /* ThirdPageViewController.swift */,
+				F77EE0D4298FAA6D002E7139 /* FourPageViewController.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -445,6 +465,9 @@
 		F774B91C2891AEDC00438A37 /* MShare */ = {
 			isa = PBXGroup;
 			children = (
+				F77EE0EA29901824002E7139 /* MShare.entitlements */,
+				F77EE0E929901815002E7139 /* MShareDebug.entitlements */,
+				F77EE0E829900E32002E7139 /* MShareRelease.entitlements */,
 				F774B9372891B03700438A37 /* Application */,
 				F774B9472891B20F00438A37 /* Core */,
 				F7D589BF289ABD310073709D /* CustomViews */,
@@ -483,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				F71E37CB297ABC0800BAF622 /* Onboarding */,
+				F77EE0D8298FCA86002E7139 /* SignIn */,
 				F774B93C2891B16600438A37 /* Main */,
 				F77A0DFE28A18EFE00FF4644 /* Chart */,
 				F7902801289309320058CC19 /* Link */,
@@ -581,6 +605,27 @@
 				F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */,
 			);
 			path = HeaderFooterViews;
+			sourceTree = "<group>";
+		};
+		F77EE0D8298FCA86002E7139 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				F77EE0DE298FCA86002E7139 /* Views */,
+				F77EE0DC298FCA86002E7139 /* SignInView.swift */,
+				F77EE0DA298FCA86002E7139 /* SignInInteractor.swift */,
+				F77EE0D9298FCA86002E7139 /* SignInPresenter.swift */,
+				F77EE0DD298FCA86002E7139 /* SignInEntity.swift */,
+				F77EE0DB298FCA86002E7139 /* SignInRouter.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		F77EE0DE298FCA86002E7139 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F77EE0DF298FCA86002E7139 /* SignInContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F7902801289309320058CC19 /* Link */ = {
@@ -716,6 +761,7 @@
 				F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */,
 				F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */,
 				F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */,
+				F77EE0E6298FD9C6002E7139 /* SignInCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -932,10 +978,12 @@
 				F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
+				F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */,
 				F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */,
 				F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */,
 				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
 				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
+				F77EE0E0298FCA86002E7139 /* SignInPresenter.swift in Sources */,
 				F7FE397329144904000A190F /* FirstFavoritesView.swift in Sources */,
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
@@ -954,6 +1002,7 @@
 				F77FAA66296F59640017BB33 /* UIApplication+Ext.swift in Sources */,
 				F74B75CB290B0EA700DBCD46 /* MockData.swift in Sources */,
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
+				F77EE0E2298FCA86002E7139 /* SignInRouter.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
 				F7D1479F28D684B600655F19 /* NetworkService.swift in Sources */,
 				F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */,
@@ -963,6 +1012,7 @@
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
 				F71E37D5297ABC0800BAF622 /* OnboardingInteractor.swift in Sources */,
 				F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */,
+				F77EE0E4298FCA86002E7139 /* SignInEntity.swift in Sources */,
 				F71E37D8297ABC0800BAF622 /* OnboardingView.swift in Sources */,
 				F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */,
 				F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */,
@@ -982,6 +1032,8 @@
 				F74B75C5290B029700DBCD46 /* ServiceModel.swift in Sources */,
 				F74B75C9290B046500DBCD46 /* DatabaseManager+Media.swift in Sources */,
 				F7D147AC28D68ACE00655F19 /* MediaResponse.swift in Sources */,
+				F77EE0D5298FAA6D002E7139 /* FourPageViewController.swift in Sources */,
+				F77EE0E3298FCA86002E7139 /* SignInView.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F71E37D7297ABC0800BAF622 /* OnboardingContentView.swift in Sources */,
@@ -991,6 +1043,7 @@
 				F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */,
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */,
+				F77EE0E1298FCA86002E7139 /* SignInInteractor.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,
 				F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
@@ -1027,6 +1080,7 @@
 				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
+				F77EE0E5298FCA86002E7139 /* SignInContentView.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
 				F7D147A428D6858700655F19 /* EndpointProtocol.swift in Sources */,
 				F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */,
@@ -1121,6 +1175,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1357,6 +1412,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1393,10 +1449,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0.0.4;
-				DEVELOPMENT_TEAM = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MShare;
@@ -1414,6 +1473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare (App Store)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -12,7 +12,7 @@ protocol OnboardingPresenterProtocol: AnyObject {
     var interactor: OnboardingInteractorIntputProtocol? { get set }
     var router: OnboardingRouterProtocol? { get set }
     
-    func didTapStartUse()
+    func didTapLetsGo()
 }
 
 final class OnboardingPresenter {
@@ -25,8 +25,8 @@ final class OnboardingPresenter {
 
 extension OnboardingPresenter: OnboardingPresenterProtocol {
     
-    func didTapStartUse() {
-        interactor?.showMain()
+    func didTapLetsGo() {
+        router?.presentSignInScreen(in: view)
     }
     
 }
@@ -35,8 +35,6 @@ extension OnboardingPresenter: OnboardingPresenterProtocol {
 
 extension OnboardingPresenter: OnboardingInteractorOutputProtocol {
     
-    func displayMain() {
-        router?.showMain()
-    }
+    
     
 }

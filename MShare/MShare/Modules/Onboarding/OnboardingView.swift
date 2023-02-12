@@ -37,8 +37,8 @@ final class OnboardingView: ViewController<OnboardingContentView> {
 private extension OnboardingView {
     
     func setupActionHandlers() {
-        contentView.startUseButton.whenTap { [weak self] in
-            self?.presenter?.didTapStartUse()
+        contentView.letsGoButton.whenTap { [weak self] in
+            self?.presenter?.didTapLetsGo()
         }
     }
     

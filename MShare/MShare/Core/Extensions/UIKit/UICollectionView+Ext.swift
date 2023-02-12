@@ -20,4 +20,16 @@ extension UICollectionView {
         return cell as! T
     }
     
+    @discardableResult
+    func dataSourced(_ dataSource: UICollectionViewDataSource) -> Self {
+        self.dataSource = dataSource
+        return self
+    }
+    
+    @discardableResult
+    func delegated(_ delegate: UICollectionViewDelegate) -> Self {
+        self.delegate = delegate
+        return self
+    }
+    
 }

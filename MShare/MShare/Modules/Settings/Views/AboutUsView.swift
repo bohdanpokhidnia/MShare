@@ -87,13 +87,9 @@ extension AboutUsView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(DeveloperTableViewCell.self, for: indexPath)
         let item = aboutItems[indexPath.row]
-        
-        return cell
-            .set(state: .init(name: item.name,
-                              role: item.role,
-                              avatar: item.avatar))
+        let cell = tableView.dequeue(DeveloperTableViewCell.self, for: indexPath)
+        return cell.set(state: .init(name: item.name, role: item.role, avatar: item.avatar))
     }
     
 }
