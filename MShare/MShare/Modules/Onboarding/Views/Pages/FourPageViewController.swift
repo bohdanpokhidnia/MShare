@@ -26,9 +26,9 @@ final class FourPageViewController: UIViewController {
         .setContentMode(.scaleAspectFill)
     
     private let titleLabel = UILabel()
-        .text("Ukraine is currently suffering from the most destructive war since World War II, which is a purely colonial war with no justifications, as Russia is bombing Ukrainian infrastructure, destroying Ukrainian cities and killing civilians, and it's important to support Ukraine and its army by spreading information about the crimes of the Russians and calling for greater support. Ukraine will win.")
+        .text("Ukraine is currently suffering from the most destructive war since World War II, which is a purely colonial war with no justifications, as russia is bombing Ukrainian infrastructure, destroying Ukrainian cities and killing civilians, and it's important to support Ukraine and its army by spreading information about the crimes of the russians and calling for greater support. Ukraine will win.")
         .text(font: .onboardingDescription)
-        .text(alignment: .natural)
+        .text(alignment: .center)
         .textColor(.white)
         .enableMultilines()
         .make {
