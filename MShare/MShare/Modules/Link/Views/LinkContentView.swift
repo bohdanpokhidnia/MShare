@@ -89,6 +89,16 @@ final class LinkContentView: View {
         searchButton.bounds = searchButton.frame
     }
     
+    override func apply(theme: AppTheme) {
+        super.apply(theme: theme)
+        
+        let link = theme.components.link
+        
+        set(component: link.background)
+    }
+    
+    // MARK: - Private
+    
     private let controlsSpacing: CGFloat = 16
     private(set) var toolBarHeight: CGFloat = 40
     

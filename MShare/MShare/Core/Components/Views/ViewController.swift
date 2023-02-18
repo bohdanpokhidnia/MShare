@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController<ContentView: View>: UIViewController {
+class ViewController<ContentView: View>: UIViewController, Themeable {
     
     var contentView: ContentView! {
         return view as? ContentView
@@ -23,11 +23,33 @@ class ViewController<ContentView: View>: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - Override methods
+
+    // MARK: - Lifecycle
     
     override func loadView() {
         view = ContentView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        themeProvider.register(observer: self)
+        
+        let style = traitCollection.userInterfaceStyle
+        themeProvider.set(theme: style == .light ? .light : .dark)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        let style = traitCollection.userInterfaceStyle
+        themeProvider.set(theme: style == .light ? .light : .dark)
+    }
+    
+    //MARK: - Themeable
+    
+    func apply(theme: AppTheme) {
+        
     }
     
 }

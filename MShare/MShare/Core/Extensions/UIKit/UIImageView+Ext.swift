@@ -44,3 +44,18 @@ extension UIImageView {
     }
     
 }
+
+//MARK: - UIComponentsLibrary
+
+extension UIImageView {
+    
+    @discardableResult
+    func set(component: UIComponentsLibrary.Component) -> Self {
+        backgroundColor(color: component.color)
+        setAlpha(component.opacity)
+        setCornerRadius(component.cornerRadius)
+        maskToBounds(true)
+        return self
+    }
+    
+}

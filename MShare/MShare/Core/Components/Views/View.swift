@@ -18,7 +18,7 @@ enum ViewState {
          empty
 }
 
-class View: UIView, ViewLayoutableProtocol {
+class View: UIView, ViewLayoutableProtocol, Themeable {
 
     var shadowLayers = Set<CAShapeLayer>()
 
@@ -39,7 +39,7 @@ class View: UIView, ViewLayoutableProtocol {
     }
 
     func setup() {
-        
+        themeProvider.register(observer: self)
     }
 
     func setupSubviews() {
@@ -48,6 +48,10 @@ class View: UIView, ViewLayoutableProtocol {
 
     func defineLayout() {
 
+    }
+    
+    func apply(theme: AppTheme) {
+        
     }
 
     override func layoutSubviews() {
@@ -217,4 +221,19 @@ extension UIView {
         return convert(bounds, to: space)
     }
 
+}
+
+// MARK: - UIComponentsLibrary
+
+extension View {
+    
+    @discardableResult
+    func set(component: UIComponentsLibrary.Component) -> Self {
+        backgroundColor(color: component.color)
+        setAlpha(component.opacity)
+        setCornerRadius(component.cornerRadius)
+        maskToBounds(true)
+        return self
+    }
+    
 }

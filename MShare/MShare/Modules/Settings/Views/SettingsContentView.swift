@@ -12,6 +12,7 @@ final class SettingsContentView: View {
     private(set) lazy var settingsTableView = TableView(style: .insetGrouped)
         .register(class: SettingsTableViewCell.self)
         .make { $0.isScrollEnabled = false }
+        .backgroundColor(color: .clear)
     
     // MARK: - Lifecycle
 
@@ -27,6 +28,14 @@ final class SettingsContentView: View {
         settingsTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    override func apply(theme: AppTheme) {
+        super.apply(theme: theme)
+        
+        let settings = theme.components.settings
+        
+        set(component: settings.background)
     }
     
 }

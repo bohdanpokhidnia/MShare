@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell, ViewLayoutableProtocol {
+class TableViewCell: UITableViewCell, ViewLayoutableProtocol, Themeable {
     
     // MARK: - Initializers
     
@@ -27,7 +27,7 @@ class TableViewCell: UITableViewCell, ViewLayoutableProtocol {
     // MARK: - ViewLayoutableProtocol
     
     func setup() {
-        
+        themeProvider.register(observer: self)
     }
     
     func setupSubviews() {
@@ -35,6 +35,10 @@ class TableViewCell: UITableViewCell, ViewLayoutableProtocol {
     }
     
     func defineLayout() {
+        
+    }
+    
+    func apply(theme: AppTheme) {
         
     }
     
@@ -47,6 +51,18 @@ extension TableViewCell {
     @discardableResult
     func accessoryType(_ cellAccessoryType: UITableViewCell.AccessoryType) -> Self {
         accessoryType = cellAccessoryType
+        return self
+    }
+    
+}
+
+//MARK: - UIComponentsLibrary
+
+extension TableViewCell {
+    
+    @discardableResult
+    func set(component: UIComponentsLibrary.Component) -> Self {
+        backgroundColor(color: component.color)
         return self
     }
     

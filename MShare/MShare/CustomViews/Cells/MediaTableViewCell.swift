@@ -54,15 +54,11 @@ final class MediaTableViewCell: TableViewCell {
     
     private let iconImageView = UIImageView()
         .setContentMode(.scaleAspectFit)
-        .backgroundColor(color: .blue)
-        .setCornerRadius(5)
-        .maskToBounds(true)
     
     private let positionNumberView = View()
     
     private let positionNumberLabel = UILabel()
         .set(numberOfLines: 1)
-        .text(font: .systemFont(ofSize: 18, weight: .bold))
         .text(alignment: .center)
     
     let labelsView = View()
@@ -80,7 +76,6 @@ final class MediaTableViewCell: TableViewCell {
     
     private let subtitileLabel = UILabel()
         .set(numberOfLines: 1)
-        .textColor(.secondaryLabel)
         .adjustsFontSizeToFitWidth(true)
     
     private let shareButton = Button(type: .system)
@@ -137,6 +132,17 @@ final class MediaTableViewCell: TableViewCell {
         shareButton.snp.makeConstraints {
             $0.width.equalTo(50)
         }
+    }
+    
+    override func apply(theme: AppTheme) {
+        super.apply(theme: theme)
+        
+        let mediaCell = theme.components.mediaCell
+        
+        iconImageView.set(component: mediaCell.icon)
+        titleLabel.set(component: mediaCell.title)
+        subtitileLabel.set(component: mediaCell.subtitle)
+        set(component: mediaCell.background)
     }
     
     // MARK: - Private

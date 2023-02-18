@@ -117,6 +117,15 @@
 		F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12C28A811E3009DFC96 /* CoverView.swift */; };
 		F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12E28A82539009DFC96 /* Blurable.swift */; };
 		F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */; };
+		F7C2B83329A1320E00569C5B /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83229A1320E00569C5B /* ThemeProvider.swift */; };
+		F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83529A1327D00569C5B /* AppThemeProvider.swift */; };
+		F7C2B83829A132B000569C5B /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83729A132B000569C5B /* Themeable.swift */; };
+		F7C2B83A29A1332200569C5B /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83929A1332200569C5B /* AppTheme.swift */; };
+		F7C2B83C29A1336B00569C5B /* UIComponentsLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83B29A1336B00569C5B /* UIComponentsLibrary.swift */; };
+		F7C2B83F29A136E100569C5B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83E29A136E100569C5B /* Settings.swift */; };
+		F7C2B84129A1393B00569C5B /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B84029A1393B00569C5B /* Link.swift */; };
+		F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B84229A13A2200569C5B /* Favorites.swift */; };
+		F7C2B84529A13DD900569C5B /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B84429A13DD900569C5B /* MediaCell.swift */; };
 		F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C85DFB28DB94D5007D0170 /* PaddedTextField.swift */; };
 		F7C85DFE28DBA3AF007D0170 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */; };
 		F7CC78212987B7B1001CB59C /* appleMusicExample.mov in Resources */ = {isa = PBXBuildFile; fileRef = F7CC78202987B7B1001CB59C /* appleMusicExample.mov */; };
@@ -277,6 +286,15 @@
 		F79ED12C28A811E3009DFC96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		F79ED12E28A82539009DFC96 /* Blurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blurable.swift; sourceTree = "<group>"; };
 		F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
+		F7C2B83229A1320E00569C5B /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
+		F7C2B83529A1327D00569C5B /* AppThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeProvider.swift; sourceTree = "<group>"; };
+		F7C2B83729A132B000569C5B /* Themeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
+		F7C2B83929A1332200569C5B /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		F7C2B83B29A1336B00569C5B /* UIComponentsLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentsLibrary.swift; sourceTree = "<group>"; };
+		F7C2B83E29A136E100569C5B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F7C2B84029A1393B00569C5B /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		F7C2B84229A13A2200569C5B /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		F7C2B84429A13DD900569C5B /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		F7C85DFB28DB94D5007D0170 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		F7CC78202987B7B1001CB59C /* appleMusicExample.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = appleMusicExample.mov; sourceTree = "<group>"; };
@@ -533,6 +551,7 @@
 		F774B9472891B20F00438A37 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F7C2B83429A1321100569C5B /* Theme */,
 				F774B94A2891B31E00438A37 /* Components */,
 				F790283328931E9E0058CC19 /* Extensions */,
 				F774B94D2891B37A00438A37 /* ViewLayoutableProtocol.swift */,
@@ -700,6 +719,30 @@
 				F7DB96BF28CCE4700031FD22 /* UIKit */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F7C2B83429A1321100569C5B /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				F7C2B83D29A1336F00569C5B /* UIComponentsLibrary */,
+				F7C2B83529A1327D00569C5B /* AppThemeProvider.swift */,
+				F7C2B83229A1320E00569C5B /* ThemeProvider.swift */,
+				F7C2B83729A132B000569C5B /* Themeable.swift */,
+				F7C2B83929A1332200569C5B /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		F7C2B83D29A1336F00569C5B /* UIComponentsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				F7C2B83B29A1336B00569C5B /* UIComponentsLibrary.swift */,
+				F7C2B84229A13A2200569C5B /* Favorites.swift */,
+				F7C2B84029A1393B00569C5B /* Link.swift */,
+				F7C2B83E29A136E100569C5B /* Settings.swift */,
+				F7C2B84429A13DD900569C5B /* MediaCell.swift */,
+			);
+			path = UIComponentsLibrary;
 			sourceTree = "<group>";
 		};
 		F7D147A028D684BC00655F19 /* Services */ = {
@@ -969,15 +1012,18 @@
 				F774B9462891B16600438A37 /* MainView.swift in Sources */,
 				F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */,
 				F790281B2893095D0058CC19 /* SearchInteractor.swift in Sources */,
+				F7C2B83329A1320E00569C5B /* ThemeProvider.swift in Sources */,
 				F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
 				F7C85DFE28DBA3AF007D0170 /* LoadingButton.swift in Sources */,
 				F777BE4A289E479600595ACA /* DetailSongPresenter.swift in Sources */,
+				F7C2B83F29A136E100569C5B /* Settings.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
 				F74B75BA290AF66200DBCD46 /* DatabaseManager.swift in Sources */,
 				F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
+				F7C2B84129A1393B00569C5B /* Link.swift in Sources */,
 				F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */,
 				F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */,
 				F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */,
@@ -1009,6 +1055,7 @@
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
+				F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */,
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
 				F71E37D5297ABC0800BAF622 /* OnboardingInteractor.swift in Sources */,
 				F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */,
@@ -1035,6 +1082,7 @@
 				F77EE0D5298FAA6D002E7139 /* FourPageViewController.swift in Sources */,
 				F77EE0E3298FCA86002E7139 /* SignInView.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
+				F7C2B84529A13DD900569C5B /* MediaCell.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F71E37D7297ABC0800BAF622 /* OnboardingContentView.swift in Sources */,
 				F790280C289309320058CC19 /* LinkView.swift in Sources */,
@@ -1052,12 +1100,16 @@
 				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
 				F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
+				F7C2B83829A132B000569C5B /* Themeable.swift in Sources */,
+				F7C2B83A29A1332200569C5B /* AppTheme.swift in Sources */,
+				F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
+				F7C2B83C29A1336B00569C5B /* UIComponentsLibrary.swift in Sources */,
 				F7D147A228D684E700655F19 /* NetworkError.swift in Sources */,
 				F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */,
 				F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */,
@@ -1211,9 +1263,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
@@ -1228,6 +1282,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext (App Store)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1239,9 +1294,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
@@ -1256,6 +1313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext (App Store)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1267,9 +1325,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
@@ -1284,6 +1344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext (App Store)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

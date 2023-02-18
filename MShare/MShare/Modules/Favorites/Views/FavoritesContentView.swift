@@ -14,6 +14,7 @@ final class FavoritesContentView: View {
     private(set) lazy var favotitesTableView = TableView(style: .insetGrouped)
         .register(class: MediaTableViewCell.self)
         .setRowHeight(80)
+        .backgroundColor(color: .clear)
         .make {
             $0.contentInset = UIEdgeInsets(aTop: 16, aBottom: 48)
         }
@@ -38,12 +39,6 @@ final class FavoritesContentView: View {
         .make {
             $0.itemTitles = FavoritesView.FavoriteSection.allCases.map { $0.title }
             $0.allowChangeThumbWidth = false
-            $0.defaultTextColor = .lightGray
-            $0.defaultTextFont = .systemFont(ofSize: 18, weight: .semibold)
-            $0.selectedTextColor = .white
-            $0.selectedTextFont = .systemFont(ofSize: 18, weight: .semibold)
-            $0.containerBackgroundColor = .tertiarySystemBackground
-            $0.thumbColor = .systemBlue
             $0.useShadow = false
             $0.useGradient = true
             $0.thumbGradientColors = [.appPink, .appPink, .appBlue, .appBlue]
@@ -89,6 +84,23 @@ final class FavoritesContentView: View {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIEdgeInsets(aBottom: 16))
             $0.height.equalTo(50)
         }
+    }
+    
+    override func apply(theme: AppTheme) {
+        super.apply(theme: theme)
+        
+        let favorites = theme.components.favorites
+        let themeSegmentControl = favorites.segmentControl
+        
+        segmentedControl.make {
+            $0.defaultTextColor = themeSegmentControl.normal.color
+            $0.defaultTextFont = themeSegmentControl.normal.font
+            $0.selectedTextColor = themeSegmentControl.active.color
+            $0.selectedTextFont = themeSegmentControl.active.font
+            $0.containerBackgroundColor = themeSegmentControl.background.color
+        }
+        
+        set(component: favorites.background)
     }
     
 }

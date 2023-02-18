@@ -67,3 +67,16 @@ extension UILabel {
     }
     
 }
+
+//MARK: - UIComponentsLibrary
+
+extension UILabel {
+    
+    @discardableResult
+    func set(component: UIComponentsLibrary.TextComponent) -> Self {
+        text(font: component.font)
+        textColor(component.color)
+        return self
+    }
+    
+}
