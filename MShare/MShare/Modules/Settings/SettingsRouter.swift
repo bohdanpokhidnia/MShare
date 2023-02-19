@@ -73,7 +73,7 @@ final class SettingsRouter: SettingsRouterProtocol {
     func showOnboarding() {
         let onboarding = OnboardingRouter.createModule()
         
-        UIApplication.load(vc: onboarding)
+        UIApplication.load(vc: onboarding, backgroundColor: .black)
     }
     
 }

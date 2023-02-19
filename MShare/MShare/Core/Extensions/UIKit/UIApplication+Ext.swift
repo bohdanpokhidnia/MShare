@@ -16,12 +16,12 @@ extension UIApplication {
         return windowScene.windows.first!.safeAreaInsets
     }
     
-    static func load(vc: UIViewController) {
+    static func load(vc: UIViewController, backgroundColor: UIColor? = nil) {
         let window = UIWindow(windowScene: Self.windowScene)
         sceneDelegate.window = window
         
         window.rootViewController = vc
-        window.backgroundColor(color: .black)
+        window.backgroundColor(color: backgroundColor ?? .black)
         window.makeKeyAndVisible()
     }
     

@@ -38,7 +38,7 @@ final class SignInRouter: SignInRouterProtocol {
         let mainView = MainRouter.createModule()
         mainView.selectedTab(.link)
         
-        UIApplication.load(vc: mainView.viewController)
+        UIApplication.load(vc: mainView.viewController, backgroundColor: .systemBackground)
     }
     
     func presentBrowserScreen(from view: SignInViewProtocol?, forUrlString urlString: String) {
