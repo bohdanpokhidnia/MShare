@@ -5,7 +5,7 @@
 //  Created by Bohdan Pokhidnia on 28.07.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol SettingsPresenterProtocol: AnyObject {
     var view: SettingsViewProtocol? { get set }
@@ -16,7 +16,7 @@ protocol SettingsPresenterProtocol: AnyObject {
     func settingsSectionCount() -> Int
     func settingsSectionTitle(atSection section: Int) -> String
     func settingsItemsCount(atSection section: Int) -> Int
-    func settingsItemStateInSection(atSection section: Int, andIndex index: Int) -> SettingsItemState
+    func settingsItemStateInSection(atSection section: Int, andIndex index: Int) -> SettingsEntity
     func didTapSettingItem(atSection section: Int, andIndex index: Int)
     func didSelectFavoriteSection(_ sectionIndex: Int)
 }
@@ -53,14 +53,10 @@ extension SettingsPresenter: SettingsPresenterProtocol {
         return countItems
     }
     
-    func settingsItemStateInSection(atSection section: Int, andIndex index: Int) -> SettingsItemState {
+    func settingsItemStateInSection(atSection section: Int, andIndex index: Int) -> SettingsEntity {
         let settingsSection = settingsSections[section]
         let settingsItem = settingsSection.items[index]
-        let settingsItemState = SettingsItemState(title: settingsItem.title,
-                                                  image: settingsItem.image,
-                                                  accesoryType: settingsItem.accessoryType)
-        
-        return settingsItemState
+        return makeSettingsEntity(settingsItem: settingsItem)
     }
     
     func didTapSettingItem(atSection section: Int, andIndex index: Int) {
@@ -106,6 +102,49 @@ extension SettingsPresenter: SettingsInteractorOutputProtocol {
     
     func didShowOnboarding() {
         router?.showOnboarding()
+    }
+    
+}
+
+// MARK: - Make settings entity
+
+private extension SettingsPresenter {
+    
+    func makeSettingsEntity(settingsItem: SettingsItem) -> SettingsEntity {
+        switch settingsItem {
+        case .firstFavorites:
+            return .init(
+                title: "First Favorites",
+                image: UIImage(named: "hearth"),
+                accesoryType: .disclosureIndicator
+            )
+            
+        case .accessToGallery:
+            return .init(
+                title: "Access to gallery",
+                image:  UIImage(systemName: "photo.on.rectangle.angled"),
+                accesoryType: .disclosureIndicator
+            )
+            
+        case .aboutUs:
+            return .init(title: "About Us",
+                         image: UIImage(named: "group"),
+                         accesoryType: .disclosureIndicator)
+            
+        case .privacyPolicyAndTerms:
+            return .init(
+                title: "Privacy Policy & Terms",
+                image: UIImage(named: "privacyPolicy"),
+                accesoryType: .disclosureIndicator
+            )
+            
+        case .versionApp(let versionAppString):
+            return .init(
+                title: "Version: \(versionAppString)",
+                image: UIImage(named: "AppIcon"),
+                accesoryType: UITableViewCell.AccessoryType.none
+            )
+        }
     }
     
 }

@@ -63,13 +63,12 @@ extension SettingsView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let settingsItem = presenter?.settingsItemStateInSection(atSection: indexPath.section, andIndex: indexPath.row)
+        guard let settingsEntity = presenter?.settingsItemStateInSection(atSection: indexPath.section,
+                                                                         andIndex: indexPath.row)
         else { return UITableViewCell() }
         
         let cell = tableView.dequeue(SettingsTableViewCell.self, for: indexPath)
-        return cell.set(state: .init(title: settingsItem.title,
-                                     image: settingsItem.image,
-                                     accesoryType: settingsItem.accesoryType))
+        return cell.set(state: settingsEntity)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
