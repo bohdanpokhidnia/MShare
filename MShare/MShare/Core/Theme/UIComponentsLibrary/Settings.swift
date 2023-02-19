@@ -9,7 +9,12 @@ import Foundation
 
 extension UIComponentsLibrary {
     
+    struct SettingsCell {
+        let background: Component
+    }
+    
     struct Settings {
+        let settingsCell: SettingsCell
         let background: Component
     }
     

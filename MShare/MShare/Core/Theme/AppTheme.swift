@@ -26,6 +26,7 @@ extension AppTheme {
             background: .init(color: .secondarySystemBackground)
         ),
         settings: .init(
+            settingsCell: .init(background: .init(color: .systemBackground)),
             background: .init(color: .secondarySystemBackground)
         ),
         mediaCell: .init(
@@ -54,6 +55,9 @@ extension AppTheme {
             background: .init(color: .systemBackground)
         ),
         settings: .init(
+            settingsCell: .init(
+                background: .init(color: .secondarySystemBackground)
+            ),
             background: .init(color: .systemBackground)
         ),
         mediaCell: .init(

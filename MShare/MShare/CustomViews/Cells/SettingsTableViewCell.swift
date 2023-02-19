@@ -9,6 +9,14 @@ import UIKit
 
 final class SettingsTableViewCell: TableViewCell {
     
+    override func apply(theme: AppTheme) {
+        super.apply(theme: theme)
+        
+        let settingsCell = theme.components.settings.settingsCell
+        
+        set(component: settingsCell.background)
+    }
+    
 }
 
 // MARK: - Set
