@@ -57,12 +57,18 @@ extension SignInInteractor: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let credentials as ASAuthorizationAppleIDCredential:
-            let user = SignInUser(credentials: credentials)
+//            let user = SignInUser(credentials: credentials)
             
-            print("[dev] user id: \(user.id)")
-            print("[dev] user first name: \(user.firstName)")
-            print("[dev] user last name: \(user.lastName)")
-            print("[dev] user email: \(user.email)")
+//            print("[dev] user id: \(user.id)")
+//            print("[dev] user first name: \(user.firstName)")
+//            print("[dev] user last name: \(user.lastName)")
+//            print("[dev] user email: \(user.email)")
+            
+            guard let authorizationCodeData = credentials.authorizationCode else { return }
+            
+            let authorizationCode = String(data: authorizationCodeData, encoding: .utf8)
+            
+            print("[dev] authorizationCode: \(credentials.authorizationCode) = \(authorizationCode)")
                 
             presenter?.successedSingIn()
             
