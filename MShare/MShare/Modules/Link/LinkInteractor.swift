@@ -31,8 +31,8 @@ final class LinkInteractor {
     
     // MARK: - Initializers
     
-    init(networkService: NetworkServiceProtocol) {
-        self.networkService = networkService
+    init(apiClient: ApiClient) {
+        self.apiClient = apiClient
     }
     
     deinit {
@@ -41,7 +41,7 @@ final class LinkInteractor {
     
     // MARK: - Private
     
-    private let networkService: NetworkServiceProtocol
+    private let apiClient: ApiClient
     
 }
 
@@ -100,38 +100,27 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     }
     
     func requestSong(urlString: String) {
-        let group = DispatchGroup()
-        var mediaResponse: MediaResponse?
-        
-        group.enter()
-        networkService.request(endpoint: GetSong(byUrl: urlString)) { [weak self] (response: MediaResponse?, error) in
-                guard error == nil else {
-                    self?.presenter?.didCatchError(error!)
-                    group.leave()
+        Task {
+            let result = await apiClient.request(endpoint: GetSong(url: urlString), response: MediaResponse.self)
+            
+            switch result {
+            case .success(let response):
+                guard let coverUrlString = response.coverUrlString else { return }
+                let (data, error) = await apiClient.request(urlString: coverUrlString)
+                
+                guard let data, error == nil
+                else {
+                    presenter?.didCatchError(error!)
                     return
                 }
-            
-            mediaResponse = response
-            group.leave()
-        }
-        
-        group.notify(queue: .main) { [weak self] in
-            guard let mediaResponse,
-                  let coverUrlString = mediaResponse.coverUrlString
-            else {
-                print("[dev] without media response")
-                return
-            }
-            
-            self?.networkService.request(urlString: coverUrlString) { (imageData, error) in
-                guard error == nil else { return }
                 
-                guard let imageData,
-                      let cover = UIImage(data: imageData) else { return }
+                let cover = UIImage(data: data)
                 
-                DispatchQueue.main.async {
-                    self?.presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: cover)
+                DispatchQueue.main.async { [weak presenter] in
+                    presenter?.didFetchMedia(mediaResponse: response, cover: cover)
                 }
+            case .failure(let error):
+                presenter?.didCatchError(.error(error))
             }
         }
     }

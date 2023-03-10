@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private lazy var userManager = UserManager()
     private lazy var databaseManager = DatabaseManager()
-    private lazy var networkSerive = NetworkService()
+    private lazy var apiClient = ApiClient()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DependencyManager {
             Module { self.userManager as UserManagerProtocol }
             Module { self.databaseManager as DatabaseManagerProtocol }
-            Module { self.networkSerive as NetworkServiceProtocol }
+            Module { self.apiClient as ApiClient }
         }.build()
         
         return true

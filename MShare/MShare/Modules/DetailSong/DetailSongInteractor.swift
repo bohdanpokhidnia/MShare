@@ -33,15 +33,17 @@ final class DetailSongInteractor {
     private let mediaResponse: MediaResponse
     private let cover: UIImage
 
-    private let networkService: NetworkServiceProtocol
+    private let apiClient: ApiClient
     private let databaseManager: DatabaseManagerProtocol
     
-    init(databaseManager: DatabaseManagerProtocol,
-         networkService: NetworkServiceProtocol,
-         mediaResponse: MediaResponse,
-         cover: UIImage) {
+    init(
+        databaseManager: DatabaseManagerProtocol,
+        apiClient: ApiClient,
+        mediaResponse: MediaResponse,
+        cover: UIImage
+    ) {
         self.databaseManager = databaseManager
-        self.networkService = networkService
+        self.apiClient = apiClient
         self.mediaResponse = mediaResponse
         self.cover = cover
     }
@@ -82,21 +84,16 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         case .song:
             guard let song = mediaResponse.song else { return }
             
-            networkService.request(endpoint: GetShareMedia(originService: song.serviceType,
-                                                           sourceId: song.songSourceId,
-                                                           destinationService: destinationService))
-            { [weak presenter] (response: ShareMediaResponse?, error) in
-                guard error == nil else {
-                    presenter?.didCatchError(error!)
-                    return
-                }
+            Task {
+                let result = await apiClient.request(endpoint: GetShareMedia(originService: song.serviceType, sourceId: song.songSourceId, destinationService: destinationService), response: ShareMediaResponse.self)
                 
-                guard let response else {
-                    presenter?.didCatchError(.message("Without response"))
-                    return
+                switch result {
+                case .success(let response):
+                    presenter?.didLoadShareMedia(response)
+                    
+                case .failure(let error):
+                    presenter?.didCatchError(error)
                 }
-                
-                presenter?.didLoadShareMedia(response)
             }
             
         case .album:
@@ -119,7 +116,7 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         if let savedMediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: mediaModel.sourceId) {
             databaseManager.delete(savedMediaModel) { (error) in
                 guard error == nil else {
-                    print("[dev] error: \(error)")
+                    print("[dev] error: \(error!.localizedDescription)")
                     return
                 }
             }

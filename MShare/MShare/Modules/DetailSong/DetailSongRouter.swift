@@ -19,12 +19,12 @@ final class DetailSongRouter: DetailSongRouterProtocol {
     
     static func createModule(mediaResponse: MediaResponse, cover: UIImage) -> UIViewController {
         @Inject var databaseManager: DatabaseManagerProtocol
-        @Inject var networkService: NetworkServiceProtocol
+        @Inject var apiClient: ApiClient
         
         let view: DetailSongViewProtocol = DetailSongView()
         let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
         var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(databaseManager: databaseManager,
-                                                                                 networkService: networkService,
+                                                                                 apiClient: apiClient,
                                                                                  mediaResponse: mediaResponse,
                                                                                  cover: cover)
         let router = DetailSongRouter()

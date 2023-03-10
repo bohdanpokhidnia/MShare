@@ -14,11 +14,11 @@ protocol LinkRouterProtocol: ModuleRouterProtocol {
 class LinkRouter: LinkRouterProtocol {
     
     static func createModule() -> UIViewController {
-        @Inject var networkService: NetworkServiceProtocol
+        @Inject var apiClient: ApiClient
         
         let presenter: LinkPresenterProtocol & LinkInteractorOutputProtocol = LinkPresenter()
         let view: LinkViewProtocol = LinkView(presenter: presenter)
-        var interactor: LinkInteractorIntputProtocol = LinkInteractor(networkService: networkService)
+        var interactor: LinkInteractorIntputProtocol = LinkInteractor(apiClient: apiClient)
         let router = LinkRouter()
         
         view.presenter = presenter
