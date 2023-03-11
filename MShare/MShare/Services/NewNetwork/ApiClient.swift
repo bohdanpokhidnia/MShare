@@ -13,64 +13,39 @@ final class ApiClient: HttpClient {
     var host: String { "95.179.252.251" }
     var subPath: String { "/api/v1/" }
     
-    func request<T: Decodable>(endpoint: Endpoint, response: T.Type) async -> Result<T, NetworkError> {
-        
-        guard let url = makeUrl(endpoint: endpoint) else {
-            return .failure(.invalidUrl)
-        }
-        
+    func request<T: Decodable>(endpoint: Endpoint, response: T.Type) async throws -> T {
+        guard let url = makeUrl(endpoint: endpoint) else { throw NetworkError.invalidUrl }
+
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
-        
+
         if let body = endpoint.body {
-            do {
-                let httpBody = try JSONSerialization.data(withJSONObject: body)
-                request.httpBody = httpBody
-            } catch {
-                return .failure(.invaildBody)
-            }
+            let httpBody = try JSONSerialization.data(withJSONObject: body)
+            request.httpBody = httpBody
         }
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-         
-            logRequest(urlRequest: request, response: response, data: data)
-            
-            guard let response = response as? HTTPURLResponse else {
-                return .failure(.message("No response"))
-            }
-            
-            switch response.statusCode {
-            case 200...299:
-                guard let decodedResponse = try? endpoint.decoder.decode(T.self, from: data) else { return .failure(.failedDecode) }
-                return .success(decodedResponse)
-                
-            case 401:
-                return .failure(.unauthorized)
-                
-            default:
-                do {
-                    let netwrokErrorResposne = try await decodeErrorResponse(from: data, withDecoder: endpoint.decoder)
-                    return .failure(.networkError(netwrokErrorResposne))
-                } catch {
-                    return .failure(.error(error))
-                }
-            }
-        } catch {
-            return .failure(.error(error))
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let response = response as? HTTPURLResponse else { throw NetworkError.message("Without response") }
+
+        switch response.statusCode {
+        case 200...299:
+            let decodeResponse = try endpoint.decoder.decode(T.self, from: data)
+            return decodeResponse
+
+        case 401:
+            throw NetworkError.unauthorized
+
+        default:
+            let errorResponse = try await decodeErrorResponse(from: data, withDecoder: endpoint.decoder)
+            throw NetworkError.networkError(errorResponse)
         }
     }
     
-    func request(urlString: String) async -> (Data?, NetworkError?) {
-        guard let url = URL(string: urlString) else { return (nil, .invalidUrl) }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            return (data, nil)
-        } catch {
-            return (nil, .error(error))
-        }
+    func request(urlString: String) async throws -> Data {
+        guard let url = URL(string: urlString) else { throw NetworkError.invalidUrl }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return data
     }
     
 }

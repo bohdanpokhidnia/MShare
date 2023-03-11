@@ -12,6 +12,6 @@ protocol HttpClient {
     var host: String { get }
     var subPath: String { get }
     
-    func request<T: Decodable>(endpoint: Endpoint, response: T.Type) async -> Result<T, NetworkError>
-    func request(urlString: String) async -> (Data?, NetworkError?)
+    func request<T: Decodable>(endpoint: Endpoint, response: T.Type) async throws -> T
+    func request(urlString: String) async throws -> Data
 }

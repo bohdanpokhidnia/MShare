@@ -69,11 +69,13 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
             
         case .album:
             guard let album = mediaResponse.album else { return }
-            let detailAlbum = DetailSongEntity(songName: album.albumName,
-                                               artistName: album.artistName,
-                                               image: cover,
-                                               sourceURL: album.albumUrl,
-                                               services: mediaResponse.services)
+            let detailAlbum = DetailSongEntity(
+                songName: album.albumName,
+                artistName: album.artistName,
+                image: cover,
+                sourceURL: album.albumUrl,
+                services: mediaResponse.services
+            )
             
             presenter?.didLoadDetailMedia(detailAlbum)
         }
@@ -83,16 +85,18 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         switch mediaResponse.mediaType {
         case .song:
             guard let song = mediaResponse.song else { return }
+            let shareMediaEndpoint = GetShareMedia(
+                originService: song.serviceType,
+                sourceId: song.songSourceId,
+                destinationService: destinationService
+            )
             
             Task {
-                let result = await apiClient.request(endpoint: GetShareMedia(originService: song.serviceType, sourceId: song.songSourceId, destinationService: destinationService), response: ShareMediaResponse.self)
-                
-                switch result {
-                case .success(let response):
-                    presenter?.didLoadShareMedia(response)
-                    
-                case .failure(let error):
-                    presenter?.didCatchError(error)
+                do {
+                    let shareMedia = try await apiClient.request(endpoint: shareMediaEndpoint, response: ShareMediaResponse.self)
+                    presenter?.didLoadShareMedia(shareMedia)
+                } catch {
+                    presenter?.didCatchError(error as! NetworkError)
                 }
             }
             

@@ -101,26 +101,16 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     
     func requestSong(urlString: String) {
         Task {
-            let result = await apiClient.request(endpoint: GetSong(url: urlString), response: MediaResponse.self)
-            
-            switch result {
-            case .success(let response):
-                guard let coverUrlString = response.coverUrlString else { return }
-                let (data, error) = await apiClient.request(urlString: coverUrlString)
-                
-                guard let data, error == nil
-                else {
-                    presenter?.didCatchError(error!)
-                    return
-                }
-                
-                let cover = UIImage(data: data)
+            do {
+                let mediaResponse = try await apiClient.request(endpoint: GetSong(url: urlString), response: MediaResponse.self)
+                let coverData = try await apiClient.request(urlString: mediaResponse.coverUrlString ?? "")
+                let coverImage = UIImage(data: coverData)
                 
                 DispatchQueue.main.async { [weak presenter] in
-                    presenter?.didFetchMedia(mediaResponse: response, cover: cover)
+                    presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: coverImage)
                 }
-            case .failure(let error):
-                presenter?.didCatchError(.error(error))
+            } catch {
+                presenter?.didCatchURL(error.localizedDescription)
             }
         }
     }
