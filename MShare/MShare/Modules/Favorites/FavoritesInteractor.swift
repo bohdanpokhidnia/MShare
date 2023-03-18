@@ -40,8 +40,14 @@ final class FavoritesInteractor {
 extension FavoritesInteractor: FavoritesInteractorIntputProtocol {
     
     func loadMedia() {
-        let songs = databaseManager.getMediaModels(by: .song)
-        let albums = databaseManager.getMediaModels(by: .album)
+        let songs = databaseManager
+            .getMediaModels(by: .song)
+            .reversed()
+            .map { $0 }
+        let albums = databaseManager
+            .getMediaModels(by: .album)
+            .reversed()
+            .map { $0 }
         
         presenter?.didLoadMedia(songs, albums)
     }
