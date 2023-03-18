@@ -86,7 +86,6 @@ private extension FavoritesView {
     
     func setupNavigationBar() {
         title = "Favorites"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupSubviews() {
