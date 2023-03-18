@@ -9,7 +9,7 @@ import UIKit
 
 protocol FavoritesRouterProtocol {
     func shareUrl(view: FavoritesViewProtocol?, urlString: String)
-    func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaModel: MediaModel)
+    func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaResponse: MediaResponse, cover: UIImage)
 }
 
 final class FavoritesRouter: Router, FavoritesRouterProtocol {
@@ -42,47 +42,8 @@ final class FavoritesRouter: Router, FavoritesRouterProtocol {
         view?.viewController.present(activityViewController, animated: true)
     }
     
-    func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaModel: MediaModel) {
-        guard let coverImage = UIImage(data: mediaModel.coverData),
-              let mediaType = MediaType(rawValue: mediaModel.mediaType)
-        else { return }
-        
-        var song: Song?
-        var album: Album?
-        let services: [MediaService] = mediaModel.services.map { (service) in
-            .init(name: service.name, type: service.type, isAvailable: service.isAvailable)
-        }
-        
-        switch mediaType {
-        case .song:
-            song = Song(
-                songSourceId: mediaModel.sourceId,
-                songUrl: mediaModel.url,
-                songName: mediaModel.name,
-                artistName: mediaModel.artistName,
-                albumName: mediaModel.albumName,
-                coverImageUrl: mediaModel.coverImageUrl,
-                serviceType: mediaModel.serviceType
-            )
-            
-        case .album:
-            album = Album(
-                albumSourceId: mediaModel.sourceId,
-                albumUrl: mediaModel.url,
-                albumName: mediaModel.albumName,
-                artistName: mediaModel.artistName,
-                coverImageUrl: mediaModel.coverImageUrl,
-                serviceType: mediaModel.serviceType
-            )
-        }
-        
-        let mediaResponse = MediaResponse(
-            mediaType: mediaType,
-            song: song,
-            album: album,
-            services: services
-        )
-        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: coverImage).createModule()
+    func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaResponse: MediaResponse, cover: UIImage) {
+        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover).createModule()
         let navigationController = UINavigationController(rootViewController: detailSongScreen)
             .make { $0.modalPresentationStyle = .fullScreen }
         

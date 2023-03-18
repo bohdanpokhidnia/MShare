@@ -5,7 +5,7 @@
 //  Created by Bohdan Pokhidnia on 15.10.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol FavoritesPresenterProtocol: AnyObject {
     var view: FavoritesViewProtocol? { get set }
@@ -82,7 +82,7 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
     func tapOnMediaItem(forIndexPath indexPath: IndexPath) {
         guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
         
-        router?.presentDetailSongScreen(fromView: view, mediaModel: mediaModel)
+        interactor?.mapModelToResponse(mediaModel: mediaModel)
     }
     
     func removeMediaItem(forIndexPath indexPath: IndexPath) {
@@ -142,6 +142,10 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
         
         favoriteSection = section
         view?.setupFavoriteSection(sectionIndex)
+    }
+    
+    func didMapModelToResponse(mediaResponse: MediaResponse, cover: UIImage) {
+        router?.presentDetailSongScreen(fromView: view, mediaResponse: mediaResponse, cover: cover)
     }
     
 }
