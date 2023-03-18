@@ -8,30 +8,27 @@
 import UIKit
 
 protocol OnboardingRouterProtocol {
-    static func createModule() -> UIViewController
-    
     func presentSignInScreen(in viewController: OnboardingViewProtocol?)
 }
 
-final class OnboardingRouter: OnboardingRouterProtocol {
+final class OnboardingRouter: Router, OnboardingRouterProtocol {
     
-    static func createModule() -> UIViewController {
+    override func createModule() -> UIViewController {
         let view: OnboardingViewProtocol = OnboardingView()
         let presenter: OnboardingPresenterProtocol & OnboardingInteractorOutputProtocol = OnboardingPresenter()
         var interactor: OnboardingInteractorIntputProtocol = OnboardingInteractor()
-        let router = OnboardingRouter()
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         return view.viewController
     }
     
     func presentSignInScreen(in viewController: OnboardingViewProtocol?) {
-        let signInView = SignInRouter.createModule()
+        let signInView = SignInRouter(dependencyManager: dependencyManager).createModule()
         viewController?.viewController.present(signInView, animated: true)
     }
     

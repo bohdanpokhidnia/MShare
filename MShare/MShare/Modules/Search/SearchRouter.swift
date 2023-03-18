@@ -7,30 +7,23 @@
 
 import UIKit
 
-protocol SearchRouterProtocol: ModuleRouterProtocol {
-    static func createModule() -> UIViewController
-}
+protocol SearchRouterProtocol { }
 
-final class SearchRouter: SearchRouterProtocol {
+final class SearchRouter: Router, SearchRouterProtocol {
     
-    static func createModule() -> UIViewController {
+    override func createModule() -> UIViewController {
         let view: SearchViewProtocol = SearchView()
         let presenter: SearchPresenterProtocol & SearchInteractorOutputProtocol = SearchPresenter()
         var interactor: SearchInteractorIntputProtocol = SearchInteractor()
-        let router = SearchRouter()
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
-    }
-    
-    func createModule() -> UIViewController {
-        return SearchRouter.createModule()
     }
     
 }

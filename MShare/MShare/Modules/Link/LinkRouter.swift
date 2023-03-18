@@ -7,24 +7,21 @@
 
 import UIKit
 
-protocol LinkRouterProtocol: ModuleRouterProtocol {
+protocol LinkRouterProtocol {
     func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?)
 }
 
-class LinkRouter: LinkRouterProtocol {
+final class LinkRouter: Router, LinkRouterProtocol {
     
-    static func createModule() -> UIViewController {
-        @Inject var apiClient: ApiClient
-        
+    override func createModule() -> UIViewController {
         let presenter: LinkPresenterProtocol & LinkInteractorOutputProtocol = LinkPresenter()
         let view: LinkViewProtocol = LinkView(presenter: presenter)
-        var interactor: LinkInteractorIntputProtocol = LinkInteractor(apiClient: apiClient)
-        let router = LinkRouter()
+        var interactor: LinkInteractorIntputProtocol = LinkInteractor(apiClient: dependencyManager.resolve(type: ApiClient.self))
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
@@ -32,12 +29,8 @@ class LinkRouter: LinkRouterProtocol {
         return navigationController
     }
     
-    func createModule() -> UIViewController {
-        return LinkRouter.createModule()
-    }
-    
     func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
-        let detailSongScreen = DetailSongRouter.createModule(mediaResponse: mediaResponse, cover: cover)
+        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover).createModule()
         let navigationController = UINavigationController(rootViewController: detailSongScreen)
             .make { $0.modalPresentationStyle = .fullScreen }
         

@@ -22,7 +22,7 @@ protocol SettingsPresenterProtocol: AnyObject {
 }
 
 final class SettingsPresenter {
-    var view: SettingsViewProtocol?
+    weak var view: SettingsViewProtocol?
     var interactor: SettingsInteractorIntputProtocol?
     var router: SettingsRouterProtocol?
     

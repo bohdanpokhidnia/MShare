@@ -16,7 +16,7 @@ protocol OnboardingPresenterProtocol: AnyObject {
 }
 
 final class OnboardingPresenter {
-    var view: OnboardingViewProtocol?
+    weak var view: OnboardingViewProtocol?
     var interactor: OnboardingInteractorIntputProtocol?
     var router: OnboardingRouterProtocol?
 }

@@ -18,7 +18,7 @@ protocol SignInPresenterProtocol: AnyObject {
 }
 
 final class SignInPresenter {
-    var view: SignInViewProtocol?
+    weak var view: SignInViewProtocol?
     var interactor: SignInInteractorIntputProtocol?
     var router: SignInRouterProtocol?
 }

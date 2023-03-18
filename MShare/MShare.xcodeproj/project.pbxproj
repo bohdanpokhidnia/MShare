@@ -147,8 +147,8 @@
 		F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852628FA977500F54E24 /* FavoritesContentView.swift */; };
 		F7D9852D28FA977500F54E24 /* FavoritesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852728FA977500F54E24 /* FavoritesEntity.swift */; };
 		F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */; };
-		F7D9853028FA9C0500F54E24 /* ModuleRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */; };
 		F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DB96C128CCE4850031FD22 /* String+Ext.swift */; };
+		F7E5259429C5F38C005E0A95 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5259329C5F38C005E0A95 /* Router.swift */; };
 		F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */; };
 		F7FE397329144904000A190F /* FirstFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FE397229144904000A190F /* FirstFavoritesView.swift */; };
 /* End PBXBuildFile section */
@@ -166,7 +166,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		F7653FBA289452A200FC47FA /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
@@ -316,8 +316,8 @@
 		F7D9852628FA977500F54E24 /* FavoritesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesContentView.swift; sourceTree = "<group>"; };
 		F7D9852728FA977500F54E24 /* FavoritesEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesEntity.swift; sourceTree = "<group>"; };
 		F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
-		F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRouterProtocol.swift; sourceTree = "<group>"; };
 		F7DB96C128CCE4850031FD22 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		F7E5259329C5F38C005E0A95 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponse.swift; sourceTree = "<group>"; };
 		F7FE397229144904000A190F /* FirstFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -558,11 +558,11 @@
 				F774B94F2891B3BB00438A37 /* Make.swift */,
 				F79ED12E28A82539009DFC96 /* Blurable.swift */,
 				F75F684928FC84CD007B2E01 /* Loopable.swift */,
-				F7D9852F28FA9C0500F54E24 /* ModuleRouterProtocol.swift */,
 				F71412FD2915C60100D569E2 /* UserDefault.swift */,
 				F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */,
 				F73920172985896D00A773D7 /* UIStyleGuide.swift */,
 				F739201929866C1000A773D7 /* DependencyManager.swift */,
+				F7E5259329C5F38C005E0A95 /* Router.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -721,7 +721,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F7BB329029BA55F500219035 /* NewNetwork */ = {
+		F7BB329029BA55F500219035 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				F74B75CA290B0EA700DBCD46 /* MockData.swift */,
@@ -732,7 +732,7 @@
 				F7BB329529BA575600219035 /* ApiClient.swift */,
 				F7BB329729BA5DFE00219035 /* Enpoints */,
 			);
-			path = NewNetwork;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F7BB329729BA5DFE00219035 /* Enpoints */ = {
@@ -771,7 +771,7 @@
 		F7D147A028D684BC00655F19 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F7BB329029BA55F500219035 /* NewNetwork */,
+				F7BB329029BA55F500219035 /* Network */,
 				F74B75BB290AF66400DBCD46 /* Database */,
 				F71412FF2915C63600D569E2 /* UserManager.swift */,
 			);
@@ -1066,7 +1066,6 @@
 				F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */,
 				F742652F2905318900B87BBF /* AboutUsView.swift in Sources */,
 				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
-				F7D9853028FA9C0500F54E24 /* ModuleRouterProtocol.swift in Sources */,
 				F71412FE2915C60100D569E2 /* UserDefault.swift in Sources */,
 				F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */,
 				F777BE4C289E479600595ACA /* DetailSongView.swift in Sources */,
@@ -1081,6 +1080,7 @@
 				F77EE0D5298FAA6D002E7139 /* FourPageViewController.swift in Sources */,
 				F77EE0E3298FCA86002E7139 /* SignInView.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
+				F7E5259429C5F38C005E0A95 /* Router.swift in Sources */,
 				F7C2B84529A13DD900569C5B /* MediaCell.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F71E37D7297ABC0800BAF622 /* OnboardingContentView.swift in Sources */,

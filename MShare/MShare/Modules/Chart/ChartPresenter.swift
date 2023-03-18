@@ -14,7 +14,7 @@ protocol ChartPresenterProtocol: AnyObject {
 }
 
 final class ChartPresenter {
-    var view: ChartViewProtocol?
+    weak var view: ChartViewProtocol?
     var interactor: ChartInteractorIntputProtocol?
     var router: ChartRouterProtocol?
 }

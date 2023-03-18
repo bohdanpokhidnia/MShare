@@ -12,22 +12,23 @@ protocol MainViewProtocol: AnyObject {
     var viewController: UITabBarController { get }
     
     func setTabControllers(_ viewControllers: [UIViewController])
-    func selectedTab(_ tabItemIndex: MainView.TabItemIndex)
+    func selectedTab(_ tabItem: MainView.TabItem)
 }
 
 final class MainView: UITabBarController {
     
-    enum TabItemIndex: Int, CaseIterable {
-//        case chart
+    enum TabItem: Int, CaseIterable {
         case favorites
-        case link
+//        case chart
 //        case search
+        case link
         case settings
         
         var title: String {
             switch self {
             case .favorites:
                 return "Favorites"
+                
 //            case .chart:
 //                return "Chart"
                 
@@ -61,22 +62,16 @@ final class MainView: UITabBarController {
             }
         }
         
-        var router: ModuleRouterProtocol {
+        func rounter(dependencyManager: DependencyManagerProtocol) -> Router {
             switch self {
-//            case .chart:
-//                return ChartRouter()
-                
             case .favorites:
-                return FavoritesRouter()
-                
-//            case .search:
-//                return SearchRouter()
+                return FavoritesRouter(dependencyManager: dependencyManager)
                 
             case .link:
-                return LinkRouter()
+                return LinkRouter(dependencyManager: dependencyManager)
                 
             case .settings:
-                return SettingsRouter()
+                return SettingsRouter(dependencyManager: dependencyManager)
             }
         }
     }
@@ -97,8 +92,8 @@ extension MainView: MainViewProtocol {
         setViewControllers(viewControllers, animated: false)
     }
     
-    func selectedTab(_ tabItemIndex: MainView.TabItemIndex) {
-        selectedIndex = tabItemIndex.rawValue
+    func selectedTab(_ tabItem: MainView.TabItem) {
+        selectedIndex = tabItem.rawValue
     }
     
 }

@@ -9,33 +9,30 @@ import UIKit
 import SafariServices
 
 protocol SignInRouterProtocol {
-    static func createModule() -> UIViewController
-    
     func showMain()
     func presentBrowserScreen(from view: SignInViewProtocol?, forUrlString urlString: String)
 }
 
-final class SignInRouter: SignInRouterProtocol {
+final class SignInRouter: Router, SignInRouterProtocol {
     
-    static func createModule() -> UIViewController {
-        @Inject var userManager: UserManagerProtocol
+    override func createModule() -> UIViewController {
+        let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
         let view: SignInViewProtocol = SignInView()
         let presenter: SignInPresenterProtocol & SignInInteractorOutputProtocol = SignInPresenter()
         var interactor: SignInInteractorIntputProtocol = SignInInteractor(userManager: userManager)
-        let router = SignInRouter()
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         return view.viewController
     }
     
     func showMain() {
-        let mainView = MainRouter.createModule()
+        let mainView = MainRouter(dependencyManager: dependencyManager).initMainModule()
         mainView.selectedTab(.link)
         
         UIApplication.load(vc: mainView.viewController, backgroundColor: .systemBackground)

@@ -8,35 +8,34 @@
 import UIKit
 
 protocol MainRouterProtocol {
-    static func createModule() -> MainViewProtocol
-    static func createTabModules() -> [UIViewController]
+    func initMainModule() -> MainViewProtocol
+    func createTabModules() -> [UIViewController]
 }
 
-final class MainRouter: MainRouterProtocol {
+final class MainRouter: Router, MainRouterProtocol {
     
-    static func createModule() -> MainViewProtocol {
+    func initMainModule() -> MainViewProtocol {
         let view: MainViewProtocol = MainView()
         let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()
         var interactor: MainInteractorIntputProtocol = MainInteractor()
-        let router = MainRouter()
         let tabViews = createTabModules()
         
         view.presenter = presenter
         view.setTabControllers(tabViews)
-        
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         return view
     }
     
-    static func createTabModules() -> [UIViewController] {
+    func createTabModules() -> [UIViewController] {
         var views = [UIViewController]()
         
-        for tabBarModule in MainView.TabItemIndex.allCases {
-            let view = tabBarModule.router.createModule()
+        for tabBarModule in MainView.TabItem.allCases {
+            let router = tabBarModule.rounter(dependencyManager: dependencyManager)
+            let view = router.createModule()
                 .make {
                     $0.title = tabBarModule.title
                     $0.tabBarItem.image = tabBarModule.icon
@@ -48,5 +47,8 @@ final class MainRouter: MainRouterProtocol {
         return views
     }
     
-   
+    override func createModule() -> UIViewController {
+        return initMainModule().viewController
+    }
+    
 }

@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-protocol SettingsRouterProtocol: ModuleRouterProtocol {
+protocol SettingsRouterProtocol {
     func pushAboutUsScreen(from view: SettingsViewProtocol?)
     func presentBrowserScreen(from view: SettingsViewProtocol?, forUrlString urlString: String)
     func pushFirstFavoritesScreen(fromView view: SettingsViewProtocol?, favoriteSectionIndex: Int, firstFavoritesDelegate: FirstFavoritesDelegate)
@@ -16,28 +16,22 @@ protocol SettingsRouterProtocol: ModuleRouterProtocol {
     func showOnboarding()
 }
 
-final class SettingsRouter: SettingsRouterProtocol {
+final class SettingsRouter: Router, SettingsRouterProtocol {
     
-    static func createModule() -> UIViewController {
-        @Inject var userManager: UserManagerProtocol
-        
+    override func createModule() -> UIViewController {
+        let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         let view: SettingsViewProtocol = SettingsView()
         let presenter: SettingsPresenterProtocol & SettingsInteractorOutputProtocol = SettingsPresenter()
         var interactor: SettingsInteractorIntputProtocol = SettingsInteractor(userManager: userManager)
-        let router = SettingsRouter()
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
-    }
-    
-    func createModule() -> UIViewController {
-        return SettingsRouter.createModule()
     }
     
     func pushAboutUsScreen(from view: SettingsViewProtocol?) {
@@ -71,7 +65,7 @@ final class SettingsRouter: SettingsRouterProtocol {
     }
     
     func showOnboarding() {
-        let onboarding = OnboardingRouter.createModule()
+        let onboarding = OnboardingRouter(dependencyManager: dependencyManager).createModule()
         
         UIApplication.load(vc: onboarding, backgroundColor: .black)
     }

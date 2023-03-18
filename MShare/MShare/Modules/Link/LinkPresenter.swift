@@ -19,7 +19,7 @@ protocol LinkPresenterProtocol: AnyObject {
 }
 
 final class LinkPresenter {
-    var view: LinkViewProtocol?
+    weak var view: LinkViewProtocol?
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
     

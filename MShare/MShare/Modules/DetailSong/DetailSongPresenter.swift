@@ -21,7 +21,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
 }
 
 final class DetailSongPresenter {
-    var view: DetailSongViewProtocol?
+    weak var view: DetailSongViewProtocol?
     var interactor: DetailSongInteractorInputProtocol?
     var router: DetailSongRouterProtocol?
 }

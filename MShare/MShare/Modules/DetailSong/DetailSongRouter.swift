@@ -8,31 +8,37 @@
 import UIKit
 
 protocol DetailSongRouterProtocol {
-    static func createModule(mediaResponse: MediaResponse, cover: UIImage) -> UIViewController
-    
     func dismissModule(view: DetailSongViewProtocol?)
     func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?)
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?)
 }
  
-final class DetailSongRouter: DetailSongRouterProtocol {
+final class DetailSongRouter: Router, DetailSongRouterProtocol {
     
-    static func createModule(mediaResponse: MediaResponse, cover: UIImage) -> UIViewController {
-        @Inject var databaseManager: DatabaseManagerProtocol
-        @Inject var apiClient: ApiClient
+    let mediaResponse: MediaResponse
+    let cover: UIImage
+    
+    init(dependencyManager: DependencyManagerProtocol, mediaResponse: MediaResponse, cover: UIImage) {
+        self.mediaResponse = mediaResponse
+        self.cover = cover
         
+        super.init(dependencyManager: dependencyManager)
+    }
+    
+    override func createModule() -> UIViewController {
         let view: DetailSongViewProtocol = DetailSongView()
         let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
-        var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(databaseManager: databaseManager,
-                                                                                 apiClient: apiClient,
-                                                                                 mediaResponse: mediaResponse,
-                                                                                 cover: cover)
-        let router = DetailSongRouter()
+        var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(
+            databaseManager: dependencyManager.resolve(type: DatabaseManagerProtocol.self),
+            apiClient: dependencyManager.resolve(type: ApiClient.self),
+            mediaResponse: mediaResponse,
+            cover: cover
+        )
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         return view.viewController

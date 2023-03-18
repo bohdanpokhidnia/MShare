@@ -23,17 +23,7 @@ extension UIImageView {
             return self
         }
         
-        kf.setImage(with: imageURL, placeholder: placeholder) { [weak self] (result) in
-            switch result {
-            case .success(let imageResult):
-                self?.image = imageResult.image
-                
-            case .failure(let error):
-                self?.image = placeholder
-                
-                print("[dev] error fetch image on url: \(urlString) \(error)")
-            }
-        }
+        kf.setImage(with: imageURL, placeholder: placeholder)
         return self
     }
     

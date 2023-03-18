@@ -14,7 +14,7 @@ protocol MainPresenterProtocol: AnyObject {
 }
 
 final class MainPresenter {
-    var view: MainViewProtocol?
+    weak var view: MainViewProtocol?
     var interactor: MainInteractorIntputProtocol?
     var router: MainRouterProtocol?
 }

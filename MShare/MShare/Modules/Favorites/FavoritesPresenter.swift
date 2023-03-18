@@ -23,7 +23,7 @@ protocol FavoritesPresenterProtocol: AnyObject {
 }
 
 final class FavoritesPresenter {
-    var view: FavoritesViewProtocol?
+    weak var view: FavoritesViewProtocol?
     var interactor: FavoritesInteractorIntputProtocol?
     var router: FavoritesRouterProtocol?
     

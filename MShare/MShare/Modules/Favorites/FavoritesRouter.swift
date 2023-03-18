@@ -7,35 +7,32 @@
 
 import UIKit
 
-protocol FavoritesRouterProtocol: ModuleRouterProtocol {
+protocol FavoritesRouterProtocol {
     func shareUrl(view: FavoritesViewProtocol?, urlString: String)
     func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaModel: MediaModel)
 }
 
-final class FavoritesRouter: FavoritesRouterProtocol {
+final class FavoritesRouter: Router, FavoritesRouterProtocol {
     
-    static func createModule() -> UIViewController {
-        @Inject var userManager: UserManagerProtocol
-        @Inject var databaseManager: DatabaseManagerProtocol
+    override func createModule() -> UIViewController {
+        let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
+        let databaseManager = dependencyManager.resolve(type: DatabaseManagerProtocol.self)
         
         let view: FavoritesViewProtocol = FavoritesView()
         let presenter: FavoritesPresenterProtocol & FavoritesInteractorOutputProtocol = FavoritesPresenter()
-        var interactor: FavoritesInteractorIntputProtocol = FavoritesInteractor(userManager: userManager,
-                                                                                databaseManager: databaseManager)
-        let router = FavoritesRouter()
-        
+        var interactor: FavoritesInteractorIntputProtocol = FavoritesInteractor(
+            userManager: userManager,
+            databaseManager: databaseManager
+        )
+
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
-    }
-    
-    func createModule() -> UIViewController {
-        return FavoritesRouter.createModule()
     }
     
     func shareUrl(view: FavoritesViewProtocol?, urlString: String) {
@@ -52,34 +49,40 @@ final class FavoritesRouter: FavoritesRouterProtocol {
         
         var song: Song?
         var album: Album?
-        let services: [MediaService] = mediaModel.services.map { MediaService(name: $0.name, type: $0.type, isAvailable: $0.isAvailable) }
-    
+        let services: [MediaService] = mediaModel.services.map { (service) in
+            .init(name: service.name, type: service.type, isAvailable: service.isAvailable)
+        }
         
         switch mediaType {
         case .song:
-            song = Song(songSourceId: mediaModel.sourceId,
-                                      songUrl: mediaModel.url,
-                                      songName: mediaModel.name,
-                                      artistName: mediaModel.artistName,
-                                      albumName: mediaModel.albumName,
-                                      coverImageUrl: mediaModel.coverImageUrl,
-                                      serviceType: mediaModel.serviceType)
+            song = Song(
+                songSourceId: mediaModel.sourceId,
+                songUrl: mediaModel.url,
+                songName: mediaModel.name,
+                artistName: mediaModel.artistName,
+                albumName: mediaModel.albumName,
+                coverImageUrl: mediaModel.coverImageUrl,
+                serviceType: mediaModel.serviceType
+            )
             
         case .album:
-            album = Album(albumSourceId: mediaModel.sourceId,
-                                       albumUrl: mediaModel.url,
-                                       albumName: mediaModel.albumName,
-                                       artistName: mediaModel.artistName,
-                                       coverImageUrl: mediaModel.coverImageUrl,
-                                       serviceType: mediaModel.serviceType)
+            album = Album(
+                albumSourceId: mediaModel.sourceId,
+                albumUrl: mediaModel.url,
+                albumName: mediaModel.albumName,
+                artistName: mediaModel.artistName,
+                coverImageUrl: mediaModel.coverImageUrl,
+                serviceType: mediaModel.serviceType
+            )
         }
         
-        let mediaResponse = MediaResponse(mediaType: mediaType,
-                                          song: song,
-                                          album: album,
-                                          services: services)
-        
-        let detailSongScreen = DetailSongRouter.createModule(mediaResponse: mediaResponse, cover: coverImage)
+        let mediaResponse = MediaResponse(
+            mediaType: mediaType,
+            song: song,
+            album: album,
+            services: services
+        )
+        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: coverImage).createModule()
         let navigationController = UINavigationController(rootViewController: detailSongScreen)
             .make { $0.modalPresentationStyle = .fullScreen }
         

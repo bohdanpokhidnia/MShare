@@ -13,7 +13,7 @@ class ViewController<ContentView: View>: UIViewController, Themeable {
         return view as? ContentView
     }
     
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     
     required init() {
         super.init(nibName: nil, bundle: nil)

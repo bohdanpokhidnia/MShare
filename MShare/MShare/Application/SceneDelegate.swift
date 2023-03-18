@@ -10,8 +10,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    
+    private lazy var userManager = UserManager()
+    private lazy var databaseManager = DatabaseManager()
+    private lazy var apiClient = ApiClient()
+    
     var onboarding: UIViewController?
-    var mainView: MainViewProtocol?
+    var main: MainViewProtocol?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -19,16 +24,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         configureNavigationBarStyle()
         configureTabBarStyle()
         
-        @Inject var userManager: UserManagerProtocol
+        let dependencyManager = DependencyManager()
+        dependencyManager.register(type: DatabaseManagerProtocol.self, module: databaseManager)
+        dependencyManager.register(type: UserManagerProtocol.self, module: userManager)
+        dependencyManager.register(type: ApiClient.self, module: apiClient)
+        
         let displayOnboarding = userManager.displayOnboarding ?? false
         
-        onboarding = OnboardingRouter.createModule()
-        mainView = MainRouter.createModule()
+        onboarding = OnboardingRouter(dependencyManager: dependencyManager).createModule()
+        main = MainRouter(dependencyManager: dependencyManager).initMainModule()
         
         #if DEV
-        mainView?.selectedTab(.link)
+        main?.selectedTab(.link)
         #else
-        mainView?.selectedTab(.link)
+        main?.selectedTab(.link)
         #endif
         
         if let url = connectionOptions.urlContexts.first?.url {
@@ -42,7 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                          cover: UIImage(named: "mockCover")!)
         window?.rootViewController = UINavigationController(rootViewController: detailScreen)
         #else
-        window?.rootViewController = displayOnboarding ? mainView?.viewController : onboarding
+        window?.rootViewController = displayOnboarding ? main?.viewController : onboarding
         #endif
         
         window?.backgroundColor(color: displayOnboarding ? .systemBackground : .black)
@@ -94,7 +103,7 @@ private extension SceneDelegate {
         
         guard let urlString = parameters["url"] else { return }
         
-        if let detailSongView = mainView?.viewController.topMostViewController as? DetailSongView {
+        if let detailSongView = main?.viewController.topMostViewController as? DetailSongView {
             detailSongView.dismiss(animated: false) { [weak self] in
                 self?.selectLinkTab(withUrlString: urlString)
             }
@@ -104,7 +113,7 @@ private extension SceneDelegate {
     }
     
     func selectLinkTab(withUrlString urlString: String) {
-        mainView?.selectedTab(.link)
+        main?.selectedTab(.link)
         
         UserDefaults().set(urlString, forKey: "incomingURL")
     }

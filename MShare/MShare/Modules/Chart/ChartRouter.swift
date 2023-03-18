@@ -7,28 +7,23 @@
 
 import UIKit
 
-protocol ChartRouterProtocol: ModuleRouterProtocol { }
+protocol ChartRouterProtocol { }
 
-final class ChartRouter: ChartRouterProtocol {
+final class ChartRouter: Router, ChartRouterProtocol {
     
-    static func createModule() -> UIViewController {
+    override func createModule() -> UIViewController {
         let view: ChartViewProtocol = ChartView()
         let presenter: ChartPresenterProtocol & ChartInteractorOutputProtocol = ChartPresenter()
         var interactor: ChartInteractorIntputProtocol = ChartInteractor()
-        let router = ChartRouter()
         
         view.presenter = presenter
         presenter.view = view
         presenter.interactor = interactor
-        presenter.router = router
+        presenter.router = self
         interactor.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: view.viewController)
         return navigationController
-    }
-    
-    func createModule() -> UIViewController {
-        return ChartRouter.createModule()
     }
     
 }
