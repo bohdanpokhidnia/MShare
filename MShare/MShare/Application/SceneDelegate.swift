@@ -47,8 +47,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         #if DETAIL
-        let detailScreen = DetailSongRouter.createModule(mediaResponse: NetworkService.MockData.songMediaResponse,
-                                                         cover: UIImage(named: "mockCover")!)
+        let detailScreen = DetailSongRouter(
+            dependencyManager: dependencyManager,
+            mediaResponse: MockData.songMediaResponse,
+            cover: UIImage(named: "mockCover")!
+        ).createModule()
         window?.rootViewController = UINavigationController(rootViewController: detailScreen)
         #else
         window?.rootViewController = displayOnboarding ? main?.viewController : onboarding

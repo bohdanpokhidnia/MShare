@@ -20,6 +20,7 @@ protocol DetailSongViewProtocol: AnyObject {
     func showError(_ error: String)
     func showAlertShareCount(for shareMedia: ShareMediaResponse)
     func showSavedImage()
+    func stopLoadingAnimation()
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
@@ -96,10 +97,14 @@ extension DetailSongView: DetailSongViewProtocol {
     }
     
     func setFavoriteStatus(_ isSaved: Bool) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: isSaved ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(didTapAddToFavorite))
+        let rightImage = UIImage(systemName: isSaved ? "heart.fill" : "heart")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: rightImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTapAddToFavorite)
+        )
     }
     
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?) {
@@ -132,16 +137,24 @@ extension DetailSongView: DetailSongViewProtocol {
         contentView.imageSavedToast.show(haptic: .success)
     }
     
+    func stopLoadingAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.contentView.horizontalActionMenuView.set(animationStyle: .normal)
+        }
+    }
+    
 }
 
 // MARK: - HorizontalActionMenuDelegate
 
 extension DetailSongView: HorizontalActionMenuDelegate {
     
-    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView,
-                          action: HorizontalMenuAction,
-                          available: Bool,
-                          didSelectItemAt indexPath: IndexPath) {
+    func didTapActionItem(
+        _ horizontalActionMenuView: HorizontalActionMenuView,
+        action: HorizontalMenuAction,
+        available: Bool,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         guard available else {
             showUnavailableToast()
             return
@@ -152,26 +165,17 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             presenter?.didTapShareMedia(for: action.rawValue)
             
         case .shareYouTubeMusicLink:
-            stopLoadingAnimation(for: horizontalActionMenuView)
+            stopLoadingAnimation()
             
         case .shareCover:
             guard let coverImage = contentView.makeImage() else { return }
 
-            presenter?.shareCover(cover: coverImage) {
-                horizontalActionMenuView.set(animationStyle: .normal)
-            }
-        }
-    }
-    
-}
-
-// MARK: - Private Methods
-
-private extension DetailSongView {
-    
-    func stopLoadingAnimation(for horizontalActionMenuView: HorizontalActionMenuView) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            horizontalActionMenuView.set(animationStyle: .normal)
+            presenter?.shareCover(cover: coverImage)
+            
+        case .saveCover:
+            guard let cover = contentView.cover else { return }
+            
+            presenter?.saveCover(cover: cover)
         }
     }
     

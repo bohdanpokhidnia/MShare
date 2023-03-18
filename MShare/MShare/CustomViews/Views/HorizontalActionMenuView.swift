@@ -20,6 +20,7 @@ enum HorizontalMenuAction: String, CaseIterable {
     case shareSpotifyLink = "Spotify"
     case shareYouTubeMusicLink = "YoutubeMusic"
     case shareCover
+    case saveCover
     
     var image: UIImage? {
         switch self {
@@ -34,6 +35,9 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .shareCover:
             return UIImage(named: "coverShareIcon")
+            
+        case .saveCover:
+            return UIImage(named: "saveCoverIcon")
         }
     }
     
@@ -50,6 +54,9 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .shareCover:
             return "Share cover"
+            
+        case .saveCover:
+            return "Save cover"
         }
     }
     
@@ -193,7 +200,6 @@ extension HorizontalActionMenuView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let menuItem = menuItems[indexPath.row]
-        
         let cell = collectionView.dequeue(HorizontalActionMenuViewCell.self, for: indexPath)
         return cell.set(state: menuItem)
     }

@@ -15,15 +15,26 @@ protocol DetailSongPresenterProtocol: AnyObject {
     func viewDidLoad()
     func dismissAction()
     func copyCoverToBuffer(fromView view: View)
-    func shareCover(cover: UIImage, completion: (() -> Void)?)
+    func shareCover(cover: UIImage)
     func saveToFavorite()
     func didTapShareMedia(for destinationService: String)
+    func saveCover(cover: UIImage)
 }
 
-final class DetailSongPresenter {
+final class DetailSongPresenter: NSObject {
     weak var view: DetailSongViewProtocol?
     var interactor: DetailSongInteractorInputProtocol?
     var router: DetailSongRouterProtocol?
+    
+    @objc
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            view?.showError("Error saving image: \(error.localizedDescription)")
+        } else {
+            view?.stopLoadingAnimation()
+            view?.showSavedImage()
+        }
+    }
 }
 
 // MARK: - DetailSongPresenterProtocol
@@ -52,8 +63,8 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         }
     }
     
-    func shareCover(cover: UIImage, completion: (() -> Void)?) {
-        interactor?.requestAccessToGallery(cover, completion: completion)
+    func shareCover(cover: UIImage) {
+        interactor?.requestAccessToGallery(cover)
     }
     
     func saveToFavorite() {
@@ -73,11 +84,14 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     func didLoadDetailMedia(_ detailMedia: DetailSongEntity) {
         var menuItems = [HorizontalActionMenuItem]()
         
-        detailMedia.services.forEach {
-            guard let action = HorizontalMenuAction(rawValue: $0.type) else { return }
-            menuItems.append(.init(horizontalMenuAction: action, available: $0.isAvailable))
+        detailMedia.services.forEach { (service) in
+            guard let action = HorizontalMenuAction(rawValue: service.type) else { return }
+            menuItems.append(.init(horizontalMenuAction: action, available: service.isAvailable))
         }
-        menuItems.append(.init(horizontalMenuAction: .shareCover, available: true))
+        menuItems += [
+            .init(horizontalMenuAction: .shareCover, available: true),
+            .init(horizontalMenuAction: .saveCover, available: true),
+        ]
         
         view?.setupContent(withState: detailMedia, withHorizontalActionMenuItem: menuItems)
     }
@@ -107,11 +121,19 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         }
     }
     
-    func didRequestedAccessToGallery(_ image: UIImage, completion: (() -> Void)?) {
-        router?.shareImage(view: view,
-                           image: image,
-                           savedImage: view?.showSavedImage,
-                           completion: completion)
+    func didRequestedAccessToGallery(_ image: UIImage) {
+        router?.shareImage(
+            view: view,
+            image: image,
+            savedImage: view?.showSavedImage,
+            completion: { [weak view] in
+                view?.stopLoadingAnimation()
+            }
+        )
+    }
+    
+    func saveCover(cover: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(cover, self, #selector(image), nil)
     }
     
 }

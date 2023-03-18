@@ -95,12 +95,14 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     override func setupSubviews() {
         super.setupSubviews()
         
-        containerView.addSubviews(actionImageView,
-                                  backgroundShadowGradientView,
-                                  shareCircleView,
-                                  actionTitleLabel,
-                                  blurredView,
-                                  loadingIndicator)
+        containerView.addSubviews(
+            actionImageView,
+            backgroundShadowGradientView,
+            shareCircleView,
+            actionTitleLabel,
+            blurredView,
+            loadingIndicator
+        )
         contentView.addSubview(containerView)
     }
     
@@ -138,7 +140,6 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
         }
-
     }
     
     // MARK: - Override methods
@@ -163,35 +164,32 @@ extension HorizontalActionMenuViewCell {
     func set(state: State) -> Self {
         actionImageView.setImage(state.image)
         actionTitleLabel.text(state.title)
-        
         blurredView.setAlpha(state.active ? 0 : 0.8)
-        
         return self
     }
     
     @discardableResult
     func set(style: Style) -> Self {
-        UIView.animate(withDuration: 0.3,
-                       delay: 0,
-                       usingSpringWithDamping: 0.3,
-                       initialSpringVelocity: 5,
-                       options: [.allowUserInteraction],
-                       animations: {
-            
-            self.transform = style.animation
-            
-            switch style {
-            case .blurred:
-                self.loadingIndicator.startAnimating()
-                self.blurredView.setAlpha(0.8)
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            usingSpringWithDamping: 0.3,
+            initialSpringVelocity: 5,
+            options: [.allowUserInteraction],
+            animations: {
+                self.transform = style.animation
                 
-            case .normal:
-                self.loadingIndicator.stopAnimating()
-                self.blurredView.setAlpha(0)
+                switch style {
+                case .blurred:
+                    self.loadingIndicator.startAnimating()
+                    self.blurredView.setAlpha(0.8)
+                    
+                case .normal:
+                    self.loadingIndicator.stopAnimating()
+                    self.blurredView.setAlpha(0)
+                }
             }
-            
-        })
-        
+        )
         return self
     }
     

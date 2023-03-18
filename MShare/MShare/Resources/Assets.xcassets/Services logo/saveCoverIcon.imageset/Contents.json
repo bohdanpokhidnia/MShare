@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "saveCoverIcon.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

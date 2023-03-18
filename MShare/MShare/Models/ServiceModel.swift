@@ -10,6 +10,7 @@ import RealmSwift
 
 @objcMembers
 final class ServiceModel: Object {
+    
     dynamic var id: UUID = UUID()
     dynamic var name: String = ""
     dynamic var type: String = ""

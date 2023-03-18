@@ -11,6 +11,10 @@ import NotificationToast
 
 final class DetailSongContentView: View {
     
+    var cover: UIImage? {
+        return coverView.coverImageView.image
+    }
+    
     // MARK: - UI
     
     private(set) var copiedToast = ToastView(title: "Cover copied",

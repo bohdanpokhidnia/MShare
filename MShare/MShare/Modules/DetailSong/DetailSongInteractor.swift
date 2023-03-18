@@ -16,7 +16,7 @@ protocol DetailSongInteractorInputProtocol {
     func copyImageToBuffer(_ image: UIImage?)
     func saveToDatabase()
     func hasMediaInDatabase()
-    func requestAccessToGallery(_ image: UIImage, completion: (() -> Void)?)
+    func requestAccessToGallery(_ image: UIImage)
 }
 
 protocol DetailSongInteractorOutputProtocol: AnyObject {
@@ -24,7 +24,7 @@ protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didLoadShareMedia(_ shareMedia: ShareMediaResponse)
     func didCatchError(_ error: NetworkError)
     func hasMediaInDatabase(_ isSaved: Bool)
-    func didRequestedAccessToGallery(_ image: UIImage, completion: (() -> Void)?)
+    func didRequestedAccessToGallery(_ image: UIImage)
 }
 
 final class DetailSongInteractor {
@@ -152,7 +152,7 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         presenter?.hasMediaInDatabase(isSaved)
     }
     
-    func requestAccessToGallery(_ image: UIImage, completion: (() -> Void)?) {
+    func requestAccessToGallery(_ image: UIImage) {
         let status = PHPhotoLibrary.authorizationStatus()
         
         switch status {
@@ -174,7 +174,7 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
             print("[dev] we need say user open settings, status: \(status)")
         }
         
-        presenter?.didRequestedAccessToGallery(image, completion: completion)
+        presenter?.didRequestedAccessToGallery(image)
     }
     
 }

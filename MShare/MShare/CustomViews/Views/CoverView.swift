@@ -37,7 +37,7 @@ final class CoverView: View {
         .setCornerRadius(28)
         .maskToBounds(true)
     
-    private let coverImageView = UIImageView()
+    private(set) var coverImageView = UIImageView()
         .setContentMode(.scaleToFill)
         .backgroundColor(color: .systemBlue)
         .setCornerRadius(12)

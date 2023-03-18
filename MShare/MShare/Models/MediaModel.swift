@@ -10,6 +10,7 @@ import RealmSwift
 
 @objcMembers
 final class MediaModel: Object {
+    
     dynamic var sourceId: String = ""
     dynamic var url: String = ""
     dynamic var name: String = ""

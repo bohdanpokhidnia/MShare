@@ -149,6 +149,7 @@
 		F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */; };
 		F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DB96C128CCE4850031FD22 /* String+Ext.swift */; };
 		F7E5259429C5F38C005E0A95 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5259329C5F38C005E0A95 /* Router.swift */; };
+		F7E5259629C6135C005E0A95 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */; };
 		F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */; };
 		F7FE397329144904000A190F /* FirstFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FE397229144904000A190F /* FirstFavoritesView.swift */; };
 /* End PBXBuildFile section */
@@ -318,6 +319,7 @@
 		F7D9852828FA977500F54E24 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
 		F7DB96C128CCE4850031FD22 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		F7E5259329C5F38C005E0A95 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponse.swift; sourceTree = "<group>"; };
 		F7FE397229144904000A190F /* FirstFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -844,6 +846,7 @@
 				F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */,
 				F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */,
 				F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */,
+				F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1080,6 +1083,7 @@
 				F77EE0D5298FAA6D002E7139 /* FourPageViewController.swift in Sources */,
 				F77EE0E3298FCA86002E7139 /* SignInView.swift in Sources */,
 				F790282D289309940058CC19 /* SettingsPresenter.swift in Sources */,
+				F7E5259629C6135C005E0A95 /* UIImage+Ext.swift in Sources */,
 				F7E5259429C5F38C005E0A95 /* Router.swift in Sources */,
 				F7C2B84529A13DD900569C5B /* MediaCell.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
@@ -1294,7 +1298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -1313,7 +1317,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext (App Store)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
