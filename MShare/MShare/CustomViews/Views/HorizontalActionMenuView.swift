@@ -21,6 +21,7 @@ enum HorizontalMenuAction: String, CaseIterable {
     case shareYouTubeMusicLink = "YoutubeMusic"
     case shareCover
     case saveCover
+    case makeCover
     
     var image: UIImage? {
         switch self {
@@ -38,6 +39,9 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .saveCover:
             return UIImage(named: "saveCoverIcon")
+            
+        case .makeCover:
+            return nil
         }
     }
     
@@ -57,6 +61,9 @@ enum HorizontalMenuAction: String, CaseIterable {
             
         case .saveCover:
             return "Save cover"
+            
+        case .makeCover:
+            return "Make cover"
         }
     }
     

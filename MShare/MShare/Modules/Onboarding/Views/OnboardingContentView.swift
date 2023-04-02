@@ -88,10 +88,12 @@ final class OnboardingContentView: View {
     
     // MARK: - Private
     
-    private lazy var pages = [FirstPageViewController(),
-                              TwoPageViewController(),
-                              ThirdPageViewController(),
-                              FourPageViewController()]
+    private lazy var pages = [
+        FirstPageViewController(),
+        TwoPageViewController(),
+        ThirdPageViewController(),
+        FourPageViewController(),
+    ]
     
 }
 

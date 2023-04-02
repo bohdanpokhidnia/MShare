@@ -50,18 +50,22 @@ final class DetailSongContentView: View {
     
     // MARK: - Lifecycle
     
-    override func setupSubviews() {
-        super.setupSubviews()
-        
-        coverViewContainer.addSubview(coverView)
-        addSubviews(backgroundImageView, coverViewContainer, horizontalActionMenuView)
-    }
-    
     override func setup() {
         super.setup()
         
         backgroundColor(color: .white)
         maskToBounds(true)
+    }
+    
+    override func setupSubviews() {
+        super.setupSubviews()
+        
+        coverViewContainer.addSubview(coverView)
+        addSubviews(
+            backgroundImageView,
+            coverViewContainer,
+            horizontalActionMenuView
+        )
     }
     
     override func defineLayout() {

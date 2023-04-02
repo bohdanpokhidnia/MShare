@@ -39,6 +39,7 @@ final class DetailSongView: ViewController<DetailSongContentView> {
         setupNavigationBar()
         setupViews()
         setupActionsHandler()
+        
         presenter?.viewDidLoad()
     }
 
@@ -176,6 +177,10 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             guard let cover = contentView.cover else { return }
             
             presenter?.saveCover(cover: cover)
+            
+        case .makeCover:
+            presenter?.didTapMakeCover()
+            stopLoadingAnimation()
         }
     }
     

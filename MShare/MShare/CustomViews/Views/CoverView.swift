@@ -44,7 +44,7 @@ final class CoverView: View {
         .maskToBounds(true)
         .borderWidth(1, color: .black)
     
-    private lazy var namesLabelStackView = makeStackView(axis: .vertical)(
+    private lazy var textStackView = makeStackView(axis: .vertical)(
         songNameLabel,
         artistNameLabel
     )
@@ -66,8 +66,8 @@ final class CoverView: View {
     override var intrinsicContentSize: CGSize {
         let width: CGFloat = coverImageWidth + 16 * 2
         
-        namesLabelStackView.layoutIfNeeded()
-        let labelsHeight = namesLabelStackView.frame.height
+        textStackView.layoutIfNeeded()
+        let labelsHeight = textStackView.frame.height
         let height: CGFloat = coverImageWidth + labelsHeight + coverViewTopOffset + labelsViewTopOffset + viewBottomOffset
         
         return .init(width: width, height: height)
@@ -84,7 +84,10 @@ final class CoverView: View {
     override func setupSubviews() {
         super.setupSubviews()
         
-        gradientBackgroundView.addSubviews(coverImageView, namesLabelStackView)
+        gradientBackgroundView.addSubviews(
+            coverImageView,
+            textStackView
+        )
         addSubview(gradientBackgroundView)
     }
     
@@ -101,7 +104,7 @@ final class CoverView: View {
             $0.width.height.equalTo(coverImageWidth)
         }
         
-        namesLabelStackView.snp.makeConstraints {
+        textStackView.snp.makeConstraints {
             $0.top.equalTo(coverImageView.snp.bottom).offset(10)
             $0.leading.equalTo(coverImageView.snp.leading)
             $0.trailing.equalTo(coverImageView.snp.trailing)
@@ -138,7 +141,6 @@ extension CoverView {
         coverImageView.setImage(state.image)
         songNameLabel.text(state.songName)
         artistNameLabel.text(state.artistName)
-        
         return self
     }
     

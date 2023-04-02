@@ -19,6 +19,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     func saveToFavorite()
     func didTapShareMedia(for destinationService: String)
     func saveCover(cover: UIImage)
+    func didTapMakeCover()
 }
 
 final class DetailSongPresenter: NSObject {
@@ -75,6 +76,10 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         interactor?.requestShareMedia(for: destinationService)
     }
     
+    func didTapMakeCover() {
+        router?.pushMakeCover(view: view)
+    }
+    
 }
 
 // MARK: - DetailSongInteractorOutputProtocol
@@ -91,6 +96,7 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         menuItems += [
             .init(horizontalMenuAction: .shareCover, available: true),
             .init(horizontalMenuAction: .saveCover, available: true),
+            .init(horizontalMenuAction: .makeCover, available: true)
         ]
         
         view?.setupContent(withState: detailMedia, withHorizontalActionMenuItem: menuItems)

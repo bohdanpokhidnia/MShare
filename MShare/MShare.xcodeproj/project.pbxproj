@@ -47,6 +47,12 @@
 		F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */; };
 		F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A8BF128D39D4800EAB5BD /* Label.swift */; };
 		F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F684928FC84CD007B2E01 /* Loopable.swift */; };
+		F7632C2B29D9C4AB00239DAF /* MakeCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2429D9C4AB00239DAF /* MakeCoverView.swift */; };
+		F7632C2C29D9C4AB00239DAF /* MakeCoverEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2529D9C4AB00239DAF /* MakeCoverEntity.swift */; };
+		F7632C2D29D9C4AB00239DAF /* MakeCoverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2629D9C4AB00239DAF /* MakeCoverInteractor.swift */; };
+		F7632C2E29D9C4AB00239DAF /* MakeCoverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2729D9C4AB00239DAF /* MakeCoverPresenter.swift */; };
+		F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */; };
+		F7632C3029D9C4AB00239DAF /* MakeCoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F768EF31291065C5009D64A1 /* GoogleService-Info.plist */; };
@@ -217,6 +223,12 @@
 		F756924C28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuViewCell.swift; sourceTree = "<group>"; };
 		F75A8BF128D39D4800EAB5BD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		F75F684928FC84CD007B2E01 /* Loopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
+		F7632C2429D9C4AB00239DAF /* MakeCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverView.swift; sourceTree = "<group>"; };
+		F7632C2529D9C4AB00239DAF /* MakeCoverEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverEntity.swift; sourceTree = "<group>"; };
+		F7632C2629D9C4AB00239DAF /* MakeCoverInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverInteractor.swift; sourceTree = "<group>"; };
+		F7632C2729D9C4AB00239DAF /* MakeCoverPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverPresenter.swift; sourceTree = "<group>"; };
+		F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverRouter.swift; sourceTree = "<group>"; };
+		F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverContentView.swift; sourceTree = "<group>"; };
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -455,6 +467,27 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F7632C2329D9C4AB00239DAF /* MakeCover */ = {
+			isa = PBXGroup;
+			children = (
+				F7632C2929D9C4AB00239DAF /* Views */,
+				F7632C2429D9C4AB00239DAF /* MakeCoverView.swift */,
+				F7632C2629D9C4AB00239DAF /* MakeCoverInteractor.swift */,
+				F7632C2729D9C4AB00239DAF /* MakeCoverPresenter.swift */,
+				F7632C2529D9C4AB00239DAF /* MakeCoverEntity.swift */,
+				F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */,
+			);
+			path = MakeCover;
+			sourceTree = "<group>";
+		};
+		F7632C2929D9C4AB00239DAF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F7653FB0289452A200FC47FA /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +567,7 @@
 				F7D9852128FA977500F54E24 /* Favorites */,
 				F7902821289309940058CC19 /* Settings */,
 				F777BE42289E479600595ACA /* DetailSong */,
+				F7632C2329D9C4AB00239DAF /* MakeCover */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1019,6 +1053,7 @@
 				F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
 				F7C85DFE28DBA3AF007D0170 /* LoadingButton.swift in Sources */,
+				F7632C2D29D9C4AB00239DAF /* MakeCoverInteractor.swift in Sources */,
 				F777BE4A289E479600595ACA /* DetailSongPresenter.swift in Sources */,
 				F7C2B83F29A136E100569C5B /* Settings.swift in Sources */,
 				F774B94C2891B33A00438A37 /* View.swift in Sources */,
@@ -1044,6 +1079,7 @@
 				F756924B28A5774700119BD8 /* HorizontalActionMenuView.swift in Sources */,
 				F7D9852928FA977500F54E24 /* FavoritesView.swift in Sources */,
 				F7081F36291D7CDC005DF33D /* TTSegmentedControl.swift in Sources */,
+				F7632C2E29D9C4AB00239DAF /* MakeCoverPresenter.swift in Sources */,
 				F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */,
 				F71E37D4297ABC0800BAF622 /* OnboardingPresenter.swift in Sources */,
 				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
@@ -1054,11 +1090,13 @@
 				F77EE0E2298FCA86002E7139 /* SignInRouter.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
 				F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */,
+				F7632C3029D9C4AB00239DAF /* MakeCoverContentView.swift in Sources */,
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
 				F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */,
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
+				F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */,
 				F71E37D5297ABC0800BAF622 /* OnboardingInteractor.swift in Sources */,
 				F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */,
 				F77EE0E4298FCA86002E7139 /* SignInEntity.swift in Sources */,
@@ -1109,12 +1147,14 @@
 				F7BB329929BA62F300219035 /* GetShareMedia.swift in Sources */,
 				F7BB329229BA560300219035 /* Endpoint.swift in Sources */,
 				F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */,
+				F7632C2B29D9C4AB00239DAF /* MakeCoverView.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
+				F7632C2C29D9C4AB00239DAF /* MakeCoverEntity.swift in Sources */,
 				F7C2B83C29A1336B00569C5B /* UIComponentsLibrary.swift in Sources */,
 				F7D147A228D684E700655F19 /* NetworkError.swift in Sources */,
 				F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */,

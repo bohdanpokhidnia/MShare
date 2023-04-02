@@ -57,12 +57,13 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         switch mediaResponse.mediaType {
         case .song:
             guard let song = mediaResponse.song else { return }
-            let detailSong = DetailSongEntity(songName: song.songName,
-                                              artistName: song.artistName,
-                                              image: cover,
-                                              sourceURL: song.songUrl,
-                                              services: mediaResponse.services)
-            
+            let detailSong = DetailSongEntity(
+                songName: song.songName,
+                artistName: song.artistName,
+                image: cover,
+                sourceURL: song.songUrl,
+                services: mediaResponse.services
+            )
             
             presenter?.didLoadDetailMedia(detailSong)
             

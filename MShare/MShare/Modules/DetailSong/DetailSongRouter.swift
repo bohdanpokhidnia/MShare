@@ -11,6 +11,7 @@ protocol DetailSongRouterProtocol {
     func dismissModule(view: DetailSongViewProtocol?)
     func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?)
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?)
+    func pushMakeCover(view: DetailSongViewProtocol?)
 }
  
 final class DetailSongRouter: Router, DetailSongRouterProtocol {
@@ -26,11 +27,14 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
     }
     
     override func createModule() -> UIViewController {
+        let databaseManager = dependencyManager.resolve(type: DatabaseManagerProtocol.self)
+        let apiClient = dependencyManager.resolve(type: ApiClient.self)
+        
         let view: DetailSongViewProtocol = DetailSongView()
         let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
         var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(
-            databaseManager: dependencyManager.resolve(type: DatabaseManagerProtocol.self),
-            apiClient: dependencyManager.resolve(type: ApiClient.self),
+            databaseManager: databaseManager,
+            apiClient: apiClient,
             mediaResponse: mediaResponse,
             cover: cover
         )
@@ -81,6 +85,16 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         view?.viewController.present(activityViewController, animated: true) {
             completion?()
         }
+    }
+    
+    func pushMakeCover(view: DetailSongViewProtocol?) {
+        let makeCover = MakeCoverRouter(
+            mediaResponse: mediaResponse,
+            cover: cover,
+            dependencyManager: dependencyManager
+        ).createModule()
+        
+        view?.viewController.navigationController?.pushViewController(makeCover, animated: true)
     }
     
 }
