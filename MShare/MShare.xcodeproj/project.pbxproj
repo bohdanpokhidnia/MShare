@@ -53,6 +53,7 @@
 		F7632C2E29D9C4AB00239DAF /* MakeCoverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2729D9C4AB00239DAF /* MakeCoverPresenter.swift */; };
 		F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */; };
 		F7632C3029D9C4AB00239DAF /* MakeCoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */; };
+		F7632C3229DA1F9100239DAF /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C3129DA1F9100239DAF /* Factory.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F768EF31291065C5009D64A1 /* GoogleService-Info.plist */; };
@@ -229,6 +230,7 @@
 		F7632C2729D9C4AB00239DAF /* MakeCoverPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverPresenter.swift; sourceTree = "<group>"; };
 		F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverRouter.swift; sourceTree = "<group>"; };
 		F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverContentView.swift; sourceTree = "<group>"; };
+		F7632C3129DA1F9100239DAF /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				F73920172985896D00A773D7 /* UIStyleGuide.swift */,
 				F739201929866C1000A773D7 /* DependencyManager.swift */,
 				F7E5259329C5F38C005E0A95 /* Router.swift */,
+				F7632C3129DA1F9100239DAF /* Factory.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1141,6 +1144,7 @@
 				F74B75C7290B045800DBCD46 /* DatabaseManager+Base.swift in Sources */,
 				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
 				F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */,
+				F7632C3229DA1F9100239DAF /* Factory.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
 				F7C2B83829A132B000569C5B /* Themeable.swift in Sources */,
 				F7C2B83A29A1332200569C5B /* AppTheme.swift in Sources */,

@@ -29,12 +29,14 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
     override func createModule() -> UIViewController {
         let databaseManager = dependencyManager.resolve(type: DatabaseManagerProtocol.self)
         let apiClient = dependencyManager.resolve(type: ApiClient.self)
+        let factory = dependencyManager.resolve(type: FactoryProtocol.self)
         
         let view: DetailSongViewProtocol = DetailSongView()
         let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
         var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(
             databaseManager: databaseManager,
             apiClient: apiClient,
+            factory: factory,
             mediaResponse: mediaResponse,
             cover: cover
         )

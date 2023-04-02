@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var userManager = UserManager()
     private lazy var databaseManager = DatabaseManager()
     private lazy var apiClient = ApiClient()
+    private lazy var factory = Factory()
     
     var onboarding: UIViewController?
     var main: MainViewProtocol?
@@ -28,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         dependencyManager.register(type: DatabaseManagerProtocol.self, module: databaseManager)
         dependencyManager.register(type: UserManagerProtocol.self, module: userManager)
         dependencyManager.register(type: ApiClient.self, module: apiClient)
+        dependencyManager.register(type: FactoryProtocol.self, module: factory)
         
         let displayOnboarding = userManager.displayOnboarding ?? false
         

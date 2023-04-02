@@ -28,9 +28,12 @@ final class MakeCoverRouter: Router, MakeCoverRouterProtocol {
     // MARK: - Override methods
     
     override func createModule() -> UIViewController {
+        let factory = dependencyManager.resolve(type: FactoryProtocol.self)
+        
         let view: MakeCoverViewProtocol = MakeCoverView()
         let presenter: MakeCoverPresenterProtocol & MakeCoverInteractorOutputProtocol = MakeCoverPresenter()
         var interactor: MakeCoverInteractorIntputProtocol = MakeCoverInteractor(
+            factory: factory,
             mediaResponse: mediaResponse,
             cover: cover
         )

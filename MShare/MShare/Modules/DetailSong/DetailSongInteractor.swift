@@ -30,23 +30,29 @@ protocol DetailSongInteractorOutputProtocol: AnyObject {
 final class DetailSongInteractor {
     weak var presenter: DetailSongInteractorOutputProtocol?
     
-    private let mediaResponse: MediaResponse
-    private let cover: UIImage
-
-    private let apiClient: ApiClient
-    private let databaseManager: DatabaseManagerProtocol
+    // MARK: - Initializers
     
     init(
         databaseManager: DatabaseManagerProtocol,
         apiClient: ApiClient,
+        factory: FactoryProtocol,
         mediaResponse: MediaResponse,
         cover: UIImage
     ) {
         self.databaseManager = databaseManager
         self.apiClient = apiClient
+        self.factory = factory
         self.mediaResponse = mediaResponse
         self.cover = cover
     }
+    
+    // MARK: - Private
+    
+    private let apiClient: ApiClient
+    private let databaseManager: DatabaseManagerProtocol
+    private let factory: FactoryProtocol
+    private let mediaResponse: MediaResponse
+    private let cover: UIImage
 }
 
 // MARK: - DetailSongInteractorInputProtocol
@@ -54,32 +60,9 @@ final class DetailSongInteractor {
 extension DetailSongInteractor: DetailSongInteractorInputProtocol {
     
     func requestMedia() {
-        switch mediaResponse.mediaType {
-        case .song:
-            guard let song = mediaResponse.song else { return }
-            let detailSong = DetailSongEntity(
-                songName: song.songName,
-                artistName: song.artistName,
-                image: cover,
-                sourceURL: song.songUrl,
-                services: mediaResponse.services
-            )
-            
-            presenter?.didLoadDetailMedia(detailSong)
-            
-            
-        case .album:
-            guard let album = mediaResponse.album else { return }
-            let detailAlbum = DetailSongEntity(
-                songName: album.albumName,
-                artistName: album.artistName,
-                image: cover,
-                sourceURL: album.albumUrl,
-                services: mediaResponse.services
-            )
-            
-            presenter?.didLoadDetailMedia(detailAlbum)
-        }
+        guard let entity = factory.mapDetailEntity(from: mediaResponse, withImage: cover) else { return }
+
+        presenter?.didLoadDetailMedia(entity)
     }
     
     func requestShareMedia(for destinationService: String) {
