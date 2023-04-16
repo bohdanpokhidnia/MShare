@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         main = MainRouter(dependencyManager: dependencyManager).initMainModule()
         
         #if DEV
-        main?.selectedTab(.favorites)
+        main?.selectedTab(.link)
         #else
         main?.selectedTab(.link)
         #endif

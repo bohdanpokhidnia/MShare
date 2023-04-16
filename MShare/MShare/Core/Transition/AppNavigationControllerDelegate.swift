@@ -13,8 +13,6 @@ class AppNavigationControllerDelegate: NSObject, UINavigationControllerDelegate 
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        guard fromVC is TransitionProtocol else { return nil }
-        guard toVC is TransitionProtocol else { return nil }
         var transition: UIViewControllerAnimatedTransitioning?
         
         switch (fromVC, toVC) {
@@ -23,6 +21,12 @@ class AppNavigationControllerDelegate: NSObject, UINavigationControllerDelegate 
         
         case (is DetailSongView, is FavoritesView):
             transition = FromBottomPushTransition(operation: .pop)
+            
+        case (is LinkView, is DetailSongView):
+            transition = BottomPushTransition()
+            
+        case (is DetailSongView, is LinkView):
+            transition = BottomPopTransition()
             
         default:
             return nil

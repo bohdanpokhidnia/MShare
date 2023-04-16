@@ -59,8 +59,9 @@
 		F763689D29EA8CA200307B7C /* AppNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763689C29EA8CA200307B7C /* AppNavigationControllerDelegate.swift */; };
 		F76368A029EBE6D700307B7C /* MoveElementsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763689F29EBE6D700307B7C /* MoveElementsTransition.swift */; };
 		F76368A229EBE7C000307B7C /* FromBottomPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A129EBE7C000307B7C /* FromBottomPushTransition.swift */; };
-		F76368A429EBE80600307B7C /* ToBottomPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A329EBE80600307B7C /* ToBottomPopTransition.swift */; };
+		F76368A429EBE80600307B7C /* BottomPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A329EBE80600307B7C /* BottomPopTransition.swift */; };
 		F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A529EC796000307B7C /* UITabBarController+Ext.swift */; };
+		F76368A829EC909800307B7C /* BottomPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A729EC909800307B7C /* BottomPushTransition.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F768EF31291065C5009D64A1 /* GoogleService-Info.plist */; };
@@ -243,8 +244,9 @@
 		F763689C29EA8CA200307B7C /* AppNavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		F763689F29EBE6D700307B7C /* MoveElementsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveElementsTransition.swift; sourceTree = "<group>"; };
 		F76368A129EBE7C000307B7C /* FromBottomPushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromBottomPushTransition.swift; sourceTree = "<group>"; };
-		F76368A329EBE80600307B7C /* ToBottomPopTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToBottomPopTransition.swift; sourceTree = "<group>"; };
+		F76368A329EBE80600307B7C /* BottomPopTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPopTransition.swift; sourceTree = "<group>"; };
 		F76368A529EC796000307B7C /* UITabBarController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Ext.swift"; sourceTree = "<group>"; };
+		F76368A729EC909800307B7C /* BottomPushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPushTransition.swift; sourceTree = "<group>"; };
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -511,7 +513,8 @@
 				F763689A29EA847D00307B7C /* TransitionProtocol.swift */,
 				F763689F29EBE6D700307B7C /* MoveElementsTransition.swift */,
 				F76368A129EBE7C000307B7C /* FromBottomPushTransition.swift */,
-				F76368A329EBE80600307B7C /* ToBottomPopTransition.swift */,
+				F76368A729EC909800307B7C /* BottomPushTransition.swift */,
+				F76368A329EBE80600307B7C /* BottomPopTransition.swift */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -1098,6 +1101,7 @@
 				F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */,
 				F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */,
 				F75F684A28FC84CD007B2E01 /* Loopable.swift in Sources */,
+				F76368A829EC909800307B7C /* BottomPushTransition.swift in Sources */,
 				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
 				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
 				F77EE0E0298FCA86002E7139 /* SignInPresenter.swift in Sources */,
@@ -1105,7 +1109,7 @@
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
 				F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */,
-				F76368A429EBE80600307B7C /* ToBottomPopTransition.swift in Sources */,
+				F76368A429EBE80600307B7C /* BottomPopTransition.swift in Sources */,
 				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */,
