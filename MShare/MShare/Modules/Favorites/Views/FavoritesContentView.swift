@@ -11,12 +11,13 @@ final class FavoritesContentView: View {
     
     // MARK: - UI
     
-    private(set) lazy var favotitesTableView = TableView(style: .insetGrouped)
+    private(set) lazy var favotitesTableView = TableView(style: .grouped)
         .register(class: MediaTableViewCell.self)
         .setRowHeight(80)
         .backgroundColor(color: .clear)
         .make {
-            $0.contentInset = UIEdgeInsets(aTop: 16, aBottom: 48)
+            $0.scrollIndicatorInsets = UIEdgeInsets(aTop: 32, aBottom: 82)
+            $0.contentInset = UIEdgeInsets(aBottom: 48)
         }
     
     private lazy var infoStackView = makeStackView(axis: .vertical)(
@@ -58,16 +59,19 @@ final class FavoritesContentView: View {
     override func setupSubviews() {
         super.setupSubviews()
         
-        addSubviews(favotitesTableView,
-                    infoStackView,
-                    segmentedControl)
+        addSubviews(
+            favotitesTableView,
+            infoStackView,
+            segmentedControl
+        )
     }
     
     override func defineLayout() {
         super.defineLayout()
         
         favotitesTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         infoImageView.snp.makeConstraints {

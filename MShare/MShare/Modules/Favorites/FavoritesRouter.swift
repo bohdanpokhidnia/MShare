@@ -12,7 +12,9 @@ protocol FavoritesRouterProtocol {
     func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaResponse: MediaResponse, cover: UIImage)
 }
 
-final class FavoritesRouter: Router, FavoritesRouterProtocol {
+final class FavoritesRouter: Router {
+    
+    // MARK: - Override methods
     
     override func createModule() -> UIViewController {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
@@ -31,9 +33,21 @@ final class FavoritesRouter: Router, FavoritesRouterProtocol {
         presenter.router = self
         interactor.presenter = presenter
         
-        let navigationController = UINavigationController(rootViewController: view.viewController)
+        let navigationController = AppNavigationController(rootViewController: view.viewController)
+        navigationController.delegate = delegate
+        navigationController.isRecognizerEnabled = false
         return navigationController
     }
+    
+    // MARK: - Private
+    
+    private let delegate = AppNavigationControllerDelegate()
+    
+}
+
+//MARK: - FavoritesRouterProtocol
+
+extension FavoritesRouter: FavoritesRouterProtocol {
     
     func shareUrl(view: FavoritesViewProtocol?, urlString: String) {
         let shareItems = [URL(string: urlString)]
@@ -43,11 +57,10 @@ final class FavoritesRouter: Router, FavoritesRouterProtocol {
     }
     
     func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaResponse: MediaResponse, cover: UIImage) {
-        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover).createModule()
-        let navigationController = UINavigationController(rootViewController: detailSongScreen)
-            .make { $0.modalPresentationStyle = .fullScreen }
+        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover)
+            .createModule()
         
-        view?.viewController.present(navigationController, animated: true)
+        view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
     }
     
 }

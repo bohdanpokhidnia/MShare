@@ -30,7 +30,7 @@ final class SettingsRouter: Router, SettingsRouterProtocol {
         presenter.router = self
         interactor.presenter = presenter
         
-        let navigationController = UINavigationController(rootViewController: view.viewController)
+        let navigationController = AppNavigationController(rootViewController: view.viewController)
         return navigationController
     }
     

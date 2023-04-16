@@ -77,6 +77,10 @@ final class FavoritesView: ViewController<FavoritesContentView> {
         
         presenter?.viewWillAppear()
     }
+    
+    // MARK: - Private
+    
+    private var selectedItem: IndexPath?
 
 }
 
@@ -138,8 +142,8 @@ extension FavoritesView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+        selectedItem = indexPath
+
         presenter?.tapOnMediaItem(forIndexPath: indexPath)
     }
     
@@ -155,14 +159,45 @@ extension FavoritesView: MediaItemDelegate {
     
 }
 
+//MARK: - TransitionProtocol
+
+extension FavoritesView: TransitionProtocol {
+    
+    var transitionView: UIView {
+        return view
+    }
+    
+    func viewsToAnimate() -> [UIView] {
+        guard let selectedItem else { fatalError("without selected index path") }
+        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
+        let coverImage = cell.iconImageView
+        
+        return [coverImage]
+    }
+    
+    func copyForView(_ subView: UIView) -> UIView {
+        guard let selectedIndexPath = contentView.favotitesTableView.indexPathForSelectedRow else { fatalError("without \(subView)") }
+        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedIndexPath)
+        
+        guard subView == cell.iconImageView else { fatalError("other view, don't found \(subView)") }
+        let copyImageView = UIImageView(image: cell.iconImageView.image)
+            .setCornerRadius(12)
+            .maskToBounds(true)
+        return copyImageView
+    }
+    
+}
+
 // MARK: - FavoritesViewProtocol
 
 extension FavoritesView: FavoritesViewProtocol {
     
     func showError(_ error: Error) {
-        showAlert(title: "Error",
-                  message: error.localizedDescription,
-                  alertAction: nil)
+        showAlert(
+            title: "Error",
+            message: error.localizedDescription,
+            alertAction: nil
+        )
     }
     
     func reloadData() {

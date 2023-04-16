@@ -114,7 +114,6 @@ extension DetailSongContentView {
                        initialSpringVelocity: 5,
                        options: [.allowUserInteraction],
                        animations: {
-            
             self.coverViewContainer.transform = animationState.animation
         }, completion: { _ in
             completion?()

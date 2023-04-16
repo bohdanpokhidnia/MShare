@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         main = MainRouter(dependencyManager: dependencyManager).initMainModule()
         
         #if DEV
-        main?.selectedTab(.link)
+        main?.selectedTab(.favorites)
         #else
         main?.selectedTab(.link)
         #endif
@@ -54,7 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             mediaResponse: MockData.songMediaResponse,
             cover: UIImage(named: "mockCover")!
         ).createModule()
-        window?.rootViewController = UINavigationController(rootViewController: detailScreen)
+        window?.rootViewController = AppNavigationController(rootViewController: detailScreen)
         #else
         window?.rootViewController = displayOnboarding ? main?.viewController : onboarding
         #endif

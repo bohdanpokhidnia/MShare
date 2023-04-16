@@ -48,4 +48,9 @@ extension UITableView {
         return dequeueReusableHeaderFooterView(withIdentifier: className) as! T
     }
     
+    func cellForRow<T: UITableViewCell>(_ cellType: T.Type, at indexPath: IndexPath) -> T {
+        let cell = cellForRow(at: indexPath) as! T
+        return cell
+    }
+    
 }

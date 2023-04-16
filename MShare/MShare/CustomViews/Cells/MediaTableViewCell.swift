@@ -26,12 +26,14 @@ final class MediaTableViewCell: TableViewCell {
         let defaultPlaceholder: UIImage?
         let displayShareButton: Bool
         
-        init(title: String,
-             subtitle: String? = nil,
-             positionNumber: String? = nil,
-             imageURL: String? = nil,
-             defaultPlaceholder: UIImage? = nil,
-             displayShareButton: Bool = false) {
+        init(
+            title: String,
+            subtitle: String? = nil,
+            positionNumber: String? = nil,
+            imageURL: String? = nil,
+            defaultPlaceholder: UIImage? = nil,
+            displayShareButton: Bool = false
+        ) {
             self.title = title
             self.subtitle = subtitle
             self.positionNumber = positionNumber
@@ -39,7 +41,6 @@ final class MediaTableViewCell: TableViewCell {
             self.defaultPlaceholder = defaultPlaceholder
             self.displayShareButton = displayShareButton
         }
-        
     }
     
     // MARK: - UI
@@ -52,7 +53,7 @@ final class MediaTableViewCell: TableViewCell {
 
     private let iconImageContainerView = View()
     
-    private let iconImageView = UIImageView()
+    let iconImageView = UIImageView()
         .setContentMode(.scaleAspectFit)
     
     private let positionNumberView = View()
@@ -106,7 +107,7 @@ final class MediaTableViewCell: TableViewCell {
         super.defineLayout()
         
         contentStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
         }
         
         iconImageContainerView.snp.makeConstraints {

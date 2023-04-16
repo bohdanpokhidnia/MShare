@@ -24,17 +24,18 @@ final class LinkRouter: Router, LinkRouterProtocol {
         presenter.router = self
         interactor.presenter = presenter
         
-        let navigationController = UINavigationController(rootViewController: view.viewController)
-        navigationController.interactivePopGestureRecognizer?.delegate = nil
+        let navigationController = AppNavigationController(rootViewController: view.viewController)
         return navigationController
     }
     
     func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
-        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover).createModule()
-        let navigationController = UINavigationController(rootViewController: detailSongScreen)
-            .make { $0.modalPresentationStyle = .fullScreen }
+        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover)
+            .createModule()
+        let navigation = AppNavigationController(rootViewController: detailSongScreen).make {
+            $0.modalPresentationStyle = .fullScreen
+        }
         
-        view?.viewController.present(navigationController, animated: true, completion: completion)
+        view?.viewController.present(navigation, animated: true, completion: completion)
     }
     
 }
