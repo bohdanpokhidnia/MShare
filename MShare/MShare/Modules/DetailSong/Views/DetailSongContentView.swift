@@ -17,29 +17,35 @@ final class DetailSongContentView: View {
     
     // MARK: - UI
     
-    private(set) var copiedToast = ToastView(title: "Cover copied",
-                                             titleFont: .systemFont(ofSize: 13, weight: .regular),
-                                             icon: UIImage(systemName: "doc.on.doc.fill"),
-                                             iconSpacing: 16,
-                                             position: .top)
+    private(set) var copiedToast = ToastView(
+        title: "Cover copied",
+        titleFont: .systemFont(ofSize: 13, weight: .regular),
+        icon: UIImage(systemName: "doc.on.doc.fill"),
+        iconSpacing: 16,
+        position: .top
+    )
     
-    private(set) var unvailableToast = ToastView(title: "The service will be available soon",
-                                                 titleFont: .systemFont(ofSize: 13, weight: .regular),
-                                                 icon: UIImage(systemName: "xmark"),
-                                                 iconSpacing: 12,
-                                                 position: .top)
+    private(set) var unvailableToast = ToastView(
+        title: "The service will be available soon",
+        titleFont: .systemFont(ofSize: 13, weight: .regular),
+        icon: UIImage(systemName: "xmark"),
+        iconSpacing: 12,
+        position: .top
+    )
     
-    private(set) var imageSavedToast = ToastView(title: "Image saved successfuly",
-                                                 titleFont: .systemFont(ofSize: 13, weight: .regular),
-                                                 icon: UIImage(systemName: "photo.on.rectangle.angled"),
-                                                 iconSpacing: 14,
-                                                 position: .top)
+    private(set) var imageSavedToast = ToastView(
+        title: "Image saved successfuly",
+        titleFont: .systemFont(ofSize: 13, weight: .regular),
+        icon: UIImage(systemName: "photo.on.rectangle.angled"),
+        iconSpacing: 14,
+        position: .top
+    )
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
         .addClearBackgroundBlur(style: .regular)
     
-    private let coverViewContainer = View()
+    private(set) var coverViewContainer = View()
         .maskToBounds(false)
         .setCornerRadius(28)
         .addShadow(color: .black, offset: .init(width: 4, height: 4), opacity: 0.3, radius: 10)

@@ -31,7 +31,7 @@ final class CoverView: View {
     
     // MARK: - UI
     
-    private let gradientBackgroundView = GradientView()
+    private(set) var gradientBackgroundView = GradientView()
         .set(colors: [.appPink, .appPink, .appBlue, .appBlue])
         .set(startPoint: .topLeading, endPoint: .bottomTrailing)
         .setCornerRadius(28)
@@ -56,7 +56,7 @@ final class CoverView: View {
         .set(numberOfLines: 2)
         .adjustsFontSizeToFitWidth(true)
     
-    private let artistNameLabel = UILabel()
+    private(set) var artistNameLabel = UILabel()
         .text(font: .systemFont(ofSize: 20, weight: .regular))
         .text(alignment: .center)
         .textColor(UIColor(hex: "#f0f0f0"))

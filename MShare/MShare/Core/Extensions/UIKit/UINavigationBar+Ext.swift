@@ -10,7 +10,8 @@ import UIKit
 extension UINavigationBar {
     
     enum NavigationBarStyle {
-        case defaultBackground, transcelent
+        case defaultBackground
+        case transcelent
     }
     
     static func configure(style: NavigationBarStyle) {

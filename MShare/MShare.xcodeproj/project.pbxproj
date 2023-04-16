@@ -54,6 +54,13 @@
 		F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */; };
 		F7632C3029D9C4AB00239DAF /* MakeCoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */; };
 		F7632C3229DA1F9100239DAF /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7632C3129DA1F9100239DAF /* Factory.swift */; };
+		F763689929EA820B00307B7C /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763689829EA820B00307B7C /* AppNavigationController.swift */; };
+		F763689B29EA847D00307B7C /* TransitionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763689A29EA847D00307B7C /* TransitionProtocol.swift */; };
+		F763689D29EA8CA200307B7C /* AppNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763689C29EA8CA200307B7C /* AppNavigationControllerDelegate.swift */; };
+		F76368A029EBE6D700307B7C /* MoveElementsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763689F29EBE6D700307B7C /* MoveElementsTransition.swift */; };
+		F76368A229EBE7C000307B7C /* FromBottomPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A129EBE7C000307B7C /* FromBottomPushTransition.swift */; };
+		F76368A429EBE80600307B7C /* ToBottomPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A329EBE80600307B7C /* ToBottomPopTransition.swift */; };
+		F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A529EC796000307B7C /* UITabBarController+Ext.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F768EF31291065C5009D64A1 /* GoogleService-Info.plist */; };
@@ -231,6 +238,13 @@
 		F7632C2829D9C4AB00239DAF /* MakeCoverRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverRouter.swift; sourceTree = "<group>"; };
 		F7632C2A29D9C4AB00239DAF /* MakeCoverContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeCoverContentView.swift; sourceTree = "<group>"; };
 		F7632C3129DA1F9100239DAF /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		F763689829EA820B00307B7C /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		F763689A29EA847D00307B7C /* TransitionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionProtocol.swift; sourceTree = "<group>"; };
+		F763689C29EA8CA200307B7C /* AppNavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationControllerDelegate.swift; sourceTree = "<group>"; };
+		F763689F29EBE6D700307B7C /* MoveElementsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveElementsTransition.swift; sourceTree = "<group>"; };
+		F76368A129EBE7C000307B7C /* FromBottomPushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromBottomPushTransition.swift; sourceTree = "<group>"; };
+		F76368A329EBE80600307B7C /* ToBottomPopTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToBottomPopTransition.swift; sourceTree = "<group>"; };
+		F76368A529EC796000307B7C /* UITabBarController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Ext.swift"; sourceTree = "<group>"; };
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -490,6 +504,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F763689E29EBE6BA00307B7C /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				F763689C29EA8CA200307B7C /* AppNavigationControllerDelegate.swift */,
+				F763689A29EA847D00307B7C /* TransitionProtocol.swift */,
+				F763689F29EBE6D700307B7C /* MoveElementsTransition.swift */,
+				F76368A129EBE7C000307B7C /* FromBottomPushTransition.swift */,
+				F76368A329EBE80600307B7C /* ToBottomPopTransition.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		F7653FB0289452A200FC47FA /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +615,7 @@
 		F774B9472891B20F00438A37 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F763689E29EBE6BA00307B7C /* Transition */,
 				F7C2B83429A1321100569C5B /* Theme */,
 				F774B94A2891B31E00438A37 /* Components */,
 				F790283328931E9E0058CC19 /* Extensions */,
@@ -602,6 +629,7 @@
 				F739201929866C1000A773D7 /* DependencyManager.swift */,
 				F7E5259329C5F38C005E0A95 /* Router.swift */,
 				F7632C3129DA1F9100239DAF /* Factory.swift */,
+				F763689829EA820B00307B7C /* AppNavigationController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -884,6 +912,7 @@
 				F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */,
 				F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */,
 				F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */,
+				F76368A529EC796000307B7C /* UITabBarController+Ext.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1048,6 +1077,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F763689B29EA847D00307B7C /* TransitionProtocol.swift in Sources */,
 				F774B94E2891B37A00438A37 /* ViewLayoutableProtocol.swift in Sources */,
 				F774B9462891B16600438A37 /* MainView.swift in Sources */,
 				F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */,
@@ -1075,6 +1105,7 @@
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
 				F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */,
+				F76368A429EBE80600307B7C /* ToBottomPopTransition.swift in Sources */,
 				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
 				F7D46D3B28CFB43700F9EFBD /* ShareCircleView.swift in Sources */,
@@ -1097,6 +1128,7 @@
 				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
 				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
 				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
+				F76368A029EBE6D700307B7C /* MoveElementsTransition.swift in Sources */,
 				F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */,
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
 				F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */,
@@ -1150,11 +1182,14 @@
 				F7C2B83A29A1332200569C5B /* AppTheme.swift in Sources */,
 				F7BB329929BA62F300219035 /* GetShareMedia.swift in Sources */,
 				F7BB329229BA560300219035 /* Endpoint.swift in Sources */,
+				F763689929EA820B00307B7C /* AppNavigationController.swift in Sources */,
 				F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */,
 				F7632C2B29D9C4AB00239DAF /* MakeCoverView.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
+				F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
+				F76368A229EBE7C000307B7C /* FromBottomPushTransition.swift in Sources */,
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
 				F774B9422891B16600438A37 /* MainEntity.swift in Sources */,
@@ -1163,6 +1198,7 @@
 				F7D147A228D684E700655F19 /* NetworkError.swift in Sources */,
 				F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */,
 				F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */,
+				F763689D29EA8CA200307B7C /* AppNavigationControllerDelegate.swift in Sources */,
 				F7BB329429BA566200219035 /* HttpClient.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
 				F71E37D3297ABC0800BAF622 /* OnboardingRouter.swift in Sources */,

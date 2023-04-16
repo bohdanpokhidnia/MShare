@@ -72,10 +72,10 @@ final class MediaTableViewCell: TableViewCell {
         subtitileLabel
     )
     
-    private let titleLabel = UILabel()
+    private(set) var titleLabel = UILabel()
         .set(numberOfLines: 1)
     
-    private let subtitileLabel = UILabel()
+    private(set) var subtitileLabel = UILabel()
         .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     

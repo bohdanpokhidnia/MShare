@@ -120,7 +120,6 @@ extension FavoritesView: UITableViewDataSource {
         return cell
             .set(delegate: self, indexPath: indexPath)
             .set(state: mediaItem)
-        
     }
     
 }
@@ -164,26 +163,57 @@ extension FavoritesView: MediaItemDelegate {
 extension FavoritesView: TransitionProtocol {
     
     var transitionView: UIView {
-        return view
+        return contentView
     }
     
     func viewsToAnimate() -> [UIView] {
         guard let selectedItem else { fatalError("without selected index path") }
         let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         let coverImage = cell.iconImageView
+        let title = cell.titleLabel
+        let subtitle = cell.subtitileLabel
         
-        return [coverImage]
+        return [coverImage, title, subtitle]
     }
     
     func copyForView(_ subView: UIView) -> UIView {
-        guard let selectedIndexPath = contentView.favotitesTableView.indexPathForSelectedRow else { fatalError("without \(subView)") }
-        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedIndexPath)
+        guard let selectedItem else { fatalError("without selected index path") }
+        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         
-        guard subView == cell.iconImageView else { fatalError("other view, don't found \(subView)") }
-        let copyImageView = UIImageView(image: cell.iconImageView.image)
-            .setCornerRadius(12)
-            .maskToBounds(true)
-        return copyImageView
+        switch subView {
+        case cell.iconImageView:
+            let copyImageView = UIImageView(image: cell.iconImageView.image)
+                .setCornerRadius(12)
+                .maskToBounds(true)
+                .borderWidth(1, color: .black)
+            
+            return copyImageView
+            
+        case cell.titleLabel:
+            let titleLabel = UILabel()
+                .text(cell.titleLabel.text)
+                .text(font: .systemFont(ofSize: 32, weight: .bold))
+                .text(alignment: .center)
+                .textColor(.white)
+                .set(numberOfLines: 2)
+                .adjustsFontSizeToFitWidth(true)
+            
+            return titleLabel
+            
+        case cell.subtitileLabel:
+            let subtitleLabel = UILabel()
+                .text(cell.subtitileLabel.text)
+                .text(font: .systemFont(ofSize: 20, weight: .regular))
+                .text(alignment: .center)
+                .textColor(UIColor(hex: "#f0f0f0"))
+                .set(numberOfLines: 1)
+                .adjustsFontSizeToFitWidth(true)
+            
+            return subtitleLabel
+            
+        default:
+            fatalError("other view, don't found \(subView)")
+        }
     }
     
 }

@@ -76,7 +76,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     
     func configureNavigationBarStyle() {
-        UINavigationBar.configure(style: .defaultBackground)
+        UINavigationBar.configure(style: .transcelent)
     }
     
     func configureTabBarStyle() {

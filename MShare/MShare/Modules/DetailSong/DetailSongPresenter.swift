@@ -13,7 +13,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     var router: DetailSongRouterProtocol? { get set }
     
     func viewDidLoad()
-    func dismissAction()
+    func didTapPop()
     func copyCoverToBuffer(fromView view: View)
     func shareCover(cover: UIImage)
     func saveToFavorite()
@@ -47,8 +47,8 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         interactor?.hasMediaInDatabase()
     }
     
-    func dismissAction() {
-        router?.dismissModule(view: view)
+    func didTapPop() {
+        router?.pop(view: view)
     }
     
     func copyCoverToBuffer(fromView: View) {

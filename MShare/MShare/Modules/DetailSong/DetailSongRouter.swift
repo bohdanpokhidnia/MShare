@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailSongRouterProtocol {
-    func dismissModule(view: DetailSongViewProtocol?)
+    func pop(view: DetailSongViewProtocol?)
     func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?)
     func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?)
     func pushMakeCover(view: DetailSongViewProtocol?)
@@ -50,10 +50,8 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         return view.viewController
     }
     
-    func dismissModule(view: DetailSongViewProtocol?) {
-        UINavigationBar.configure(style: .defaultBackground)
-        
-        view?.viewController.dismiss(animated: true)
+    func pop(view: DetailSongViewProtocol?) {
+        view?.viewController.navigationController?.popViewController(animated: true)
     }
     
     func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?) {

@@ -60,7 +60,9 @@ extension FavoritesRouter: FavoritesRouterProtocol {
         let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover)
             .createModule()
         
-        view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
+        view?.viewController.tabBarController?.setTabBarHidden(true, animated: false) { [weak view] in
+            view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
+        }
     }
     
 }

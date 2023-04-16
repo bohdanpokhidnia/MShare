@@ -16,7 +16,7 @@ final class FavoritesContentView: View {
         .setRowHeight(80)
         .backgroundColor(color: .clear)
         .make {
-            $0.scrollIndicatorInsets = UIEdgeInsets(aTop: 32, aBottom: 82)
+            $0.scrollIndicatorInsets = UIEdgeInsets(aTop: 0, aBottom: 82)
             $0.contentInset = UIEdgeInsets(aBottom: 48)
         }
     
