@@ -20,6 +20,7 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let isPush = operation == .push
         let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! TransitionProtocol
         let fromContentView = fromViewController.transitionView
         
@@ -31,7 +32,7 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
         containerView.addSubview(fromViewController.transitionView)
         containerView.addSubview(toViewController.transitionView)
         
-        if operation == .pop {
+        if !isPush {
             containerView.bringSubviewToFront(fromContentView)
         }
         
@@ -69,33 +70,36 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
             toView.alpha = 0
         }
         
-        let resizableTransitions = toViewController.resizableTransitions?() ?? []
+        let toResizableSource = isPush ? toViewController : fromViewController
+        let fromResizableSource = isPush ? fromViewController : toViewController
+        let toResizableTransitions = toResizableSource.resizableTransitions?() ?? []
+        let fromResizableTransitions = fromResizableSource.resizableTransitions?() ?? []
         var resizableIntermediateViews = [UIView]()
         var resizableToFrames = [CGRect]()
 
-        for i in 0..<resizableTransitions.count {
-            let resizableTransition = resizableTransitions[i]
+        for i in 0..<toResizableTransitions.count {
+            let resizableTransition = toResizableTransitions[i]
             let resizableView = resizableTransition.view
             
-            guard let intermediateView = toViewController.copyViewForCustomAnimation?(resizableView) else { continue }
-            intermediateView.frame = resizableTransition.from
+            guard let intermediateView = toResizableSource.copyViewForResizableView?(resizableView) else { continue }
+            intermediateView.frame = isPush ? fromResizableTransitions[i].from : resizableTransition.to
             containerView.insertSubview(intermediateView, at: 2)
             resizableIntermediateViews.append(intermediateView)
         
-            let toFrame = resizableTransition.to
+            let toFrame = isPush ? resizableTransition.to : fromResizableTransitions[i].from
             resizableToFrames.append(toFrame)
             resizableView.alpha = 0
         }
         
-        if operation == .push {
+        if isPush {
             toContentView.frame = fromContentView.frame.offsetBy(dx: 0, dy: fromContentView.frame.size.height)
         }
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.0, options: [], animations: { () -> Void in
-            if self.operation == .pop {
-                fromContentView.frame = fromContentView.frame.offsetBy(dx: 0, dy: fromContentView.frame.size.height)
-            } else {
+            if isPush {
                 toContentView.frame = fromContentView.frame
+            } else {
+                fromContentView.frame = fromContentView.frame.offsetBy(dx: 0, dy: fromContentView.frame.size.height)
             }
             
             for i in 0..<intermediateViews.count {
@@ -106,7 +110,10 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
             for i in 0..<resizableIntermediateViews.count {
                 let customIntermediateView = resizableIntermediateViews[i]
                 customIntermediateView.frame = resizableToFrames[i]
-                customIntermediateView.bounds = resizableToFrames[i]
+                
+                if isPush {
+                    customIntermediateView.bounds = resizableToFrames[i]
+                }
             }
         }) { (_) -> Void in
             for i in 0..<intermediateViews.count {
@@ -119,7 +126,7 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
             for i in 0..<resizableIntermediateViews.count {
                 resizableIntermediateViews[i].removeFromSuperview()
                 
-                resizableTransitions[i].view.alpha = 1
+                toResizableTransitions[i].view.alpha = 1
             }
             
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)

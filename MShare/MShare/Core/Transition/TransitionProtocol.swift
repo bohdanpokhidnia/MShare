@@ -14,7 +14,7 @@ import UIKit
     func copyForView(_ subView: UIView) -> UIView
     
     @objc optional func resizableTransitions() -> [ResizableTransition]
-    @objc optional func copyViewForCustomAnimation(_ subView: UIView) -> UIView
+    @objc optional func copyViewForResizableView(_ subView: UIView) -> UIView
     
     @objc optional func frameForView(_ subView: UIView) -> CGRect
 }

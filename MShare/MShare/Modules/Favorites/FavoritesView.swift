@@ -216,6 +216,26 @@ extension FavoritesView: TransitionProtocol {
         }
     }
     
+    func resizableTransitions() -> [ResizableTransition] {
+        guard let selectedItem else { fatalError("without selected index path") }
+        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
+        let coverImage = cell.iconImageView
+        let fromRect = coverImage.superview?.convert(coverImage.frame, to: nil) ?? .zero
+        
+        return [
+            .init(
+                view: cell.iconImageView,
+                from: fromRect,
+                to: .zero
+            ),
+            .init(
+                view: cell.iconImageView,
+                from: fromRect,
+                to: .zero
+            )
+        ]
+    }
+    
 }
 
 // MARK: - FavoritesViewProtocol

@@ -235,7 +235,7 @@ extension DetailSongView: TransitionProtocol {
         ]
     }
     
-    func copyViewForCustomAnimation(_ subView: UIView) -> UIView {
+    func copyViewForResizableView(_ subView: UIView) -> UIView {
         switch subView {
         case contentView.coverView.gradientBackgroundView:
             return GradientView()
@@ -244,7 +244,7 @@ extension DetailSongView: TransitionProtocol {
                 .setCornerRadius(28)
                 .maskToBounds(true)
                 .make {
-                    $0.bounds = .init(origin: .zero, size: .init(width: 100, height: 100))
+                    $0.bounds = .init(origin: .zero, size: contentView.coverView.gradientBackgroundView.frame.size)
                 }
             
         case contentView.coverViewContainer:
