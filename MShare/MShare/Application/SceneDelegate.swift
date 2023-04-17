@@ -109,7 +109,7 @@ private extension SceneDelegate {
         guard let urlString = parameters["url"] else { return }
         
         if let detailSongView = main?.viewController.topMostViewController as? DetailSongView {
-            detailSongView.dismiss(animated: false) { [weak self] in
+            detailSongView.navigationController?.popViewController(animated: true) { [weak self] in
                 self?.selectLinkTab(withUrlString: urlString)
             }
         } else {

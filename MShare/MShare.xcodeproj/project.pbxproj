@@ -15,6 +15,7 @@
 		F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710AE1D293216E300C758E8 /* ShareMediaResponse.swift */; };
 		F71412FE2915C60100D569E2 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71412FD2915C60100D569E2 /* UserDefault.swift */; };
 		F71413002915C63600D569E2 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71412FF2915C63600D569E2 /* UserManager.swift */; };
+		F7198AF929EDA9AE007BB2E4 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7198AF829EDA9AE007BB2E4 /* UINavigationController+Ext.swift */; };
 		F71E37D3297ABC0800BAF622 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E37CC297ABC0800BAF622 /* OnboardingRouter.swift */; };
 		F71E37D4297ABC0800BAF622 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E37CD297ABC0800BAF622 /* OnboardingPresenter.swift */; };
 		F71E37D5297ABC0800BAF622 /* OnboardingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E37CE297ABC0800BAF622 /* OnboardingInteractor.swift */; };
@@ -201,6 +202,7 @@
 		F710AE1D293216E300C758E8 /* ShareMediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMediaResponse.swift; sourceTree = "<group>"; };
 		F71412FD2915C60100D569E2 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		F71412FF2915C63600D569E2 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		F7198AF829EDA9AE007BB2E4 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		F71E37CC297ABC0800BAF622 /* OnboardingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		F71E37CD297ABC0800BAF622 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		F71E37CE297ABC0800BAF622 /* OnboardingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingInteractor.swift; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 				F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */,
 				F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */,
 				F76368A529EC796000307B7C /* UITabBarController+Ext.swift */,
+				F7198AF829EDA9AE007BB2E4 /* UINavigationController+Ext.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */,
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */,
+				F7198AF929EDA9AE007BB2E4 /* UINavigationController+Ext.swift in Sources */,
 				F77EE0E1298FCA86002E7139 /* SignInInteractor.swift in Sources */,
 				F7BB329B29BA68EB00219035 /* GetSong.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,

@@ -60,8 +60,6 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     
     func didCatchURL(_ urlString: String) {
         view?.setLink(urlString)
-        
-        interactor?.requestSong(urlString: urlString)
     }
     
     func didCatchStringFromBuffer(_ stringFromBuffer: String) {
