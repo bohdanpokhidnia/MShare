@@ -19,7 +19,7 @@ enum NetworkError: Error {
     var title: String {
         switch self {
         case .networkError(let networkError):
-            return networkError.statusDescription
+            return networkError.title
             
         case .message(_), .error(_), .invalidUrl, .invaildBody, .failedDecode, .unauthorized:
             return "Warning"
@@ -29,7 +29,7 @@ enum NetworkError: Error {
     var localizedDescription: String {
         switch self {
         case .networkError(let networkError):
-            return networkError.message
+            return "Status code: \(networkError.status), \(networkError.title)"
             
         case .message(let message):
             return message ?? ""

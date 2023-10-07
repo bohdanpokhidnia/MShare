@@ -119,8 +119,10 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                 DispatchQueue.main.async { [weak presenter] in
                     presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: coverImage)
                 }
+            } catch let networkError as NetworkError {
+                presenter?.didCatchError(networkError)
             } catch {
-                presenter?.didCatchURL(error.localizedDescription)
+                dprint(error, logType: .error)
             }
         }
     }

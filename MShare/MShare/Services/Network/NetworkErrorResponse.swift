@@ -8,7 +8,7 @@
 import Foundation
 
 struct NetworkErrorResponse: Decodable {
-    let statusCode: Int
-    let statusDescription: String
-    let message: String
+    let type: String
+    let title: String
+    let status: Int
 }
