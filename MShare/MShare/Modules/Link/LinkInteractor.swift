@@ -59,11 +59,11 @@ private extension LinkInteractor {
     
     @objc
     func keyboardWillShow(notification: NSNotification) {
-        guard let string = UIPasteboard.general.string else { return }
-        presenter?.didCatchStringFromBuffer(string)
-        
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         presenter?.didShowKeyboard(keyboardFrame)
+        
+        guard let string = UIPasteboard.general.string else { return }
+        presenter?.didCatchStringFromBuffer(string)
     }
     
     @objc

@@ -41,7 +41,7 @@ class ShareViewController: UIViewController {
     private func handleIncomingText(itemProvider: NSItemProvider) {
         itemProvider.loadItem(forTypeIdentifier: typeText.identifier, options: nil) { (item, error) in
             guard error == nil else {
-                print("[dev] error load text: \(error)")
+                print("[dev] error load text: \(error!)")
                 return
             }
             
@@ -60,7 +60,7 @@ class ShareViewController: UIViewController {
     private func handleIncomingURL(itemProvider: NSItemProvider) {
         itemProvider.loadItem(forTypeIdentifier: typeURL.identifier, options: nil) { (item, error) in
             guard error == nil else {
-                print("[dev] error load url: \(error)")
+                print("[dev] error load url: \(error!)")
                 return
             }
             

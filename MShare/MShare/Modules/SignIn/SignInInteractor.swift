@@ -65,11 +65,9 @@ extension SignInInteractor: ASAuthorizationControllerDelegate {
 //            print("[dev] user email: \(user.email)")
             
             guard let authorizationCodeData = credentials.authorizationCode else { return }
+            guard let authorizationCode = String(data: authorizationCodeData, encoding: .utf8) else { return }
             
-            let authorizationCode = String(data: authorizationCodeData, encoding: .utf8)
-            
-            print("[dev] authorizationCode: \(credentials.authorizationCode) = \(authorizationCode)")
-                
+            print("[dev] authorizationCode: \(authorizationCode)")
             presenter?.successedSingIn()
             
         default:

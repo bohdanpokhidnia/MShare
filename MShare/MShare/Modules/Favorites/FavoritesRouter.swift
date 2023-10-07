@@ -50,7 +50,7 @@ final class FavoritesRouter: Router {
 extension FavoritesRouter: FavoritesRouterProtocol {
     
     func shareUrl(view: FavoritesViewProtocol?, urlString: String) {
-        let shareItems = [URL(string: urlString)]
+        let shareItems = [urlString]
         let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         
         view?.viewController.present(activityViewController, animated: true)

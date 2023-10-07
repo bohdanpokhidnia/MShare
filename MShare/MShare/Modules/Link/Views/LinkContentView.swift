@@ -39,10 +39,7 @@ final class LinkContentView: View {
             $0.borderColor = .appGray
             $0.inputAccessoryView = toolBar
             $0.inputAccessoryView?.isHidden = true
-            $0.returnKeyType = .search
-            #if DEV
-            $0.text = "https://music.apple.com/ua/album/demon-fire/1533816185?i=1533816334&l=uk"
-            #endif
+            $0.returnKeyType = .default
         }
     
     private(set) var searchButton = LoadingButton(type: .custom)
@@ -83,8 +80,10 @@ final class LinkContentView: View {
         }
         
         linkTextField.frame = .init(origin: linkTextFieldOrigin, size: controlsSize)
-        searchButton.frame = .init(origin: .init(x: controlsPadding, y: linkTextField.frame.origin.y + controlsHeight + controlsSpacing),
-                                   size: controlsSize)
+        searchButton.frame = .init(
+            origin: .init(x: controlsPadding, y: linkTextField.frame.origin.y + controlsHeight + controlsSpacing),
+            size: controlsSize
+        )
         
         searchButton.bounds = searchButton.frame
     }

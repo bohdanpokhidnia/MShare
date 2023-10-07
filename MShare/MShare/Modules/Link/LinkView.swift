@@ -140,7 +140,6 @@ extension LinkView: UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         contentView.enableSearchButton(false)
-        
         return true
     }
     
@@ -174,16 +173,17 @@ extension LinkView: LinkViewProtocol {
     }
     
     func setOffsetLinkTextField(_ keyboardFrame: CGRect) {
-//        let viewFrame = contentView.controlsStackView.frame
-//        
-//        if viewFrame.origin.y + viewFrame.height > keyboardFrame.origin.y {
-//            let viewHeight = viewFrame.origin.y + viewFrame.height
-//            let offSet = viewHeight - keyboardFrame.origin.y
-//            
-//            UIView.animate(withDuration: 0.3) {
-//                self.contentView.frame.origin.y -= offSet + self.contentView.controlsStackView.spacing
-//            }
-//        }
+        let buttonFrame = contentView.searchButton.frame
+        let buttonHeight = buttonFrame.origin.y + buttonFrame.height
+        let isOverKeyboard = keyboardFrame.origin.y < buttonHeight
+        
+        guard isOverKeyboard else { return }
+        let offset = (buttonHeight - keyboardFrame.origin.y) + 16
+        let newOffset = self.contentView.frame.offsetBy(dx: 0, dy: -offset)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
+            self.contentView.frame = newOffset
+        }
     }
     
     func resetPositionLinkTextField() {
@@ -213,9 +213,7 @@ extension LinkView: LinkViewProtocol {
         startFrame.origin = .init(x: contentView.center.x - startFrame.width / 2, y: contentView.center.y - startFrame.height / 2)
         let cornerRadius = (startFrame.width + startFrame.height) / 4
         
-        contentView.searchButton.make {
-            $0.set(animationState: animationState, finalFrame: startFrame, cornerRadius: cornerRadius)
-        }
+        contentView.searchButton.set(animationState: animationState, finalFrame: startFrame, cornerRadius: cornerRadius)
     }
     
     func hideLoading(completion: (() -> Void)? = nil) {

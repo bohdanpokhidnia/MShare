@@ -34,7 +34,7 @@ final class MainRouter: Router, MainRouterProtocol {
         var views = [UIViewController]()
         
         for tabBarModule in MainView.TabItem.allCases {
-            let router = tabBarModule.rounter(dependencyManager: dependencyManager)
+            let router = tabBarModule.router(dependencyManager: dependencyManager)
             let view = router.createModule()
                 .make {
                     $0.title = tabBarModule.title

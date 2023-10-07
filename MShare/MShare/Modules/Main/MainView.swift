@@ -62,7 +62,7 @@ final class MainView: UITabBarController {
             }
         }
         
-        func rounter(dependencyManager: DependencyManagerProtocol) -> Router {
+        func router(dependencyManager: DependencyManagerProtocol) -> Router {
             switch self {
             case .favorites:
                 return FavoritesRouter(dependencyManager: dependencyManager)

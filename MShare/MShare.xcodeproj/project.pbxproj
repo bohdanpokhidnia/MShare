@@ -64,13 +64,8 @@
 		F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A529EC796000307B7C /* UITabBarController+Ext.swift */; };
 		F76368A829EC909800307B7C /* BottomPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76368A729EC909800307B7C /* BottomPushTransition.swift */; };
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
-		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F768EF31291065C5009D64A1 /* GoogleService-Info.plist */; };
+		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */; };
-		F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F773111C28D5A10300642926 /* FirebaseAnalytics */; };
-		F773111F28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */; };
-		F773112128D5A10300642926 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F773112028D5A10300642926 /* FirebaseAnalyticsSwift */; };
-		F773112328D5A10300642926 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F773112228D5A10300642926 /* FirebaseCrashlytics */; };
 		F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91D2891AEDC00438A37 /* AppDelegate.swift */; };
 		F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91F2891AEDC00438A37 /* SceneDelegate.swift */; };
 		F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F774B9262891AEDD00438A37 /* Assets.xcassets */; };
@@ -181,15 +176,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F7653FBA289452A200FC47FA /* Embed App Extensions */ = {
+		F7653FBA289452A200FC47FA /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed App Extensions */,
+				F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -252,7 +247,6 @@
 		F7653FAF289452A200FC47FA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F768EF31291065C5009D64A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		F774B91A2891AEDC00438A37 /* MShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F774B91D2891AEDC00438A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -371,11 +365,7 @@
 				F74B75BE290AF73100DBCD46 /* RealmSwift in Frameworks */,
 				F774B9332891B00500438A37 /* Kingfisher in Frameworks */,
 				F774B9362891B01D00438A37 /* SnapKit in Frameworks */,
-				F773111D28D5A10300642926 /* FirebaseAnalytics in Frameworks */,
-				F773112328D5A10300642926 /* FirebaseCrashlytics in Frameworks */,
-				F773111F28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				F700AAEE28F223C7005390E4 /* NotificationToast in Frameworks */,
-				F773112128D5A10300642926 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +573,6 @@
 				F7392012298587A300A773D7 /* Fonts */,
 				F774B9262891AEDD00438A37 /* Assets.xcassets */,
 				F774B92B2891AEDD00438A37 /* Info.plist */,
-				F768EF31291065C5009D64A1 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -958,8 +947,7 @@
 				F774B9162891AEDC00438A37 /* Sources */,
 				F774B9172891AEDC00438A37 /* Frameworks */,
 				F774B9182891AEDC00438A37 /* Resources */,
-				F7653FBA289452A200FC47FA /* Embed App Extensions */,
-				F773112428D5A22C00642926 /* ShellScript */,
+				F7653FBA289452A200FC47FA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -970,10 +958,6 @@
 			packageProductDependencies = (
 				F774B9322891B00500438A37 /* Kingfisher */,
 				F774B9352891B01D00438A37 /* SnapKit */,
-				F773111C28D5A10300642926 /* FirebaseAnalytics */,
-				F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */,
-				F773112028D5A10300642926 /* FirebaseAnalyticsSwift */,
-				F773112228D5A10300642926 /* FirebaseCrashlytics */,
 				F700AAED28F223C7005390E4 /* NotificationToast */,
 				F74B75BD290AF73100DBCD46 /* RealmSwift */,
 			);
@@ -989,7 +973,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					F7653FAE289452A200FC47FA = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -1011,7 +995,6 @@
 			packageReferences = (
 				F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F774B9342891B01D00438A37 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */,
 				F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
@@ -1042,33 +1025,10 @@
 				F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */,
 				F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */,
 				F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */,
-				F768EF32291065C5009D64A1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F773112428D5A22C00642926 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/MShare/Resources/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F7653FAB289452A200FC47FA /* Sources */ = {
@@ -1257,6 +1217,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1289,6 +1250,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1307,6 +1269,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-Wl,-no_warn_duplicate_libraries";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1321,11 +1284,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0.0.7;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.0.7.1;
+				DEVELOPMENT_TEAM = 4PH2U96J79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MShare;
@@ -1343,7 +1304,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Dev";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DETAIL;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1355,11 +1315,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = 4PH2U96J79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
@@ -1374,7 +1332,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext (App Store)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1386,11 +1343,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = 4PH2U96J79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
@@ -1405,7 +1360,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1417,11 +1371,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
+				DEVELOPMENT_TEAM = 4PH2U96J79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
@@ -1436,7 +1388,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Ext (App Store)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1448,6 +1399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1480,6 +1432,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1498,6 +1451,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-Wl,-no_warn_duplicate_libraries";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1508,6 +1462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1540,6 +1495,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1551,6 +1507,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-Wl,-no_warn_duplicate_libraries";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = LIVE;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1567,11 +1524,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0.0.7;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.0.7.1;
+				DEVELOPMENT_TEAM = 4PH2U96J79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MShare;
@@ -1589,7 +1544,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare Dev";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1604,11 +1558,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0.0.7;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6N8U3DA9UX;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.0.7.1;
+				DEVELOPMENT_TEAM = 4PH2U96J79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MShare;
@@ -1626,7 +1578,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MShare (App Store)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1685,20 +1636,12 @@
 				minimumVersion = 10.32.1;
 			};
 		};
-		F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.6.2;
+				minimumVersion = 7.9.1;
 			};
 		};
 		F774B9342891B01D00438A37 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1706,7 +1649,7 @@
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
+				minimumVersion = 5.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1721,26 +1664,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		F773111C28D5A10300642926 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		F773111E28D5A10300642926 /* FirebaseAnalyticsOnDeviceConversion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsOnDeviceConversion;
-		};
-		F773112028D5A10300642926 /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		F773112228D5A10300642926 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F773111B28D5A10300642926 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
 		};
 		F774B9322891B00500438A37 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
