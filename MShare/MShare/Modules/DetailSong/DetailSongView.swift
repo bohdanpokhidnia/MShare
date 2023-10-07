@@ -104,11 +104,7 @@ private extension DetailSongView {
     @objc
     func panInteractive(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
-        
-//        guard translation.y > 0 else { return }
         let percent = min(1, max(0, (translation.y - startY) / 200))
-//        print("[dev] \(percent)")
-//        guard percent > 0 else { return }
         
         switch sender.state {
         case .began:

@@ -28,6 +28,8 @@
 		F72E82FD2895777F008D7702 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FC2895777F008D7702 /* TableView.swift */; };
 		F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E8300289578A2008D7702 /* TableViewCell.swift */; };
 		F7309C6E298196F2000DB4E9 /* TwoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */; };
+		F73873A72AD164F000581F57 /* DPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873A62AD164F000581F57 /* DPrint.swift */; };
+		F73873A82AD16A7A00581F57 /* DPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873A62AD164F000581F57 /* DPrint.swift */; };
 		F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739200B29855C7600A773D7 /* ThirdPageViewController.swift */; };
 		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
@@ -87,12 +89,6 @@
 		F777BE4D289E479600595ACA /* DetailSongInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE46289E479600595ACA /* DetailSongInteractor.swift */; };
 		F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE48289E479600595ACA /* DetailSongContentView.swift */; };
 		F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F777BE49289E479600595ACA /* DetailSongEntity.swift */; };
-		F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0DFF28A18EFE00FF4644 /* ChartView.swift */; };
-		F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0028A18EFE00FF4644 /* ChartEntity.swift */; };
-		F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0128A18EFE00FF4644 /* ChartPresenter.swift */; };
-		F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */; };
-		F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */; };
-		F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */; };
 		F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */; };
 		F77EE0D5298FAA6D002E7139 /* FourPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0D4298FAA6D002E7139 /* FourPageViewController.swift */; };
 		F77EE0E0298FCA86002E7139 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0D9298FCA86002E7139 /* SignInPresenter.swift */; };
@@ -110,12 +106,6 @@
 		F790280C289309320058CC19 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902805289309320058CC19 /* LinkView.swift */; };
 		F790280D289309320058CC19 /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902806289309320058CC19 /* LinkPresenter.swift */; };
 		F790280E289309320058CC19 /* LinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902808289309320058CC19 /* LinkContentView.swift */; };
-		F79028192893095D0058CC19 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79028122893095D0058CC19 /* SearchView.swift */; };
-		F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79028132893095D0058CC19 /* SearchEntity.swift */; };
-		F790281B2893095D0058CC19 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79028142893095D0058CC19 /* SearchInteractor.swift */; };
-		F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79028152893095D0058CC19 /* SearchPresenter.swift */; };
-		F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79028162893095D0058CC19 /* SearchRouter.swift */; };
-		F790281E2893095D0058CC19 /* SearchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79028182893095D0058CC19 /* SearchContentView.swift */; };
 		F7902829289309940058CC19 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902822289309940058CC19 /* SettingsView.swift */; };
 		F790282A289309940058CC19 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902823289309940058CC19 /* SettingsRouter.swift */; };
 		F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902824289309940058CC19 /* SettingsInteractor.swift */; };
@@ -210,6 +200,7 @@
 		F72E82FC2895777F008D7702 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageViewController.swift; sourceTree = "<group>"; };
+		F73873A62AD164F000581F57 /* DPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPrint.swift; sourceTree = "<group>"; };
 		F739200B29855C7600A773D7 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -269,12 +260,6 @@
 		F777BE46289E479600595ACA /* DetailSongInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongInteractor.swift; sourceTree = "<group>"; };
 		F777BE48289E479600595ACA /* DetailSongContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongContentView.swift; sourceTree = "<group>"; };
 		F777BE49289E479600595ACA /* DetailSongEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSongEntity.swift; sourceTree = "<group>"; };
-		F77A0DFF28A18EFE00FF4644 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		F77A0E0028A18EFE00FF4644 /* ChartEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartEntity.swift; sourceTree = "<group>"; };
-		F77A0E0128A18EFE00FF4644 /* ChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPresenter.swift; sourceTree = "<group>"; };
-		F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartRouter.swift; sourceTree = "<group>"; };
-		F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartContentView.swift; sourceTree = "<group>"; };
-		F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInteractor.swift; sourceTree = "<group>"; };
 		F77A0E0C28A192BB00FF4644 /* ServiceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHeaderView.swift; sourceTree = "<group>"; };
 		F77EE0D4298FAA6D002E7139 /* FourPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourPageViewController.swift; sourceTree = "<group>"; };
 		F77EE0D9298FCA86002E7139 /* SignInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
@@ -295,12 +280,6 @@
 		F7902805289309320058CC19 /* LinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		F7902806289309320058CC19 /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
 		F7902808289309320058CC19 /* LinkContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkContentView.swift; sourceTree = "<group>"; };
-		F79028122893095D0058CC19 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		F79028132893095D0058CC19 /* SearchEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
-		F79028142893095D0058CC19 /* SearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
-		F79028152893095D0058CC19 /* SearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
-		F79028162893095D0058CC19 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
-		F79028182893095D0058CC19 /* SearchContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContentView.swift; sourceTree = "<group>"; };
 		F7902822289309940058CC19 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F7902823289309940058CC19 /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		F7902824289309940058CC19 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
@@ -583,9 +562,7 @@
 				F71E37CB297ABC0800BAF622 /* Onboarding */,
 				F77EE0D8298FCA86002E7139 /* SignIn */,
 				F774B93C2891B16600438A37 /* Main */,
-				F77A0DFE28A18EFE00FF4644 /* Chart */,
 				F7902801289309320058CC19 /* Link */,
-				F79028112893095D0058CC19 /* Search */,
 				F7D9852128FA977500F54E24 /* Favorites */,
 				F7902821289309940058CC19 /* Settings */,
 				F777BE42289E479600595ACA /* DetailSong */,
@@ -624,6 +601,7 @@
 				F7E5259329C5F38C005E0A95 /* Router.swift */,
 				F7632C3129DA1F9100239DAF /* Factory.swift */,
 				F763689829EA820B00307B7C /* AppNavigationController.swift */,
+				F73873A62AD164F000581F57 /* DPrint.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -654,27 +632,6 @@
 			isa = PBXGroup;
 			children = (
 				F777BE48289E479600595ACA /* DetailSongContentView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F77A0DFE28A18EFE00FF4644 /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-				F77A0E0328A18EFE00FF4644 /* Views */,
-				F77A0DFF28A18EFE00FF4644 /* ChartView.swift */,
-				F77A0E0528A18EFE00FF4644 /* ChartInteractor.swift */,
-				F77A0E0128A18EFE00FF4644 /* ChartPresenter.swift */,
-				F77A0E0028A18EFE00FF4644 /* ChartEntity.swift */,
-				F77A0E0228A18EFE00FF4644 /* ChartRouter.swift */,
-			);
-			path = Chart;
-			sourceTree = "<group>";
-		};
-		F77A0E0328A18EFE00FF4644 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F77A0E0428A18EFE00FF4644 /* ChartContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -725,27 +682,6 @@
 			isa = PBXGroup;
 			children = (
 				F7902808289309320058CC19 /* LinkContentView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F79028112893095D0058CC19 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				F79028172893095D0058CC19 /* Views */,
-				F79028122893095D0058CC19 /* SearchView.swift */,
-				F79028142893095D0058CC19 /* SearchInteractor.swift */,
-				F79028152893095D0058CC19 /* SearchPresenter.swift */,
-				F79028132893095D0058CC19 /* SearchEntity.swift */,
-				F79028162893095D0058CC19 /* SearchRouter.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		F79028172893095D0058CC19 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F79028182893095D0058CC19 /* SearchContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1035,6 +971,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73873A82AD16A7A00581F57 /* DPrint.swift in Sources */,
 				F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1047,7 +984,6 @@
 				F774B94E2891B37A00438A37 /* ViewLayoutableProtocol.swift in Sources */,
 				F774B9462891B16600438A37 /* MainView.swift in Sources */,
 				F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */,
-				F790281B2893095D0058CC19 /* SearchInteractor.swift in Sources */,
 				F7C2B83329A1320E00569C5B /* ThemeProvider.swift in Sources */,
 				F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
@@ -1059,6 +995,7 @@
 				F74B75BA290AF66200DBCD46 /* DatabaseManager.swift in Sources */,
 				F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
+				F73873A72AD164F000581F57 /* DPrint.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
 				F7C2B84129A1393B00569C5B /* Link.swift in Sources */,
 				F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */,
@@ -1071,7 +1008,6 @@
 				F7FE397329144904000A190F /* FirstFavoritesView.swift in Sources */,
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
 				F774B9452891B16600438A37 /* MainRouter.swift in Sources */,
-				F77A0E0B28A18EFE00FF4644 /* ChartInteractor.swift in Sources */,
 				F76368A429EBE80600307B7C /* BottomPopTransition.swift in Sources */,
 				F7D589C4289AC26C0073709D /* UILabel+Ext.swift in Sources */,
 				F72E82F928956838008D7702 /* UICollectionView+Ext.swift in Sources */,
@@ -1083,7 +1019,6 @@
 				F7632C2E29D9C4AB00239DAF /* MakeCoverPresenter.swift in Sources */,
 				F75A8BF228D39D4800EAB5BD /* Label.swift in Sources */,
 				F71E37D4297ABC0800BAF622 /* OnboardingPresenter.swift in Sources */,
-				F790281A2893095D0058CC19 /* SearchEntity.swift in Sources */,
 				F7BB329629BA575600219035 /* ApiClient.swift in Sources */,
 				F77FAA66296F59640017BB33 /* UIApplication+Ext.swift in Sources */,
 				F74B75CB290B0EA700DBCD46 /* MockData.swift in Sources */,
@@ -1092,9 +1027,6 @@
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
 				F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */,
 				F7632C3029D9C4AB00239DAF /* MakeCoverContentView.swift in Sources */,
-				F790281C2893095D0058CC19 /* SearchPresenter.swift in Sources */,
-				F79028192893095D0058CC19 /* SearchView.swift in Sources */,
-				F77A0E0628A18EFE00FF4644 /* ChartView.swift in Sources */,
 				F76368A029EBE6D700307B7C /* MoveElementsTransition.swift in Sources */,
 				F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */,
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
@@ -1103,10 +1035,8 @@
 				F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */,
 				F77EE0E4298FCA86002E7139 /* SignInEntity.swift in Sources */,
 				F71E37D8297ABC0800BAF622 /* OnboardingView.swift in Sources */,
-				F77A0E0A28A18EFE00FF4644 /* ChartContentView.swift in Sources */,
 				F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */,
 				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
-				F77A0E0828A18EFE00FF4644 /* ChartPresenter.swift in Sources */,
 				F742652F2905318900B87BBF /* AboutUsView.swift in Sources */,
 				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
 				F71412FE2915C60100D569E2 /* UserDefault.swift in Sources */,
@@ -1142,7 +1072,6 @@
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
 				F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */,
 				F74B75C7290B045800DBCD46 /* DatabaseManager+Base.swift in Sources */,
-				F77A0E0928A18EFE00FF4644 /* ChartRouter.swift in Sources */,
 				F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */,
 				F7632C3229DA1F9100239DAF /* Factory.swift in Sources */,
 				F774B9442891B16600438A37 /* MainPresenter.swift in Sources */,
@@ -1154,7 +1083,6 @@
 				F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */,
 				F7632C2B29D9C4AB00239DAF /* MakeCoverView.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
-				F790281D2893095D0058CC19 /* SearchRouter.swift in Sources */,
 				F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
 				F76368A229EBE7C000307B7C /* FromBottomPushTransition.swift in Sources */,
@@ -1165,7 +1093,6 @@
 				F7C2B83C29A1336B00569C5B /* UIComponentsLibrary.swift in Sources */,
 				F7D147A228D684E700655F19 /* NetworkError.swift in Sources */,
 				F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */,
-				F77A0E0728A18EFE00FF4644 /* ChartEntity.swift in Sources */,
 				F763689D29EA8CA200307B7C /* AppNavigationControllerDelegate.swift in Sources */,
 				F7BB329429BA566200219035 /* HttpClient.swift in Sources */,
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
@@ -1178,7 +1105,6 @@
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
 				F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */,
-				F790281E2893095D0058CC19 /* SearchContentView.swift in Sources */,
 				F785E3A128C3998200DE1BC0 /* UIDevice+Ext.swift in Sources */,
 				F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */,
 				F71E37D6297ABC0800BAF622 /* OnboardingEntity.swift in Sources */,
@@ -1633,7 +1559,7 @@
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.32.1;
+				minimumVersion = 10.43.0;
 			};
 		};
 		F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {

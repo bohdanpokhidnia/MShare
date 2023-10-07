@@ -95,7 +95,7 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
     
     func saveToDatabase() {
         guard let coverData = cover.pngData() else {
-            print("[dev] error get png data from cover")
+            dprint("error get png data from cover", logType: .error)
             return
         }
         
@@ -104,16 +104,15 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         if let savedMediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: mediaModel.sourceId) {
             databaseManager.delete(savedMediaModel) { (error) in
                 guard error == nil else {
-                    print("[dev] error: \(error!.localizedDescription)")
+                    dprint(error!.localizedDescription)
                     return
                 }
             }
         } else {
             databaseManager.save(mediaModel) { (error) in
-                if let error {
-                    print("[dev] error: \(error.localizedDescription)")
-                } else {
-                    print("[dev] media success saved")
+                guard error == nil else {
+                    dprint(error!.localizedDescription, logType: .error)
+                    return
                 }
             }
         }
@@ -141,21 +140,21 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         
         switch status {
         case .authorized:
-            print("[dev] we are authorized")
+            dprint("available access to save in library")
             
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization { (status) in
                 switch status {
                 case .authorized:
-                    print("[dev] we give access to save in library")
+                    dprint("access to save in library")
                     
                 default:
-                    print("[dev] status requested to gallery: \(status)")
+                    dprint("status requested to gallery", status, logType: .error)
                 }
             }
             
         default:
-            print("[dev] we need say user open settings, status: \(status)")
+            dprint("we need say user open settings", status, logType: .warning)
         }
         
         presenter?.didRequestedAccessToGallery(image)

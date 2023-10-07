@@ -67,7 +67,7 @@ extension SignInInteractor: ASAuthorizationControllerDelegate {
             guard let authorizationCodeData = credentials.authorizationCode else { return }
             guard let authorizationCode = String(data: authorizationCodeData, encoding: .utf8) else { return }
             
-            print("[dev] authorizationCode: \(authorizationCode)")
+            dprint("authorization code", authorizationCode, logType: .success)
             presenter?.successedSingIn()
             
         default:
@@ -76,7 +76,7 @@ extension SignInInteractor: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("[dev] error: \(error)")
+        dprint(error, logType: .error)
     }
     
 }

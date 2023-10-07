@@ -33,7 +33,7 @@ class ShareViewController: UIViewController {
         } else if itemProvider.hasItemConformingToTypeIdentifier(typeURL.identifier) {
             handleIncomingURL(itemProvider: itemProvider)
         } else {
-            print("[dev] unknown UTType")
+            dprint("unknown UTType", logType: .error)
             self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
         }
     }
@@ -41,17 +41,13 @@ class ShareViewController: UIViewController {
     private func handleIncomingText(itemProvider: NSItemProvider) {
         itemProvider.loadItem(forTypeIdentifier: typeText.identifier, options: nil) { (item, error) in
             guard error == nil else {
-                print("[dev] error load text: \(error!)")
+                dprint(error!, logType: .error)
                 return
             }
             
-            guard let text = item as? String else {
-                print("[dev] bad item as text")
-                return
-            }
+            guard let text = item as? String else { return }
             
             self.appURLString += text
-            print("[dev] text: \(text)")
             
             self.openMainApp()
         }
@@ -60,14 +56,12 @@ class ShareViewController: UIViewController {
     private func handleIncomingURL(itemProvider: NSItemProvider) {
         itemProvider.loadItem(forTypeIdentifier: typeURL.identifier, options: nil) { (item, error) in
             guard error == nil else {
-                print("[dev] error load url: \(error!)")
+                dprint(error!, logType: .error)
                 return
             }
             
-            guard let url = item as? NSURL, let urlString = url.absoluteURL?.absoluteString else {
-                print("[dev] bad url")
-                return
-            }
+            guard let url = item as? NSURL else { return }
+            guard let urlString = url.absoluteURL?.absoluteString else { return }
             
             self.appURLString += urlString
             self.openMainApp()
