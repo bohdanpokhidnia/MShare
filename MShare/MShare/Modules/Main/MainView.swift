@@ -12,74 +12,41 @@ protocol MainViewProtocol: AnyObject {
     var viewController: UITabBarController { get }
     
     func setTabControllers(_ viewControllers: [UIViewController])
-    func selectedTab(_ tabItem: MainView.TabItem)
+    func selectTab(_ tabItem: MainView.TabItem)
 }
 
 final class MainView: UITabBarController {
+    var presenter: MainPresenterProtocol?
+    var viewController: UITabBarController { self }
     
     enum TabItem: Int, CaseIterable {
         case favorites
-//        case chart
-//        case search
         case link
         case settings
         
         var title: String {
             switch self {
-            case .favorites:
-                return "Favorites"
-                
-//            case .chart:
-//                return "Chart"
-                
-//            case .search:
-//                return "Search"
-            
-            case .link:
-                return "Link"
-                
-            case .settings:
-                return "Settings"
+            case .favorites: "Favorites"
+            case .link: "Link"
+            case .settings: "Settings"
             }
         }
         
         var icon: UIImage? {
             switch self {
-//            case .search:
-//                return nil
-                
-//            case .chart:
-//                return UIImage(systemName: "chart.bar")
-                
-            case .favorites:
-                return UIImage(systemName: "heart")
-                
-            case .link:
-                return UIImage(systemName: "link")
-                
-            case .settings:
-                return UIImage(systemName: "gear")
+            case .favorites: UIImage(systemName: "heart")
+            case .link: UIImage(systemName: "link")
+            case .settings: UIImage(systemName: "gear")
             }
         }
         
         func router(dependencyManager: DependencyManagerProtocol) -> Router {
             switch self {
-            case .favorites:
-                return FavoritesRouter(dependencyManager: dependencyManager)
-                
-            case .link:
-                return LinkRouter(dependencyManager: dependencyManager)
-                
-            case .settings:
-                return SettingsRouter(dependencyManager: dependencyManager)
+            case .favorites: FavoritesRouter(dependencyManager: dependencyManager)
+            case .link: LinkRouter(dependencyManager: dependencyManager)
+            case .settings: SettingsRouter(dependencyManager: dependencyManager)
             }
         }
-    }
-    
-    var presenter: MainPresenterProtocol?
-    
-    var viewController: UITabBarController {
-        return self
     }
     
 }
@@ -92,7 +59,7 @@ extension MainView: MainViewProtocol {
         setViewControllers(viewControllers, animated: false)
     }
     
-    func selectedTab(_ tabItem: MainView.TabItem) {
+    func selectTab(_ tabItem: MainView.TabItem) {
         selectedIndex = tabItem.rawValue
     }
     

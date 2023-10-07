@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LinkViewProtocol: AnyObject {
-    var presenter: LinkPresenterProtocol { get set }
+    var presenter: LinkPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
@@ -33,45 +33,29 @@ extension LinkViewProtocol {
 
 final class LinkView: ViewController<LinkContentView> {
     
-    var presenter: LinkPresenterProtocol
-    
-    var viewController: UIViewController {
-        return self
-    }
-    
-    // MARK: - Initializers
-    
-    init(presenter: LinkPresenterProtocol) {
-        self.presenter = presenter
-        
-        super.init()
-    }
-    
-    @available(*, unavailable)
-    required init() {
-        fatalError("init() has not been implemented")
-    }
+    var presenter: LinkPresenterProtocol?
+    var viewController: UIViewController { self }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupViews()
         setupNavigationBar()
+        setupViews()
         setupActionsHandlers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.viewWillAppear()
+        presenter?.viewWillAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        presenter.viewWillDisappear()
+        presenter?.viewWillDisappear()
     }
     
     // MARK: - Private
@@ -84,16 +68,16 @@ final class LinkView: ViewController<LinkContentView> {
 
 private extension LinkView {
     
+    func setupNavigationBar() {
+        title = "Link"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     func setupViews() {
         contentView.linkTextField.make {
             $0.delegate = self
             $0.addTarget(self, action: #selector(UIResponder.becomeFirstResponder), for: .editingDidEndOnExit)
         }
-    }
-    
-    func setupNavigationBar() {
-        title = "Link"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupActionsHandlers() {
@@ -103,7 +87,7 @@ private extension LinkView {
         }
         
         contentView.tapCopyButtonAction = { [unowned self] in
-            presenter.pasteTextFromBuffer()
+            presenter?.pasteTextFromBuffer()
         }
     }
     
@@ -116,7 +100,7 @@ private extension LinkView {
     func getSong() {
         guard let songUrlString = contentView.linkTextField.text, songUrlString != "" else { return }
         
-        presenter.getSong(urlString: songUrlString)
+        presenter?.getSong(urlString: songUrlString)
     }
     
 }

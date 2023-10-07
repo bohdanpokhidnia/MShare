@@ -21,6 +21,13 @@ final class SignInPresenter {
     weak var view: SignInViewProtocol?
     var interactor: SignInInteractorIntputProtocol?
     var router: SignInRouterProtocol?
+    
+    // MARK: - Initializers
+    
+    init(view: SignInViewProtocol?, router: SignInRouterProtocol?) {
+        self.view = view
+        self.router = router
+    }
 }
 
 // MARK: - SignInPresenterProtocol
@@ -28,7 +35,9 @@ final class SignInPresenter {
 extension SignInPresenter: SignInPresenterProtocol {
     
     func didTapPrivacyPolicy() {
-        router?.presentBrowserScreen(from: view, forUrlString: "https://www.google.com.ua")
+        guard let privacyPolicyURL = URL(string: "https://www.google.com.ua") else { return }
+        
+        router?.presentSafari(for: view, url: privacyPolicyURL)
     }
     
     func didTapSignInWithApple() {
@@ -38,7 +47,7 @@ extension SignInPresenter: SignInPresenterProtocol {
     func didTapSkip() {
         view?.dismissView() { [weak self] in
             self?.interactor?.setViewedOnboarding()
-            self?.router?.showMain()
+            self?.router?.loadMain()
         }
     }
     

@@ -27,6 +27,18 @@ final class FavoritesPresenter {
     var interactor: FavoritesInteractorIntputProtocol?
     var router: FavoritesRouterProtocol?
     
+    // MARK: - Initializers
+    
+    init(
+        view: FavoritesViewProtocol?,
+        router: FavoritesRouterProtocol?
+    ) {
+        self.view = view
+        self.router = router
+    }
+    
+    // MARK: - Private
+    
     private var favoriteSection: FavoritesView.FavoriteSection = .song
     private var songs = [MediaModel]()
     private var albums = [MediaModel]()

@@ -33,12 +33,14 @@ final class DetailSongInteractor {
     // MARK: - Initializers
     
     init(
+        presenter: DetailSongInteractorOutputProtocol?,
         databaseManager: DatabaseManagerProtocol,
         apiClient: ApiClient,
         factory: FactoryProtocol,
         mediaResponse: MediaResponse,
         cover: UIImage
     ) {
+        self.presenter = presenter
         self.databaseManager = databaseManager
         self.apiClient = apiClient
         self.factory = factory

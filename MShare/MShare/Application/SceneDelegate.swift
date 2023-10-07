@@ -11,56 +11,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    private lazy var userManager = UserManager()
-    private lazy var databaseManager = DatabaseManager()
-    private lazy var apiClient = ApiClient()
-    private lazy var factory = Factory()
-    
-    var onboarding: UIViewController?
-    var main: MainViewProtocol?
+    private lazy var dependencyManager = DependencyManager()
+    private var onboardingRouter: UIViewController?
+    private var mainRouter: MainViewProtocol?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         configureNavigationBarStyle()
         configureTabBarStyle()
-        
-        let dependencyManager = DependencyManager()
-        dependencyManager.register(type: DatabaseManagerProtocol.self, module: databaseManager)
-        dependencyManager.register(type: UserManagerProtocol.self, module: userManager)
-        dependencyManager.register(type: ApiClient.self, module: apiClient)
-        dependencyManager.register(type: FactoryProtocol.self, module: factory)
-        
-        let displayOnboarding = userManager.displayOnboarding ?? false
-        
-        onboarding = OnboardingRouter(dependencyManager: dependencyManager).createModule()
-        main = MainRouter(dependencyManager: dependencyManager).initMainModule()
-        
-        #if DEV
-        main?.selectedTab(.link)
-        #else
-        main?.selectedTab(.link)
-        #endif
-        
-        if let url = connectionOptions.urlContexts.first?.url {
-            handleIncomingURL(url)
-        }
-        
-        window = UIWindow(windowScene: windowScene)
-        
-        #if DETAIL
-        let detailScreen = DetailSongRouter(
-            dependencyManager: dependencyManager,
-            mediaResponse: MockData.songMediaResponse,
-            cover: UIImage(named: "mockCover")!
-        ).createModule()
-        window?.rootViewController = AppNavigationController(rootViewController: detailScreen)
-        #else
-        window?.rootViewController = displayOnboarding ? main?.viewController : onboarding
-        #endif
-        
-        window?.backgroundColor(color: displayOnboarding ? .systemBackground : .black)
-        window?.makeKeyAndVisible()
+        registerDependecies()
+        loadMainScreen(for: windowScene, options: connectionOptions)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -90,6 +51,63 @@ private extension SceneDelegate {
     
 }
 
+// MARK: - Register dependencies
+
+private extension SceneDelegate {
+    
+    func registerDependecies() {
+        let userManager = UserManager()
+        let databaseManager = DatabaseManager()
+        let apiClient = ApiClient()
+        let factory = Factory()
+        
+        dependencyManager.register(type: DatabaseManagerProtocol.self, module: databaseManager)
+        dependencyManager.register(type: UserManagerProtocol.self, module: userManager)
+        dependencyManager.register(type: ApiClient.self, module: apiClient)
+        dependencyManager.register(type: FactoryProtocol.self, module: factory)
+    }
+    
+}
+
+// MARK: - Load main screen
+
+private extension SceneDelegate {
+    func loadMainScreen(for scene: UIWindowScene, options: UIScene.ConnectionOptions) {
+        let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
+        
+        let displayOnboarding = userManager.displayOnboarding ?? false
+        
+        onboardingRouter = OnboardingRouter(dependencyManager: dependencyManager).createModule()
+        mainRouter = MainRouter(dependencyManager: dependencyManager).initMainModule()
+        
+        #if DEV
+        mainRouter?.selectTab(.link)
+        #else
+        main?.selectTab(.link)
+        #endif
+        
+        if let url = options.urlContexts.first?.url {
+            handleIncomingURL(url)
+        }
+        
+        window = UIWindow(windowScene: scene)
+        
+        #if DETAIL
+        let detailScreen = DetailSongRouter(
+            dependencyManager: dependencyManager,
+            mediaResponse: MockData.songMediaResponse,
+            cover: UIImage(named: "mockCover")!
+        ).createModule()
+        window?.rootViewController = AppNavigationController(rootViewController: detailScreen)
+        #else
+        window?.rootViewController = displayOnboarding ? mainRouter?.viewController : onboardingRouter
+        #endif
+        
+        window?.backgroundColor(color: displayOnboarding ? .systemBackground : .black)
+        window?.makeKeyAndVisible()
+    }
+}
+
 // MARK: - Link handling
 
 private extension SceneDelegate {
@@ -108,7 +126,7 @@ private extension SceneDelegate {
         
         guard let urlString = parameters["url"] else { return }
         
-        if let detailSongView = main?.viewController.topMostViewController as? DetailSongView {
+        if let detailSongView = mainRouter?.viewController.topMostViewController as? DetailSongView {
             detailSongView.navigationController?.popViewController(animated: true) { [weak self] in
                 self?.selectLinkTab(withUrlString: urlString)
             }
@@ -118,7 +136,7 @@ private extension SceneDelegate {
     }
     
     func selectLinkTab(withUrlString urlString: String) {
-        main?.selectedTab(.link)
+        mainRouter?.selectTab(.link)
         
         UserDefaults().set(urlString, forKey: "incomingURL")
     }

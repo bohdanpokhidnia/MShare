@@ -23,6 +23,16 @@ final class LinkPresenter {
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
     
+    init(
+        view: LinkViewProtocol?,
+        router: LinkRouterProtocol?
+    ) {
+        self.view = view
+        self.router = router
+    }
+    
+    // MARK: - Private
+    
     private var stringFromBuffer: String?
 }
 

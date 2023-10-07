@@ -27,6 +27,13 @@ final class DetailSongPresenter: NSObject {
     var interactor: DetailSongInteractorInputProtocol?
     var router: DetailSongRouterProtocol?
     
+    // MARK: - Initializers
+    
+    init(view: DetailSongViewProtocol?, router: DetailSongRouterProtocol?) {
+        self.view = view
+        self.router = router
+    }
+    
     @objc
     func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {

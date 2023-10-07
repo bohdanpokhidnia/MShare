@@ -19,6 +19,13 @@ final class MakeCoverPresenter {
     weak var view: MakeCoverViewProtocol?
     var interactor: MakeCoverInteractorIntputProtocol?
     var router: MakeCoverRouterProtocol?
+    
+    // MARK: - Initializers
+    
+    init(view: MakeCoverViewProtocol?, router: MakeCoverRouterProtocol?) {
+        self.view = view
+        self.router = router
+    }
 }
 
 // MARK: - MakeCoverPresenterProtocol

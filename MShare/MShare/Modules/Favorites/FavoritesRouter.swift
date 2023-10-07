@@ -21,17 +21,15 @@ final class FavoritesRouter: Router {
         let databaseManager = dependencyManager.resolve(type: DatabaseManagerProtocol.self)
         
         let view: FavoritesViewProtocol = FavoritesView()
-        let presenter: FavoritesPresenterProtocol & FavoritesInteractorOutputProtocol = FavoritesPresenter()
-        var interactor: FavoritesInteractorIntputProtocol = FavoritesInteractor(
+        let presenter: FavoritesPresenterProtocol & FavoritesInteractorOutputProtocol = FavoritesPresenter(view: view, router: self)
+        let interactor: FavoritesInteractorIntputProtocol = FavoritesInteractor(
+            presenter: presenter,
             userManager: userManager,
             databaseManager: databaseManager
         )
 
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
         
         let navigationController = AppNavigationController(rootViewController: view.viewController)
         navigationController.delegate = delegate

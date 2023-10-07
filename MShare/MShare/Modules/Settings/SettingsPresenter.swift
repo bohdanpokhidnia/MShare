@@ -26,6 +26,18 @@ final class SettingsPresenter {
     var interactor: SettingsInteractorIntputProtocol?
     var router: SettingsRouterProtocol?
     
+    // MARK: - Initializers
+    
+    init(
+        view: SettingsViewProtocol?,
+        router: SettingsRouterProtocol?
+    ) {
+        self.view = view
+        self.router = router
+    }
+    
+    // MARK: - Private
+    
     private var settingsSections = [SettingsSection]()
 }
 
@@ -101,7 +113,7 @@ extension SettingsPresenter: SettingsInteractorOutputProtocol {
     }
     
     func didShowOnboarding() {
-        router?.showOnboarding()
+        router?.loadOnboarding()
     }
     
 }

@@ -24,13 +24,21 @@ protocol SettingsInteractorOutputProtocol: AnyObject {
 }
 
 final class SettingsInteractor {
-    private var userManager: UserManagerProtocol
     weak var presenter: SettingsInteractorOutputProtocol?
     
-    init(userManager: UserManagerProtocol) {
+    // MARK: - Initializers
+    
+    init(
+        presenter: SettingsInteractorOutputProtocol?,
+        userManager: UserManagerProtocol
+    ) {
+        self.presenter = presenter
         self.userManager = userManager
     }
     
+    // MARK: - Private
+    
+    private var userManager: UserManagerProtocol
 }
 
 // MARK: - SettingsInteractorInputProtocol

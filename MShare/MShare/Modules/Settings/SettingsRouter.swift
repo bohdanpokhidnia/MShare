@@ -13,22 +13,23 @@ protocol SettingsRouterProtocol {
     func presentBrowserScreen(from view: SettingsViewProtocol?, forUrlString urlString: String)
     func pushFirstFavoritesScreen(fromView view: SettingsViewProtocol?, favoriteSectionIndex: Int, firstFavoritesDelegate: FirstFavoritesDelegate)
     func pushSystemSettings()
-    func showOnboarding()
+    func loadOnboarding()
 }
 
 final class SettingsRouter: Router, SettingsRouterProtocol {
     
     override func createModule() -> UIViewController {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
+        
         let view: SettingsViewProtocol = SettingsView()
-        let presenter: SettingsPresenterProtocol & SettingsInteractorOutputProtocol = SettingsPresenter()
-        var interactor: SettingsInteractorIntputProtocol = SettingsInteractor(userManager: userManager)
+        let presenter: SettingsPresenterProtocol & SettingsInteractorOutputProtocol = SettingsPresenter(view: view, router: self)
+        let interactor: SettingsInteractorIntputProtocol = SettingsInteractor(
+            presenter: presenter,
+            userManager: userManager
+        )
         
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
         
         let navigationController = AppNavigationController(rootViewController: view.viewController)
         return navigationController
@@ -64,7 +65,7 @@ final class SettingsRouter: Router, SettingsRouterProtocol {
         UIApplication.shared.open(settingsUrl!, options: [:], completionHandler: nil)
     }
     
-    func showOnboarding() {
+    func loadOnboarding() {
         let onboarding = OnboardingRouter(dependencyManager: dependencyManager).createModule()
         
         UIApplication.load(vc: onboarding, backgroundColor: .black)

@@ -13,12 +13,13 @@ protocol MakeCoverRouterProtocol {
 
 final class MakeCoverRouter: Router, MakeCoverRouterProtocol {
     
-    private let mediaResponse: MediaResponse
-    private let cover: UIImage?
-    
     // MARK: - Initializers
     
-    init(mediaResponse: MediaResponse, cover: UIImage?, dependencyManager: DependencyManagerProtocol) {
+    init(
+        dependencyManager: DependencyManagerProtocol,
+        mediaResponse: MediaResponse,
+        cover: UIImage?
+    ) {
         self.mediaResponse = mediaResponse
         self.cover = cover
         
@@ -31,20 +32,22 @@ final class MakeCoverRouter: Router, MakeCoverRouterProtocol {
         let factory = dependencyManager.resolve(type: FactoryProtocol.self)
         
         let view: MakeCoverViewProtocol = MakeCoverView()
-        let presenter: MakeCoverPresenterProtocol & MakeCoverInteractorOutputProtocol = MakeCoverPresenter()
-        var interactor: MakeCoverInteractorIntputProtocol = MakeCoverInteractor(
+        let presenter: MakeCoverPresenterProtocol & MakeCoverInteractorOutputProtocol = MakeCoverPresenter(view: view, router: self)
+        let interactor: MakeCoverInteractorIntputProtocol = MakeCoverInteractor(
+            presenter: presenter,
             factory: factory,
             mediaResponse: mediaResponse,
             cover: cover
         )
         
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
-        
         return view.viewController
     }
+    
+    // MARK: - Private
+    
+    private let mediaResponse: MediaResponse
+    private let cover: UIImage?
     
 }

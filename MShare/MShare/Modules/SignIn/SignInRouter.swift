@@ -9,8 +9,8 @@ import UIKit
 import SafariServices
 
 protocol SignInRouterProtocol {
-    func showMain()
-    func presentBrowserScreen(from view: SignInViewProtocol?, forUrlString urlString: String)
+    func loadMain()
+    func presentSafari(for view: SignInViewProtocol?, url: URL)
 }
 
 final class SignInRouter: Router, SignInRouterProtocol {
@@ -19,27 +19,23 @@ final class SignInRouter: Router, SignInRouterProtocol {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
         let view: SignInViewProtocol = SignInView()
-        let presenter: SignInPresenterProtocol & SignInInteractorOutputProtocol = SignInPresenter()
-        var interactor: SignInInteractorIntputProtocol = SignInInteractor(userManager: userManager)
+        let presenter: SignInPresenterProtocol & SignInInteractorOutputProtocol = SignInPresenter(view: view, router: self)
+        let interactor: SignInInteractorIntputProtocol = SignInInteractor(presenter: presenter, userManager: userManager)
         
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
-        
         return view.viewController
     }
     
-    func showMain() {
+    func loadMain() {
         let mainView = MainRouter(dependencyManager: dependencyManager).initMainModule()
-        mainView.selectedTab(.link)
+        mainView.selectTab(.link)
         
         UIApplication.load(vc: mainView.viewController, backgroundColor: .systemBackground)
     }
     
-    func presentBrowserScreen(from view: SignInViewProtocol?, forUrlString urlString: String) {
-        let safariViewController = SFSafariViewController(url: URL(string: urlString)!)
+    func presentSafari(for view: SignInViewProtocol?, url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
         
         view?.viewController.present(safariViewController, animated: true)
     }

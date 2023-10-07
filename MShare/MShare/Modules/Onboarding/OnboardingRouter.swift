@@ -15,15 +15,11 @@ final class OnboardingRouter: Router, OnboardingRouterProtocol {
     
     override func createModule() -> UIViewController {
         let view: OnboardingViewProtocol = OnboardingView()
-        let presenter: OnboardingPresenterProtocol & OnboardingInteractorOutputProtocol = OnboardingPresenter()
-        var interactor: OnboardingInteractorIntputProtocol = OnboardingInteractor()
+        let presenter: OnboardingPresenterProtocol & OnboardingInteractorOutputProtocol = OnboardingPresenter(view: view, router: self)
+        let interactor: OnboardingInteractorIntputProtocol = OnboardingInteractor(presenter: presenter)
         
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
-        
         return view.viewController
     }
     

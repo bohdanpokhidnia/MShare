@@ -31,7 +31,11 @@ final class LinkInteractor {
     
     // MARK: - Initializers
     
-    init(apiClient: ApiClient) {
+    init(
+        presenter: LinkInteractorOutputProtocol,
+        apiClient: ApiClient
+    ) {
+        self.presenter = presenter
         self.apiClient = apiClient
     }
     
@@ -79,20 +83,26 @@ private extension LinkInteractor {
 extension LinkInteractor: LinkInteractorIntputProtocol {
     
     func setupNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleURL),
-                                               name: UIApplication.didBecomeActiveNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleURL),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     func removeNotifications() {

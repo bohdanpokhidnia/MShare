@@ -17,6 +17,12 @@ protocol OnboardingInteractorOutputProtocol: AnyObject {
 
 final class OnboardingInteractor {
     weak var presenter: OnboardingInteractorOutputProtocol?
+    
+    // MARK: - Initializers
+    
+    init(presenter: OnboardingInteractorOutputProtocol?) {
+        self.presenter = presenter
+    }
 }
 
 // MARK: - OnboardingInteractorInputProtocol

@@ -23,7 +23,13 @@ final class MakeCoverInteractor {
     
     // MARK: - Initializers
     
-    init(factory: FactoryProtocol, mediaResponse: MediaResponse, cover: UIImage?) {
+    init(
+        presenter: MakeCoverInteractorOutputProtocol?,
+        factory: FactoryProtocol,
+        mediaResponse: MediaResponse,
+        cover: UIImage?
+    ) {
+        self.presenter = presenter
         self.factory = factory
         self.mediaResponse = mediaResponse
         self.cover = cover

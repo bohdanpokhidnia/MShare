@@ -116,7 +116,6 @@ extension FavoritesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let mediaItem = presenter?.metdiaItem(forIndexPath: indexPath) else { return UITableViewCell() }
         let cell = tableView.dequeue(MediaTableViewCell.self, for: indexPath)
-        
         return cell
             .set(delegate: self, indexPath: indexPath)
             .set(state: mediaItem)

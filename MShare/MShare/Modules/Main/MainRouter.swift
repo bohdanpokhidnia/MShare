@@ -9,7 +9,6 @@ import UIKit
 
 protocol MainRouterProtocol {
     func initMainModule() -> MainViewProtocol
-    func createTabModules() -> [UIViewController]
 }
 
 final class MainRouter: Router, MainRouterProtocol {
@@ -18,19 +17,30 @@ final class MainRouter: Router, MainRouterProtocol {
         let view: MainViewProtocol = MainView()
         let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()
         var interactor: MainInteractorIntputProtocol = MainInteractor()
-        let tabViews = createTabModules()
+        let tabViews = buildTabModules()
         
         view.presenter = presenter
         view.setTabControllers(tabViews)
+        
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = self
-        interactor.presenter = presenter
         
+        interactor.presenter = presenter
         return view
     }
     
-    func createTabModules() -> [UIViewController] {
+    override func createModule() -> UIViewController {
+        return initMainModule().viewController
+    }
+    
+}
+
+// MARK: - Private Methods
+
+private extension MainRouter {
+    
+    func buildTabModules() -> [UIViewController] {
         var views = [UIViewController]()
         
         for tabBarModule in MainView.TabItem.allCases {
@@ -45,10 +55,6 @@ final class MainRouter: Router, MainRouterProtocol {
         }
         
         return views
-    }
-    
-    override func createModule() -> UIViewController {
-        return initMainModule().viewController
     }
     
 }

@@ -22,11 +22,19 @@ protocol SignInInteractorOutputProtocol: AnyObject {
 final class SignInInteractor: NSObject {
     weak var presenter: SignInInteractorOutputProtocol?
     
-    private var userManager: UserManagerProtocol
+    // MARK: - Initializers
     
-    init(userManager: UserManagerProtocol) {
+    init(
+        presenter: SignInInteractorOutputProtocol?,
+        userManager: UserManagerProtocol
+    ) {
+        self.presenter = presenter
         self.userManager = userManager
     }
+    
+    // MARK: - Private
+    
+    private var userManager: UserManagerProtocol
 }
 
 // MARK: - SignInInteractorInputProtocol

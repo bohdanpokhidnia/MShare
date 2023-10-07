@@ -16,10 +16,13 @@ protocol DetailSongRouterProtocol {
  
 final class DetailSongRouter: Router, DetailSongRouterProtocol {
     
-    let mediaResponse: MediaResponse
-    let cover: UIImage
+    // MARK: - Initializers
     
-    init(dependencyManager: DependencyManagerProtocol, mediaResponse: MediaResponse, cover: UIImage) {
+    init(
+        dependencyManager: DependencyManagerProtocol,
+        mediaResponse: MediaResponse,
+        cover: UIImage
+    ) {
         self.mediaResponse = mediaResponse
         self.cover = cover
         
@@ -32,8 +35,9 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         let factory = dependencyManager.resolve(type: FactoryProtocol.self)
         
         let view: DetailSongViewProtocol = DetailSongView()
-        let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter()
-        var interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(
+        let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter(view: view, router: self)
+        let interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(
+            presenter: presenter,
             databaseManager: databaseManager,
             apiClient: apiClient,
             factory: factory,
@@ -42,11 +46,7 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         )
         
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
-        
         return view.viewController
     }
     
@@ -89,12 +89,17 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
     
     func pushMakeCover(view: DetailSongViewProtocol?) {
         let makeCover = MakeCoverRouter(
+            dependencyManager: dependencyManager,
             mediaResponse: mediaResponse,
-            cover: cover,
-            dependencyManager: dependencyManager
+            cover: cover
         ).createModule()
         
         view?.viewController.navigationController?.pushViewController(makeCover, animated: true)
     }
+    
+    // MARK: - Private
+    
+    private let mediaResponse: MediaResponse
+    private let cover: UIImage
     
 }

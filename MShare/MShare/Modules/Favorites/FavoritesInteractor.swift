@@ -26,13 +26,22 @@ protocol FavoritesInteractorOutputProtocol: AnyObject {
 final class FavoritesInteractor {
     weak var presenter: FavoritesInteractorOutputProtocol?
     
-    private var userManager: UserManagerProtocol
-    private var databaseManager: DatabaseManagerProtocol
+    // MARK: - Initializers
     
-    init(userManager: UserManagerProtocol, databaseManager: DatabaseManagerProtocol) {
+    init(
+        presenter: FavoritesInteractorOutputProtocol?,
+        userManager: UserManagerProtocol,
+        databaseManager: DatabaseManagerProtocol
+    ) {
+        self.presenter = presenter
         self.userManager = userManager
         self.databaseManager = databaseManager
     }
+    
+    // MARK: - Private
+    
+    private var userManager: UserManagerProtocol
+    private var databaseManager: DatabaseManagerProtocol
 }
 
 // MARK: - FavoritesInteractorInputProtocol

@@ -19,6 +19,13 @@ final class OnboardingPresenter {
     weak var view: OnboardingViewProtocol?
     var interactor: OnboardingInteractorIntputProtocol?
     var router: OnboardingRouterProtocol?
+    
+    // MARK: - Initializers
+    
+    init(view: OnboardingViewProtocol?, router: OnboardingRouterProtocol?) {
+        self.view = view
+        self.router = router
+    }
 }
 
 // MARK: - OnboardingPresenterProtocol

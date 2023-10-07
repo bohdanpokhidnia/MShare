@@ -8,7 +8,12 @@
 import UIKit
 
 protocol LinkRouterProtocol {
-    func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?)
+    func presentDetailSongScreen(
+        from view: LinkViewProtocol?,
+        mediaResponse: MediaResponse,
+        cover: UIImage,
+        completion: (() -> Void)?
+    )
 }
 
 final class LinkRouter: Router, LinkRouterProtocol {
@@ -16,15 +21,14 @@ final class LinkRouter: Router, LinkRouterProtocol {
     // MARK: - Override methods
     
     override func createModule() -> UIViewController {
-        let presenter: LinkPresenterProtocol & LinkInteractorOutputProtocol = LinkPresenter()
-        let view: LinkViewProtocol = LinkView(presenter: presenter)
-        var interactor: LinkInteractorIntputProtocol = LinkInteractor(apiClient: dependencyManager.resolve(type: ApiClient.self))
+        let apiClient = dependencyManager.resolve(type: ApiClient.self)
+        
+        let view: LinkViewProtocol = LinkView()
+        let presenter: LinkPresenterProtocol & LinkInteractorOutputProtocol = LinkPresenter(view: view, router: self)
+        let interactor: LinkInteractorIntputProtocol = LinkInteractor(presenter: presenter, apiClient: apiClient)
         
         view.presenter = presenter
-        presenter.view = view
         presenter.interactor = interactor
-        presenter.router = self
-        interactor.presenter = presenter
         
         let navigationController = AppNavigationController(rootViewController: view.viewController)
         navigationController.delegate = delegate
