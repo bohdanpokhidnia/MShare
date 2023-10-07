@@ -18,10 +18,12 @@ protocol LinkPresenterProtocol: AnyObject {
     func getSong(urlString: String)
 }
 
-final class LinkPresenter {
+final class LinkPresenter: BasePresenter {
     weak var view: LinkViewProtocol?
     var interactor: LinkInteractorIntputProtocol?
     var router: LinkRouterProtocol?
+    
+    // MARK: - Initializers
     
     init(
         view: LinkViewProtocol?,
@@ -29,6 +31,18 @@ final class LinkPresenter {
     ) {
         self.view = view
         self.router = router
+        
+        super.init(baseView: view)
+    }
+    
+    // MARK: - Override methods
+    
+    override func handleNetworkError(error: BaseError) {
+        DispatchQueue.main.async { [weak view] in
+            view?.hideLoading() {
+                view?.handleNetworkError(error: error)
+            }
+        }
     }
     
     // MARK: - Private
@@ -92,16 +106,6 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         router?.presentDetailSongScreen(from: view, mediaResponse: mediaResponse, cover: cover) { [weak view] in
             view?.cleaningLinkTextField()
             view?.hideLoading(completion: nil)
-        }
-    }
-    
-    func didCatchError(_ error: NetworkError) {
-        DispatchQueue.main.async { [weak view] in
-            view?.hideLoading() {
-                view?.showError(title: error.title, message: error.localizedDescription, action: {
-                    view?.resetLinkTextFieldBorderColor(animated: true)
-                })
-            }
         }
     }
     

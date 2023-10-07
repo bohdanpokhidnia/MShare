@@ -16,16 +16,15 @@ protocol LinkInteractorIntputProtocol {
     func copyImageToBuffer(_ image: UIImage)
 }
 
-protocol LinkInteractorOutputProtocol: AnyObject {
+protocol LinkInteractorOutputProtocol: BaseInteractorOutputProtocol {
     func didCatchURL(_ urlString: String)
     func didCatchStringFromBuffer(_ stringFromBuffer: String)
     func didShowKeyboard(_ keyboardFrame: NSValue)
     func didHideKeyboard(_ keyboardFrame: NSValue)
     func didFetchMedia(mediaResponse: MediaResponse, cover: UIImage?)
-    func didCatchError(_ error: NetworkError)
 }
 
-final class LinkInteractor {
+final class LinkInteractor: BaseInteractor {
     
     weak var presenter: LinkInteractorOutputProtocol?
     
@@ -37,6 +36,8 @@ final class LinkInteractor {
     ) {
         self.presenter = presenter
         self.apiClient = apiClient
+        
+        super.init(basePresenter: presenter)
     }
     
     deinit {
@@ -120,7 +121,7 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
                     presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: coverImage)
                 }
             } catch let networkError as NetworkError {
-                presenter?.didCatchError(networkError)
+                presenter?.handleNetworkError(error: networkError)
             } catch {
                 dprint(error, logType: .error)
             }

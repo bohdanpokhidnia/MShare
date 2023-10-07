@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController<ContentView: View>: UIViewController, Themeable {
+class ViewController<ContentView: View>: UIViewController, Themeable, NetworkErrorHandling {
     
     var contentView: ContentView! {
         return view as? ContentView
@@ -50,6 +50,12 @@ class ViewController<ContentView: View>: UIViewController, Themeable {
     
     func apply(theme: AppTheme) {
         
+    }
+    
+    // MARK: - NetworkErrorHandling
+    
+    func handleNetworkError(error: BaseError) {
+        showAlert(message: error.localizedDescription)
     }
     
 }

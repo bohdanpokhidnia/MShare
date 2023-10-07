@@ -30,6 +30,11 @@
 		F7309C6E298196F2000DB4E9 /* TwoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */; };
 		F73873A72AD164F000581F57 /* DPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873A62AD164F000581F57 /* DPrint.swift */; };
 		F73873A82AD16A7A00581F57 /* DPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873A62AD164F000581F57 /* DPrint.swift */; };
+		F73873AB2AD17F7400581F57 /* NetworkErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873AA2AD17F7400581F57 /* NetworkErrorHandling.swift */; };
+		F73873AD2AD17F8F00581F57 /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873AC2AD17F8F00581F57 /* BaseError.swift */; };
+		F73873AF2AD17FCF00581F57 /* BaseModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873AE2AD17FCF00581F57 /* BaseModuleView.swift */; };
+		F73873B12AD17FEC00581F57 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B02AD17FEC00581F57 /* BasePresenter.swift */; };
+		F73873B32AD1802100581F57 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B22AD1802100581F57 /* BaseInteractor.swift */; };
 		F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739200B29855C7600A773D7 /* ThirdPageViewController.swift */; };
 		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
@@ -201,6 +206,11 @@
 		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageViewController.swift; sourceTree = "<group>"; };
 		F73873A62AD164F000581F57 /* DPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPrint.swift; sourceTree = "<group>"; };
+		F73873AA2AD17F7400581F57 /* NetworkErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandling.swift; sourceTree = "<group>"; };
+		F73873AC2AD17F8F00581F57 /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
+		F73873AE2AD17FCF00581F57 /* BaseModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModuleView.swift; sourceTree = "<group>"; };
+		F73873B02AD17FEC00581F57 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		F73873B22AD1802100581F57 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		F739200B29855C7600A773D7 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -419,6 +429,18 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		F73873A92AD17F5900581F57 /* BaseModule */ = {
+			isa = PBXGroup;
+			children = (
+				F73873AC2AD17F8F00581F57 /* BaseError.swift */,
+				F73873AA2AD17F7400581F57 /* NetworkErrorHandling.swift */,
+				F73873AE2AD17FCF00581F57 /* BaseModuleView.swift */,
+				F73873B02AD17FEC00581F57 /* BasePresenter.swift */,
+				F73873B22AD1802100581F57 /* BaseInteractor.swift */,
+			);
+			path = BaseModule;
+			sourceTree = "<group>";
+		};
 		F739200D29855DB000A773D7 /* OnboardingVideos */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +581,7 @@
 		F774B9392891B10B00438A37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F73873A92AD17F5900581F57 /* BaseModule */,
 				F71E37CB297ABC0800BAF622 /* Onboarding */,
 				F77EE0D8298FCA86002E7139 /* SignIn */,
 				F774B93C2891B16600438A37 /* Main */,
@@ -995,6 +1018,7 @@
 				F74B75BA290AF66200DBCD46 /* DatabaseManager.swift in Sources */,
 				F710AE1E293216E300C758E8 /* ShareMediaResponse.swift in Sources */,
 				F72E82F7289563D4008D7702 /* CollectionViewCell.swift in Sources */,
+				F73873AF2AD17FCF00581F57 /* BaseModuleView.swift in Sources */,
 				F73873A72AD164F000581F57 /* DPrint.swift in Sources */,
 				F7D589C1289ABDF60073709D /* MediaTableViewCell.swift in Sources */,
 				F7C2B84129A1393B00569C5B /* Link.swift in Sources */,
@@ -1037,6 +1061,7 @@
 				F71E37D8297ABC0800BAF622 /* OnboardingView.swift in Sources */,
 				F7D9852E28FA977500F54E24 /* FavoritesPresenter.swift in Sources */,
 				F777BE4F289E479600595ACA /* DetailSongEntity.swift in Sources */,
+				F73873B32AD1802100581F57 /* BaseInteractor.swift in Sources */,
 				F742652F2905318900B87BBF /* AboutUsView.swift in Sources */,
 				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
 				F71412FE2915C60100D569E2 /* UserDefault.swift in Sources */,
@@ -1082,6 +1107,8 @@
 				F763689929EA820B00307B7C /* AppNavigationController.swift in Sources */,
 				F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */,
 				F7632C2B29D9C4AB00239DAF /* MakeCoverView.swift in Sources */,
+				F73873B12AD17FEC00581F57 /* BasePresenter.swift in Sources */,
+				F73873AB2AD17F7400581F57 /* NetworkErrorHandling.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
@@ -1098,6 +1125,7 @@
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
 				F71E37D3297ABC0800BAF622 /* OnboardingRouter.swift in Sources */,
 				F7D9852D28FA977500F54E24 /* FavoritesEntity.swift in Sources */,
+				F73873AD2AD17F8F00581F57 /* BaseError.swift in Sources */,
 				F71413002915C63600D569E2 /* UserManager.swift in Sources */,
 				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
 				F7D9852B28FA977500F54E24 /* FavoritesRouter.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LinkViewProtocol: AnyObject {
+protocol LinkViewProtocol: BaseModuleView {
     var presenter: LinkPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
@@ -15,20 +15,11 @@ protocol LinkViewProtocol: AnyObject {
     func setLinkTitle(_ title: String)
     func cleaningLinkTextField()
     func hideSetLink(_ hidden: Bool)
-    func showError(title: String?, message: String, action: (() -> Void)?)
     func setOffsetLinkTextField(_ keyboardFrame: CGRect)
     func resetPositionLinkTextField()
     func showLoading()
     func hideLoading(completion: (() -> Void)?)
     func resetLinkTextFieldBorderColor(animated: Bool)
-}
-
-extension LinkViewProtocol {
-    
-    func showError(title: String?, message: String, action: (() -> Void)? = nil) {
-        showError(title: title, message: message, action: action)
-    }
-    
 }
 
 final class LinkView: ViewController<LinkContentView> {
@@ -150,10 +141,6 @@ extension LinkView: LinkViewProtocol {
     
     func hideSetLink(_ hidden: Bool) {
         contentView.linkTextField.inputAccessoryView?.isHidden = hidden
-    }
-    
-    func showError(title: String?, message: String, action: (() -> Void)? = nil) {
-        showAlert(title: title, message: message, alertAction: action)
     }
     
     func setOffsetLinkTextField(_ keyboardFrame: CGRect) {
