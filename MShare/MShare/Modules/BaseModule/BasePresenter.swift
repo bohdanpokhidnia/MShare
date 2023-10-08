@@ -8,6 +8,7 @@
 import Foundation
 
 class BasePresenter: BaseInteractorOutputProtocol {
+    
     var baseView: BaseModuleView?
     
     init(baseView: BaseModuleView?) {
@@ -17,4 +18,5 @@ class BasePresenter: BaseInteractorOutputProtocol {
     func handleNetworkError(error: BaseError) {
         baseView?.handleNetworkError(error: error)
     }
+    
 }

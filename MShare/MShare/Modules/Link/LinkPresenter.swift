@@ -40,7 +40,7 @@ final class LinkPresenter: BasePresenter {
     override func handleNetworkError(error: BaseError) {
         DispatchQueue.main.async { [weak view] in
             view?.hideLoading() {
-                view?.handleNetworkError(error: error)
+                AlertKit.present(title: error.localizedDescription, haptic: .error)
             }
         }
     }

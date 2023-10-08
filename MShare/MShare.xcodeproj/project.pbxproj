@@ -35,6 +35,9 @@
 		F73873AF2AD17FCF00581F57 /* BaseModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873AE2AD17FCF00581F57 /* BaseModuleView.swift */; };
 		F73873B12AD17FEC00581F57 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B02AD17FEC00581F57 /* BasePresenter.swift */; };
 		F73873B32AD1802100581F57 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B22AD1802100581F57 /* BaseInteractor.swift */; };
+		F73873B62AD2DAFE00581F57 /* AlertKitHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B52AD2DAFE00581F57 /* AlertKitHaptic.swift */; };
+		F73873B82AD2DBC200581F57 /* AlertKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B72AD2DBC200581F57 /* AlertKit.swift */; };
+		F73873BA2AD2DC6B00581F57 /* AlertKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B92AD2DC6B00581F57 /* AlertKitView.swift */; };
 		F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739200B29855C7600A773D7 /* ThirdPageViewController.swift */; };
 		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
@@ -211,6 +214,9 @@
 		F73873AE2AD17FCF00581F57 /* BaseModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModuleView.swift; sourceTree = "<group>"; };
 		F73873B02AD17FEC00581F57 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		F73873B22AD1802100581F57 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
+		F73873B52AD2DAFE00581F57 /* AlertKitHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitHaptic.swift; sourceTree = "<group>"; };
+		F73873B72AD2DBC200581F57 /* AlertKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKit.swift; sourceTree = "<group>"; };
+		F73873B92AD2DC6B00581F57 /* AlertKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitView.swift; sourceTree = "<group>"; };
 		F739200B29855C7600A773D7 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -441,6 +447,16 @@
 			path = BaseModule;
 			sourceTree = "<group>";
 		};
+		F73873B42AD2DACB00581F57 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F73873B52AD2DAFE00581F57 /* AlertKitHaptic.swift */,
+				F73873B72AD2DBC200581F57 /* AlertKit.swift */,
+				F73873B92AD2DC6B00581F57 /* AlertKitView.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		F739200D29855DB000A773D7 /* OnboardingVideos */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +625,7 @@
 		F774B9472891B20F00438A37 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F73873B42AD2DACB00581F57 /* Alert */,
 				F763689E29EBE6BA00307B7C /* Transition */,
 				F7C2B83429A1321100569C5B /* Theme */,
 				F774B94A2891B31E00438A37 /* Components */,
@@ -1007,6 +1024,7 @@
 				F774B94E2891B37A00438A37 /* ViewLayoutableProtocol.swift in Sources */,
 				F774B9462891B16600438A37 /* MainView.swift in Sources */,
 				F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */,
+				F73873BA2AD2DC6B00581F57 /* AlertKitView.swift in Sources */,
 				F7C2B83329A1320E00569C5B /* ThemeProvider.swift in Sources */,
 				F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
@@ -1056,6 +1074,7 @@
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
 				F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */,
 				F71E37D5297ABC0800BAF622 /* OnboardingInteractor.swift in Sources */,
+				F73873B62AD2DAFE00581F57 /* AlertKitHaptic.swift in Sources */,
 				F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */,
 				F77EE0E4298FCA86002E7139 /* SignInEntity.swift in Sources */,
 				F71E37D8297ABC0800BAF622 /* OnboardingView.swift in Sources */,
@@ -1125,6 +1144,7 @@
 				F790282A289309940058CC19 /* SettingsRouter.swift in Sources */,
 				F71E37D3297ABC0800BAF622 /* OnboardingRouter.swift in Sources */,
 				F7D9852D28FA977500F54E24 /* FavoritesEntity.swift in Sources */,
+				F73873B82AD2DBC200581F57 /* AlertKit.swift in Sources */,
 				F73873AD2AD17F8F00581F57 /* BaseError.swift in Sources */,
 				F71413002915C63600D569E2 /* UserManager.swift in Sources */,
 				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
