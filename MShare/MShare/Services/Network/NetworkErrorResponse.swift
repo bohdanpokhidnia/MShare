@@ -11,4 +11,5 @@ struct NetworkErrorResponse: Decodable {
     let type: String
     let title: String
     let status: Int
+    let errors: [String: [String]]
 }

@@ -28,8 +28,9 @@ enum NetworkError: Error, BaseError {
     
     var localizedDescription: String {
         switch self {
-        case .networkError(let networkError):
-            return "Status code: \(networkError.status), \(networkError.title)"
+        case .networkError(let errorResponse):
+            let error = errorResponse.errors.values.first?.first
+            return error ?? "Unknown network error"
             
         case .message(let message):
             return message ?? ""
