@@ -8,10 +8,21 @@
 import UIKit
 
 enum AlertKit {
-    static func present(title: String, haptic: AlertKitHaptic? = nil) {
+    static func toast(title: String, position: AlertPosition, haptic: AlertKitHaptic? = nil) {
         guard let window = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first else { return }
+        let horizontalInset: CGFloat = 16.0
+        let bottomInset: CGFloat = 26.0
         
-        let alertKitView = AlertKitView(title: title, haptic: haptic)
-        alertKitView.present(on: window)
+        let alertKitView = AlertKitToastView(
+            title: title,
+            configutation: AlertConfiguration(
+                position: position,
+                height: 49.0,
+                insets: UIEdgeInsets(top: 0, left: horizontalInset, bottom: bottomInset, right: horizontalInset),
+                haptic: haptic
+            )
+        )
+        
+        alertKitView.presentAlert(on: window)
     }
 }

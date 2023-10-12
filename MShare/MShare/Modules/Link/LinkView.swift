@@ -49,6 +49,21 @@ final class LinkView: ViewController<LinkContentView> {
         presenter?.viewWillDisappear()
     }
     
+    // MARK: - Override methods
+    
+    override func handleNetworkError(error: BaseError) {
+        let tabBarController = parent?.parent as? UITabBarController
+        let tabBarHeight: CGFloat = tabBarController?.tabBar.frame.height ?? .zero
+        
+        hideLoading() {
+            AlertKit.toast(
+                title: error.localizedDescription,
+                position: .bottom(inset: tabBarHeight),
+                haptic: .error
+            )
+        }
+    }
+    
     // MARK: - Private
     
     private var baseButtonRect: CGRect = .zero

@@ -1,5 +1,5 @@
 //
-//  AlertKitView.swift
+//  AlertKitToastView.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 08.10.2023.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-class AlertKitView: UIView {
-    
+class AlertKitToastView: AlertView {
     // MARK: - UI
     
     private let contentStackView = UIStackView()
@@ -18,40 +17,18 @@ class AlertKitView: UIView {
     
     // MARK: - Initializers
     
-    init(title: String, haptic: AlertKitHaptic?) {
-        self.haptic = haptic
-        
-        super.init(frame: .zero)
+    init(title: String, configutation: AlertConfiguration) {
+        super.init(configuration: configutation)
         
         setupViews(title: title)
         setupActions()
     }
     
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Presentation
-    
-    func present(on view: UIView, completion: (() -> Void)? = nil) {
-        setupStartPosition(on: view, height: height)
-        present(on: view)
-    }
-    
-    // MARK: - Private
-    
-    private let haptic: AlertKitHaptic?
-    private var topContstraint = NSLayoutConstraint()
-    private var bottomConstraint = NSLayoutConstraint()
-    private let height: CGFloat = 49.0
-    private let bottomInset: CGFloat = 26.0
-    
 }
 
 // MARK: - Setup
 
-private extension AlertKitView {
+private extension AlertKitToastView {
     
     func setupViews(title: String) {
         translatesAutoresizingMaskIntoConstraints = false
@@ -102,65 +79,15 @@ private extension AlertKitView {
         dismissButton.addTarget(self, action: #selector(didTapDismissButton), for: .touchUpInside)
     }
     
-    func setupStartPosition(on view: UIView, height: CGFloat) {
-        view.addSubview(self)
-        topContstraint = topAnchor.constraint(equalTo: view.bottomAnchor, constant: height)
-
-        NSLayoutConstraint.activate([
-            topContstraint,
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            heightAnchor.constraint(equalToConstant: height),
-        ])
-    }
-    
 }
 
 // MARK: - User interactions
 
-private extension AlertKitView {
+private extension AlertKitToastView {
     
     @objc
     func didTapDismissButton() {
-        dismiss()
-    }
-    
-}
-
-// MARK: - Private Methods
-
-private extension AlertKitView {
-    
-}
-
-// MARK: - Animations
-
-private extension AlertKitView {
-    
-    func present(on view: UIView) {
-        let presentedConstant = height + bottomInset
-        superview?.layoutIfNeeded()
-        
-        topContstraint.isActive = false
-        bottomConstraint = bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -presentedConstant)
-        bottomConstraint.isActive = true
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
-            self.superview?.layoutIfNeeded()
-        } completion: { [weak self] _ in
-            self?.haptic?.notify()
-        }
-    }
-    
-    func dismiss() {
-        bottomConstraint.isActive = false
-        topContstraint.isActive = true
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
-            self.superview?.layoutIfNeeded()
-        } completion: { _ in
-            self.removeFromSuperview()
-        }
+        dismissAlert()
     }
     
 }
