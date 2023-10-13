@@ -33,7 +33,11 @@ class AlertView: UIView {
         
         switch configuration.position {
         case .top:
-            break
+            bottomConstraint = topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: -configuration.height
+            )
+            bottomConstraint.isActive = true
             
         case .center:
             break
@@ -107,15 +111,24 @@ class AlertView: UIView {
 private extension AlertView {
     
     func setupPresentetaion(for view: UIView) {
+        let configurationInsets = configuration.insets
+        
         switch configuration.position {
         case .top:
-            break
+            let topInset: CGFloat = configurationInsets?.top ?? .zero
+            
+            bottomConstraint.isActive = false
+            topContstraint = topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: topInset
+            )
+            topContstraint.isActive = true
             
         case .center:
             break
             
         case .bottom(let inset):
-            let bottomInset: CGFloat = inset + (configuration.insets?.bottom ?? .zero)
+            let bottomInset: CGFloat = inset + (configurationInsets?.bottom ?? .zero)
             
             topContstraint.isActive = false
             bottomConstraint = bottomAnchor.constraint(
@@ -132,14 +145,15 @@ private extension AlertView {
     func setupDismissing() {
         switch configuration.position {
         case .top:
-            break
+            topContstraint.isActive = false
+            bottomConstraint.isActive = true
             
         case .center:
             break
             
         case .bottom:
-            bottomConstraint.isActive = false
             topContstraint.isActive = true
+            bottomConstraint.isActive = false
             
         case .custom(let origin):
             break

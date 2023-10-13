@@ -28,6 +28,7 @@
 		F72E82FD2895777F008D7702 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E82FC2895777F008D7702 /* TableView.swift */; };
 		F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E8300289578A2008D7702 /* TableViewCell.swift */; };
 		F7309C6E298196F2000DB4E9 /* TwoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */; };
+		F7358A582AD942F0003FC5E2 /* PreviewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7358A572AD942F0003FC5E2 /* PreviewDebug.swift */; };
 		F73873A72AD164F000581F57 /* DPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873A62AD164F000581F57 /* DPrint.swift */; };
 		F73873A82AD16A7A00581F57 /* DPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873A62AD164F000581F57 /* DPrint.swift */; };
 		F73873AB2AD17F7400581F57 /* NetworkErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873AA2AD17F7400581F57 /* NetworkErrorHandling.swift */; };
@@ -211,6 +212,7 @@
 		F72E82FC2895777F008D7702 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F72E8300289578A2008D7702 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F7309C6D298196F2000DB4E9 /* TwoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageViewController.swift; sourceTree = "<group>"; };
+		F7358A572AD942F0003FC5E2 /* PreviewDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDebug.swift; sourceTree = "<group>"; };
 		F73873A62AD164F000581F57 /* DPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPrint.swift; sourceTree = "<group>"; };
 		F73873AA2AD17F7400581F57 /* NetworkErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandling.swift; sourceTree = "<group>"; };
 		F73873AC2AD17F8F00581F57 /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				F7632C3129DA1F9100239DAF /* Factory.swift */,
 				F763689829EA820B00307B7C /* AppNavigationController.swift */,
 				F73873A62AD164F000581F57 /* DPrint.swift */,
+				F7358A572AD942F0003FC5E2 /* PreviewDebug.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1091,6 +1094,7 @@
 				F7F5E5142AD8664D0063580C /* AlertConfiguration.swift in Sources */,
 				F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */,
 				F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */,
+				F7358A582AD942F0003FC5E2 /* PreviewDebug.swift in Sources */,
 				F7632C2F29D9C4AB00239DAF /* MakeCoverRouter.swift in Sources */,
 				F71E37D5297ABC0800BAF622 /* OnboardingInteractor.swift in Sources */,
 				F73873B62AD2DAFE00581F57 /* AlertKitHaptic.swift in Sources */,
