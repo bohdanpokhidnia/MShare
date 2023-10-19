@@ -17,8 +17,12 @@ class AlertKitToastView: AlertView {
     
     // MARK: - Initializers
     
-    init(title: String, configutation: AlertConfiguration) {
-        super.init(configuration: configutation)
+    init(
+        title: String,
+        view: UIView,
+        configutation: AlertConfiguration
+    ) {
+        super.init(view: view, configuration: configutation)
         
         setupViews(title: title)
         setupActions()

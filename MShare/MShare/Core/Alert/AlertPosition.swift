@@ -8,8 +8,15 @@
 import Foundation
 
 enum AlertPosition {
-    case top
-    case center
+    case top(inset: CGFloat)
+    case center(inset: CGFloat)
     case bottom(inset: CGFloat)
-    case custom(origin: CGPoint)
+    
+    var inset: CGFloat {
+        switch self {
+        case .top(let inset): inset
+        case .center(let inset): inset
+        case .bottom(let inset): inset
+        }
+    }
 }

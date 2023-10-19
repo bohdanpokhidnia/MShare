@@ -8,11 +8,20 @@
 import UIKit
 
 class AlertView: UIView {
+    let mainView: UIView
     let configuration: AlertConfiguration
+    
+    var presentationDuration: CGFloat { 0.3 }
+    var dismissDuration: CGFloat { 0.5 }
+    var isUniqueInstance: Bool { true }
     
     // MARK: - Initializers
     
-    init(configuration: AlertConfiguration) {
+    init(
+        view: UIView,
+        configuration: AlertConfiguration
+    ) {
+        self.mainView = view
         self.configuration = configuration
         
         super.init(frame: .zero)
@@ -25,8 +34,18 @@ class AlertView: UIView {
     
     // MARK: - Setup
     
-    func setupStartPosition(on view: UIView) {
-        view.addSubview(self)
+    func removeOtherInstances() {
+        mainView.subviews
+            .filter { $0.isKind(of: AlertView.self) }
+            .forEach { $0.removeFromSuperview() }
+    }
+    
+    func setupViews() {
+        if isUniqueInstance {
+            removeOtherInstances()
+        }
+        
+        mainView.addSubview(self)
         
         let leadingInset: CGFloat = configuration.insets?.left ?? .zero
         let trailingInset: CGFloat = configuration.insets?.right ?? .zero
@@ -34,7 +53,7 @@ class AlertView: UIView {
         switch configuration.position {
         case .top:
             bottomConstraint = topAnchor.constraint(
-                equalTo: view.topAnchor,
+                equalTo: mainView.topAnchor,
                 constant: -configuration.height
             )
             bottomConstraint.isActive = true
@@ -43,21 +62,18 @@ class AlertView: UIView {
             break
             
         case .bottom:
-            topContstraint = topAnchor.constraint(equalTo: view.bottomAnchor)
+            topContstraint = topAnchor.constraint(equalTo: mainView.bottomAnchor)
             topContstraint.isActive = true
-            
-        case .custom(_):
-            break
         }
         
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
+                equalTo: mainView.leadingAnchor,
                 constant: leadingInset
             ),
             trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -(trailingInset)
+                equalTo: mainView.trailingAnchor,
+                constant: -trailingInset
             ),
             heightAnchor.constraint(equalToConstant: configuration.height),
         ])
@@ -65,13 +81,13 @@ class AlertView: UIView {
     
     // MARK: - Animations
     
-    func presentAnimation(on view: UIView, completion: (() -> Void)?) {
-        superview?.layoutIfNeeded()
+    func presentAnimation(completion: (() -> Void)?) {
+        mainView.layoutIfNeeded()
         
-        setupPresentetaion(for: view)
+        setupPresentation()
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
-            self.superview?.layoutIfNeeded()
+        UIView.animate(withDuration: presentationDuration, delay: 0, options: .curveEaseIn) {
+            self.mainView.layoutIfNeeded()
         } completion: { [weak self] _ in
             self?.configuration.haptic?.notify()
             completion?()
@@ -81,8 +97,8 @@ class AlertView: UIView {
     func dismissAnimation(completion: (() -> Void)?) {
         setupDismissing()
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
-            self.superview?.layoutIfNeeded()
+        UIView.animate(withDuration: dismissDuration, delay: 0, options: .curveEaseInOut) {
+            self.mainView.layoutIfNeeded()
         } completion: { _ in
             self.removeFromSuperview()
             completion?()
@@ -91,9 +107,9 @@ class AlertView: UIView {
     
     // MARK: - Presentation
     
-    func presentAlert(on view: UIView, completion: (() -> Void)? = nil) {
-        setupStartPosition(on: view)
-        presentAnimation(on: view, completion: completion)
+    func presentAlert(completion: (() -> Void)? = nil) {
+        setupViews()
+        presentAnimation(completion: completion)
     }
     
     func dismissAlert(completion: (() -> Void)? = nil) {
@@ -110,16 +126,17 @@ class AlertView: UIView {
 
 private extension AlertView {
     
-    func setupPresentetaion(for view: UIView) {
+    func setupPresentation() {
+        let positionInset = configuration.position.inset
         let configurationInsets = configuration.insets
         
         switch configuration.position {
         case .top:
-            let topInset: CGFloat = configurationInsets?.top ?? .zero
+            let topInset: CGFloat = positionInset + (configurationInsets?.top ?? .zero)
             
             bottomConstraint.isActive = false
             topContstraint = topAnchor.constraint(
-                equalTo: view.topAnchor,
+                equalTo: mainView.topAnchor,
                 constant: topInset
             )
             topContstraint.isActive = true
@@ -127,18 +144,15 @@ private extension AlertView {
         case .center:
             break
             
-        case .bottom(let inset):
-            let bottomInset: CGFloat = inset + (configurationInsets?.bottom ?? .zero)
+        case .bottom:
+            let bottomInset: CGFloat = positionInset + (configurationInsets?.bottom ?? .zero)
             
             topContstraint.isActive = false
             bottomConstraint = bottomAnchor.constraint(
-                equalTo: view.bottomAnchor,
+                equalTo: mainView.bottomAnchor,
                 constant: -bottomInset
             )
             bottomConstraint.isActive = true
-            
-        case .custom(let origin):
-            break
         }
     }
     
@@ -152,11 +166,8 @@ private extension AlertView {
             break
             
         case .bottom:
-            topContstraint.isActive = true
             bottomConstraint.isActive = false
-            
-        case .custom(let origin):
-            break
+            topContstraint.isActive = true
         }
     }
     
