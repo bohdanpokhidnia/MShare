@@ -42,7 +42,7 @@ private extension AlertKitToastView {
         contentStackView.axis = .horizontal
         contentStackView.distribution = .fill
         contentStackView.alignment = .center
-        contentStackView.spacing = 8
+        contentStackView.spacing = 8.0
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentStackView)
         
