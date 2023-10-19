@@ -149,4 +149,11 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         UIImageWriteToSavedPhotosAlbum(cover, self, #selector(image), nil)
     }
     
+    func didSaveToDatabase() {
+        AlertKit.shortToast(title: "Saved to Favorites", position: .center(inset: 0), haptic: .success)
+    }
+    
+    func didDeleteFromDatabase() {
+        AlertKit.shortToast(title: "Removed from Favorites", position: .center(inset: 0), haptic: .success)
+    }
 }

@@ -25,6 +25,8 @@ protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didCatchError(_ error: NetworkError)
     func hasMediaInDatabase(_ isSaved: Bool)
     func didRequestedAccessToGallery(_ image: UIImage)
+    func didSaveToDatabase()
+    func didDeleteFromDatabase()
 }
 
 final class DetailSongInteractor {
@@ -104,18 +106,22 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         let mediaModel = MediaModel(mediaResponse: mediaResponse, coverData: coverData)
         
         if let savedMediaModel = databaseManager.getObject(MediaModel.self, forPrimaryKey: mediaModel.sourceId) {
-            databaseManager.delete(savedMediaModel) { (error) in
+            databaseManager.delete(savedMediaModel) { [weak presenter] (error) in
                 guard error == nil else {
                     dprint(error!.localizedDescription)
                     return
                 }
+                
+                presenter?.didDeleteFromDatabase()
             }
         } else {
-            databaseManager.save(mediaModel) { (error) in
+            databaseManager.save(mediaModel) { [weak presenter] (error) in
                 guard error == nil else {
                     dprint(error!.localizedDescription, logType: .error)
                     return
                 }
+                
+                presenter?.didSaveToDatabase()
             }
         }
     }
