@@ -12,4 +12,5 @@ struct AlertConfiguration {
     let height: CGFloat
     var insets: UIEdgeInsets?
     var haptic: AlertKitHaptic?
+    var duration: TimeInterval?
 }

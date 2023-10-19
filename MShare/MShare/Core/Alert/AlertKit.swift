@@ -19,7 +19,7 @@ enum AlertKit {
         let horizontalInset: CGFloat = 16.0
         let bottomInset: CGFloat = 26.0
         
-        let alertKitView = AlertKitToastView(
+        let toastView = AlertKitToastView(
             title: title,
             view: currentWindow,
             configutation: AlertConfiguration(
@@ -30,6 +30,23 @@ enum AlertKit {
             )
         )
         
-        alertKitView.presentAlert()
+        toastView.presentAlert()
+    }
+    
+    static func shortToast(title: String, position: AlertPosition, haptic: AlertKitHaptic? = nil) {
+        guard let currentWindow else { return }
+        
+        let shortView = AlertKitShortView(
+            title: title,
+            view: currentWindow,
+            configuration: AlertConfiguration(
+                position: position,
+                height: 50.0,
+                haptic: haptic,
+                duration: 1.0
+            )
+        )
+        
+        shortView.presentAlert()
     }
 }

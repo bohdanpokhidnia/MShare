@@ -15,6 +15,13 @@ class AlertView: UIView {
     var dismissDuration: CGFloat { 0.5 }
     var isUniqueInstance: Bool { true }
     
+    var contentColor = UIColor { (trait) in
+        switch trait.userInterfaceStyle {
+        case .dark: .white
+        default: UIColor(red: 88 / 255, green: 87 / 255, blue: 88 / 255, alpha: 1)
+        }
+    }
+    
     // MARK: - Initializers
     
     init(
@@ -34,7 +41,7 @@ class AlertView: UIView {
     
     // MARK: - Setup
     
-    func removeOtherInstances() {
+    func removeOtherAlers() {
         mainView.subviews
             .filter { $0.isKind(of: AlertView.self) }
             .forEach { $0.removeFromSuperview() }
@@ -42,7 +49,7 @@ class AlertView: UIView {
     
     func setupViews() {
         if isUniqueInstance {
-            removeOtherInstances()
+            removeOtherAlers()
         }
         
         mainView.addSubview(self)
@@ -59,7 +66,10 @@ class AlertView: UIView {
             bottomConstraint.isActive = true
             
         case .center:
-            break
+            NSLayoutConstraint.activate([
+                centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
+            ])
             
         case .bottom:
             topContstraint = topAnchor.constraint(equalTo: mainView.bottomAnchor)
@@ -81,16 +91,44 @@ class AlertView: UIView {
     
     // MARK: - Animations
     
+    func whenPresented() {
+        switch configuration.position {
+        case .top, .bottom:
+            break
+            
+        case .center:
+            alpha = 1.0
+        }
+    }
+    
     func presentAnimation(completion: (() -> Void)?) {
         mainView.layoutIfNeeded()
         
         setupPresentation()
         
         UIView.animate(withDuration: presentationDuration, delay: 0, options: .curveEaseIn) {
+            self.whenPresented()
             self.mainView.layoutIfNeeded()
         } completion: { [weak self] _ in
             self?.configuration.haptic?.notify()
-            completion?()
+            
+            if let duration = self?.configuration.duration {
+                DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                    self?.dismissAlert(completion: completion)
+                }
+            } else {
+                completion?()
+            }
+        }
+    }
+    
+    func whenDismissed() {
+        switch configuration.position {
+        case .top, .bottom:
+            break
+            
+        case .center:
+            alpha = .zero
         }
     }
     
@@ -98,6 +136,7 @@ class AlertView: UIView {
         setupDismissing()
         
         UIView.animate(withDuration: dismissDuration, delay: 0, options: .curveEaseInOut) {
+            self.whenDismissed()
             self.mainView.layoutIfNeeded()
         } completion: { _ in
             self.removeFromSuperview()
@@ -142,7 +181,7 @@ private extension AlertView {
             topContstraint.isActive = true
             
         case .center:
-            break
+            alpha = .zero
             
         case .bottom:
             let bottomInset: CGFloat = positionInset + (configurationInsets?.bottom ?? .zero)
