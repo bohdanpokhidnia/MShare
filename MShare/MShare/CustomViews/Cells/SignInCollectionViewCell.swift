@@ -8,7 +8,6 @@
 import UIKit
 
 final class SignInCollectionViewCell: CollectionViewCell {
-    
     struct State {
         let image: UIImage?
         let title: String
@@ -24,7 +23,7 @@ final class SignInCollectionViewCell: CollectionViewCell {
         emojiView, textContainerView
     )
     
-    private let emojiView = View()
+    private let emojiView = ViewLayoutable()
         .backgroundColor(color: .label)
         .setCornerRadius(8)
         .maskToBounds(true)
@@ -35,7 +34,7 @@ final class SignInCollectionViewCell: CollectionViewCell {
         .setCornerRadius(6)
         .maskToBounds(true)
     
-    private let textContainerView = View()
+    private let textContainerView = ViewLayoutable()
     
     private lazy var textStackView = makeStackView(
         axis: .vertical,
@@ -83,13 +82,11 @@ final class SignInCollectionViewCell: CollectionViewCell {
             $0.centerY.leading.trailing.equalToSuperview()
         }
     }
-    
 }
 
 //MARK: - Set
 
 extension SignInCollectionViewCell {
-    
     @discardableResult
     func set(state: State) -> Self {
         imageView.image = state.image
@@ -97,5 +94,4 @@ extension SignInCollectionViewCell {
         subtitleLabel.text = state.subtitle
         return self
     }
-    
 }

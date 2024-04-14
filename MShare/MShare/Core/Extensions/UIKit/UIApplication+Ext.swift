@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIApplication {
-    
     static var windowScene: UIWindowScene { shared.connectedScenes.first as! UIWindowScene }
     static var sceneDelegate: SceneDelegate { windowScene.delegate as! SceneDelegate }
     
@@ -24,5 +23,4 @@ extension UIApplication {
         window.backgroundColor(color: backgroundColor ?? .black)
         window.makeKeyAndVisible()
     }
-    
 }

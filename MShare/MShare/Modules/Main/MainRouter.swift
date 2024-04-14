@@ -9,10 +9,24 @@ import UIKit
 
 protocol MainRouterProtocol {
     func initMainModule() -> MainViewProtocol
+    func select(tab: MainEntity.TabItem)
 }
 
-final class MainRouter: Router, MainRouterProtocol {
+final class MainRouter: Router {
+    // MARK: - Override methods
     
+    override func createModule() -> UIViewController {
+        return initMainModule().viewController
+    }
+    
+    // MARK: - Private
+    
+    private var tabBarController: UITabBarController?
+}
+
+//MARK: - MainRouterProtocol
+
+extension MainRouter: MainRouterProtocol {
     func initMainModule() -> MainViewProtocol {
         let view: MainViewProtocol = MainView()
         let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()
@@ -27,23 +41,22 @@ final class MainRouter: Router, MainRouterProtocol {
         presenter.router = self
         
         interactor.presenter = presenter
+        tabBarController = view.viewController
         return view
     }
     
-    override func createModule() -> UIViewController {
-        return initMainModule().viewController
+    func select(tab: MainEntity.TabItem) {
+        tabBarController?.selectedIndex = tab.rawValue
     }
-    
 }
 
 // MARK: - Private Methods
 
 private extension MainRouter {
-    
     func buildTabModules() -> [UIViewController] {
-        var views = [UIViewController]()
+        var viewControllers: [UIViewController] = []
         
-        for tabBarModule in MainView.TabItem.allCases {
+        for tabBarModule in MainEntity.TabItem.allCases {
             let router = tabBarModule.router(dependencyManager: dependencyManager)
             let view = router.createModule()
                 .make {
@@ -51,10 +64,9 @@ private extension MainRouter {
                     $0.tabBarItem.image = tabBarModule.icon
                 }
             
-            views.append(view)
+            viewControllers.append(view)
         }
         
-        return views
+        return viewControllers
     }
-    
 }

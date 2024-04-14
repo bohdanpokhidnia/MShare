@@ -8,7 +8,7 @@
 import UIKit
 import AuthenticationServices
 
-final class SignInContentView: View {
+final class SignInContentView: ViewLayoutable {
     
     // MARK: - UI
     
@@ -38,7 +38,7 @@ final class SignInContentView: View {
         .text(font: .boldSystemFont(ofSize: 38))
         .text(alignment: .center)
     
-    private let collectionContainerView = View()
+    private let collectionContainerView = ViewLayoutable()
     
     private(set)lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()

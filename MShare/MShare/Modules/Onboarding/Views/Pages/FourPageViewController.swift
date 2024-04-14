@@ -11,7 +11,7 @@ final class FourPageViewController: UIViewController {
     
     // MARK: - UI
     
-    private let contentView = View()
+    private let contentView = ViewLayoutable()
     
     private lazy var contentStackView = makeStackView(
         axis: .vertical,
@@ -19,7 +19,7 @@ final class FourPageViewController: UIViewController {
     )(
         imageView,
         titleLabel,
-        View()
+        ViewLayoutable()
     )
     
     private let imageView = UIImageView(image: UIImage(named: "ukraine"))

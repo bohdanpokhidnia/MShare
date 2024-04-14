@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MakeCoverContentView: View {
+final class MakeCoverContentView: ViewLayoutable {
     
     // MARK: - UI
     
@@ -16,7 +16,7 @@ final class MakeCoverContentView: View {
         .setContentMode(.scaleAspectFill)
         .addClearBackgroundBlur(style: .regular)
     
-    private let coverViewContainer = View()
+    private let coverViewContainer = ViewLayoutable()
         .maskToBounds(false)
         .setCornerRadius(28)
         .addShadow(color: .black, offset: .init(width: 4, height: 4), opacity: 0.3, radius: 10)

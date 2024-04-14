@@ -8,7 +8,6 @@
 import UIKit
 
 final class DeveloperTableViewCell: TableViewCell {
-    
     struct State {
         let name: String
         let role: String
@@ -22,13 +21,11 @@ final class DeveloperTableViewCell: TableViewCell {
 
         accessoryType = .disclosureIndicator
     }
-    
 }
 
 // MARK: - Set
 
 extension DeveloperTableViewCell {
-    
     @discardableResult
     func set(state: State) -> Self {
         if #available(iOS 14.0, *) {
@@ -48,5 +45,4 @@ extension DeveloperTableViewCell {
         
         return self
     }
-    
 }

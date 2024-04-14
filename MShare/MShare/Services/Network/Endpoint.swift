@@ -19,18 +19,16 @@ enum RequestMethod: String {
 protocol Endpoint {
     var path: String { get }
     var method: RequestMethod { get }
-    var header: [String: String]? { get }
+    var headers: [String: String]? { get }
     var queryItems: [URLQueryItem]? { get }
     var body: [String: String]? { get }
     var decoder: JSONDecoder { get }
 }
 
 class BaseEndpoint: Endpoint {
-    
     var path: String { "" }
     var method: RequestMethod { .get }
-    
-    var header: [String : String]? {
+    var headers: [String : String]? {
         let userLocale: String?
         let regionCode: String? = SKPaymentQueue.default().storefront?.countryCode
         
@@ -56,11 +54,9 @@ class BaseEndpoint: Endpoint {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }
-    
 }
 
 class EndPointBaseItem<T: Encodable>: BaseEndpoint {
-    
     private let item: T?
     
     init(_ item: T? = nil, _ closure: (() -> (T?))? = nil) {
@@ -79,7 +75,6 @@ class EndPointBaseItem<T: Encodable>: BaseEndpoint {
             fatalError(error.localizedDescription)
         }
     }
-    
 }
 
 class GetEndpoint: BaseEndpoint {

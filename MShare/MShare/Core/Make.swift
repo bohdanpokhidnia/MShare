@@ -10,13 +10,11 @@ import UIKit
 protocol Make {}
 
 extension Make {
-    
     @discardableResult
     func make(_ completion: (Self) -> Void) -> Self {
         completion(self)
         return self
     }
-    
 }
 
 // MARK: - MakeProtocol

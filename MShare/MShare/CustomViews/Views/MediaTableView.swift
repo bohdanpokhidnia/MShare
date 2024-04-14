@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MediaTableView: View {
+final class MediaTableView: ViewLayoutable {
     
     // MARK: - UI
     

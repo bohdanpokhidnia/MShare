@@ -8,7 +8,6 @@
 import UIKit
 
 class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
     var operation: UINavigationController.Operation = .push
     
     init(operation: UINavigationController.Operation) {

@@ -18,7 +18,6 @@ final class ThemeProvider {
 //MARK: - AppThemeProvider
 
 extension ThemeProvider: AppThemeProvider {
-    
     func set(theme: AppTheme) {
         self.theme = theme
         
@@ -35,5 +34,4 @@ extension ThemeProvider: AppThemeProvider {
     func unregister<Observer: Themeable>(observer: Observer) {
         observers.remove(observer)
     }
-    
 }

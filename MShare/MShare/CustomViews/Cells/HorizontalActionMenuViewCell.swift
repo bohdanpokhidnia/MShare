@@ -12,7 +12,6 @@ typealias HorizontalActionMenuItem = HorizontalActionMenuViewCell.State
 typealias HorizontalActionAnimationType = HorizontalActionMenuViewCell.Style
 
 final class HorizontalActionMenuViewCell: CollectionViewCell {
-    
     enum Style {
         case blurred
         case normal
@@ -44,7 +43,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
     
     // MARK: - UI
     
-    private let containerView = View()
+    private let containerView = ViewLayoutable()
     
     private let actionImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
@@ -66,7 +65,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     
-    private let blurredView = View()
+    private let blurredView = ViewLayoutable()
         .addBlur(style: .regular)
         .setAlpha(0)
     
@@ -159,7 +158,6 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
 // MARK: - Set
 
 extension HorizontalActionMenuViewCell {
-    
     @discardableResult
     func set(state: State) -> Self {
         actionImageView.setImage(state.image)
@@ -192,5 +190,4 @@ extension HorizontalActionMenuViewCell {
         )
         return self
     }
-    
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 class TableView: UITableView {
-    
     // MARK: - Initializers
     
     init(style: UITableView.Style) {
@@ -19,13 +18,11 @@ class TableView: UITableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 // MARK: - Set
 
 extension TableView {
-    
     @discardableResult
     func setRowHeight(_ height: CGFloat) -> Self {
         rowHeight = height
@@ -49,5 +46,4 @@ extension TableView {
         separatorInset = inset
         return self
     }
-    
 }

@@ -33,11 +33,17 @@ enum AlertKit {
         toastView.presentAlert()
     }
     
-    static func shortToast(title: String, position: AlertPosition, haptic: AlertKitHaptic? = nil) {
+    static func shortToast(
+        title: String,
+        icon: AlertKitIcon,
+        position: AlertPosition,
+        haptic: AlertKitHaptic? = nil
+    ) {
         guard let currentWindow else { return }
         
         let shortView = AlertKitShortView(
             title: title,
+            icon: icon,
             view: currentWindow,
             configuration: AlertConfiguration(
                 position: position,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SettingsContentView: View {
+final class SettingsContentView: ViewLayoutable {
     
     private(set) lazy var settingsTableView = TableView(style: .insetGrouped)
         .register(class: SettingsTableViewCell.self)

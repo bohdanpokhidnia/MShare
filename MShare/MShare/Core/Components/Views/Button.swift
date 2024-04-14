@@ -8,7 +8,6 @@
 import UIKit
 
 class Button: UIButton, ViewLayoutableProtocol {
-    
     // MARK: - Override property
     
     override var bounds: CGRect {
@@ -61,20 +60,17 @@ class Button: UIButton, ViewLayoutableProtocol {
 // MARK: - User interactions
 
 private extension Button {
-    
     @objc
     func tapButton(_ button: UIButton) {
         didTapAction()
     }
-    
 }
 
 // MARK: - Set
 
 extension Button {
-    
     @discardableResult
-    func whenTap(action: @escaping () -> Void) -> Self {
+    func onTap(action: @escaping () -> Void) -> Self {
         didTapAction = action
         addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         
@@ -124,5 +120,4 @@ extension Button {
         
         return self
     }
-    
 }

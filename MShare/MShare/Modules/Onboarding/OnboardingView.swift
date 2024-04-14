@@ -13,7 +13,6 @@ protocol OnboardingViewProtocol: AnyObject {
 }
 
 final class OnboardingView: ViewController<OnboardingContentView> {
-    
     var presenter: OnboardingPresenterProtocol?
     
     var viewController: UIViewController {
@@ -29,19 +28,16 @@ final class OnboardingView: ViewController<OnboardingContentView> {
         
         setupActionHandlers()
     }
-    
 }
 
 // MARK: - Setup
 
 private extension OnboardingView {
-    
     func setupActionHandlers() {
-        contentView.letsGoButton.whenTap { [weak self] in
+        contentView.letsGoButton.onTap { [weak self] in
             self?.presenter?.didTapLetsGo()
         }
     }
-    
 }
 
 // MARK: - OnboardingViewProtocol

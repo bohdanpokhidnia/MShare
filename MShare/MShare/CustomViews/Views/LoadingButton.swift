@@ -6,22 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
 final class LoadingButton: Button {
-    
     enum AnimationState {
         case start
         case end
-        
-        var duration: CGFloat {
-            switch self {
-            case .start:
-                return 0.2
-                
-            case .end:
-                return 0.2
-            }
-        }
     }
     
     // MARK: - UI
@@ -32,14 +22,6 @@ final class LoadingButton: Button {
             $0.isHidden = true
             $0.color = .white
         }
-    
-    // MARK: - Override methods
-    
-    override var frame: CGRect {
-        didSet {
-            defineLayout()
-        }
-    }
     
     // MARK: - Lifecycle
     
@@ -52,56 +34,27 @@ final class LoadingButton: Button {
     override func defineLayout() {
         super.defineLayout()
         
-        loadingIndicator.frame.origin = .init(x: center.x - loadingIndicator.frame.width / 2, y: center.y - loadingIndicator.frame.height / 2)
+        loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
-    
 }
 
 // MARK: - Set
 
 extension LoadingButton {
-    
     @discardableResult
-    func set(animationState: AnimationState, finalFrame: CGRect, cornerRadius: CGFloat = 0, completion: (() -> Void)? = nil) -> Self {
-        
+    func set(animationState: AnimationState) -> Self {
         switch animationState {
         case .start:
-            titleLabel?.alpha = 0
+            titleLabel?.alpha = 0.0
+            loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
             
         case .end:
-            break
+            titleLabel?.alpha = 1.0
+            loadingIndicator.stopAnimating()
         }
-        
-        UIView.animate(withDuration: animationState.duration, animations: {
-            self.frame = finalFrame
-            self.bounds = finalFrame
-            self.setCornerRadius(cornerRadius)
-            
-            switch animationState {
-            case .start:
-                self.loadingIndicator.startAnimating()
-                self.loadingIndicator.isHidden = false
-                
-            case .end:
-                break
-            }
-            
-        }) { _ in
-            UIView.animate(withDuration: 0.35) {
-                switch animationState {
-                case .start:
-                    break
-                    
-                case .end:
-                    self.titleLabel?.alpha = 1
-                    self.loadingIndicator.stopAnimating()
-                }
-            } completion: { _ in
-                completion?()
-            }
-        }
-        
         return self
     }
-    
 }

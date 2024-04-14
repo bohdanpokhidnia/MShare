@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class OnboardingContentView: View {
+final class OnboardingContentView: ViewLayoutable {
     
     // MARK: - UI
     
     private var backgroundImageView = UIImageView(image: .init(named: "onboarding"))
     
-    private(set) var containerPageController = View()
+    private(set) var containerPageController = ViewLayoutable()
     
     private(set) lazy var pageController = UIPageViewController(
         transitionStyle: .scroll,
@@ -24,7 +24,7 @@ final class OnboardingContentView: View {
         $0.delegate = self
     }
     
-    private let controlsContainerView = View()
+    private let controlsContainerView = ViewLayoutable()
     
     private lazy var pageControl = UIPageControl()
         .make {

@@ -12,7 +12,6 @@ struct AppTheme {
 }
 
 extension AppTheme {
-    
     static let light = AppTheme(components: .init(
         favorites: .init(
             segmentControl: .init(
@@ -37,11 +36,9 @@ extension AppTheme {
             background: .init(color: .systemBackground)
         )
     ))
-    
 }
 
 extension AppTheme {
-    
     static let dark = AppTheme(components: .init(
         favorites: .init(
             segmentControl: .init(
@@ -68,5 +65,4 @@ extension AppTheme {
             background: .init(color: .secondarySystemBackground)
         )
     ))
-    
 }

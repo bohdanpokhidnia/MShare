@@ -10,7 +10,6 @@ import RealmSwift
 
 @objcMembers
 final class MediaModel: Object {
-    
     dynamic var sourceId: String = ""
     dynamic var url: String = ""
     dynamic var name: String = ""
@@ -57,5 +56,4 @@ final class MediaModel: Object {
         self.coverData = coverData
         services.append(objectsIn: mediaResponse.services.map { ServiceModel(mediaService: $0) })
     }
-    
 }

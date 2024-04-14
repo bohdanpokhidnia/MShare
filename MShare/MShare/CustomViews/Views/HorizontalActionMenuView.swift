@@ -9,10 +9,12 @@ import UIKit
 import SnapKit
 
 protocol HorizontalActionMenuDelegate: AnyObject {
-    func didTapActionItem(_ horizontalActionMenuView: HorizontalActionMenuView,
-                          action: HorizontalMenuAction,
-                          available: Bool,
-                          didSelectItemAt indexPath: IndexPath)
+    func didTapActionItem(
+        _ horizontalActionMenuView: HorizontalActionMenuView,
+        action: HorizontalMenuAction,
+        available: Bool,
+        didSelectItemAt indexPath: IndexPath
+    )
 }
 
 enum HorizontalMenuAction: String, CaseIterable {
@@ -69,8 +71,7 @@ enum HorizontalMenuAction: String, CaseIterable {
     
 }
 
-final class HorizontalActionMenuView: View {
-    
+final class HorizontalActionMenuView: ViewLayoutable {
     static let HorizontalActionMenuWidth: CGFloat = calculateSize(forPhone: UIDevice.phone).width
     static let HorizontalActionMenuHeight: CGFloat = calculateSize(forPhone: UIDevice.phone).height
     
@@ -118,13 +119,11 @@ final class HorizontalActionMenuView: View {
     
     private var selectedIndexPath: IndexPath?
     private var menuItems = [HorizontalActionMenuItem]()
-    
 }
 
 // MARK: - Set
 
 extension HorizontalActionMenuView {
-    
     @discardableResult
     func set(menuItems: [HorizontalActionMenuItem]) -> Self {
         self.menuItems = menuItems
@@ -144,13 +143,11 @@ extension HorizontalActionMenuView {
         
         return self
     }
-    
 }
 
 // MARK: - Private Methods
 
 private extension HorizontalActionMenuView {
-    
     func changeAnimationActionMenu(by indexPath: IndexPath?, animationStyle: HorizontalActionAnimationType) {
         guard let indexPath = indexPath,
               let cell = collectionView.cellForItem(at: indexPath) as? HorizontalActionMenuViewCell
@@ -172,17 +169,14 @@ private extension HorizontalActionMenuView {
             width = screenWidth / 3
             height = screenHeight / 4
             
-//        case .iPhone6_7_8_SE2_SE3
         case .iPhone6, .iPhone6S, .iPhone7, .iPhone8:
             width = screenWidth / 3
             height = screenHeight / 4
             
-//        case .iPhone6_7_8Plus:
         case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
             width = screenWidth / 3
             height = screenHeight / 4
             
-//        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
         case .iPhoneXR, .iPhoneXS, .iPhoneXSMax, .iPhone11, .iPhone11ProMax, .iPhone12, .iPhone12Pro, .iPhone12ProMax, .iPhone13, .iPhone13Pro, .iPhone14, .iPhoneX, .iPhone11Pro, .iPhone12Mini, .iPhone13Mini, .iPhone13ProMax, .iPhone14Plus, .iPhone14Pro, .iPhone14ProMax:
             width = screenWidth / 3 - 10
             height = screenHeight / 5
@@ -194,13 +188,11 @@ private extension HorizontalActionMenuView {
         
         return .init(width: width, height: height)
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension HorizontalActionMenuView: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menuItems.count
     }
@@ -210,13 +202,11 @@ extension HorizontalActionMenuView: UICollectionViewDataSource {
         let cell = collectionView.dequeue(HorizontalActionMenuViewCell.self, for: indexPath)
         return cell.set(state: menuItem)
     }
-    
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension HorizontalActionMenuView: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let menuItem = menuItems[indexPath.row]
         selectedIndexPath = indexPath
@@ -227,18 +217,15 @@ extension HorizontalActionMenuView: UICollectionViewDelegate {
         
         delegare?.didTapActionItem(self, action: menuItem.action, available: menuItem.active, didSelectItemAt: indexPath)
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = Self.HorizontalActionMenuWidth
         let height: CGFloat = Self.HorizontalActionMenuHeight
         
         return .init(width: width, height: height)
     }
-    
 }

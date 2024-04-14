@@ -14,7 +14,6 @@ protocol Blurable {
 }
 
 extension Blurable where Self: UIView {
-    
     @discardableResult
     func addBlur(style: UIBlurEffect.Style) -> Self {
         let blurEffect = UIBlurEffect(style: style)
@@ -53,8 +52,6 @@ extension Blurable where Self: UIView {
         addSubview(blurEffectView)
         return self
     }
-    
 }
 
 extension UIView: Blurable {}
-

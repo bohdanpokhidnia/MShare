@@ -14,7 +14,7 @@ protocol DetailSongPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func didTapPop()
-    func copyCoverToBuffer(fromView view: View)
+    func copyCoverToBuffer(fromView view: ViewLayoutable)
     func shareCover(cover: UIImage)
     func saveToFavorite()
     func didTapShareMedia(for destinationService: String)
@@ -48,7 +48,6 @@ final class DetailSongPresenter: NSObject {
 // MARK: - DetailSongPresenterProtocol
 
 extension DetailSongPresenter: DetailSongPresenterProtocol {
-    
     func viewDidLoad() {
         interactor?.requestMedia()
         interactor?.hasMediaInDatabase()
@@ -58,7 +57,7 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
         router?.pop(view: view)
     }
     
-    func copyCoverToBuffer(fromView: View) {
+    func copyCoverToBuffer(fromView: ViewLayoutable) {
         let image = fromView.makeSnapShotImage(withBackground: false)
         interactor?.copyImageToBuffer(image)
         
@@ -86,13 +85,11 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
     func didTapMakeCover() {
         router?.pushMakeCover(view: view)
     }
-    
 }
 
 // MARK: - DetailSongInteractorOutputProtocol
 
 extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
-    
     func didLoadDetailMedia(_ detailMedia: DetailSongEntity) {
         var menuItems = [HorizontalActionMenuItem]()
         
@@ -150,10 +147,20 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     }
     
     func didSaveToDatabase() {
-        AlertKit.shortToast(title: "Saved to Favorites", position: .center(inset: 0), haptic: .success)
+        AlertKit.shortToast(
+            title: "Saved to Favorites",
+            icon: .done,
+            position: .center(inset: 0),
+            haptic: .success
+        )
     }
     
     func didDeleteFromDatabase() {
-        AlertKit.shortToast(title: "Removed from Favorites", position: .center(inset: 0), haptic: .success)
+        AlertKit.shortToast(
+            title: "Removed from Favorites",
+            icon: .done,
+            position: .center(inset: 0),
+            haptic: .success
+        )
     }
 }

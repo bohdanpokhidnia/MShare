@@ -8,9 +8,14 @@
 import UIKit
 
 class Router {
+    let appRouter: AppRouterProtocol?
     let dependencyManager: DependencyManagerProtocol
     
-    init(dependencyManager: DependencyManagerProtocol) {
+    init(
+        appRouter: AppRouterProtocol? = nil,
+        dependencyManager: DependencyManagerProtocol
+    ) {
+        self.appRouter = appRouter
         self.dependencyManager = dependencyManager
     }
     

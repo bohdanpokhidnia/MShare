@@ -12,7 +12,6 @@ protocol DependencyManagerProtocol {
 }
 
 final class DependencyManager: DependencyManagerProtocol {
-    
     private var components: [String: Any] = [:]
     
     func register<T>(type: T.Type, module: Any) {
@@ -23,5 +22,4 @@ final class DependencyManager: DependencyManagerProtocol {
         let module = components["\(type)"] as! T
         return module
     }
-
 }

@@ -31,17 +31,15 @@ final class OnboardingPresenter {
 // MARK: - OnboardingPresenterProtocol
 
 extension OnboardingPresenter: OnboardingPresenterProtocol {
-    
     func didTapLetsGo() {
-        router?.presentSignInScreen(in: view)
+        interactor?.saveDisplayingOnboarding()
     }
-    
 }
 
 // MARK: - OnboardingInteractorOutputProtocol
 
 extension OnboardingPresenter: OnboardingInteractorOutputProtocol {
-    
-    
-    
+    func didSaveDisplayingOnboarding() {
+        router?.loadMain()
+    }
 }

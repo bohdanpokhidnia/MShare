@@ -12,7 +12,6 @@ protocol FactoryProtocol {
 }
 
 final class Factory: FactoryProtocol {
-    
     func mapDetailEntity(from mediaResponse: MediaResponse, withImage image: UIImage?) -> DetailSongEntity? {
         switch mediaResponse.mediaType {
         case .song:
@@ -36,5 +35,4 @@ final class Factory: FactoryProtocol {
             )
         }
     }
-    
 }

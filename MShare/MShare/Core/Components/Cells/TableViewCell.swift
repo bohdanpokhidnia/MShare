@@ -8,7 +8,6 @@
 import UIKit
 
 class TableViewCell: UITableViewCell, ViewLayoutableProtocol, Themeable {
-    
     // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -41,29 +40,24 @@ class TableViewCell: UITableViewCell, ViewLayoutableProtocol, Themeable {
     func apply(theme: AppTheme) {
         
     }
-    
 }
 
 // MARK: - Set
 
 extension TableViewCell {
-    
     @discardableResult
     func accessoryType(_ cellAccessoryType: UITableViewCell.AccessoryType) -> Self {
         accessoryType = cellAccessoryType
         return self
     }
-    
 }
 
 //MARK: - UIComponentsLibrary
 
 extension TableViewCell {
-    
     @discardableResult
     func set(component: UIComponentsLibrary.Component) -> Self {
         backgroundColor(color: component.color)
         return self
     }
-    
 }

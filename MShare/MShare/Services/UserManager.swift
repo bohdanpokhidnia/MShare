@@ -9,10 +9,10 @@ import Foundation
 
 protocol UserManagerProtocol {
     var favoriteFirstSection: Int? { get set }
-    var displayOnboarding: Bool? { get set }
+    var isDisplayOnboarding: Bool? { get set }
 }
 
 final class UserManager: UserManagerProtocol {
     @UserDefault("favoriteFirstSection", defaultValue: 0) var favoriteFirstSection: Int?
-    @UserDefault("displayOnboarding", defaultValue: false) var displayOnboarding: Bool?
+    @UserDefault("isDisplayOnboarding", defaultValue: false) var isDisplayOnboarding: Bool?
 }

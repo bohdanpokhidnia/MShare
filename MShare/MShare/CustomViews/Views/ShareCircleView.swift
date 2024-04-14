@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class ShareCircleView: View {
-    
+final class ShareCircleView: ViewLayoutable {
     // MARK: - UI
     
     private let gradientView = GradientView()
@@ -39,5 +38,4 @@ final class ShareCircleView: View {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(all: 8))
         }
     }
-    
 }

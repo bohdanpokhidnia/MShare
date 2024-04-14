@@ -75,7 +75,7 @@ private extension SignInView {
     }
     
     func setupActionHandlers() {
-        contentView.privacyPolicyButton.whenTap { [weak presenter] in
+        contentView.privacyPolicyButton.onTap { [weak presenter] in
             presenter?.didTapPrivacyPolicy()
         }
         
@@ -83,7 +83,7 @@ private extension SignInView {
             $0.addTarget(self, action: #selector(didTapSignInWithApple), for: .touchUpInside)
         }
         
-        contentView.skipButton.whenTap { [weak presenter] in
+        contentView.skipButton.onTap { [weak presenter] in
             presenter?.didTapSkip()
         }
     }

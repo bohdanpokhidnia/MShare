@@ -8,7 +8,6 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell, ViewLayoutableProtocol {
-    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -37,5 +36,4 @@ class CollectionViewCell: UICollectionViewCell, ViewLayoutableProtocol {
     func defineLayout() {
         
     }
-    
 }

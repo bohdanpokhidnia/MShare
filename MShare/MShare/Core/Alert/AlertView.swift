@@ -101,6 +101,10 @@ class AlertView: UIView {
         }
     }
     
+    func whenPresentedCompletion() {
+        
+    }
+    
     func presentAnimation(completion: (() -> Void)?) {
         mainView.layoutIfNeeded()
         
@@ -119,6 +123,8 @@ class AlertView: UIView {
             } else {
                 completion?()
             }
+            
+            self?.whenPresentedCompletion()
         }
     }
     
@@ -210,4 +216,71 @@ private extension AlertView {
         }
     }
     
+}
+
+import SwiftUI
+
+final class TestViewController: UIViewController {
+    // MARK: - UI
+    
+    private lazy var contentStackView = makeStackView(
+        axis: .vertical,
+        spacing: 16
+    ) (
+        topToastButton,
+        centerToastButton,
+        bottomToastButton
+    )
+    
+    private let topToastButton = Button()
+        .setTitle("Top toast")
+        .setTitleColor(.white)
+        .backgroundColor(color: .black)
+        .setCornerRadius(8)
+    
+    private let centerToastButton = Button()
+        .setTitle("Center toast")
+        .setTitleColor(.white)
+        .backgroundColor(color: .black)
+        .setCornerRadius(8)
+    
+    private let bottomToastButton = Button()
+        .setTitle("Bottom toast")
+        .setTitleColor(.white)
+        .backgroundColor(color: .black)
+        .setCornerRadius(8)
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(contentStackView)
+        
+        contentStackView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+        }
+        
+        [
+            topToastButton,
+            centerToastButton,
+            bottomToastButton
+        ].forEach { (button) in
+            button.snp.makeConstraints {
+                $0.height.equalTo(49)
+            }
+        }
+        
+        topToastButton.onTap {
+            AlertKit.toast(title: "Top toast", position: .top(inset: UIApplication.safeAreaInsets.top))
+        }
+        
+        centerToastButton.onTap {
+            AlertKit.shortToast(title: "Center toast", icon: .done, position: .center(inset: 0))
+        }
+        
+        bottomToastButton.onTap {
+            AlertKit.toast(title: "Bottom toast", position: .bottom(inset: 0))
+        }
+    }
 }

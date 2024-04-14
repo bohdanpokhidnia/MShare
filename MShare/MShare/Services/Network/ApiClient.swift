@@ -8,17 +8,18 @@
 import Foundation
 
 final class ApiClient: HttpClient {
-    
     var scheme: String { "http" }
     var host: String { "95.179.252.251" }
     var subPath: String { "/api/v1/" }
     
     func request<T: Decodable>(endpoint: Endpoint, response: T.Type) async throws -> T {
-        guard let url = makeUrl(endpoint: endpoint) else { throw NetworkError.invalidUrl }
+        guard let url = makeUrl(endpoint: endpoint) else {
+            throw NetworkError.invalidUrl
+        }
 
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        request.allHTTPHeaderFields = endpoint.header
+        request.allHTTPHeaderFields = endpoint.headers
 
         if let body = endpoint.body {
             let httpBody = try JSONSerialization.data(withJSONObject: body)
@@ -26,7 +27,12 @@ final class ApiClient: HttpClient {
         }
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let response = response as? HTTPURLResponse else { throw NetworkError.message("Without response") }
+        
+        guard let response = response as? HTTPURLResponse else {
+            throw NetworkError.message("Without response")
+        }
+        
+        logRequest(urlRequest: request, response: response, data: data)
 
         switch response.statusCode {
         case 200...299:
@@ -43,17 +49,17 @@ final class ApiClient: HttpClient {
     }
     
     func request(urlString: String) async throws -> Data {
-        guard let url = URL(string: urlString) else { throw NetworkError.invalidUrl }
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidUrl
+        }
         let (data, _) = try await URLSession.shared.data(from: url)
         return data
     }
-    
 }
 
 // MARK: - Private Methods
 
 private extension ApiClient {
-    
     func makeUrl(endpoint: Endpoint) -> URL? {
         var components = URLComponents()
         components.scheme = scheme
@@ -74,24 +80,37 @@ private extension ApiClient {
         let body: String
         
         if let httpBody = urlRequest?.httpBody,
-           let stringBody = String(data: httpBody, encoding: .utf8) {
+           let stringBody = String(data: httpBody, encoding: .utf8) 
+        {
             body = stringBody
         } else {
             body = "NONE"
         }
         
         let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
-        let response: String
+        var response: String
         
-        if let data,
-           let stringResponse = String(data: data, encoding: .utf8) {
-            response = stringResponse
+        if let data {
+            do {
+                let dataObject = try JSONSerialization.jsonObject(with: data)
+                let prettyData = try JSONSerialization.data(withJSONObject: dataObject, options: .prettyPrinted)
+                response = String(data: prettyData, encoding: .utf8) ?? "None"
+            } catch {
+                response = "NONE"
+            }
         } else {
             response = "NONE"
         }
         
-        let log = "ℹ️ [API] Request: \(methodWithUrl)\nHeaders: \(headers)\nBody: \(body)\nStatus code: \(statusCode)\nResponse: \(response)"
-        print(log)
+        let logData = [
+            "Request: \(methodWithUrl)",
+            "Headers: \(headers)",
+            "Body: \(body)",
+            "Status code: \(statusCode)",
+            "Response: \(response)"
+        ]
+        .joined(separator: "\n")
+        
+        dprint(logData)
     }
-    
 }

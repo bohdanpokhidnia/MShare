@@ -13,26 +13,24 @@ protocol LinkInteractorIntputProtocol {
     func setupNotifications()
     func removeNotifications()
     func requestSong(urlString: String)
-    func copyImageToBuffer(_ image: UIImage)
 }
 
 protocol LinkInteractorOutputProtocol: BaseInteractorOutputProtocol {
     func didCatchURL(_ urlString: String)
-    func didCatchStringFromBuffer(_ stringFromBuffer: String)
+    func didCatchFromBuffer(string: String)
     func didShowKeyboard(_ keyboardFrame: NSValue)
     func didHideKeyboard(_ keyboardFrame: NSValue)
     func didFetchMedia(mediaResponse: MediaResponse, cover: UIImage?)
 }
 
 final class LinkInteractor: BaseInteractor {
-    
     weak var presenter: LinkInteractorOutputProtocol?
     
     // MARK: - Initializers
     
     init(
         presenter: LinkInteractorOutputProtocol,
-        apiClient: ApiClient
+        apiClient: HttpClient
     ) {
         self.presenter = presenter
         self.apiClient = apiClient
@@ -46,17 +44,17 @@ final class LinkInteractor: BaseInteractor {
     
     // MARK: - Private
     
-    private let apiClient: ApiClient
-    
+    private let apiClient: HttpClient
 }
 
 // MARK: - User interactions
 
 private extension LinkInteractor {
-    
     @objc
     func handleURL() {
-        guard let incomingURL = UserDefaults().value(forKey: "incomingURL") as? String else { return }
+        guard let incomingURL = UserDefaults().value(forKey: "incomingURL") as? String else {
+            return
+        }
     
         presenter?.didCatchURL(incomingURL)
         UserDefaults().removeObject(forKey: "incomingURL")
@@ -64,25 +62,32 @@ private extension LinkInteractor {
     
     @objc
     func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { 
+            return
+        }
+        
         presenter?.didShowKeyboard(keyboardFrame)
         
-        guard let string = UIPasteboard.general.string else { return }
-        presenter?.didCatchStringFromBuffer(string)
+        guard let string = UIPasteboard.general.string else {
+            return
+        }
+        
+        presenter?.didCatchFromBuffer(string: string)
     }
     
     @objc
     func keyboardWillHide(notification: NSNotification) {
-        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { 
+            return
+        }
+        
         presenter?.didHideKeyboard(keyboardFrame)
     }
-    
 }
 
 // MARK: - LinkInteractorInputProtocol
 
 extension LinkInteractor: LinkInteractorIntputProtocol {
-    
     func setupNotifications() {
         NotificationCenter.default.addObserver(
             self,
@@ -111,15 +116,13 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
     }
     
     func requestSong(urlString: String) {
-        Task {
+        Task { @MainActor in
             do {
                 let mediaResponse = try await apiClient.request(endpoint: GetSong(url: urlString), response: MediaResponse.self)
-                let coverData = try await apiClient.request(urlString: mediaResponse.coverUrlString ?? "")
+                let coverData = try await apiClient.request(urlString: mediaResponse.coverUrlString)
                 let coverImage = UIImage(data: coverData)
                 
-                DispatchQueue.main.async { [weak presenter] in
-                    presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: coverImage)
-                }
+                presenter?.didFetchMedia(mediaResponse: mediaResponse, cover: coverImage)
             } catch let networkError as NetworkError {
                 presenter?.handleNetworkError(error: networkError)
             } catch {
@@ -127,9 +130,4 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
             }
         }
     }
-    
-    func copyImageToBuffer(_ image: UIImage) {
-        UIPasteboard.general.image = image
-    }
-    
 }

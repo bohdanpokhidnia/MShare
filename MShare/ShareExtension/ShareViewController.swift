@@ -9,7 +9,6 @@ import UIKit
 import UniformTypeIdentifiers
 
 class ShareViewController: UIViewController {
-    
     private var appURLString = "ShareExtension://home?url="
     private let typeText = UTType.text
     private let typeURL = UTType.url
@@ -59,9 +58,12 @@ class ShareViewController: UIViewController {
                 dprint(error!, logType: .error)
                 return
             }
-            
-            guard let url = item as? NSURL else { return }
-            guard let urlString = url.absoluteURL?.absoluteString else { return }
+            guard let url = item as? NSURL else {
+                return
+            }
+            guard let urlString = url.absoluteURL?.absoluteString else {
+                return
+            }
             
             self.appURLString += urlString
             self.openMainApp()
@@ -80,6 +82,7 @@ class ShareViewController: UIViewController {
     @objc
     func openURL(_ url: URL) {
         var responder: UIResponder? = self
+        
         while responder != nil {
             if let application = responder as? UIApplication {
                 application.perform(#selector(openURL(_:)), with: url)
@@ -88,5 +91,4 @@ class ShareViewController: UIViewController {
             responder = responder?.next
         }
     }
-    
 }

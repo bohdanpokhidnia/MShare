@@ -14,7 +14,6 @@ protocol SignInRouterProtocol {
 }
 
 final class SignInRouter: Router, SignInRouterProtocol {
-    
     override func createModule() -> UIViewController {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
@@ -39,5 +38,4 @@ final class SignInRouter: Router, SignInRouterProtocol {
         
         view?.viewController.present(safariViewController, animated: true)
     }
-    
 }

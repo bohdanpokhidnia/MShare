@@ -8,8 +8,7 @@
 import Foundation
 
 class BaseInteractor: NetworkErrorHandling {
-    
-    var basePresenter: BaseInteractorOutputProtocol?
+    weak var basePresenter: BaseInteractorOutputProtocol?
     
     init(basePresenter: BaseInteractorOutputProtocol?) {
         self.basePresenter = basePresenter
@@ -18,7 +17,6 @@ class BaseInteractor: NetworkErrorHandling {
     func handleNetworkError(error: BaseError) {
         basePresenter?.handleNetworkError(error: error)
     }
-    
 }
 
 protocol BaseInteractorOutputProtocol: AnyObject, NetworkErrorHandling {

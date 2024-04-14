@@ -9,7 +9,6 @@ import Foundation
 
 @propertyWrapper
 struct UserDefault<T> {
-    
     let key: String
     let defaultValue: T?
     
@@ -35,5 +34,4 @@ struct UserDefault<T> {
             }
         }
     }
-    
 }

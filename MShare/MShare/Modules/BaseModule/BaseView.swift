@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol BaseModuleView: AnyObject, NetworkErrorHandling {
+protocol BaseView: AnyObject, NetworkErrorHandling {
     
 }

@@ -10,9 +10,8 @@ import SnapKit
 
 typealias CoverViewAnimation = CoverView.AnimationState
 
-final class CoverView: View {
-    
-    var whenTap: (() -> Void) = { }
+final class CoverView: ViewLayoutable {
+    var onTap: (() -> Void) = { }
     
     enum AnimationState {
         case pressed
@@ -124,18 +123,15 @@ final class CoverView: View {
 // MARK: - User interactions
 
 private extension CoverView {
-    
     @objc
     func didTapCoverView() {
-        whenTap()
+        onTap()
     }
-    
 }
 
 // MARK: - Set
 
 extension CoverView {
-    
     @discardableResult
     func set(state: DetailSongEntity) -> Self {
         coverImageView.setImage(state.image)
@@ -143,5 +139,4 @@ extension CoverView {
         artistNameLabel.text(state.artistName)
         return self
     }
-    
 }

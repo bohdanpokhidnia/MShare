@@ -7,8 +7,7 @@
 
 import UIKit
 
-class AppNavigationController: UINavigationController, UIGestureRecognizerDelegate {
-    
+class AppNavigationController: UINavigationController {
     var isRecognizerEnabled = true
         
     override func viewDidLoad() {
@@ -16,9 +15,13 @@ class AppNavigationController: UINavigationController, UIGestureRecognizerDelega
         interactivePopGestureRecognizer?.delegate = self
         interactivePopGestureRecognizer?.isEnabled = true
     }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return viewControllers.count > 1 && isRecognizerEnabled
-    }
+}
 
+// MARK: - UIGestureRecognizerDelegate
+
+extension AppNavigationController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let isBegin = viewControllers.count > 1 && isRecognizerEnabled
+        return isBegin
+    }
 }

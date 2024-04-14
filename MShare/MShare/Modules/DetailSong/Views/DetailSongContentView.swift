@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import NotificationToast
 
-final class DetailSongContentView: View {
+final class DetailSongContentView: ViewLayoutable {
     
     var cover: UIImage? {
         return coverView.coverImageView.image
@@ -45,7 +45,7 @@ final class DetailSongContentView: View {
         .setContentMode(.scaleAspectFill)
         .addClearBackgroundBlur(style: .regular)
     
-    private(set) var coverViewContainer = View()
+    private(set) var coverViewContainer = ViewLayoutable()
         .maskToBounds(false)
         .setCornerRadius(28)
         .addShadow(color: .black, offset: .init(width: 4, height: 4), opacity: 0.3, radius: 10)
@@ -103,7 +103,6 @@ final class DetailSongContentView: View {
 // MARK: - Set
 
 extension DetailSongContentView {
-    
     @discardableResult
     func set(state: DetailSongEntity) -> Self {
         backgroundImageView.setImage(state.image)
@@ -114,16 +113,18 @@ extension DetailSongContentView {
     
     @discardableResult
     func set(animationState: CoverViewAnimation, completion: (() -> Void)? = nil) -> Self {
-        UIView.animate(withDuration: 0.3,
-                       delay: 0,
-                       usingSpringWithDamping: 0.3,
-                       initialSpringVelocity: 5,
-                       options: [.allowUserInteraction],
-                       animations: {
-            self.coverViewContainer.transform = animationState.animation
-        }, completion: { _ in
-            completion?()
-        })
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            usingSpringWithDamping: 0.3,
+            initialSpringVelocity: 5,
+            options: [.allowUserInteraction],
+            animations: {
+                self.coverViewContainer.transform = animationState.animation
+            }, completion: { _ in
+                completion?()
+            }
+        )
         
         return self
     }
@@ -142,7 +143,6 @@ extension DetailSongContentView {
         let snapshotImage = makeSnapShotImage(withBackground: true)
         return snapshotImage
     }
-    
 }
 
 // MARK: - Private Methods

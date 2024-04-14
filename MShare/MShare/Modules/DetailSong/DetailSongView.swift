@@ -79,11 +79,10 @@ private extension DetailSongView {
     func setupActionsHandler() {
         contentView.addGestureRecognizer(panGesture)
         
-        contentView.coverView.whenTap = { [unowned self] in
+        contentView.coverView.onTap = { [unowned self] in
             presenter?.copyCoverToBuffer(fromView: self.contentView.coverView)
         }
     }
-    
 }
 
 // MARK: - User interactions
@@ -244,7 +243,7 @@ extension DetailSongView: TransitionProtocol {
                 }
             
         case contentView.coverViewContainer:
-            return View()
+            return ViewLayoutable()
                 .maskToBounds(false)
                 .setCornerRadius(28)
                 .addShadow(color: .clear, offset: .init(width: 4, height: 4), opacity: 0.3, radius: 10)

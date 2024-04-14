@@ -33,7 +33,6 @@ class AlertKitToastView: AlertView {
 // MARK: - Setup
 
 private extension AlertKitToastView {
-    
     func setupViews(title: String) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 8.0
@@ -82,16 +81,13 @@ private extension AlertKitToastView {
     func setupActions() {
         dismissButton.addTarget(self, action: #selector(didTapDismissButton), for: .touchUpInside)
     }
-    
 }
 
 // MARK: - User interactions
 
 private extension AlertKitToastView {
-    
     @objc
     func didTapDismissButton() {
         dismissAlert()
     }
-    
 }

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-protocol LinkViewProtocol: BaseModuleView {
+protocol LinkViewProtocol: BaseView {
     var presenter: LinkPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
@@ -20,10 +21,10 @@ protocol LinkViewProtocol: BaseModuleView {
     func showLoading()
     func hideLoading(completion: (() -> Void)?)
     func resetLinkTextFieldBorderColor(animated: Bool)
+    func endEditing()
 }
 
 final class LinkView: ViewController<LinkContentView> {
-    
     var presenter: LinkPresenterProtocol?
     var viewController: UIViewController { self }
     
@@ -34,7 +35,7 @@ final class LinkView: ViewController<LinkContentView> {
         
         setupNavigationBar()
         setupViews()
-        setupActionsHandlers()
+        setupActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,17 +64,11 @@ final class LinkView: ViewController<LinkContentView> {
             )
         }
     }
-    
-    // MARK: - Private
-    
-    private var baseButtonRect: CGRect = .zero
-
 }
 
 // MARK: - Setup
 
 private extension LinkView {
-    
     func setupNavigationBar() {
         title = "Link"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -86,9 +81,9 @@ private extension LinkView {
         }
     }
     
-    func setupActionsHandlers() {
-        contentView.searchButton.whenTap { [unowned self] in
-            contentView.endEditing(true)
+    func setupActions() {
+        contentView.searchButton.onTap { [unowned self] in
+            endEditing()
             getSong()
         }
         
@@ -96,28 +91,25 @@ private extension LinkView {
             presenter?.pasteTextFromBuffer()
         }
     }
-    
 }
 
 // MARK: - Private Methods
 
 private extension LinkView {
-    
     func getSong() {
-        guard let songUrlString = contentView.linkTextField.text, songUrlString != "" else { return }
+        guard let songUrlString = contentView.linkTextField.text, songUrlString != "" else {
+            return
+        }
         
         presenter?.getSong(urlString: songUrlString)
     }
-    
 }
-
 
 // MARK: - UITextFieldDelegate
 
 extension LinkView: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        contentView.endEditing(true)
+        endEditing()
         getSong()
         
         return true
@@ -132,13 +124,11 @@ extension LinkView: UITextFieldDelegate {
         contentView.enableSearchButton(false)
         return true
     }
-    
 }
 
 // MARK: - LinkViewProtocol
 
 extension LinkView: LinkViewProtocol {
-    
     func setLink(_ linkString: String) {
         contentView.setLinkText(linkString)
         contentView.enableSearchButton(true)
@@ -159,67 +149,27 @@ extension LinkView: LinkViewProtocol {
     }
     
     func setOffsetLinkTextField(_ keyboardFrame: CGRect) {
-        let buttonFrame = contentView.searchButton.frame
-        let buttonHeight = buttonFrame.origin.y + buttonFrame.height
-        let isOverKeyboard = keyboardFrame.origin.y < buttonHeight
+        let button = contentView.searchButton
+        let buttonHeight = button.frame.origin.y + button.frame.height
         
-        guard isOverKeyboard else { return }
-        let offset = (buttonHeight - keyboardFrame.origin.y) + 16
-        let newOffset = self.contentView.frame.offsetBy(dx: 0, dy: -offset)
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
-            self.contentView.frame = newOffset
+        guard buttonHeight > keyboardFrame.origin.y else {
+            return
         }
+        
+        let buttonY = keyboardFrame.origin.y - button.frame.height - 16.0
+        contentView.setSearchButton(y: buttonY)
     }
     
     func resetPositionLinkTextField() {
-        UIView.animate(withDuration: 0.1) {
-            self.contentView.frame.origin.y = 0
-        }
+        contentView.resetSearchButtonPosition()
     }
     
     func showLoading() {
-        let animationState: LoadingButton.AnimationState = .start
-        
-        switch animationState {
-        case .start:
-            UIView.animate(withDuration: animationState.duration) {
-                self.contentView.linkTextField.alpha = 0
-            }
-            
-        case .end:
-            break
-        }
-        
-        contentView.linkTextField.alpha = 0
-        
-        baseButtonRect = contentView.searchButton.frame
-        var startFrame = baseButtonRect
-        startFrame.size.width = startFrame.height
-        startFrame.origin = .init(x: contentView.center.x - startFrame.width / 2, y: contentView.center.y - startFrame.height / 2)
-        let cornerRadius = (startFrame.width + startFrame.height) / 4
-        
-        contentView.searchButton.set(animationState: animationState, finalFrame: startFrame, cornerRadius: cornerRadius)
+        contentView.set(loadingAnimationState: .start)
     }
     
     func hideLoading(completion: (() -> Void)? = nil) {
-        let animationState: LoadingButton.AnimationState = .end
-        
-        switch animationState {
-        case .start:
-            break
-            
-        case .end:
-            UIView.animate(withDuration: animationState.duration) {
-                self.contentView.linkTextField.alpha = 1
-            } completion: { _ in
-                self.contentView.searchButton.set(animationState: animationState,
-                                                  finalFrame: self.baseButtonRect,
-                                                  cornerRadius: 12,
-                                                  completion: completion)
-            }
-
-        }
+        contentView.set(loadingAnimationState: .end)
     }
     
     func resetLinkTextFieldBorderColor(animated: Bool) {
@@ -232,4 +182,7 @@ extension LinkView: LinkViewProtocol {
         }
     }
     
+    func endEditing() {
+        contentView.endEditing(true)
+    }
 }

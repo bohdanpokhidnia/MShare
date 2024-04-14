@@ -11,7 +11,7 @@ final class TwoPageViewController: UIViewController {
     
     // MARK: - UI
     
-    private let contentView = View()
+    private let contentView = ViewLayoutable()
     
     private lazy var contentStackView = makeStackView(
         axis: .vertical,
@@ -24,7 +24,7 @@ final class TwoPageViewController: UIViewController {
     private let exchangeImageView = UIImageView(image: UIImage(named: "exchange"))
         .setContentMode(.scaleAspectFit)
     
-    private let titleContainerView = View()
+    private let titleContainerView = ViewLayoutable()
     
     private let titleLabel = UILabel()
         .text("Quickly get a song link from Apple Music to Spotify and vice versa")

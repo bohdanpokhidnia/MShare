@@ -32,10 +32,10 @@ final class ThirdPageViewController: UIViewController {
     
     // MARK: - UI
     
-    let bluredView = View()
+    let bluredView = ViewLayoutable()
         .addBlur(style: .dark)
     
-    private let contentView = View()
+    private let contentView = ViewLayoutable()
     
     private lazy var contentStackView = makeStackView(
         axis: .vertical,
@@ -45,7 +45,7 @@ final class ThirdPageViewController: UIViewController {
         titleLabel
     )
     
-    private let videoView = View()
+    private let videoView = ViewLayoutable()
     
     private let titleLabel = UILabel()
         .text("Easy share a link from your favorite music platform")

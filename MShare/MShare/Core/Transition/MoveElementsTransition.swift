@@ -8,7 +8,6 @@
 import UIKit
 
 class MoveElementsTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
     var operation: UINavigationController.Operation = .push
     
     init(operation: UINavigationController.Operation) {
@@ -94,5 +93,4 @@ class MoveElementsTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
-    
 }

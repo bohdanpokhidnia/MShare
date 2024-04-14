@@ -8,7 +8,6 @@
 import UIKit
 
 class BottomPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
@@ -38,5 +37,4 @@ class BottomPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK: - Private
     
     private let duration: TimeInterval = 0.5
-    
 }

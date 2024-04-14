@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class ServiceHeaderView: UITableViewHeaderFooterView, ViewLayoutableProtocol {
-    
     // MARK: - UI
     
     private let titleLabel = UILabel()
@@ -43,17 +42,14 @@ final class ServiceHeaderView: UITableViewHeaderFooterView, ViewLayoutableProtoc
             $0.edges.equalToSuperview()
         }
     }
-    
 }
 
 // MARK: - Set
 
 extension ServiceHeaderView {
-    
     @discardableResult
     func set(_ title: String) -> Self {
         titleLabel.text(title)
         return self
     }
-    
 }

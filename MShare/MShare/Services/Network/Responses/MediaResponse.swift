@@ -18,13 +18,13 @@ struct MediaResponse: Decodable {
     let album: Album?
     let services: [MediaService]
     
-    var coverUrlString: String? {
+    var coverUrlString: String {
         switch mediaType {
         case .song:
-            return song?.coverImageUrl
+            return song!.coverImageUrl
             
         case .album:
-            return album?.coverImageUrl
+            return album!.coverImageUrl
         }
     }
 }

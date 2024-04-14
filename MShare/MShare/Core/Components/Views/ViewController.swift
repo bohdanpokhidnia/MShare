@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ViewController<ContentView: View>: UIViewController, Themeable, NetworkErrorHandling {
-    
+class ViewController<ContentView: ViewLayoutable>: UIViewController, Themeable, NetworkErrorHandling {
     var contentView: ContentView! {
         return view as? ContentView
     }
@@ -57,13 +56,11 @@ class ViewController<ContentView: View>: UIViewController, Themeable, NetworkErr
     func handleNetworkError(error: BaseError) {
         showAlert(message: error.localizedDescription)
     }
-    
 }
 
 // MARK: - Alerts
 
 extension ViewController {
-    
     func showAlert(title: String? = nil, message: String, alertAction: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert).make {
             $0.addAction(.init(title: "OK", style: .default, handler: { _ in
@@ -73,5 +70,4 @@ extension ViewController {
         
         present(alertController, animated: true)
     }
-    
 }

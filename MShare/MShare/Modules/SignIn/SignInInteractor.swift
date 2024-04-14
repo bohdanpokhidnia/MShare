@@ -53,7 +53,7 @@ extension SignInInteractor: SignInInteractorIntputProtocol {
     }
     
     func setViewedOnboarding() {
-        userManager.displayOnboarding = true
+        userManager.isDisplayOnboarding = true
     }
     
 }

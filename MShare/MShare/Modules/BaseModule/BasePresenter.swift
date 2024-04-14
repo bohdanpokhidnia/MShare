@@ -8,15 +8,13 @@
 import Foundation
 
 class BasePresenter: BaseInteractorOutputProtocol {
+    weak var baseView: BaseView?
     
-    var baseView: BaseModuleView?
-    
-    init(baseView: BaseModuleView?) {
+    init(baseView: BaseView?) {
         self.baseView = baseView
     }
     
     func handleNetworkError(error: BaseError) {
         baseView?.handleNetworkError(error: error)
     }
-    
 }

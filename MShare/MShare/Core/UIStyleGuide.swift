@@ -8,7 +8,6 @@
 import UIKit
 
 enum UIStyleGuide {
-    
     enum Typography {
         static func gilroy(weight: UIFont.Weight, size: CGFloat) -> UIFont {
             let sWeight = stringFrom(weight: weight)
@@ -34,11 +33,9 @@ enum UIStyleGuide {
             }
         }
     }
-
 }
 
 extension UIFont {
-    
     ///gilroy, .bold, size: 42
     static let appName = UIStyleGuide.Typography.gilroy(weight: .bold, size: 42)
     
@@ -47,5 +44,4 @@ extension UIFont {
     
     ///gilroy, .semibold, size: 18
     static let onboardingAction = UIStyleGuide.Typography.gilroy(weight: .semibold, size: 18)
-    
 }

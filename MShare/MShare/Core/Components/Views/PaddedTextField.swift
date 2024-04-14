@@ -8,8 +8,7 @@
 import UIKit
 
 final class PaddedTextField: UITextField {
-    
-    public var textInsets = UIEdgeInsets.zero {
+    var textInsets = UIEdgeInsets.zero {
         didSet {
             setNeedsDisplay()
         }
@@ -69,5 +68,4 @@ final class PaddedTextField: UITextField {
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor?.cgColor
     }
-    
 }

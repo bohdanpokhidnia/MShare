@@ -20,7 +20,7 @@ class AlertKitShortView: AlertView {
     }()
     private let contentStackView = UIStackView()
     private let titleLabel = UILabel()
-    private let iconImageView = UIImageView()
+    private let iconView: UIView
     
     // MARK: - Override properties
     
@@ -38,13 +38,21 @@ class AlertKitShortView: AlertView {
         ])
     }
     
+    override func whenPresentedCompletion() {
+        guard let anitableIconView = iconView as? AlertKitIconAnimatable else { return }
+        
+        anitableIconView.animate()
+    }
+    
     // MARK: - Initializers
     
     init(
         title: String,
+        icon: AlertKitIcon,
         view: UIView,
         configuration: AlertConfiguration
     ) {
+        self.iconView = icon.createView(lineThick: 3.0)
         super.init(view: view, configuration: configuration)
         
         setupViews(title: title)
@@ -63,16 +71,11 @@ private extension AlertKitShortView {
         contentStackView.alignment = .center
         contentStackView.spacing = 8.0
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+        contentStackView.addArrangedSubview(iconView)
+        contentStackView.addArrangedSubview(titleLabel)
         addSubview(contentStackView)
         
-        contentStackView.addArrangedSubview(titleLabel)
-        contentStackView.addArrangedSubview(iconImageView)
-        
-        iconImageView.image = UIImage(systemName: "checkmark.circle.fill")
-        iconImageView.contentMode = .scaleAspectFit
-        iconImageView.tintColor = contentColor
-        
+        iconView.tintColor = contentColor
         titleLabel.text = title
         titleLabel.textColor = contentColor
         titleLabel.font = .systemFont(ofSize: 14)
@@ -92,8 +95,8 @@ private extension AlertKitShortView {
         ])
         
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: 21),
-            iconImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1.0)
+            iconView.widthAnchor.constraint(equalToConstant: 20),
+            iconView.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
 }

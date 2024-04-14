@@ -7,16 +7,21 @@
 
 import UIKit
 
-@objc protocol TransitionProtocol {
+@objc 
+protocol TransitionProtocol {
     var transitionView: UIView { get }
     
     func viewsToAnimate() -> [UIView]
     func copyForView(_ subView: UIView) -> UIView
     
-    @objc optional func resizableTransitions() -> [ResizableTransition]
-    @objc optional func copyViewForResizableView(_ subView: UIView) -> UIView
+    @objc 
+    optional func resizableTransitions() -> [ResizableTransition]
     
-    @objc optional func frameForView(_ subView: UIView) -> CGRect
+    @objc
+    optional func copyViewForResizableView(_ subView: UIView) -> UIView
+    
+    @objc
+    optional func frameForView(_ subView: UIView) -> CGRect
 }
 
 class ResizableTransition: NSObject {

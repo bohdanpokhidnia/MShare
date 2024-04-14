@@ -38,9 +38,7 @@ final class LinkPresenter: BasePresenter {
     // MARK: - Override methods
     
     override func handleNetworkError(error: BaseError) {
-        DispatchQueue.main.async { [weak view] in
-            view?.handleNetworkError(error: error)
-        }
+        view?.handleNetworkError(error: error)
     }
     
     // MARK: - Private
@@ -51,7 +49,6 @@ final class LinkPresenter: BasePresenter {
 // MARK: - LinkPresenterProtocol
 
 extension LinkPresenter: LinkPresenterProtocol {
-    
     func viewWillAppear() {
         interactor?.setupNotifications()
     }
@@ -73,21 +70,19 @@ extension LinkPresenter: LinkPresenterProtocol {
         
         interactor?.requestSong(urlString: urlString)
     }
-    
 }
 
 // MARK: - LinkInteractorOutputProtocol
 
 extension LinkPresenter: LinkInteractorOutputProtocol {
-    
     func didCatchURL(_ urlString: String) {
         view?.setLink(urlString)
     }
     
-    func didCatchStringFromBuffer(_ stringFromBuffer: String) {
-        view?.hideSetLink(!stringFromBuffer.isValidURL)
-        self.stringFromBuffer = stringFromBuffer
-        view?.setLinkTitle(stringFromBuffer)
+    func didCatchFromBuffer(string: String) {
+        view?.hideSetLink(!string.isValidURL)
+        self.stringFromBuffer = string
+        view?.setLinkTitle(string)
     }
     
     func didShowKeyboard(_ keyboardFrame: NSValue) {
@@ -99,12 +94,15 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
     }
     
     func didFetchMedia(mediaResponse: MediaResponse, cover: UIImage?) {
-        guard let cover else { return }
+        guard let cover else {
+            return
+        }
+        
+        view?.endEditing()
         
         router?.presentDetailSongScreen(from: view, mediaResponse: mediaResponse, cover: cover) { [weak view] in
             view?.cleaningLinkTextField()
             view?.hideLoading(completion: nil)
         }
     }
-    
 }

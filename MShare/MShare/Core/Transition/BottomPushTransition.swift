@@ -8,7 +8,6 @@
 import UIKit
 
 class BottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
@@ -37,5 +36,4 @@ class BottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK: - Private
     
     private let duration: TimeInterval = 0.5
-    
 }

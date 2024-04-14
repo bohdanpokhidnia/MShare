@@ -50,8 +50,7 @@ enum GradientPoint {
     }
 }
 
-final class GradientView: View {
-    
+final class GradientView: ViewLayoutable {
     // MARK: - Override property
     
     override var bounds: CGRect {
@@ -69,13 +68,11 @@ final class GradientView: View {
             
             layer.insertSublayer($0, at: 0)
         }
-
 }
 
 // MARK: - Set
 
 extension GradientView {
-    
     @discardableResult
     func set(colors: [UIColor]) -> Self {
         self.colors = colors.map { $0.cgColor }
@@ -89,5 +86,4 @@ extension GradientView {
         
         return self
     }
-    
 }

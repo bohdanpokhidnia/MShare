@@ -8,29 +8,37 @@
 import UIKit
 import SnapKit
 
-final class LinkContentView: View {
-    
+final class LinkContentView: ViewLayoutable {
     var tapCopyButtonAction: (() -> Void) = {}
     
     // MARK: - UI
     
-    private(set) lazy var controlsWidth = UIApplication.windowScene.screen.bounds.width - controlsPadding * 2
-    let controlsHeight: CGFloat = 48
-    let controlsPadding: CGFloat = 16
-    
-    private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    private lazy var copyButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
-    
-    private lazy var toolBar = UIToolbar(frame: .init(origin: .zero, size: .init(width: UIApplication.windowScene.screen.bounds.width,
-                                                                                 height: toolBarHeight)))
-        .make {
-            $0.items = [flexibleSpace, copyButton, flexibleSpace]
-        }
+    private let flexibleSpace = UIBarButtonItem(
+        barButtonSystemItem: .flexibleSpace,
+        target: nil,
+        action: nil
+    )
+    private lazy var copyButton = UIBarButtonItem(
+        title: "Done",
+        style: .done,
+        target: self,
+        action: #selector(didTapDoneButton)
+    )
+    private lazy var toolBar = UIToolbar(frame: .init(
+        origin: .zero,
+        size: .init(
+            width: UIApplication.windowScene.screen.bounds.width,
+            height: toolBarHeight
+        )
+    ))
+    .make {
+        $0.items = [flexibleSpace, copyButton, flexibleSpace]
+    }
     
     private(set) lazy var linkTextField = PaddedTextField()
         .make {
             $0.clearButtonMode = .whileEditing
-            $0.placeholder = "Link (song, album)"
+            $0.placeholder = "Link on song or album"
             $0.font = .systemFont(ofSize: 14, weight: .medium)
             $0.adjustsFontSizeToFitWidth = true
             $0.textInsets = .init(aLeft: 16, aRight: 24)
@@ -39,7 +47,7 @@ final class LinkContentView: View {
             $0.borderColor = .appGray
             $0.inputAccessoryView = toolBar
             $0.inputAccessoryView?.isHidden = true
-            $0.returnKeyType = .default
+            $0.returnKeyType = .search
         }
     
     private(set) var searchButton = LoadingButton(type: .custom)
@@ -69,23 +77,19 @@ final class LinkContentView: View {
     override func defineLayout() {
         super.defineLayout()
         
-        let linkTextFieldOrigin: CGPoint
-        let controlsSize = CGSize(width: controlsWidth, height: controlsHeight)
-        
-        switch UIDevice.phone {
-        case .iPhone6, .iPhone7, .iPhone8, .iPhoneSE, .simulator:
-            linkTextFieldOrigin = .init(x: controlsPadding, y: center.y + controlsHeight / 2 + controlsSpacing)
-        default:
-            linkTextFieldOrigin = .init(x: controlsPadding, y: center.y + controlsHeight + controlsSpacing)
+        linkTextField.snp.makeConstraints {
+            $0.leading.equalTo(16)
+            $0.trailing.equalTo(-16)
+            $0.bottom.equalTo(searchButton.snp.top).offset(-16)
+            $0.height.equalTo(48)
         }
         
-        linkTextField.frame = .init(origin: linkTextFieldOrigin, size: controlsSize)
-        searchButton.frame = .init(
-            origin: .init(x: controlsPadding, y: linkTextField.frame.origin.y + controlsHeight + controlsSpacing),
-            size: controlsSize
-        )
-        
-        searchButton.bounds = searchButton.frame
+        searchButton.snp.makeConstraints {
+            buttonTopConstraint = $0.top.equalTo(snp.centerY).offset(8).constraint
+            buttonCenterXconstrait = $0.centerX.equalToSuperview().constraint
+            buttonWidthConstraint = $0.width.equalToSuperview().inset(16.0).constraint
+            buttonHeightConstraint = $0.height.equalTo(buttonHeight).constraint
+        }
     }
     
     override func apply(theme: AppTheme) {
@@ -98,26 +102,46 @@ final class LinkContentView: View {
     
     // MARK: - Private
     
-    private let controlsSpacing: CGFloat = 16
-    private(set) var toolBarHeight: CGFloat = 40
-    
+    private var toolBarHeight: CGFloat = 40.0
+    private var buttonHeight: CGFloat = 48.0
+    private var buttonTopConstraint: Constraint?
+    private var buttonCenterXconstrait: Constraint?
+    private var buttonWidthConstraint: Constraint?
+    private var buttonHeightConstraint: Constraint?
 }
 
 // MARK: - User interactions
 
 private extension LinkContentView {
-    
     @objc
     func didTapDoneButton() {
         tapCopyButtonAction()
     }
+}
+
+// MARK: - Private Methods
+
+private extension LinkContentView {
+    func applyLayoutAnimation() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction]) {
+            self.layoutIfNeeded()
+        }
+    }
     
+    func hiddenTextField(isHidden: Bool, animated: Bool) {
+        if animated {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.linkTextField.alpha = isHidden ? 0.0 : 1.0
+            })
+        } else {
+            linkTextField.alpha = isHidden ? 0.0 : 1.0
+        }
+    }
 }
 
 // MARK: - Set
 
 extension LinkContentView {
-    
     func setLinkText(_ text: String) {
         linkTextField.text = text
     }
@@ -130,4 +154,60 @@ extension LinkContentView {
         searchButton.isEnabled = enabled
     }
     
+    func setSearchButton(y: CGFloat) {
+        buttonTopConstraint?.deactivate()
+        
+        searchButton.snp.remakeConstraints {
+            $0.top.equalTo(y)
+        }
+        
+        buttonCenterXconstrait?.activate()
+        buttonWidthConstraint?.activate()
+        buttonHeightConstraint?.activate()
+        
+        applyLayoutAnimation()
+    }
+    
+    func resetSearchButtonPosition() {
+        searchButton.snp.removeConstraints()
+        
+        buttonTopConstraint?.activate()
+        buttonCenterXconstrait?.activate()
+        buttonWidthConstraint?.activate()
+        buttonHeightConstraint?.activate()
+        
+        applyLayoutAnimation()
+    }
+    
+    func set(loadingAnimationState: LoadingButton.AnimationState) {
+        hiddenTextField(isHidden: loadingAnimationState == .start, animated: true)
+        searchButton.set(animationState: loadingAnimationState)
+        
+        switch loadingAnimationState {
+        case .start:
+            searchButton.layer.cornerRadius = 24.0
+            buttonTopConstraint?.deactivate()
+        
+            searchButton.snp.remakeConstraints {
+                $0.centerY.equalToSuperview()
+                buttonWidthConstraint = $0.width.equalTo(searchButton.snp.height).constraint
+            }
+            
+            buttonCenterXconstrait?.activate()
+            buttonHeightConstraint?.activate()
+            
+        case .end:
+            searchButton.layer.cornerRadius = 12.0
+            
+            searchButton.snp.remakeConstraints {
+                buttonWidthConstraint = $0.width.equalToSuperview().inset(16.0).constraint
+            }
+            
+            buttonTopConstraint?.activate()
+            buttonCenterXconstrait?.activate()
+            buttonHeightConstraint?.activate()
+        }
+        
+        applyLayoutAnimation()
+    }
 }

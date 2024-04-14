@@ -14,9 +14,7 @@ protocol Themeable: AnyObject {
 //MARK: - UITraitEnvironment
 
 extension Themeable where Self: UITraitEnvironment {
-    
     var themeProvider: ThemeProvider {
         return ThemeProvider.shared
     }
-    
 }

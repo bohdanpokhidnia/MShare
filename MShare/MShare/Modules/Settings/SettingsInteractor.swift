@@ -64,7 +64,7 @@ extension SettingsInteractor: SettingsInteractorIntputProtocol {
     }
     
     func showOnboarding() {
-        userManager.displayOnboarding = false
+        userManager.isDisplayOnboarding = false
         
         presenter?.didShowOnboarding()
     }

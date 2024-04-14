@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FavoritesContentView: View {
+final class FavoritesContentView: ViewLayoutable {
     
     // MARK: - UI
     

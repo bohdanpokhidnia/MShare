@@ -15,7 +15,6 @@ protocol MediaItemDelegate: AnyObject {
 typealias MediaItem = MediaTableViewCell.State
 
 final class MediaTableViewCell: TableViewCell {
-    
     static let iconImageContainerWidth: CGFloat = 80
     
     struct State {
@@ -48,21 +47,21 @@ final class MediaTableViewCell: TableViewCell {
     private lazy var contentStackView = makeStackView(
         axis: .horizontal
     )(
-        iconImageContainerView, positionNumberView, labelsView, View(), shareButton
+        iconImageContainerView, positionNumberView, labelsView, ViewLayoutable(), shareButton
     )
 
-    private let iconImageContainerView = View()
+    private let iconImageContainerView = ViewLayoutable()
     
     let iconImageView = UIImageView()
         .setContentMode(.scaleAspectFit)
     
-    private let positionNumberView = View()
+    private let positionNumberView = ViewLayoutable()
     
     private let positionNumberLabel = UILabel()
         .set(numberOfLines: 1)
         .text(alignment: .center)
     
-    let labelsView = View()
+    let labelsView = ViewLayoutable()
     
     private lazy var labelsStackView = makeStackView(
         axis: .vertical,
@@ -87,7 +86,7 @@ final class MediaTableViewCell: TableViewCell {
     override func setup() {
         super.setup()
         
-        shareButton.whenTap { [weak self] in
+        shareButton.onTap { [weak self] in
             guard let indexPath = self?.cellIndexPath else { return }
             
             self?.delegate?.didTapShareButton(indexPath)
@@ -151,13 +150,11 @@ final class MediaTableViewCell: TableViewCell {
     private var cellIndexPath: IndexPath? = nil
     private weak var delegate: MediaItemDelegate?
     private var titleLabelCenterY: ConstraintMakerEditable?
-    
 }
 
 // MARK: - Set
 
 extension MediaTableViewCell {
-    
     @discardableResult
     func set(state: State) -> Self {
         contentStackView.setCustomSpacing(state.positionNumber == nil ? 0 : 10, after: positionNumberView)
@@ -191,5 +188,4 @@ extension MediaTableViewCell {
         delegate = mediaItemDelegate
         return self
     }
-    
 }
