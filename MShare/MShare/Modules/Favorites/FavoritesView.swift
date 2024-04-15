@@ -12,8 +12,8 @@ protocol FavoritesViewProtocol: AnyObject {
     var viewController: UIViewController { get }
     
     func showError(_ error: Error)
-    func reloadData()
-    func deleteRow(forIndexPath indexPath: IndexPath)
+    func reloadFavoritesData()
+    func deleteRow(for indexPath: IndexPath)
     func setupFavoriteSection(_ sectionIndex: Int)
     func setEmptyInfoText(_ text: String)
     func displayEmptyInfo(_ show: Bool)
@@ -69,7 +69,6 @@ final class FavoritesView: ViewController<FavoritesContentView> {
         
         setupNavigationBar()
         setupSubviews()
-        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,9 +86,9 @@ final class FavoritesView: ViewController<FavoritesContentView> {
 // MARK: - Setup
 
 private extension FavoritesView {
-    
     func setupNavigationBar() {
         title = "Favorites"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupSubviews() {
@@ -102,31 +101,29 @@ private extension FavoritesView {
             presenter?.didSelectSection(index)
         }
     }
-
 }
 
 // MARK: - UITableViewDataSource
 
 extension FavoritesView: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.mediaCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let mediaItem = presenter?.metdiaItem(forIndexPath: indexPath) else { return UITableViewCell() }
+        guard let mediaItem = presenter?.metdiaItem(forIndexPath: indexPath) else {
+            return UITableViewCell()
+        }
         let cell = tableView.dequeue(MediaTableViewCell.self, for: indexPath)
         return cell
             .set(delegate: self, indexPath: indexPath)
             .set(state: mediaItem)
     }
-    
 }
 
 // MARK: - UITableViewDelegate
 
 extension FavoritesView: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let trashAction = UIContextualAction(style: .destructive, title: "") { [weak presenter] (action, view, completionHandler) in
             presenter?.removeMediaItem(forIndexPath: indexPath)
@@ -144,29 +141,27 @@ extension FavoritesView: UITableViewDelegate {
 
         presenter?.tapOnMediaItem(forIndexPath: indexPath)
     }
-    
 }
 
 // MARK: - MediaItemDelegate
 
 extension FavoritesView: MediaItemDelegate {
-    
     func didTapShareButton(_ indexPath: IndexPath) {
         presenter?.shareUrl(forIndexPath: indexPath)
     }
-    
 }
 
 //MARK: - TransitionProtocol
 
 extension FavoritesView: TransitionProtocol {
-    
     var transitionView: UIView {
         return contentView
     }
     
     func viewsToAnimate() -> [UIView] {
-        guard let selectedItem else { fatalError("without selected index path") }
+        guard let selectedItem else {
+            fatalError("without selected index path")
+        }
         let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         let coverImage = cell.iconImageView
         let title = cell.titleLabel
@@ -176,7 +171,9 @@ extension FavoritesView: TransitionProtocol {
     }
     
     func copyForView(_ subView: UIView) -> UIView {
-        guard let selectedItem else { fatalError("without selected index path") }
+        guard let selectedItem else {
+            fatalError("without selected index path")
+        }
         let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         
         switch subView {
@@ -216,11 +213,12 @@ extension FavoritesView: TransitionProtocol {
     }
     
     func resizableTransitions() -> [ResizableTransition] {
-        guard let selectedItem else { fatalError("without selected index path") }
+        guard let selectedItem else {
+            fatalError("without selected index path")
+        }
         let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         let coverImage = cell.iconImageView
         let fromRect = coverImage.superview?.convert(coverImage.frame, to: nil) ?? .zero
-        
         return [
             .init(
                 view: cell.iconImageView,
@@ -234,13 +232,11 @@ extension FavoritesView: TransitionProtocol {
             )
         ]
     }
-    
 }
 
 // MARK: - FavoritesViewProtocol
 
 extension FavoritesView: FavoritesViewProtocol {
-    
     func showError(_ error: Error) {
         showAlert(
             title: "Error",
@@ -249,17 +245,17 @@ extension FavoritesView: FavoritesViewProtocol {
         )
     }
     
-    func reloadData() {
+    func reloadFavoritesData() {
         contentView.favotitesTableView.reloadData()
     }
     
-    func deleteRow(forIndexPath indexPath: IndexPath) {
+    func deleteRow(for indexPath: IndexPath) {
         contentView.favotitesTableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     func setupFavoriteSection(_ sectionIndex: Int) {
         contentView.segmentedControl.selectItemAt(index: sectionIndex)
-        reloadData()
+        reloadFavoritesData()
     }
     
     func setEmptyInfoText(_ text: String) {
@@ -269,5 +265,4 @@ extension FavoritesView: FavoritesViewProtocol {
     func displayEmptyInfo(_ show: Bool) {
         contentView.showEmptyInfo(show)
     }
-    
 }

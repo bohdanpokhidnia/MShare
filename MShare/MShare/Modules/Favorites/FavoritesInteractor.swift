@@ -17,9 +17,9 @@ protocol FavoritesInteractorIntputProtocol {
 }
 
 protocol FavoritesInteractorOutputProtocol: AnyObject {
+    func didLoadFavoriteSection(_ sectionIndex: Int)
     func didLoadMedia(_ songs: [MediaModel], _ albums: [MediaModel])
     func didRemoveMedia(forIndexPath indexPath: IndexPath, error: DBError?)
-    func didLoadFavoriteSection(_ sectionIndex: Int)
     func didMapModelToResponse(mediaResponse: MediaResponse, cover: UIImage)
 }
 

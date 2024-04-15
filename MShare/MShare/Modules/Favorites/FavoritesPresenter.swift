@@ -12,7 +12,6 @@ protocol FavoritesPresenterProtocol: AnyObject {
     var interactor: FavoritesInteractorIntputProtocol? { get set }
     var router: FavoritesRouterProtocol? { get set }
     
-    func viewDidLoad()
     func viewWillAppear()
     func mediaCount() -> Int
     func metdiaItem(forIndexPath indexPath: IndexPath) -> MediaItem?
@@ -47,13 +46,8 @@ final class FavoritesPresenter {
 // MARK: - FavoritesPresenterProtocol
 
 extension FavoritesPresenter: FavoritesPresenterProtocol {
-    
-    func viewDidLoad() {
-        interactor?.loadFavoriteSection()
-    }
-    
     func viewWillAppear() {
-        interactor?.loadMedia()
+        interactor?.loadFavoriteSection()
     }
 
     func mediaCount() -> Int {
@@ -109,7 +103,7 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
         favoriteSection = section
         
         isEmptySection(favoriteSection)
-        view?.reloadData()
+        view?.reloadFavoritesData()
     }
     
 }
@@ -117,16 +111,25 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
 // MARK: - FavoritesInteractorOutputProtocol
 
 extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
+    func didLoadFavoriteSection(_ sectionIndex: Int) {
+        guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else {
+            return
+        }
+        
+        favoriteSection = section
+        view?.setupFavoriteSection(sectionIndex)
+        interactor?.loadMedia()
+    }
     
     func didLoadMedia(_ songs: [MediaModel], _ albums: [MediaModel]) {
         self.songs.removeAll()
-        self.albums.removeAll()
-        
         self.songs = songs
+        
+        self.albums.removeAll()
         self.albums = albums
         
         isEmptySection(favoriteSection)
-        view?.reloadData()
+        view?.reloadFavoritesData()
     }
     
     func didRemoveMedia(forIndexPath indexPath: IndexPath, error: DBError?) {
@@ -149,23 +152,14 @@ extension FavoritesPresenter: FavoritesInteractorOutputProtocol {
         reloadData(forIndexPath: indexPath)
     }
     
-    func didLoadFavoriteSection(_ sectionIndex: Int) {
-        guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else { return }
-        
-        favoriteSection = section
-        view?.setupFavoriteSection(sectionIndex)
-    }
-    
     func didMapModelToResponse(mediaResponse: MediaResponse, cover: UIImage) {
         router?.presentDetailSongScreen(fromView: view, mediaResponse: mediaResponse, cover: cover)
     }
-    
 }
 
 // MARK: - Private Methods
 
 private extension FavoritesPresenter {
-    
     func getMediaModel(forIndexPath indexPath: IndexPath) -> MediaModel? {
         var mediaModel: MediaModel?
         let row = indexPath.row
@@ -187,18 +181,18 @@ private extension FavoritesPresenter {
         switch section {
         case .song:
             if songs.isEmpty {
-                view?.reloadData()
+                view?.reloadFavoritesData()
                 return
             }
             
         case .album:
             if albums.isEmpty {
-                view?.reloadData()
+                view?.reloadFavoritesData()
                 return
             }
         }
         
-        view?.deleteRow(forIndexPath: indexPath)
+        view?.deleteRow(for: indexPath)
     }
     
     func isEmptySection(_ favoriteSection: FavoritesView.FavoriteSection) {
@@ -215,5 +209,4 @@ private extension FavoritesPresenter {
         view?.setEmptyInfoText(favoriteSection.emptyText)
         view?.displayEmptyInfo(isEmpty)
     }
-    
 }

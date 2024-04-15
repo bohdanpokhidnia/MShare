@@ -112,7 +112,6 @@ final class FavoritesContentView: ViewLayoutable {
 // MARK: - Set
 
 extension FavoritesContentView {
-    
     @discardableResult
     func showEmptyInfo(_ show: Bool) -> Self {
         infoStackView.hidden(!show)
@@ -124,6 +123,4 @@ extension FavoritesContentView {
         infoLabel.text = infoText
         return self
     }
-    
 }
-

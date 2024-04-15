@@ -13,7 +13,6 @@ protocol FavoritesRouterProtocol {
 }
 
 final class FavoritesRouter: Router {
-    
     // MARK: - Override methods
     
     override func createModule() -> UIViewController {
@@ -40,13 +39,11 @@ final class FavoritesRouter: Router {
     // MARK: - Private
     
     private let delegate = AppNavigationControllerDelegate()
-    
 }
 
 //MARK: - FavoritesRouterProtocol
 
 extension FavoritesRouter: FavoritesRouterProtocol {
-    
     func shareUrl(view: FavoritesViewProtocol?, urlString: String) {
         let shareItems = [urlString]
         let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
@@ -62,5 +59,4 @@ extension FavoritesRouter: FavoritesRouterProtocol {
             view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
         }
     }
-    
 }
