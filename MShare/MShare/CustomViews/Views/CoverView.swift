@@ -30,11 +30,24 @@ final class CoverView: ViewLayoutable {
     
     // MARK: - UI
     
+    private let containerView = UIView()
+        .setOnly(cornerRadius: 28.0, topLeft: true, topRight: true)
+        .maskToBounds(true)
+    
     private(set) var gradientBackgroundView = GradientView()
         .set(colors: [.appPink, .appPink, .appBlue, .appBlue])
         .set(startPoint: .topLeading, endPoint: .bottomTrailing)
-        .setCornerRadius(28)
+        .setOnly(cornerRadius: 16.0, bottomLeft: true, bottomRight: true)
         .maskToBounds(true)
+    
+    private lazy var contentStackView = makeStackView(
+        .vertical,
+        alignment: .center,
+        spacing: 8
+    )(
+        coverImageView,
+        textStackView
+    )
     
     private(set) var coverImageView = UIImageView()
         .setContentMode(.scaleToFill)
@@ -62,16 +75,6 @@ final class CoverView: ViewLayoutable {
         .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     
-    override var intrinsicContentSize: CGSize {
-        let width: CGFloat = coverImageWidth + 16 * 2
-        
-        textStackView.layoutIfNeeded()
-        let labelsHeight = textStackView.frame.height
-        let height: CGFloat = coverImageWidth + labelsHeight + coverViewTopOffset + labelsViewTopOffset + viewBottomOffset
-        
-        return .init(width: width, height: height)
-    }
-    
     // MARK: - Lifecycle
     
     override func setup() {
@@ -83,30 +86,30 @@ final class CoverView: ViewLayoutable {
     override func setupSubviews() {
         super.setupSubviews()
         
-        gradientBackgroundView.addSubviews(
-            coverImageView,
-            textStackView
-        )
-        addSubview(gradientBackgroundView)
+        gradientBackgroundView.addSubview(contentStackView)
+        containerView.addSubview(gradientBackgroundView)
+        addSubview(containerView)
     }
     
     override func defineLayout() {
         super.defineLayout()
         
+        containerView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         gradientBackgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        coverImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(coverImageWidth)
+        contentStackView.snp.makeConstraints {
+            $0.top.equalTo(16)
+            $0.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            $0.bottom.equalTo(-16)
         }
         
-        textStackView.snp.makeConstraints {
-            $0.top.equalTo(coverImageView.snp.bottom).offset(10)
-            $0.leading.equalTo(coverImageView.snp.leading)
-            $0.trailing.equalTo(coverImageView.snp.trailing)
+        coverImageView.snp.makeConstraints {
+            $0.width.height.equalTo(coverImageWidth)
         }
     }
     
@@ -139,4 +142,10 @@ extension CoverView {
         artistNameLabel.text(state.artistName)
         return self
     }
+}
+
+@available(iOS 17.0, *)
+#Preview {
+    CoverView()
+        .set(state: .init(songName: "Test", artistName: "Artist name", image: .mockCover, sourceURL: "", services: []))
 }

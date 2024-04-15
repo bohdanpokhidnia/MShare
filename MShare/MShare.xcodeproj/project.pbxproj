@@ -105,7 +105,6 @@
 		F77EE0E5298FCA86002E7139 /* SignInContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DF298FCA86002E7139 /* SignInContentView.swift */; };
 		F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0E6298FD9C6002E7139 /* SignInCollectionViewCell.swift */; };
 		F77FAA66296F59640017BB33 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */; };
-		F785E3A128C3998200DE1BC0 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
 		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
 		F790280B289309320058CC19 /* LinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* LinkEntity.swift */; };
@@ -293,7 +292,6 @@
 		F77EE0E929901815002E7139 /* MShareDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShareDebug.entitlements; sourceTree = "<group>"; };
 		F77EE0EA29901824002E7139 /* MShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShare.entitlements; sourceTree = "<group>"; };
 		F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
-		F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
 		F7902804289309320058CC19 /* LinkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkEntity.swift; sourceTree = "<group>"; };
@@ -903,7 +901,6 @@
 				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
 				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
 				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
-				F785E3A028C3998200DE1BC0 /* UIDevice+Ext.swift */,
 				F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */,
 				F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */,
 				F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */,
@@ -1192,7 +1189,6 @@
 				F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */,
 				F774B9432891B16600438A37 /* MainInteractor.swift in Sources */,
 				F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */,
-				F785E3A128C3998200DE1BC0 /* UIDevice+Ext.swift in Sources */,
 				F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */,
 				F71E37D6297ABC0800BAF622 /* OnboardingEntity.swift in Sources */,
 				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,

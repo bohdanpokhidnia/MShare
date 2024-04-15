@@ -72,10 +72,26 @@ enum HorizontalMenuAction: String, CaseIterable {
 }
 
 final class HorizontalActionMenuView: ViewLayoutable {
-    static let HorizontalActionMenuWidth: CGFloat = calculateSize(forPhone: UIDevice.phone).width
-    static let HorizontalActionMenuHeight: CGFloat = calculateSize(forPhone: UIDevice.phone).height
-    
     weak var delegare: HorizontalActionMenuDelegate?
+    
+    static var itemSize: CGSize {
+        let screenSize = UIApplication.windowScene.screen.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        let width: CGFloat
+        let height: CGFloat
+        
+        if UIApplication.isSmallScreenRatio {
+            width = screenWidth / 3
+            height = screenHeight / 4
+        } else {
+            width = screenWidth / 3 - 10
+            height = screenHeight / 5
+        }
+        
+        let size = CGSize(width: width, height: height)
+        return size
+    }
     
     // MARK: - UI
     
@@ -155,39 +171,6 @@ private extension HorizontalActionMenuView {
         
         cell.set(style: animationStyle)
     }
-    
-    static func calculateSize(forPhone phone: UIDevice.Phone) -> CGSize {
-        let screenSize = UIApplication.windowScene.screen.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        
-        var width: CGFloat = 0
-        var height: CGFloat = 0
-        
-        switch phone {
-        case .iPhoneSE:
-            width = screenWidth / 3
-            height = screenHeight / 4
-            
-        case .iPhone6, .iPhone6S, .iPhone7, .iPhone8:
-            width = screenWidth / 3
-            height = screenHeight / 4
-            
-        case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
-            width = screenWidth / 3
-            height = screenHeight / 4
-            
-        case .iPhoneXR, .iPhoneXS, .iPhoneXSMax, .iPhone11, .iPhone11ProMax, .iPhone12, .iPhone12Pro, .iPhone12ProMax, .iPhone13, .iPhone13Pro, .iPhone14, .iPhoneX, .iPhone11Pro, .iPhone12Mini, .iPhone13Mini, .iPhone13ProMax, .iPhone14Plus, .iPhone14Pro, .iPhone14ProMax:
-            width = screenWidth / 3 - 10
-            height = screenHeight / 5
-            
-        case .simulator, .unrecognized:
-            width = screenWidth / 3
-            height = screenHeight / 4
-        }
-        
-        return .init(width: width, height: height)
-    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -223,9 +206,7 @@ extension HorizontalActionMenuView: UICollectionViewDelegate {
 
 extension HorizontalActionMenuView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = Self.HorizontalActionMenuWidth
-        let height: CGFloat = Self.HorizontalActionMenuHeight
-        
-        return .init(width: width, height: height)
+        let size = Self.itemSize
+        return size
     }
 }

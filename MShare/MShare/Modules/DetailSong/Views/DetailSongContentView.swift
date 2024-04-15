@@ -82,10 +82,11 @@ final class DetailSongContentView: ViewLayoutable {
         }
         
         coverViewContainer.snp.makeConstraints {
-            defineLayoutForCoverView($0, forPhone: UIDevice.phone)
-            
+            $0.centerY.equalTo(coverY)
             $0.centerX.equalToSuperview()
         }
+        
+        dprint(coverY, coverMaxY, coverMinY)
         
         coverView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -93,11 +94,19 @@ final class DetailSongContentView: ViewLayoutable {
         
         horizontalActionMenuView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            
-            defineLayoutForHorizontalMenu($0, forPhone: UIDevice.phone)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-horizontalActionMenuOffset)
+            $0.height.equalTo(horizontalActionMenuHeight)
         }
     }
     
+    // MARK: - Private
+    
+    private let screenHeight = UIApplication.windowScene.screen.bounds.height
+    private let horizontalActionMenuHeight = HorizontalActionMenuView.itemSize.height + 32.0
+    private let horizontalActionMenuOffset: CGFloat = 16.0
+    private let coverMinY: CGFloat = UIApplication.safeAreaInsets.top
+    private lazy var coverMaxY: CGFloat = screenHeight - (UIApplication.safeAreaInsets.bottom + horizontalActionMenuHeight + horizontalActionMenuOffset)
+    private lazy var coverY: CGFloat = (coverMaxY + coverMinY) / 2
 }
 
 // MARK: - Set
@@ -107,7 +116,6 @@ extension DetailSongContentView {
     func set(state: DetailSongEntity) -> Self {
         backgroundImageView.setImage(state.image)
         coverView.set(state: state)
-        
         return self
     }
     
@@ -143,50 +151,4 @@ extension DetailSongContentView {
         let snapshotImage = makeSnapShotImage(withBackground: true)
         return snapshotImage
     }
-}
-
-// MARK: - Private Methods
-
-private extension DetailSongContentView {
-    
-    func defineLayoutForCoverView(_ constraint: ConstraintMaker, forPhone phone: UIDevice.Phone) {
-        switch phone {
-        case .iPhoneSE:
-            constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
-            
-//        case .iPhone6_7_8_SE2_SE3
-        case .iPhone6, .iPhone6S, .iPhone7, .iPhone8/*, .simulator*/:
-            constraint.top.equalTo(safeAreaLayoutGuide).offset(10)
-            
-//        case .iPhone6_7_8Plus:
-        case .iPhone6Plus, .iPhone6SPlus, .iPhone7Plus, .iPhone8Plus:
-            constraint.centerY.equalToSuperview().offset(-80)
-            
-//        case .iPhoneXr_XsMax_11_12, .iPhone12Pro_13_13Pro_14, .iPhoneX_11Pro_12Mini_13Mini, .iPhone12_13ProMax_14Plus, .iPhone14Pro, .iPhone14ProMax:
-        case .iPhoneXR, .iPhoneXS, .iPhoneXSMax, .iPhone11, .iPhone11ProMax, .iPhone12, .iPhone12Pro, .iPhone12ProMax, .iPhone13, .iPhone13Pro, .iPhone14, .iPhoneX, .iPhone11Pro, .iPhone12Mini, .iPhone13Mini, .iPhone13ProMax, .iPhone14Plus, .iPhone14Pro, .iPhone14ProMax:
-            constraint.centerY.equalToSuperview().offset(-100)
-            
-        case .simulator, .unrecognized:
-            constraint.top.equalTo(safeAreaLayoutGuide).offset(60)
-        }
-    }
-    
-    func defineLayoutForHorizontalMenu(_ constraint: ConstraintMaker, forPhone phone: UIDevice.Phone) {
-        var bottomOffset: CGFloat
-        var height: CGFloat
-        
-        switch UIDevice.phone {
-        case .iPhoneSE, .iPhone6, .iPhone6S, .iPhone7, .iPhone8/*, .simulator*/:
-            bottomOffset = 0
-            height = HorizontalActionMenuView.HorizontalActionMenuHeight + 30
-            
-        default:
-            bottomOffset = -20
-            height = HorizontalActionMenuView.HorizontalActionMenuHeight + 50
-        }
-        
-        constraint.bottom.equalTo(safeAreaLayoutGuide).offset(bottomOffset)
-        constraint.height.equalTo(height)
-    }
-    
 }

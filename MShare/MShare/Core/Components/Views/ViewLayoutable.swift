@@ -57,11 +57,13 @@ class ViewLayoutable: UIView, ViewLayoutableProtocol, Themeable {
 
 extension ViewLayoutable {
     @discardableResult
-    func addShadow(color: UIColor,
-                   offset: CGSize,
-                   opacity: Float,
-                   radius: CGFloat,
-                   fillColor: UIColor = .clear) -> Self {
+    func addShadow(
+        color: UIColor,
+        offset: CGSize,
+        opacity: Float,
+        radius: CGFloat,
+        fillColor: UIColor = .clear
+    ) -> Self {
         let shadowLayer = CAShapeLayer()
 
         shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
@@ -203,6 +205,34 @@ extension UIView {
     
     func convertSelfBounds(to space: UICoordinateSpace) -> CGRect {
         return convert(bounds, to: space)
+    }
+    
+    @discardableResult
+    func setOnly(
+        cornerRadius: CGFloat,
+        topLeft: Bool = false,
+        topRight: Bool = false,
+        bottomLeft: Bool = false,
+        bottomRight: Bool = false
+    ) -> Self {
+        var corners = CACornerMask()
+        
+        if topLeft {
+            corners.insert(.layerMinXMinYCorner)
+        }
+        if topRight {
+            corners.insert(.layerMaxXMinYCorner)
+        }
+        if bottomLeft {
+            corners.insert(.layerMinXMaxYCorner)
+        }
+        if bottomRight {
+            corners.insert(.layerMaxXMaxYCorner)
+        }
+        
+        layer.cornerRadius = cornerRadius
+        layer.maskedCorners = corners
+        return self
     }
 }
 

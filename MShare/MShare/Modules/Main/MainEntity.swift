@@ -28,13 +28,5 @@ struct MainEntity {
             case .settings: UIImage(systemName: "gear")
             }
         }
-        
-        func router(dependencyManager: DependencyManagerProtocol) -> Router {
-            switch self {
-            case .favorites: FavoritesRouter(dependencyManager: dependencyManager)
-            case .link: LinkRouter(dependencyManager: dependencyManager)
-            case .settings: SettingsRouter(dependencyManager: dependencyManager)
-            }
-        }
     }
 }

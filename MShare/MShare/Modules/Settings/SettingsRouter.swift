@@ -17,7 +17,6 @@ protocol SettingsRouterProtocol {
 }
 
 final class SettingsRouter: Router, SettingsRouterProtocol {
-    
     override func createModule() -> UIViewController {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
@@ -66,9 +65,6 @@ final class SettingsRouter: Router, SettingsRouterProtocol {
     }
     
     func loadOnboarding() {
-        let onboarding = OnboardingRouter(dependencyManager: dependencyManager).createModule()
-        
-        UIApplication.load(vc: onboarding, backgroundColor: .black)
+        appRouter?.loadOnboarding()
     }
-    
 }

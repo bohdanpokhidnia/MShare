@@ -65,7 +65,10 @@ extension AppRouter: AppRouterProtocol {
     }
     
     func loadMain() {
-        let mainRouter = MainRouter(dependencyManager: dependencyManager)
+        let mainRouter = MainRouter(
+            appRouter: self,
+            dependencyManager: dependencyManager
+        )
         self.mainRouter = mainRouter
         load(router: mainRouter)
         mainRouter.select(tab: .link)

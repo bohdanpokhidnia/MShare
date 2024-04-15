@@ -29,8 +29,6 @@ final class SignInRouter: Router, SignInRouterProtocol {
     func loadMain() {
         let mainView = MainRouter(dependencyManager: dependencyManager).initMainModule()
         mainView.selectTab(.link)
-        
-        UIApplication.load(vc: mainView.viewController, backgroundColor: .systemBackground)
     }
     
     func presentSafari(for view: SignInViewProtocol?, url: URL) {

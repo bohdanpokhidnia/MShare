@@ -53,15 +53,32 @@ extension MainRouter: MainRouterProtocol {
 // MARK: - Private Methods
 
 private extension MainRouter {
+    func makeRouter(for tabItem: MainEntity.TabItem) -> Router {
+        switch tabItem {
+        case .favorites:
+            FavoritesRouter(dependencyManager: dependencyManager)
+            
+        case .link:
+            LinkRouter(dependencyManager: dependencyManager)
+            
+        case .settings:
+            SettingsRouter(
+                appRouter: appRouter,
+                dependencyManager: dependencyManager
+            )
+        }
+    }
+    
     func buildTabModules() -> [UIViewController] {
         var viewControllers: [UIViewController] = []
         
-        for tabBarModule in MainEntity.TabItem.allCases {
-            let router = tabBarModule.router(dependencyManager: dependencyManager)
+        for tabItem in MainEntity.TabItem.allCases {
+            let router = makeRouter(for: tabItem)
+            
             let view = router.createModule()
                 .make {
-                    $0.title = tabBarModule.title
-                    $0.tabBarItem.image = tabBarModule.icon
+                    $0.title = tabItem.title
+                    $0.tabBarItem.image = tabItem.icon
                 }
             
             viewControllers.append(view)
