@@ -258,7 +258,6 @@ extension DetailSongView: TransitionProtocol {
 // MARK: - DetailSongViewProtocol
 
 extension DetailSongView: DetailSongViewProtocol {
-    
     func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem]) {
         contentView
             .set(state: state)

@@ -10,7 +10,6 @@ import SnapKit
 import NotificationToast
 
 final class DetailSongContentView: ViewLayoutable {
-    
     var cover: UIImage? {
         return coverView.coverImageView.image
     }
@@ -85,8 +84,6 @@ final class DetailSongContentView: ViewLayoutable {
             $0.centerY.equalTo(coverY)
             $0.centerX.equalToSuperview()
         }
-        
-        dprint(coverY, coverMaxY, coverMinY)
         
         coverView.snp.makeConstraints {
             $0.edges.equalToSuperview()

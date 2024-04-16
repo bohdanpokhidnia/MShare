@@ -72,19 +72,21 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
     func requestShareMedia(for destinationService: String) {
         switch mediaResponse.mediaType {
         case .song:
-            guard let song = mediaResponse.song else { return }
+            guard let song = mediaResponse.song else {
+                return
+            }
             let shareMediaEndpoint = GetShareMedia(
                 originService: song.serviceType,
                 sourceId: song.songSourceId,
                 destinationService: destinationService
             )
             
-            Task {
+            Task { @MainActor in
                 do {
                     let shareMedia = try await apiClient.request(endpoint: shareMediaEndpoint, response: ShareMediaResponse.self)
                     presenter?.didLoadShareMedia(shareMedia)
-                } catch {
-                    presenter?.didCatchError(error as! NetworkError)
+                } catch let networkError as NetworkError {
+                    presenter?.didCatchError(networkError)
                 }
             }
             

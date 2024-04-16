@@ -107,14 +107,16 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     }
     
     func didLoadShareMedia(_ shareMedia: ShareMediaResponse) {
-        guard !shareMedia.isEmpty else { return }
-        
+        guard !shareMedia.isEmpty else {
+            return
+        }
         guard shareMedia.count == 1 else {
             view?.showAlertShareCount(for: shareMedia)
             return
         }
-        
-        guard let shareMediaItem = shareMedia.items.first else { return }
+        guard let shareMediaItem = shareMedia.items.first else {
+            return
+        }
         
         router?.shareUrl(view: view, urlString: shareMediaItem.songUrl) { [weak view] in
             view?.stopShareLoading()
@@ -126,9 +128,7 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     }
     
     func didCatchError(_ error: NetworkError) {
-        DispatchQueue.main.async { [weak view] in
-            view?.showError(error.localizedDescription)
-        }
+        view?.showError(error.localizedDescription)
     }
     
     func didRequestedAccessToGallery(_ image: UIImage) {
