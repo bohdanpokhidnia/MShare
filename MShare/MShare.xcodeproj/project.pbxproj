@@ -38,7 +38,6 @@
 		F73873B32AD1802100581F57 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B22AD1802100581F57 /* BaseInteractor.swift */; };
 		F73873B62AD2DAFE00581F57 /* AlertKitHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B52AD2DAFE00581F57 /* AlertKitHaptic.swift */; };
 		F73873B82AD2DBC200581F57 /* AlertKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B72AD2DBC200581F57 /* AlertKit.swift */; };
-		F73873BA2AD2DC6B00581F57 /* AlertKitToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73873B92AD2DC6B00581F57 /* AlertKitToastView.swift */; };
 		F739200C29855C7600A773D7 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739200B29855C7600A773D7 /* ThirdPageViewController.swift */; };
 		F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */; };
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
@@ -162,7 +161,6 @@
 		F7E5259429C5F38C005E0A95 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5259329C5F38C005E0A95 /* Router.swift */; };
 		F7E5259629C6135C005E0A95 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */; };
 		F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */; };
-		F7F5E5102AD8657E0063580C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E50F2AD8657E0063580C /* AlertView.swift */; };
 		F7F5E5142AD8664D0063580C /* AlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */; };
 		F7F5E5162AD866700063580C /* AlertPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E5152AD866700063580C /* AlertPosition.swift */; };
 		F7FE397329144904000A190F /* FirstFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FE397229144904000A190F /* FirstFavoritesView.swift */; };
@@ -222,7 +220,6 @@
 		F73873B22AD1802100581F57 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		F73873B52AD2DAFE00581F57 /* AlertKitHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitHaptic.swift; sourceTree = "<group>"; };
 		F73873B72AD2DBC200581F57 /* AlertKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKit.swift; sourceTree = "<group>"; };
-		F73873B92AD2DC6B00581F57 /* AlertKitToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitToastView.swift; sourceTree = "<group>"; };
 		F739200B29855C7600A773D7 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		F7392013298587BE00A773D7 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -349,7 +346,6 @@
 		F7E5259329C5F38C005E0A95 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponse.swift; sourceTree = "<group>"; };
-		F7F5E50F2AD8657E0063580C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfiguration.swift; sourceTree = "<group>"; };
 		F7F5E5152AD866700063580C /* AlertPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPosition.swift; sourceTree = "<group>"; };
 		F7FE397229144904000A190F /* FirstFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFavoritesView.swift; sourceTree = "<group>"; };
@@ -465,7 +461,6 @@
 				F7F5E5152AD866700063580C /* AlertPosition.swift */,
 				F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */,
 				F73873B52AD2DAFE00581F57 /* AlertKitHaptic.swift */,
-				F7F5E50F2AD8657E0063580C /* AlertView.swift */,
 				F73873B72AD2DBC200581F57 /* AlertKit.swift */,
 				F7B366392BCC1DDB00343F88 /* AlertKitIcon.swift */,
 			);
@@ -921,7 +916,6 @@
 		F7F5E5172AD877320063580C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F73873B92AD2DC6B00581F57 /* AlertKitToastView.swift */,
 				F70B77272AE145F3000DFAA0 /* AlertKitShortView.swift */,
 			);
 			path = Views;
@@ -1055,7 +1049,6 @@
 				F774B94E2891B37A00438A37 /* ViewLayoutableProtocol.swift in Sources */,
 				F774B9462891B16600438A37 /* MainView.swift in Sources */,
 				F710245228AD5C1F0012CE0B /* GradientView.swift in Sources */,
-				F73873BA2AD2DC6B00581F57 /* AlertKitToastView.swift in Sources */,
 				F7C2B83329A1320E00569C5B /* ThemeProvider.swift in Sources */,
 				F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */,
 				F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */,
@@ -1097,7 +1090,6 @@
 				F756924D28A57BD400119BD8 /* HorizontalActionMenuViewCell.swift in Sources */,
 				F77EE0E2298FCA86002E7139 /* SignInRouter.swift in Sources */,
 				F777BE4E289E479600595ACA /* DetailSongContentView.swift in Sources */,
-				F7F5E5102AD8657E0063580C /* AlertView.swift in Sources */,
 				F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */,
 				F7632C3029D9C4AB00239DAF /* MakeCoverContentView.swift in Sources */,
 				F76368A029EBE6D700307B7C /* MoveElementsTransition.swift in Sources */,

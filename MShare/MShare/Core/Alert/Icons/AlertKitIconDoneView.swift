@@ -8,7 +8,6 @@
 import UIKit
 
 class AlertKitIconDoneView: UIView {
-    
     // MARK: - Initializers
     
     init(lineThick: CGFloat) {
@@ -25,13 +24,27 @@ class AlertKitIconDoneView: UIView {
     // MARK: - Private
     
     private let lineThick: CGFloat
-    
+    private var completion: (() -> Void)?
+}
+
+//MARK: - CAAnimationDelegate
+
+extension AlertKitIconDoneView: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        guard flag else {
+            return
+        }
+        
+        completion?()
+    }
 }
 
 //MARK: - AlertKitIconAnimatable
 
 extension AlertKitIconDoneView: AlertKitIconAnimatable {
-    func animate() {
+    func animate(completion: (() -> Void)?) {
+        self.completion = completion
+        
         let length = frame.width
         let animatablePath = UIBezierPath()
         animatablePath.move(to: CGPoint(x: length * 0.196, y: length * 0.527))
@@ -53,6 +66,7 @@ extension AlertKitIconDoneView: AlertKitIconAnimatable {
         animation.fromValue = 0
         animation.toValue = 1
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.delegate = self
         animatableLayer.strokeEnd = 1
         animatableLayer.add(animation, forKey: "animation")
     }

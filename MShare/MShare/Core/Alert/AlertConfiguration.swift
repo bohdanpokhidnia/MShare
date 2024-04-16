@@ -9,8 +9,11 @@ import UIKit
 
 struct AlertConfiguration {
     let position: AlertPosition
+    var isUseSafeArea: Bool = true
     let height: CGFloat
-    var insets: UIEdgeInsets?
+    var inset: CGFloat?
     var haptic: AlertKitHaptic?
-    var duration: TimeInterval?
+    var presentationDuration: CGFloat = 0.5
+    var displayDuration: CGFloat?
+    var dismissDuration: CGFloat = 0.5
 }

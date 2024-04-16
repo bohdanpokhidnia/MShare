@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AlertKitIconAnimatable {
-    func animate()
+    func animate(completion: (() -> Void)?)
 }

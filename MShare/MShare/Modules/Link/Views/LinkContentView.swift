@@ -122,10 +122,12 @@ private extension LinkContentView {
 // MARK: - Private Methods
 
 private extension LinkContentView {
-    func applyLayoutAnimation() {
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction]) {
+    func applyLayoutAnimation(completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction], animations: {
             self.layoutIfNeeded()
-        }
+        }, completion: { _ in
+            completion?()
+        })
     }
     
     func hiddenTextField(isHidden: Bool, animated: Bool) {
@@ -179,7 +181,10 @@ extension LinkContentView {
         applyLayoutAnimation()
     }
     
-    func set(loadingAnimationState: LoadingButton.AnimationState) {
+    func set(
+        loadingAnimationState: LoadingButton.AnimationState,
+        completion: (() -> Void)? = nil
+    ) {
         hiddenTextField(isHidden: loadingAnimationState == .start, animated: true)
         searchButton.set(animationState: loadingAnimationState)
         
@@ -208,6 +213,6 @@ extension LinkContentView {
             buttonHeightConstraint?.activate()
         }
         
-        applyLayoutAnimation()
+        applyLayoutAnimation(completion: completion)
     }
 }

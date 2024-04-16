@@ -49,21 +49,6 @@ final class LinkView: ViewController<LinkContentView> {
         
         presenter?.viewWillDisappear()
     }
-    
-    // MARK: - Override methods
-    
-    override func handleNetworkError(error: BaseError) {
-        let tabBarController = parent?.parent as? UITabBarController
-        let tabBarHeight: CGFloat = tabBarController?.tabBar.frame.height ?? .zero
-        
-        hideLoading() {
-            AlertKit.toast(
-                title: error.localizedDescription,
-                position: .bottom(inset: tabBarHeight),
-                haptic: .error
-            )
-        }
-    }
 }
 
 // MARK: - Setup
@@ -169,7 +154,10 @@ extension LinkView: LinkViewProtocol {
     }
     
     func hideLoading(completion: (() -> Void)? = nil) {
-        contentView.set(loadingAnimationState: .end)
+        contentView.set(
+            loadingAnimationState: .end,
+            completion: completion
+        )
     }
     
     func resetLinkTextFieldBorderColor(animated: Bool) {

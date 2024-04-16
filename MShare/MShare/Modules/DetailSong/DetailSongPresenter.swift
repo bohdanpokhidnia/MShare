@@ -150,7 +150,7 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         AlertKit.shortToast(
             title: "Saved to Favorites",
             icon: .done,
-            position: .center(inset: 0),
+            position: .center,
             haptic: .success
         )
     }
@@ -159,7 +159,7 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         AlertKit.shortToast(
             title: "Removed from Favorites",
             icon: .done,
-            position: .center(inset: 0),
+            position: .center,
             haptic: .success
         )
     }

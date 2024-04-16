@@ -38,7 +38,27 @@ final class LinkPresenter: BasePresenter {
     // MARK: - Override methods
     
     override func handleNetworkError(error: BaseError) {
-        view?.handleNetworkError(error: error)
+        if let networkError = error as? NetworkError {
+            let title = switch networkError {
+            case .networkError(let networkErrorResponse):
+                networkErrorResponse.errors.contains(where: { $0.key == "url" }) ? "Failed url" : networkErrorResponse.title
+            default:
+                networkError.localizedDescription
+            }
+            
+            view?.hideLoading(completion: {
+                DispatchQueue.main.async {
+                    AlertKit.shortToast(
+                        title: title,
+                        icon: .done,
+                        position: .top,
+                        inset: 16.0
+                    )
+                }
+            })
+        } else {
+            view?.handleNetworkError(error: error)
+        }
     }
     
     // MARK: - Private
@@ -58,7 +78,9 @@ extension LinkPresenter: LinkPresenterProtocol {
     }
     
     func pasteTextFromBuffer() {
-        guard let stringFromBuffer = stringFromBuffer else { return }
+        guard let stringFromBuffer = stringFromBuffer else {
+            return
+        }
         
         view?.setLink(stringFromBuffer)
         self.stringFromBuffer = nil
