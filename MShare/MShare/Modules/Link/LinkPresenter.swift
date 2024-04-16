@@ -41,7 +41,7 @@ final class LinkPresenter: BasePresenter {
         if let networkError = error as? NetworkError {
             let title = switch networkError {
             case .networkError(let networkErrorResponse):
-                networkErrorResponse.errors.contains(where: { $0.key == "url" }) ? "Failed url" : networkErrorResponse.title
+                networkErrorResponse.errors.contains(where: { $0.key == "url" }) ? "Failed url on song or album" : networkErrorResponse.title
             default:
                 networkError.localizedDescription
             }
@@ -50,7 +50,7 @@ final class LinkPresenter: BasePresenter {
                 DispatchQueue.main.async {
                     AlertKit.shortToast(
                         title: title,
-                        icon: .done,
+                        icon: .error,
                         position: .top,
                         inset: 16.0
                     )

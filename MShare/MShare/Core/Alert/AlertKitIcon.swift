@@ -16,7 +16,7 @@ enum AlertKitIcon {
     func createView(lineThick: CGFloat) -> UIView {
         switch self {
         case .done: AlertKitIconDoneView(lineThick: lineThick)
-        case .error: UIView()
+        case .error: AlertKitIconErrorView(lineThick: lineThick)
         case .heart: UIView()
         case .custom(let image): customImageView(from: image)
         }

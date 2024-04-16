@@ -43,6 +43,7 @@
 		F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */; };
 		F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73920172985896D00A773D7 /* UIStyleGuide.swift */; };
 		F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739201929866C1000A773D7 /* DependencyManager.swift */; };
+		F73C20712BCEA8890078AA20 /* AlertKitIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */; };
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
 		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
 		F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */; };
@@ -225,6 +226,7 @@
 		F7392015298587FF00A773D7 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
 		F73920172985896D00A773D7 /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
 		F739201929866C1000A773D7 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitIconErrorView.swift; sourceTree = "<group>"; };
 		F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		F742652E2905318900B87BBF /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 			children = (
 				F7B366452BCC1E9200343F88 /* AlertKitIconAnimatable.swift */,
 				F7B366412BCC1E6700343F88 /* AlertKitIconDoneView.swift */,
+				F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -1114,6 +1117,7 @@
 				F72E82FD2895777F008D7702 /* TableView.swift in Sources */,
 				F777BE4B289E479600595ACA /* DetailSongRouter.swift in Sources */,
 				F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */,
+				F73C20712BCEA8890078AA20 /* AlertKitIconErrorView.swift in Sources */,
 				F74B75C3290AF87400DBCD46 /* MediaModel.swift in Sources */,
 				F74B75C5290B029700DBCD46 /* ServiceModel.swift in Sources */,
 				F7B366362BCC1D7000343F88 /* ViewLayoutable.swift in Sources */,
