@@ -52,6 +52,7 @@ final class LinkPresenter: BasePresenter {
                         title: title,
                         icon: .error,
                         position: .top,
+                        haptic: .error,
                         inset: 16.0
                     )
                 }
