@@ -29,6 +29,15 @@ struct MediaResponse: Decodable {
     }
 }
 
+extension MediaResponse {
+    static var mock = MediaResponse(
+        mediaType: .song,
+        song: .mock,
+        album: nil,
+        services: [.mock]
+    )
+}
+
 struct Song: Decodable {
     let songSourceId: String
     let songUrl: String
@@ -37,6 +46,18 @@ struct Song: Decodable {
     let albumName: String
     let coverImageUrl: String
     let serviceType: String
+}
+
+extension Song {
+    static var mock = Song(
+        songSourceId: "",
+        songUrl: "mock url",
+        songName: "mock song name",
+        artistName: "mock artist name",
+        albumName: "mock album name",
+        coverImageUrl: "https://is1-ssl.mzstatic.com//image//thumb//Music125//v4//f9//33//f9//f933f91d-e4b8-f1fb-8534-11f537ae8c84//Lums_Cleopatra_cvr.jpg//640x640bb.jpg",
+        serviceType: "mock service type"
+    )
 }
 
 struct Album: Decodable {
@@ -52,4 +73,8 @@ struct MediaService: Decodable {
     let name: String
     let type: String
     let isAvailable: Bool
+}
+
+extension MediaService {
+    static var mock = MediaService(name: "AppleMusic", type: "Apple Music", isAvailable: true)
 }
