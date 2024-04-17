@@ -11,4 +11,5 @@ enum AlertPosition {
     case top
     case center
     case bottom
+    case custom(y: CGFloat)
 }

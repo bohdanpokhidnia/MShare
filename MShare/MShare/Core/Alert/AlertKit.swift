@@ -23,17 +23,18 @@ enum AlertKit {
         guard let currentWindow else { 
             return
         }
+        let configuration = AlertConfiguration(
+            position: position,
+            height: 50.0,
+            inset: inset,
+            haptic: haptic,
+            displayDuration: 1.0
+        )
         let shortView = AlertKitShortView(
             title: title,
             icon: icon,
-            mainView: currentWindow,
-            configuration: AlertConfiguration(
-                position: position,
-                height: 50.0,
-                inset: inset,
-                haptic: haptic,
-                displayDuration: 1.0
-            )
+            on: currentWindow,
+            configuration: configuration
         )
         
         shortView.present()

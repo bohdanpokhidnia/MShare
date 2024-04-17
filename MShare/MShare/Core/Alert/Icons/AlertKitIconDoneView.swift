@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertKitIconDoneView: UIView {
+final class AlertKitIconDoneView: UIView {
     // MARK: - Initializers
     
     init(lineThick: CGFloat) {

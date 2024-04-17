@@ -10,6 +10,7 @@ import UIKit
 protocol DetailSongViewProtocol: AnyObject {
     var presenter: DetailSongPresenterProtocol? { get set }
     var viewController: UIViewController { get }
+    var shortToastPositionY: CGFloat { get }
     
     func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem])
     func setFavoriteStatus(_ isSaved: Bool)
@@ -24,12 +25,9 @@ protocol DetailSongViewProtocol: AnyObject {
 }
 
 final class DetailSongView: ViewController<DetailSongContentView> {
-    
     var presenter: DetailSongPresenterProtocol?
-    
-    var viewController: UIViewController {
-        return self
-    }
+    var viewController: UIViewController { self }
+    var shortToastPositionY: CGFloat { contentView.shortToastPositionY }
     
     // MARK: - Lifecycle
     
@@ -65,7 +63,6 @@ final class DetailSongView: ViewController<DetailSongContentView> {
 // MARK: - Setup
 
 private extension DetailSongView {
-    
     func setupNavigationBar() {
         title = "Share"
         navigationItem.largeTitleDisplayMode = .never
@@ -88,7 +85,6 @@ private extension DetailSongView {
 // MARK: - User interactions
 
 private extension DetailSongView {
-    
     @objc
     func didTapCloseBarButton() {
         presenter?.didTapPop()
@@ -130,13 +126,11 @@ private extension DetailSongView {
             break
         }
     }
-    
 }
 
 // MARK: - HorizontalActionMenuDelegate
 
 extension DetailSongView: HorizontalActionMenuDelegate {
-    
     func didTapActionItem(
         _ horizontalActionMenuView: HorizontalActionMenuView,
         action: HorizontalMenuAction,
@@ -170,7 +164,6 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             stopLoadingAnimation()
         }
     }
-    
 }
 
 //MARK: - TransitionProtocol
@@ -252,7 +245,6 @@ extension DetailSongView: TransitionProtocol {
             fatalError("don't found view for copy")
         }
     }
-    
 }
 
 // MARK: - DetailSongViewProtocol
@@ -312,5 +304,4 @@ extension DetailSongView: DetailSongViewProtocol {
             self?.contentView.horizontalActionMenuView.set(animationStyle: .normal)
         }
     }
-    
 }

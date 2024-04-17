@@ -10,8 +10,12 @@ import UIKit
 class AppNavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
     var interactiveTransition: UIPercentDrivenInteractiveTransition?
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
+    func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationController.Operation,
+        from fromVC: UIViewController,
+        to toVC: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         var transition: UIViewControllerAnimatedTransitioning?
         
         switch (fromVC, toVC) {
@@ -34,7 +38,10 @@ class AppNavigationControllerDelegate: NSObject, UINavigationControllerDelegate 
         return transition
     }
     
-    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    func navigationController(
+        _ navigationController: UINavigationController,
+        interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
+    ) -> UIViewControllerInteractiveTransitioning? {
         return interactiveTransition
     }
 }

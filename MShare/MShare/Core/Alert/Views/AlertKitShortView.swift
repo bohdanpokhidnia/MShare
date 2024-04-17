@@ -53,7 +53,7 @@ final class AlertKitShortView: UIView {
     init(
         title: String,
         icon: AlertKitIcon,
-        mainView: UIView,
+        on mainView: UIView,
         configuration: AlertConfiguration
     ) {
         self.iconView = icon.createView(lineThick: 3.0)
@@ -101,7 +101,6 @@ final class AlertKitShortView: UIView {
 private extension AlertKitShortView {
     func setup() {
         let isUseSafeArea = configuration.isUseSafeArea
-        
         alpha = .zero
         translatesAutoresizingMaskIntoConstraints = false
         mainView.addSubview(self)
@@ -127,6 +126,9 @@ private extension AlertKitShortView {
             } else {
                 bottomAnchor.constraint(equalTo: isUseSafeArea ? mainView.safeAreaLayoutGuide.bottomAnchor : mainView.bottomAnchor).isActive = true
             }
+            
+        case .custom(let y):
+            topAnchor.constraint(equalTo: mainView.topAnchor, constant: y).isActive = true
         }
         
         NSLayoutConstraint.activate([
@@ -190,16 +192,16 @@ private extension AlertKitShortView {
 @available(iOS 17.0, *)
 #Preview {
     let linkView = LinkView()
-    
     linkView.contentView.linkTextField.text = "Test"
     linkView.contentView.searchButton.onTap {
         AlertKitShortView(
 //            title: "The url field is not a valid fully-qualified http, https, or ftp URL",
             title: "Oops",
-            icon: .done,
-            mainView: linkView.contentView,
+            icon: .heart,
+            on: linkView.contentView,
             configuration: .init(
-                position: .bottom,
+                position: .custom(y: 250),
+//                position: .bottom,
                 height: 50,
                 displayDuration: 1.3
             )

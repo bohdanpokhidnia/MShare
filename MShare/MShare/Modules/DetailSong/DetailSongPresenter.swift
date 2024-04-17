@@ -43,6 +43,10 @@ final class DetailSongPresenter: NSObject {
             view?.showSavedImage()
         }
     }
+    
+    // MARK: - Private
+    
+    private lazy var shortToastY: CGFloat = view?.shortToastPositionY ?? .zero
 }
 
 // MARK: - DetailSongPresenterProtocol
@@ -149,8 +153,8 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
     func didSaveToDatabase() {
         AlertKit.shortToast(
             title: "Saved to Favorites",
-            icon: .done,
-            position: .center,
+            icon: .heart,
+            position: .custom(y: shortToastY),
             haptic: .success
         )
     }
@@ -159,7 +163,7 @@ extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
         AlertKit.shortToast(
             title: "Removed from Favorites",
             icon: .done,
-            position: .center,
+            position: .custom(y: shortToastY),
             haptic: .success
         )
     }

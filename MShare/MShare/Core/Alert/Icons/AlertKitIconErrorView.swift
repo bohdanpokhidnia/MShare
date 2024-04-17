@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertKitIconErrorView: UIView {
+final class AlertKitIconErrorView: UIView {
     private let lineThick: CGFloat
     
     init(lineThick: CGFloat) {
@@ -89,6 +89,10 @@ private extension AlertKitIconErrorView {
 
 extension AlertKitIconErrorView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        guard flag else {
+            return
+        }
+        
         completion?()
     }
 }

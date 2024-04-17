@@ -20,7 +20,6 @@ protocol FavoritesViewProtocol: AnyObject {
 }
 
 final class FavoritesView: ViewController<FavoritesContentView> {
-    
     enum FavoriteSection: Int, CaseIterable {
         case song
         case album

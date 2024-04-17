@@ -75,6 +75,7 @@
 		F7653FB2289452A200FC47FA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7653FB1289452A200FC47FA /* ShareViewController.swift */; };
 		F7653FB9289452A200FC47FA /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7653FAF289452A200FC47FA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F769EFB22928B14700EDEED2 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */; };
+		F76EE66A2BCFA53E00E298BE /* AlertKitIconHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76EE6692BCFA53E00E298BE /* AlertKitIconHeartView.swift */; };
 		F774B91E2891AEDC00438A37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91D2891AEDC00438A37 /* AppDelegate.swift */; };
 		F774B9202891AEDC00438A37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774B91F2891AEDC00438A37 /* SceneDelegate.swift */; };
 		F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F774B9262891AEDD00438A37 /* Assets.xcassets */; };
@@ -258,6 +259,7 @@
 		F7653FB1289452A200FC47FA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		F7653FB6289452A200FC47FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		F76EE6692BCFA53E00E298BE /* AlertKitIconHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitIconHeartView.swift; sourceTree = "<group>"; };
 		F774B91A2891AEDC00438A37 /* MShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F774B91D2891AEDC00438A37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F774B91F2891AEDC00438A37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -775,6 +777,7 @@
 				F7B366452BCC1E9200343F88 /* AlertKitIconAnimatable.swift */,
 				F7B366412BCC1E6700343F88 /* AlertKitIconDoneView.swift */,
 				F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */,
+				F76EE6692BCFA53E00E298BE /* AlertKitIconHeartView.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				F7002751289C3B470075C133 /* MediaTableView.swift in Sources */,
 				F7D9852C28FA977500F54E24 /* FavoritesContentView.swift in Sources */,
 				F7198AF929EDA9AE007BB2E4 /* UINavigationController+Ext.swift in Sources */,
+				F76EE66A2BCFA53E00E298BE /* AlertKitIconHeartView.swift in Sources */,
 				F77EE0E1298FCA86002E7139 /* SignInInteractor.swift in Sources */,
 				F7BB329B29BA68EB00219035 /* GetSong.swift in Sources */,
 				F7902829289309940058CC19 /* SettingsView.swift in Sources */,

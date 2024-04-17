@@ -14,6 +14,11 @@ final class DetailSongContentView: ViewLayoutable {
         return coverView.coverImageView.image
     }
     
+    var shortToastPositionY: CGFloat {
+        let y = coverCenterY - 25.0
+        return y
+    }
+    
     // MARK: - UI
     
     private(set) var copiedToast = ToastView(
@@ -81,7 +86,7 @@ final class DetailSongContentView: ViewLayoutable {
         }
         
         coverViewContainer.snp.makeConstraints {
-            $0.centerY.equalTo(coverY)
+            $0.centerY.equalTo(coverCenterY)
             $0.centerX.equalToSuperview()
         }
         
@@ -103,7 +108,7 @@ final class DetailSongContentView: ViewLayoutable {
     private let horizontalActionMenuOffset: CGFloat = 16.0
     private let coverMinY: CGFloat = UIApplication.safeAreaInsets.top
     private lazy var coverMaxY: CGFloat = screenHeight - (UIApplication.safeAreaInsets.bottom + horizontalActionMenuHeight + horizontalActionMenuOffset)
-    private lazy var coverY: CGFloat = (coverMaxY + coverMinY) / 2
+    private lazy var coverCenterY: CGFloat = (coverMaxY + coverMinY) / 2
 }
 
 // MARK: - Set
@@ -130,7 +135,6 @@ extension DetailSongContentView {
                 completion?()
             }
         )
-        
         return self
     }
     

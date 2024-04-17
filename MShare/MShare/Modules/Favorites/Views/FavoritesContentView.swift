@@ -8,7 +8,6 @@
 import UIKit
 
 final class FavoritesContentView: ViewLayoutable {
-    
     // MARK: - UI
     
     private(set) lazy var favotitesTableView = TableView(style: .grouped)
@@ -106,7 +105,6 @@ final class FavoritesContentView: ViewLayoutable {
         
         set(component: favorites.background)
     }
-    
 }
 
 // MARK: - Set

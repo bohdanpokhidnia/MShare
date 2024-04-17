@@ -17,7 +17,7 @@ enum AlertKitIcon {
         switch self {
         case .done: AlertKitIconDoneView(lineThick: lineThick)
         case .error: AlertKitIconErrorView(lineThick: lineThick)
-        case .heart: UIView()
+        case .heart: AlertKitIconHeartView()
         case .custom(let image): customImageView(from: image)
         }
     }

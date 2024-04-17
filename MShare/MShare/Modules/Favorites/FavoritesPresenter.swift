@@ -71,41 +71,51 @@ extension FavoritesPresenter: FavoritesPresenterProtocol {
             mediaModel = albums[indexPath.row]
         }
         
-        guard let mediaModel else { return nil }
-        let mediaItem = MediaItem(title: mediaModel.name,
-                                  subtitle: mediaModel.artistName,
-                                  imageURL: mediaModel.coverImageUrl,
-                                  displayShareButton: true)
+        guard let mediaModel else { 
+            return nil
+        }
+        let mediaItem = MediaItem(
+            title: mediaModel.name,
+            subtitle: mediaModel.artistName,
+            imageURL: mediaModel.coverImageUrl,
+            displayShareButton: true
+        )
         return mediaItem
     }
     
     func shareUrl(forIndexPath indexPath: IndexPath) {
-        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
+        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else {
+            return
+        }
         
         router?.shareUrl(view: view, urlString: mediaModel.url)
     }
     
     func tapOnMediaItem(forIndexPath indexPath: IndexPath) {
-        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
+        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else {
+            return
+        }
         
         interactor?.mapModelToResponse(mediaModel: mediaModel)
     }
     
     func removeMediaItem(forIndexPath indexPath: IndexPath) {
-        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else { return }
+        guard let mediaModel = getMediaModel(forIndexPath: indexPath) else {
+            return
+        }
         
         interactor?.removeMedia(forIndexPath: indexPath, mediaModel)
     }
     
     func didSelectSection(_ sectionIndex: Int) {
-        guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else { return }
+        guard let section = FavoritesView.FavoriteSection(rawValue: sectionIndex) else {
+            return
+        }
 
         favoriteSection = section
-        
         isEmptySection(favoriteSection)
         view?.reloadFavoritesData()
     }
-    
 }
 
 // MARK: - FavoritesInteractorOutputProtocol
@@ -176,7 +186,9 @@ private extension FavoritesPresenter {
     }
     
     func reloadData(forIndexPath indexPath: IndexPath) {
-        guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else { return }
+        guard let section = FavoritesView.FavoriteSection(rawValue: indexPath.section) else {
+            return
+        }
         
         switch section {
         case .song:
