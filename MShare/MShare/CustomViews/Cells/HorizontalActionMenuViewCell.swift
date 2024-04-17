@@ -66,7 +66,7 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .adjustsFontSizeToFitWidth(true)
     
     private let blurredView = ViewLayoutable()
-        .addBlur(style: .regular)
+        .addBlur(style: .light, intensity: 0.25)
         .setAlpha(0)
     
     private let loadingIndicator = UIActivityIndicatorView(style: .large)

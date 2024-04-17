@@ -10,7 +10,7 @@ import UIKit
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
-    private lazy var dependencyManager = DependencyManager()
+    private lazy var dependencyManager = DependencyManager.shared
     private var appRouter: AppRouter?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

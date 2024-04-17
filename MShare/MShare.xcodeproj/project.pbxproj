@@ -164,6 +164,7 @@
 		F7E5259629C6135C005E0A95 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */; };
 		F7E775E42BCFDE900034C601 /* HorizontalActionMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775E32BCFDE900034C601 /* HorizontalActionMenuDelegate.swift */; };
 		F7E775E62BCFDEA10034C601 /* HorizontalMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775E52BCFDEA10034C601 /* HorizontalMenuAction.swift */; };
+		F7E775E92BCFE13F0034C601 /* IntensityVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775E82BCFE13F0034C601 /* IntensityVisualEffectView.swift */; };
 		F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */; };
 		F7F5E5142AD8664D0063580C /* AlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */; };
 		F7F5E5162AD866700063580C /* AlertPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E5152AD866700063580C /* AlertPosition.swift */; };
@@ -353,6 +354,7 @@
 		F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F7E775E32BCFDE900034C601 /* HorizontalActionMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuDelegate.swift; sourceTree = "<group>"; };
 		F7E775E52BCFDEA10034C601 /* HorizontalMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMenuAction.swift; sourceTree = "<group>"; };
+		F7E775E82BCFE13F0034C601 /* IntensityVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityVisualEffectView.swift; sourceTree = "<group>"; };
 		F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponse.swift; sourceTree = "<group>"; };
 		F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfiguration.swift; sourceTree = "<group>"; };
 		F7F5E5152AD866700063580C /* AlertPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPosition.swift; sourceTree = "<group>"; };
@@ -648,9 +650,9 @@
 				F7C2B83429A1321100569C5B /* Theme */,
 				F774B94A2891B31E00438A37 /* Components */,
 				F790283328931E9E0058CC19 /* Extensions */,
+				F7E775E72BCFE1320034C601 /* Blurable */,
 				F774B94D2891B37A00438A37 /* ViewLayoutableProtocol.swift */,
 				F774B94F2891B3BB00438A37 /* Make.swift */,
-				F79ED12E28A82539009DFC96 /* Blurable.swift */,
 				F71412FD2915C60100D569E2 /* UserDefault.swift */,
 				F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */,
 				F73920172985896D00A773D7 /* UIStyleGuide.swift */,
@@ -933,6 +935,15 @@
 			path = HorizontalActionMenu;
 			sourceTree = "<group>";
 		};
+		F7E775E72BCFE1320034C601 /* Blurable */ = {
+			isa = PBXGroup;
+			children = (
+				F7E775E82BCFE13F0034C601 /* IntensityVisualEffectView.swift */,
+				F79ED12E28A82539009DFC96 /* Blurable.swift */,
+			);
+			path = Blurable;
+			sourceTree = "<group>";
+		};
 		F7F5E5172AD877320063580C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1172,6 +1183,7 @@
 				F7E775E62BCFDEA10034C601 /* HorizontalMenuAction.swift in Sources */,
 				F7C2B83A29A1332200569C5B /* AppTheme.swift in Sources */,
 				F7BB329929BA62F300219035 /* GetShareMedia.swift in Sources */,
+				F7E775E92BCFE13F0034C601 /* IntensityVisualEffectView.swift in Sources */,
 				F7BB329229BA560300219035 /* Endpoint.swift in Sources */,
 				F763689929EA820B00307B7C /* AppNavigationController.swift in Sources */,
 				F7C2B84329A13A2200569C5B /* Favorites.swift in Sources */,

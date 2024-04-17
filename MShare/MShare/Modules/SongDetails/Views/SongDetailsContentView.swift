@@ -47,7 +47,7 @@ final class SongDetailsContentView: ViewLayoutable {
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
-        .addClearBackgroundBlur(style: .regular)
+        .addBlur(style: .regular, intensity: 0.5)
     
     private(set) var coverViewContainer = ViewLayoutable()
         .maskToBounds(false)

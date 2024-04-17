@@ -15,8 +15,10 @@ final class Factory: FactoryProtocol {
     func mapDetailEntity(from mediaResponse: MediaResponse, withImage image: UIImage?) -> SongDetailsEntity? {
         switch mediaResponse.mediaType {
         case .song:
-            guard let song = mediaResponse.song else { return nil }
-            return .init(
+            guard let song = mediaResponse.song else {
+                return nil
+            }
+            return SongDetailsEntity(
                 songName: song.songName,
                 artistName: song.artistName,
                 image: image,
@@ -25,8 +27,10 @@ final class Factory: FactoryProtocol {
             )
             
         case .album:
-            guard let album = mediaResponse.album else { return nil }
-            return .init(
+            guard let album = mediaResponse.album else {
+                return nil
+            }
+            return SongDetailsEntity(
                 songName: album.albumName,
                 artistName: album.artistName,
                 image: image,

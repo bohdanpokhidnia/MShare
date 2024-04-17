@@ -299,3 +299,13 @@ extension SongDetailsView: DetailSongViewProtocol {
         }
     }
 }
+
+@available(iOS 17.0, *)
+#Preview {
+    SongDetailsRouter(
+        dependencyManager: DependencyManager.shared,
+        mediaResponse: .mock,
+        cover: .mockCover
+    )
+    .createModule()
+}

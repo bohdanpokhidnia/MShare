@@ -63,7 +63,9 @@ final class SongDetailsInteractor {
 
 extension SongDetailsInteractor: SongDetailsInteractorInputProtocol {
     func requestMedia() {
-        guard let entity = factory.mapDetailEntity(from: mediaResponse, withImage: cover) else { return }
+        guard let entity = factory.mapDetailEntity(from: mediaResponse, withImage: cover) else {
+            return
+        }
 
         presenter?.didLoadDetailMedia(entity)
     }

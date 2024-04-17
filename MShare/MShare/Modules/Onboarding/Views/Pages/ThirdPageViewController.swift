@@ -9,17 +9,17 @@ import UIKit
 import AVKit
 
 final class ThirdPageViewController: UIViewController {
-    
     enum PreviewVideo: String {
         case appleMusic = "appleMusicExample"
         
         var url: URL {
             let resourceName = self.rawValue
             let resourceType = self.type
-            guard let path = Bundle.main.path(forResource: resourceName, ofType: resourceType)
-            else { fatalError("video not found") }
-            
-            return URL(fileURLWithPath: path)
+            guard let path = Bundle.main.path(forResource: resourceName, ofType: resourceType) else {
+                fatalError("video not found")
+            }
+            let url = URL(fileURLWithPath: path)
+            return url
         }
         
         var type: String {
@@ -32,10 +32,10 @@ final class ThirdPageViewController: UIViewController {
     
     // MARK: - UI
     
-    let bluredView = ViewLayoutable()
-        .addBlur(style: .dark)
+    let bluredView = UIView()
+        .addBlur(style: .dark, intensity: 0.7)
     
-    private let contentView = ViewLayoutable()
+    private let contentView = UIView()
     
     private lazy var contentStackView = makeStackView(
         axis: .vertical,
@@ -45,7 +45,7 @@ final class ThirdPageViewController: UIViewController {
         titleLabel
     )
     
-    private let videoView = ViewLayoutable()
+    private let videoView = UIView()
     
     private let titleLabel = UILabel()
         .text("Easy share a link from your favorite music platform")
@@ -91,18 +91,18 @@ final class ThirdPageViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
 }
 
 // MARK: - Setup
 
 private extension ThirdPageViewController {
-    
     func setup() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didPlayingVideo),
-                                               name: .AVPlayerItemDidPlayToEndTime,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didPlayingVideo),
+            name: .AVPlayerItemDidPlayToEndTime,
+            object: nil
+        )
     }
     
     func setupViews() {
@@ -142,28 +142,23 @@ private extension ThirdPageViewController {
         playerLayer.frame = .init(origin: .zero, size: videoView.frame.size)
         videoView.layer.addSublayer(playerLayer)
     }
-    
 }
 
 // MARK: - User interactions
 
 private extension ThirdPageViewController {
-    
     @objc
     func didPlayingVideo() {
         playVideoFromStart()
     }
-    
 }
 
 // MARK: - Private Methods
 
 private extension ThirdPageViewController {
-    
     func playVideoFromStart() {
         player.seek(to: .zero)
         player.isMuted = true
         player.play()
     }
-    
 }

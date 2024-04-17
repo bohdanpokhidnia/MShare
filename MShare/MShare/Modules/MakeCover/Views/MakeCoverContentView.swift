@@ -14,7 +14,7 @@ final class MakeCoverContentView: ViewLayoutable {
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)
-        .addClearBackgroundBlur(style: .regular)
+//        .addClearBackgroundBlur(style: .regular)
     
     private let coverViewContainer = ViewLayoutable()
         .maskToBounds(false)
