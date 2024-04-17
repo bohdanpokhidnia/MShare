@@ -65,6 +65,10 @@ final class LinkContentView: ViewLayoutable {
     override func setup() {
         super.setup()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        self.tapGesture = tapGesture
+        
+        addGestureRecognizer(tapGesture)
         backgroundColor(color: .systemBackground)
     }
 
@@ -108,11 +112,17 @@ final class LinkContentView: ViewLayoutable {
     private var buttonCenterXconstrait: Constraint?
     private var buttonWidthConstraint: Constraint?
     private var buttonHeightConstraint: Constraint?
+    private var tapGesture: UITapGestureRecognizer?
 }
 
 // MARK: - User interactions
 
 private extension LinkContentView {
+    @objc
+    func didTap() {
+        endEditing(true)
+    }
+    
     @objc
     func didTapDoneButton() {
         tapCopyButtonAction()
