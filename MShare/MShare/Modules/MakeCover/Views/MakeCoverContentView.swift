@@ -72,7 +72,7 @@ final class MakeCoverContentView: ViewLayoutable {
 extension MakeCoverContentView {
     
     @discardableResult
-    func set(state: DetailSongEntity) -> Self {
+    func set(state: SongDetailsEntity) -> Self {
         backgroundImageView.setImage(state.image)
         coverView.set(state: state)
         return self

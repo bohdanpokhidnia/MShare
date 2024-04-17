@@ -52,11 +52,13 @@ extension FavoritesRouter: FavoritesRouterProtocol {
     }
     
     func presentDetailSongScreen(fromView view: FavoritesViewProtocol?, mediaResponse: MediaResponse, cover: UIImage) {
-        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover)
+        let viewController = view?.viewController
+        let tabBarController = viewController?.tabBarController
+        let songDetailsScreen = SongDetailsRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover)
             .createModule()
         
-        view?.viewController.tabBarController?.setTabBarHidden(true, animated: false) { [weak view] in
-            view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
+        tabBarController?.setTabBar(hidden: true, animated: false) {
+            viewController?.navigationController?.pushViewController(songDetailsScreen, animated: true)
         }
     }
 }

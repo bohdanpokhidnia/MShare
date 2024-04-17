@@ -1,5 +1,5 @@
 //
-//  DetailSongPresenter.swift
+//  SongDetailsPresenter.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 06.08.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol DetailSongPresenterProtocol: AnyObject {
+protocol SongDetailsPresenterProtocol: AnyObject {
     var view: DetailSongViewProtocol? { get set }
-    var interactor: DetailSongInteractorInputProtocol? { get set }
-    var router: DetailSongRouterProtocol? { get set }
+    var interactor: SongDetailsInteractorInputProtocol? { get set }
+    var router: SongDetailsRouterProtocol? { get set }
     
     func viewDidLoad()
     func didTapPop()
@@ -22,14 +22,14 @@ protocol DetailSongPresenterProtocol: AnyObject {
     func didTapMakeCover()
 }
 
-final class DetailSongPresenter: NSObject {
+final class SongDetailsPresenter: NSObject {
     weak var view: DetailSongViewProtocol?
-    var interactor: DetailSongInteractorInputProtocol?
-    var router: DetailSongRouterProtocol?
+    var interactor: SongDetailsInteractorInputProtocol?
+    var router: SongDetailsRouterProtocol?
     
     // MARK: - Initializers
     
-    init(view: DetailSongViewProtocol?, router: DetailSongRouterProtocol?) {
+    init(view: DetailSongViewProtocol?, router: SongDetailsRouterProtocol?) {
         self.view = view
         self.router = router
     }
@@ -51,7 +51,7 @@ final class DetailSongPresenter: NSObject {
 
 // MARK: - DetailSongPresenterProtocol
 
-extension DetailSongPresenter: DetailSongPresenterProtocol {
+extension SongDetailsPresenter: SongDetailsPresenterProtocol {
     func viewDidLoad() {
         interactor?.requestMedia()
         interactor?.hasMediaInDatabase()
@@ -93,18 +93,18 @@ extension DetailSongPresenter: DetailSongPresenterProtocol {
 
 // MARK: - DetailSongInteractorOutputProtocol
 
-extension DetailSongPresenter: DetailSongInteractorOutputProtocol {
-    func didLoadDetailMedia(_ detailMedia: DetailSongEntity) {
+extension SongDetailsPresenter: DetailSongInteractorOutputProtocol {
+    func didLoadDetailMedia(_ detailMedia: SongDetailsEntity) {
         var menuItems = [HorizontalActionMenuItem]()
         
         detailMedia.services.forEach { (service) in
             guard let action = HorizontalMenuAction(rawValue: service.type) else { return }
             menuItems.append(.init(horizontalMenuAction: action, available: service.isAvailable))
         }
+        
         menuItems += [
             .init(horizontalMenuAction: .shareCover, available: true),
             .init(horizontalMenuAction: .saveCover, available: true),
-            .init(horizontalMenuAction: .makeCover, available: true)
         ]
         
         view?.setupContent(withState: detailMedia, withHorizontalActionMenuItem: menuItems)

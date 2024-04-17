@@ -12,7 +12,6 @@ protocol MakeCoverRouterProtocol {
 }
 
 final class MakeCoverRouter: Router, MakeCoverRouterProtocol {
-    
     // MARK: - Initializers
     
     init(
@@ -49,5 +48,4 @@ final class MakeCoverRouter: Router, MakeCoverRouterProtocol {
     
     private let mediaResponse: MediaResponse
     private let cover: UIImage?
-    
 }

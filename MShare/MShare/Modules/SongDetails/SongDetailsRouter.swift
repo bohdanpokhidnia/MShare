@@ -7,15 +7,23 @@
 
 import UIKit
 
-protocol DetailSongRouterProtocol {
+protocol SongDetailsRouterProtocol {
     func pop(view: DetailSongViewProtocol?)
-    func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?)
-    func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?)
+    func shareUrl(
+        view: DetailSongViewProtocol?,
+        urlString: String,
+        completion: (() -> Void)?
+    )
+    func shareImage(
+        view: DetailSongViewProtocol?,
+        image: UIImage,
+        savedImage: (() -> Void)?,
+        completion: (() -> Void)?
+    )
     func pushMakeCover(view: DetailSongViewProtocol?)
 }
  
-final class DetailSongRouter: Router, DetailSongRouterProtocol {
-    
+final class SongDetailsRouter: Router {
     // MARK: - Initializers
     
     init(
@@ -34,9 +42,9 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         let apiClient = dependencyManager.resolve(type: ApiClient.self)
         let factory = dependencyManager.resolve(type: FactoryProtocol.self)
         
-        let view: DetailSongViewProtocol = DetailSongView()
-        let presenter: DetailSongPresenterProtocol & DetailSongInteractorOutputProtocol = DetailSongPresenter(view: view, router: self)
-        let interactor: DetailSongInteractorInputProtocol = DetailSongInteractor(
+        let view: DetailSongViewProtocol = SongDetailsView()
+        let presenter: SongDetailsPresenterProtocol & DetailSongInteractorOutputProtocol = SongDetailsPresenter(view: view, router: self)
+        let interactor: SongDetailsInteractorInputProtocol = SongDetailsInteractor(
             presenter: presenter,
             databaseManager: databaseManager,
             apiClient: apiClient,
@@ -50,6 +58,15 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         return view.viewController
     }
     
+    // MARK: - Private
+    
+    private let mediaResponse: MediaResponse
+    private let cover: UIImage
+}
+
+//MARK: - SongDetailsRouterProtocol
+
+extension SongDetailsRouter: SongDetailsRouterProtocol {
     func pop(view: DetailSongViewProtocol?) {
         view?.viewController.navigationController?.popViewController(animated: true)
     }
@@ -96,10 +113,4 @@ final class DetailSongRouter: Router, DetailSongRouterProtocol {
         
         view?.viewController.navigationController?.pushViewController(makeCover, animated: true)
     }
-    
-    // MARK: - Private
-    
-    private let mediaResponse: MediaResponse
-    private let cover: UIImage
-    
 }

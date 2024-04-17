@@ -41,6 +41,7 @@ final class LinkView: ViewController<LinkContentView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.setTabBar(hidden: false, animated: false)
         presenter?.viewWillAppear()
     }
     

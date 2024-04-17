@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITableView {
-    
     @discardableResult
     func register<T: UITableViewCell>(nib cell: T.Type) -> Self {
         let className = String(describing: cell)
@@ -52,5 +51,4 @@ extension UITableView {
         let cell = cellForRow(at: indexPath) as! T
         return cell
     }
-    
 }

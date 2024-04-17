@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LinkRouterProtocol {
-    func presentDetailSongScreen(
+    func presentSongDetailsScreen(
         from view: LinkViewProtocol?,
         mediaResponse: MediaResponse,
         cover: UIImage,
@@ -16,8 +16,7 @@ protocol LinkRouterProtocol {
     )
 }
 
-final class LinkRouter: Router, LinkRouterProtocol {
-    
+final class LinkRouter: Router {
     // MARK: - Override methods
     
     override func createModule() -> UIViewController {
@@ -35,18 +34,25 @@ final class LinkRouter: Router, LinkRouterProtocol {
         return navigationController
     }
     
-    func presentDetailSongScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
-        let detailSongScreen = DetailSongRouter(dependencyManager: dependencyManager, mediaResponse: mediaResponse, cover: cover)
-            .createModule()
+    // MARK: - Private
+    
+    private let delegate = AppNavigationControllerDelegate()
+}
+
+//MARK: - LinkRouterProtocol
+
+extension LinkRouter: LinkRouterProtocol {
+    func presentSongDetailsScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
+        let detailSongScreen = SongDetailsRouter(
+            dependencyManager: dependencyManager,
+            mediaResponse: mediaResponse,
+            cover: cover
+        )
+        .createModule()
         
-        view?.viewController.tabBarController?.setTabBarHidden(true, animated: false) { [weak view] in
+        view?.viewController.tabBarController?.setTabBar(hidden: true, animated: false) { [weak view] in
             view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
             completion?()
         }
     }
-    
-    // MARK: - Private
-    
-    private let delegate = AppNavigationControllerDelegate()
-    
 }

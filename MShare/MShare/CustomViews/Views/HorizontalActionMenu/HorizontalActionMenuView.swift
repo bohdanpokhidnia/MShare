@@ -8,69 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol HorizontalActionMenuDelegate: AnyObject {
-    func didTapActionItem(
-        _ horizontalActionMenuView: HorizontalActionMenuView,
-        action: HorizontalMenuAction,
-        available: Bool,
-        didSelectItemAt indexPath: IndexPath
-    )
-}
-
-enum HorizontalMenuAction: String, CaseIterable {
-    case shareAppleMusicLink = "AppleMusic"
-    case shareSpotifyLink = "Spotify"
-    case shareYouTubeMusicLink = "YoutubeMusic"
-    case shareCover
-    case saveCover
-    case makeCover
-    
-    var image: UIImage? {
-        switch self {
-        case .shareAppleMusicLink:
-            return UIImage(named: "appleMusicLogo")
-            
-        case .shareSpotifyLink:
-            return UIImage(named: "spotifyLogo")
-            
-        case .shareYouTubeMusicLink:
-            return UIImage(named: "youtubeMusicLogo")
-            
-        case .shareCover:
-            return UIImage(named: "coverShareIcon")
-            
-        case .saveCover:
-            return UIImage(named: "saveCoverIcon")
-            
-        case .makeCover:
-            return nil
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .shareAppleMusicLink:
-            return "Apple Music"
-            
-        case .shareSpotifyLink:
-            return "Spotify"
-            
-        case .shareYouTubeMusicLink:
-            return "YouTube Music"
-            
-        case .shareCover:
-            return "Share cover"
-            
-        case .saveCover:
-            return "Save cover"
-            
-        case .makeCover:
-            return "Make cover"
-        }
-    }
-    
-}
-
 final class HorizontalActionMenuView: ViewLayoutable {
     weak var delegare: HorizontalActionMenuDelegate?
     
@@ -165,9 +102,10 @@ extension HorizontalActionMenuView {
 
 private extension HorizontalActionMenuView {
     func changeAnimationActionMenu(by indexPath: IndexPath?, animationStyle: HorizontalActionAnimationType) {
-        guard let indexPath = indexPath,
-              let cell = collectionView.cellForItem(at: indexPath) as? HorizontalActionMenuViewCell
-        else { return }
+        guard let indexPath = indexPath else {
+            return
+        }
+        let cell = collectionView.cellForItem(HorizontalActionMenuViewCell.self, at: indexPath)
         
         cell.set(style: animationStyle)
     }

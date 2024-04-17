@@ -10,7 +10,7 @@ import UIKit
 final class FavoritesContentView: ViewLayoutable {
     // MARK: - UI
     
-    private(set) lazy var favotitesTableView = TableView(style: .grouped)
+    private(set) lazy var favotitesTableView = TableView(style: .plain)
         .register(class: MediaTableViewCell.self)
         .setRowHeight(80)
         .backgroundColor(color: .clear)

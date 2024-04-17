@@ -73,13 +73,14 @@ final class FavoritesView: ViewController<FavoritesContentView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.setTabBar(hidden: false, animated: false)
+        
         presenter?.viewWillAppear()
     }
     
     // MARK: - Private
     
     private var selectedItem: IndexPath?
-
 }
 
 // MARK: - Setup
@@ -165,8 +166,8 @@ extension FavoritesView: TransitionProtocol {
         let coverImage = cell.iconImageView
         let title = cell.titleLabel
         let subtitle = cell.subtitileLabel
-        
-        return [coverImage, title, subtitle]
+        let views = [coverImage, title, subtitle]
+        return views
     }
     
     func copyForView(_ subView: UIView) -> UIView {

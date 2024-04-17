@@ -39,7 +39,6 @@ class MoveElementsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         assert(fromViews.count == toViews.count, "Number of elements in fromViews and toViews have to be the same.")
         
         var intermediateViews = [UIView]()
-        
         var toFrames = [CGRect]()
         
         for i in 0..<fromViews.count {

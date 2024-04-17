@@ -8,7 +8,6 @@
 import UIKit
 
 extension UICollectionView {
-    
     func register<T: UICollectionViewCell>(class cell: T.Type) {
         let className = String(describing: cell)
         register(cell, forCellWithReuseIdentifier: className)
@@ -32,4 +31,8 @@ extension UICollectionView {
         return self
     }
     
+    func cellForItem<T: UICollectionViewCell>(_ cellType: T.Type, at indexPath: IndexPath) -> T {
+        let cell = cellForItem(at: indexPath) as! T
+        return cell
+    }
 }

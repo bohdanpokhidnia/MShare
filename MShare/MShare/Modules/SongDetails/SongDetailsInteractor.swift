@@ -1,5 +1,5 @@
 //
-//  DetailSongInteractor.swift
+//  SongDetailsInteractor.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 06.08.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-protocol DetailSongInteractorInputProtocol {
+protocol SongDetailsInteractorInputProtocol {
     var presenter: DetailSongInteractorOutputProtocol? { get set }
     
     func requestMedia()
@@ -20,7 +20,7 @@ protocol DetailSongInteractorInputProtocol {
 }
 
 protocol DetailSongInteractorOutputProtocol: AnyObject {
-    func didLoadDetailMedia(_ detailMedia: DetailSongEntity)
+    func didLoadDetailMedia(_ detailMedia: SongDetailsEntity)
     func didLoadShareMedia(_ shareMedia: ShareMediaResponse)
     func didCatchError(_ error: NetworkError)
     func hasMediaInDatabase(_ isSaved: Bool)
@@ -29,7 +29,7 @@ protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didDeleteFromDatabase()
 }
 
-final class DetailSongInteractor {
+final class SongDetailsInteractor {
     weak var presenter: DetailSongInteractorOutputProtocol?
     
     // MARK: - Initializers
@@ -59,10 +59,9 @@ final class DetailSongInteractor {
     private let cover: UIImage
 }
 
-// MARK: - DetailSongInteractorInputProtocol
+// MARK: - SongDetailsInteractorInputProtocol
 
-extension DetailSongInteractor: DetailSongInteractorInputProtocol {
-    
+extension SongDetailsInteractor: SongDetailsInteractorInputProtocol {
     func requestMedia() {
         guard let entity = factory.mapDetailEntity(from: mediaResponse, withImage: cover) else { return }
 
@@ -169,5 +168,4 @@ extension DetailSongInteractor: DetailSongInteractorInputProtocol {
         
         presenter?.didRequestedAccessToGallery(image)
     }
-    
 }

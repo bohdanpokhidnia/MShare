@@ -12,7 +12,7 @@ protocol OnboardingRouterProtocol {
     func presentSignInScreen(in viewController: OnboardingViewProtocol?)
 }
 
-final class OnboardingRouter: Router, OnboardingRouterProtocol {
+final class OnboardingRouter: Router {
     override func createModule() -> UIViewController {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
@@ -27,7 +27,11 @@ final class OnboardingRouter: Router, OnboardingRouterProtocol {
         presenter.interactor = interactor
         return view.viewController
     }
-    
+}
+
+//MARK: - OnboardingRouterProtocol
+
+extension OnboardingRouter: OnboardingRouterProtocol {
     func loadMain() {
         appRouter?.loadMain()
     }

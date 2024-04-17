@@ -42,7 +42,6 @@ final class CoverView: ViewLayoutable {
     
     private lazy var contentStackView = makeStackView(
         .vertical,
-        alignment: .center,
         spacing: 8
     )(
         coverImageView,
@@ -67,6 +66,9 @@ final class CoverView: ViewLayoutable {
         .textColor(.white)
         .set(numberOfLines: 2)
         .adjustsFontSizeToFitWidth(true)
+        .make {
+            $0.minimumScaleFactor = 0.2
+        }
     
     private(set) var artistNameLabel = UILabel()
         .text(font: .systemFont(ofSize: 20, weight: .regular))
@@ -74,6 +76,9 @@ final class CoverView: ViewLayoutable {
         .textColor(UIColor(hex: "#f0f0f0"))
         .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
+        .make {
+            $0.minimumScaleFactor = 0.2
+        }
     
     // MARK: - Lifecycle
     
@@ -136,7 +141,7 @@ private extension CoverView {
 
 extension CoverView {
     @discardableResult
-    func set(state: DetailSongEntity) -> Self {
+    func set(state: SongDetailsEntity) -> Self {
         coverImageView.setImage(state.image)
         songNameLabel.text(state.songName)
         artistNameLabel.text(state.artistName)
@@ -147,5 +152,11 @@ extension CoverView {
 @available(iOS 17.0, *)
 #Preview {
     CoverView()
-        .set(state: .init(songName: "Test", artistName: "Artist name", image: .mockCover, sourceURL: "", services: []))
+        .set(state: .init(
+            songName: "Test Test Test Test Test Test Test Test Test Test Test Test Test",
+            artistName: "Artist name",
+            image: .mockCover,
+            sourceURL: "",
+            services: []
+        ))
 }

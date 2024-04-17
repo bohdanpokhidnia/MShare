@@ -8,11 +8,11 @@
 import UIKit
 
 protocol FactoryProtocol {
-    func mapDetailEntity(from mediaResponse: MediaResponse, withImage image: UIImage?) -> DetailSongEntity?
+    func mapDetailEntity(from mediaResponse: MediaResponse, withImage image: UIImage?) -> SongDetailsEntity?
 }
 
 final class Factory: FactoryProtocol {
-    func mapDetailEntity(from mediaResponse: MediaResponse, withImage image: UIImage?) -> DetailSongEntity? {
+    func mapDetailEntity(from mediaResponse: MediaResponse, withImage image: UIImage?) -> SongDetailsEntity? {
         switch mediaResponse.mediaType {
         case .song:
             guard let song = mediaResponse.song else { return nil }

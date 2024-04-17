@@ -123,7 +123,7 @@ extension LinkPresenter: LinkInteractorOutputProtocol {
         
         view?.endEditing()
         
-        router?.presentDetailSongScreen(from: view, mediaResponse: mediaResponse, cover: cover) { [weak view] in
+        router?.presentSongDetailsScreen(from: view, mediaResponse: mediaResponse, cover: cover) { [weak view] in
             view?.cleaningLinkTextField()
             view?.hideLoading(completion: nil)
         }

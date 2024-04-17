@@ -31,19 +31,15 @@ final class MakeCoverPresenter {
 // MARK: - MakeCoverPresenterProtocol
 
 extension MakeCoverPresenter: MakeCoverPresenterProtocol {
-    
     func viewDidLoad() {
         interactor?.requestData()
     }
-    
 }
 
 // MARK: - MakeCoverInteractorOutputProtocol
 
 extension MakeCoverPresenter: MakeCoverInteractorOutputProtocol {
-    
-    func didLoadData(entity: DetailSongEntity) {
+    func didLoadData(entity: SongDetailsEntity) {
         view?.setupContent(from: entity)
     }
-    
 }

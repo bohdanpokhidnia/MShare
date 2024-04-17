@@ -19,16 +19,16 @@ class AppNavigationControllerDelegate: NSObject, UINavigationControllerDelegate 
         var transition: UIViewControllerAnimatedTransitioning?
         
         switch (fromVC, toVC) {
-        case (is FavoritesView, is DetailSongView):
+        case (is FavoritesView, is SongDetailsView):
             transition = FromBottomPushTransition(operation: .push)
         
-        case (is DetailSongView, is FavoritesView):
+        case (is SongDetailsView, is FavoritesView):
             transition = FromBottomPushTransition(operation: .pop)
             
-        case (is LinkView, is DetailSongView):
+        case (is LinkView, is SongDetailsView):
             transition = BottomPushTransition()
             
-        case (is DetailSongView, is LinkView):
+        case (is SongDetailsView, is LinkView):
             transition = BottomPopTransition()
             
         default:

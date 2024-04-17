@@ -16,7 +16,7 @@ protocol SettingsRouterProtocol {
     func loadOnboarding()
 }
 
-final class SettingsRouter: Router, SettingsRouterProtocol {
+final class SettingsRouter: Router {
     override func createModule() -> UIViewController {
         let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
@@ -33,7 +33,11 @@ final class SettingsRouter: Router, SettingsRouterProtocol {
         let navigationController = AppNavigationController(rootViewController: view.viewController)
         return navigationController
     }
-    
+}
+
+//MARK: - SettingsRouterProtocol
+
+extension SettingsRouter: SettingsRouterProtocol {
     func pushAboutUsScreen(from view: SettingsViewProtocol?) {
         let aboutUs = AboutUsView()
             .make { $0.hidesBottomBarWhenPushed = true }

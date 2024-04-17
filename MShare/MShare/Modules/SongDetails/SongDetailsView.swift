@@ -8,11 +8,11 @@
 import UIKit
 
 protocol DetailSongViewProtocol: AnyObject {
-    var presenter: DetailSongPresenterProtocol? { get set }
+    var presenter: SongDetailsPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     var shortToastPositionY: CGFloat { get }
     
-    func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem])
+    func setupContent(withState state: SongDetailsEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem])
     func setFavoriteStatus(_ isSaved: Bool)
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?)
     func showCopiedToast()
@@ -24,8 +24,8 @@ protocol DetailSongViewProtocol: AnyObject {
     func stopLoadingAnimation()
 }
 
-final class DetailSongView: ViewController<DetailSongContentView> {
-    var presenter: DetailSongPresenterProtocol?
+final class SongDetailsView: ViewController<SongDetailsContentView> {
+    var presenter: SongDetailsPresenterProtocol?
     var viewController: UIViewController { self }
     var shortToastPositionY: CGFloat { contentView.shortToastPositionY }
     
@@ -47,12 +47,6 @@ final class DetailSongView: ViewController<DetailSongContentView> {
         navigationControllerDelegate = navigationController?.delegate as? AppNavigationControllerDelegate
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        tabBarController?.setTabBarHidden(false, animated: false)
-    }
-    
     // MARK: - Private
     
     private var startY: CGFloat = 0
@@ -62,7 +56,7 @@ final class DetailSongView: ViewController<DetailSongContentView> {
 
 // MARK: - Setup
 
-private extension DetailSongView {
+private extension SongDetailsView {
     func setupNavigationBar() {
         title = "Share"
         navigationItem.largeTitleDisplayMode = .never
@@ -84,7 +78,7 @@ private extension DetailSongView {
 
 // MARK: - User interactions
 
-private extension DetailSongView {
+private extension SongDetailsView {
     @objc
     func didTapCloseBarButton() {
         presenter?.didTapPop()
@@ -130,7 +124,7 @@ private extension DetailSongView {
 
 // MARK: - HorizontalActionMenuDelegate
 
-extension DetailSongView: HorizontalActionMenuDelegate {
+extension SongDetailsView: HorizontalActionMenuDelegate {
     func didTapActionItem(
         _ horizontalActionMenuView: HorizontalActionMenuView,
         action: HorizontalMenuAction,
@@ -150,25 +144,25 @@ extension DetailSongView: HorizontalActionMenuDelegate {
             stopLoadingAnimation()
             
         case .shareCover:
-            guard let coverImage = contentView.makeImage() else { return }
+            guard let coverImage = contentView.makeImage() else {
+                return
+            }
 
             presenter?.shareCover(cover: coverImage)
             
         case .saveCover:
-            guard let cover = contentView.cover else { return }
+            guard let cover = contentView.cover else {
+                return
+            }
             
             presenter?.saveCover(cover: cover)
-            
-        case .makeCover:
-            presenter?.didTapMakeCover()
-            stopLoadingAnimation()
         }
     }
 }
 
 //MARK: - TransitionProtocol
 
-extension DetailSongView: TransitionProtocol {
+extension SongDetailsView: TransitionProtocol {
     var transitionView: UIView {
        return contentView
     }
@@ -249,8 +243,8 @@ extension DetailSongView: TransitionProtocol {
 
 // MARK: - DetailSongViewProtocol
 
-extension DetailSongView: DetailSongViewProtocol {
-    func setupContent(withState state: DetailSongEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem]) {
+extension SongDetailsView: DetailSongViewProtocol {
+    func setupContent(withState state: SongDetailsEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem]) {
         contentView
             .set(state: state)
             .make {

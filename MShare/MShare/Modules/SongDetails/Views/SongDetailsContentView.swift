@@ -1,5 +1,5 @@
 //
-//  DetailSongContentView.swift
+//  SongDetailsContentView.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 06.08.2022.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import NotificationToast
 
-final class DetailSongContentView: ViewLayoutable {
+final class SongDetailsContentView: ViewLayoutable {
     var cover: UIImage? {
         return coverView.coverImageView.image
     }
@@ -113,9 +113,9 @@ final class DetailSongContentView: ViewLayoutable {
 
 // MARK: - Set
 
-extension DetailSongContentView {
+extension SongDetailsContentView {
     @discardableResult
-    func set(state: DetailSongEntity) -> Self {
+    func set(state: SongDetailsEntity) -> Self {
         backgroundImageView.setImage(state.image)
         coverView.set(state: state)
         return self

@@ -46,7 +46,7 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
         var intermediateViews = [UIView]()
         var toFrames = [CGRect]()
         
-        for i in 0..<fromViews.count {
+        for i in 0 ..< fromViews.count {
             let fromView = fromViews[i]
             let fromFrame = fromView.superview!.convert(fromView.frame, to: nil)
             fromView.alpha = 0
@@ -80,7 +80,9 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
             let resizableTransition = toResizableTransitions[i]
             let resizableView = resizableTransition.view
             
-            guard let intermediateView = toResizableSource.copyViewForResizableView?(resizableView) else { continue }
+            guard let intermediateView = toResizableSource.copyViewForResizableView?(resizableView) else {
+                continue
+            }
             intermediateView.frame = isPush ? fromResizableTransitions[i].from : resizableTransition.to
             containerView.insertSubview(intermediateView, at: 2)
             resizableIntermediateViews.append(intermediateView)
@@ -114,7 +116,7 @@ class FromBottomPushTransition: NSObject, UIViewControllerAnimatedTransitioning 
                     customIntermediateView.bounds = resizableToFrames[i]
                 }
             }
-        }) { (_) -> Void in
+        }) { _ in
             for i in 0..<intermediateViews.count {
                 intermediateViews[i].removeFromSuperview()
                 

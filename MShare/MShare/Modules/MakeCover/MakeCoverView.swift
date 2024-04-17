@@ -11,7 +11,7 @@ protocol MakeCoverViewProtocol: AnyObject {
     var presenter: MakeCoverPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
-    func setupContent(from enitiy: DetailSongEntity)
+    func setupContent(from enitiy: SongDetailsEntity)
 }
 
 final class MakeCoverView: ViewController<MakeCoverContentView> {
@@ -36,7 +36,7 @@ final class MakeCoverView: ViewController<MakeCoverContentView> {
 
 extension MakeCoverView: MakeCoverViewProtocol {
     
-    func setupContent(from enitiy: DetailSongEntity) {
+    func setupContent(from enitiy: SongDetailsEntity) {
         contentView.set(state: enitiy)
     }
     

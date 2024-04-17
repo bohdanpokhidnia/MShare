@@ -14,7 +14,7 @@ protocol MakeCoverInteractorIntputProtocol {
 }
 
 protocol MakeCoverInteractorOutputProtocol: AnyObject {
-    func didLoadData(entity: DetailSongEntity)
+    func didLoadData(entity: SongDetailsEntity)
 }
 
 final class MakeCoverInteractor {
