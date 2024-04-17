@@ -80,7 +80,6 @@ extension Button {
     @discardableResult
     func setImage(_ image: UIImage?, forState state: UIControl.State = .normal) -> Self {
         setImage(image, for: state)
-        
         return self
     }
     
@@ -114,10 +113,9 @@ extension Button {
     }
     
     @discardableResult
-    func set(startPoint: GradientPoint, endPoint: GradientPoint) -> Self {
+    func set(startPoint: GradientDirection, endPoint: GradientDirection) -> Self {
         gradientLayer.startPoint = startPoint.point
         gradientLayer.endPoint = endPoint.point
-        
         return self
     }
 }

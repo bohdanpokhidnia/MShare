@@ -1,13 +1,13 @@
 //
-//  GradientView.swift
+//  GradientDirection.swift
 //  MShare
 //
-//  Created by Bohdan Pokhidnia on 17.08.2022.
+//  Created by Bohdan Pokhidnia on 17.04.2024.
 //
 
-import UIKit
+import Foundation
 
-enum GradientPoint {
+enum GradientDirection {
     case topLeading
     case leading
     case bottomLeading
@@ -50,40 +50,24 @@ enum GradientPoint {
     }
 }
 
-final class GradientView: ViewLayoutable {
-    // MARK: - Override property
-    
-    override var bounds: CGRect {
-        didSet { gradientLayer.frame = bounds }
-    }
-    
-    // MARK: - Private
-    
-    private var colors = [CGColor]()
-    
-    private lazy var gradientLayer = CAGradientLayer()
-        .make {
-            $0.colors = colors
-            $0.zPosition = -1000
-            
-            layer.insertSublayer($0, at: 0)
+extension GradientDirection {
+    func point(for size: CGSize, flipped: Bool = false) -> CGPoint {
+        var point: CGPoint = switch self {
+        case .topLeading: CGPoint(x: 0, y: 0)
+        case .leading: CGPoint(x: 0, y: size.height / 2)
+        case .bottomLeading: CGPoint(x: 0, y: size.height)
+        case .top: CGPoint(x: size.width / 2, y: 0)
+        case .center: CGPoint(x: size.width / 2, y: size.height / 2)
+        case .bottom: CGPoint(x: size.width / 2, y: size.height)
+        case .topTrailing: CGPoint(x: size.width, y: 0)
+        case .trailing: CGPoint(x: size.width, y: size.height / 2)
+        case .bottomTrailing: CGPoint(x: size.width, y: size.height)
         }
-}
-
-// MARK: - Set
-
-extension GradientView {
-    @discardableResult
-    func set(colors: [UIColor]) -> Self {
-        self.colors = colors.map { $0.cgColor }
-        return self
-    }
-    
-    @discardableResult
-    func set(startPoint: GradientPoint, endPoint: GradientPoint) -> Self {
-        gradientLayer.startPoint = startPoint.point
-        gradientLayer.endPoint = endPoint.point
         
-        return self
+        if flipped {
+            point.y = size.height - point.y
+        }
+        
+        return point
     }
 }

@@ -28,5 +28,13 @@ struct MainEntity {
             case .settings: UIImage(systemName: "gear")
             }
         }
+        
+        var selectedIcon: UIImage? {
+            switch self {
+            case .favorites: UIImage(systemName: "heart.fill")
+            case .link: icon
+            case .settings: icon
+            }
+        }
     }
 }

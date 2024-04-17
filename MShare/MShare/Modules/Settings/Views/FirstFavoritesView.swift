@@ -12,7 +12,6 @@ protocol FirstFavoritesDelegate: AnyObject {
 }
 
 final class FirstFavoritesView: UIViewController {
-    
     weak var delegate: FirstFavoritesDelegate?
     
     var favoriteSectionIndex: Int = 0 {
@@ -44,13 +43,11 @@ final class FirstFavoritesView: UIViewController {
     // MARK: - Private
     
     private var selectedIndexPath = IndexPath(row: 0, section: 0)
-    
 }
 
 // MARK: - Setup
 
 private extension FirstFavoritesView {
-    
     func setupNavigationBar() {
         title = "First Favorites"
         
@@ -66,13 +63,11 @@ private extension FirstFavoritesView {
             $0.edges.equalToSuperview()
         }
     }
-    
 }
 
 // MARK: - UITableViewDataSource
 
 extension FirstFavoritesView: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -99,7 +94,6 @@ extension FirstFavoritesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return "This category will display like first in favorites"
     }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -113,7 +107,6 @@ extension FirstFavoritesView: UITableViewDelegate {
         
         cell?.accessoryType = .checkmark
         selectedIndexPath = indexPath
-//        userManager.favoriteFirstSection = indexPath.row
         delegate?.didSelectFavoritesSection(indexPath.row)
         tableView.reloadData()
     }

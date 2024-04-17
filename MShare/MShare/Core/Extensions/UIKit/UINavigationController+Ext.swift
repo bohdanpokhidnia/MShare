@@ -21,6 +21,32 @@ extension UINavigationController {
         pushViewController(viewController, animated: animated)
         completionHelper(for: completion)
     }
+    
+    enum NavigationBarStyle {
+        case `default`
+        case opaque
+        case transparent
+    }
+    
+    func configure(style: NavigationBarStyle) {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        
+        switch style {
+        case .default:
+            navigationBarAppearance.configureWithDefaultBackground()
+            
+        case .opaque:
+            navigationBarAppearance.configureWithOpaqueBackground()
+            
+        case .transparent:
+            navigationBarAppearance.configureWithTransparentBackground()
+        }
+        
+        navigationBarAppearance.shadowImage = UIImage()
+        navigationBarAppearance.shadowColor = nil
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+    }
 }
 
 private extension UINavigationController {

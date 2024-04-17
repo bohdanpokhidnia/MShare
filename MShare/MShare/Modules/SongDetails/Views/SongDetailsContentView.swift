@@ -21,6 +21,16 @@ final class SongDetailsContentView: ViewLayoutable {
     
     // MARK: - UI
     
+    let gradientTitleLabel = GradientLabel(
+        colors: [.appPink, .appPink, .appBlue, .appBlue],
+        start: .topLeading,
+        end: .bottomTrailing
+    )
+    .make {
+        $0.text = "Share"
+        $0.font = .systemFont(ofSize: 24, weight: .semibold)
+    }
+    
     private(set) var copiedToast = ToastView(
         title: "Cover copied",
         titleFont: .systemFont(ofSize: 13, weight: .regular),

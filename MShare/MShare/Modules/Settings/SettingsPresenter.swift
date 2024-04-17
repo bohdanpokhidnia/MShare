@@ -44,7 +44,6 @@ final class SettingsPresenter {
 // MARK: - SettingsPresenterProtocol
 
 extension SettingsPresenter: SettingsPresenterProtocol {
-    
     func viewDidLoad() {
         interactor?.makeSettinsSections()
     }
@@ -96,13 +95,11 @@ extension SettingsPresenter: SettingsPresenterProtocol {
     func didSelectFavoriteSection(_ sectionIndex: Int) {
         interactor?.saveFavoritesSectionIndex(sectionIndex)
     }
-    
 }
 
 // MARK: - SettingsInteractorOutputProtocol
 
 extension SettingsPresenter: SettingsInteractorOutputProtocol {
-    
     func didCatchSettingsSections(_ settingsSection: [SettingsSection]) {
         self.settingsSections.removeAll()
         self.settingsSections = settingsSection
@@ -115,48 +112,47 @@ extension SettingsPresenter: SettingsInteractorOutputProtocol {
     func didShowOnboarding() {
         router?.loadOnboarding()
     }
-    
 }
 
 // MARK: - Make settings entity
 
 private extension SettingsPresenter {
-    
     func makeSettingsEntity(settingsItem: SettingsItem) -> SettingsEntity {
         switch settingsItem {
-        case .firstFavorites:
-            return .init(
+        case .firstFavorites: 
+            SettingsEntity(
                 title: "First Favorites",
-                image: UIImage(named: "hearth"),
+                image: .heart,
                 accesoryType: .disclosureIndicator
             )
             
         case .accessToGallery:
-            return .init(
+            SettingsEntity(
                 title: "Access to gallery",
                 image:  UIImage(systemName: "photo.on.rectangle.angled"),
                 accesoryType: .disclosureIndicator
             )
             
         case .aboutUs:
-            return .init(title: "About Us",
-                         image: UIImage(named: "group"),
-                         accesoryType: .disclosureIndicator)
+            SettingsEntity(
+                title: "About Us",
+                image: .group,
+                accesoryType: .disclosureIndicator
+            )
             
         case .privacyPolicyAndTerms:
-            return .init(
+            SettingsEntity(
                 title: "Privacy Policy & Terms",
-                image: UIImage(named: "privacyPolicy"),
+                image: .privacyPolicy,
                 accesoryType: .disclosureIndicator
             )
             
         case .versionApp(let versionAppString):
-            return .init(
+            SettingsEntity(
                 title: "Version: \(versionAppString)",
                 image: UIImage(named: "AppIcon"),
                 accesoryType: UITableViewCell.AccessoryType.none
             )
         }
     }
-    
 }

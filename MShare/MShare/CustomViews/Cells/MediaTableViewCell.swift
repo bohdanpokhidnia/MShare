@@ -78,19 +78,29 @@ final class MediaTableViewCell: TableViewCell {
         .set(numberOfLines: 1)
         .adjustsFontSizeToFitWidth(true)
     
-    private let shareButton = Button(type: .system)
-        .setImage(UIImage(systemName: "square.and.arrow.up"))
+    private let shareImage = UIImage(systemName: "square.and.arrow.up")?
+        .resizeImage(newWidth: 24)?
+        .applyGradient(colors: [.appPink, .appBlue], start: .topLeading, end: .bottomTrailing)
+    
+    private let shareButton = Button()
     
     // MARK: - Lifecycle
     
     override func setup() {
         super.setup()
         
-        shareButton.onTap { [weak self] in
-            guard let indexPath = self?.cellIndexPath else { return }
-            
-            self?.delegate?.didTapShareButton(indexPath)
-        }
+        shareButton
+            .setImage(shareImage)
+            .onTap { [weak self] in
+                guard let indexPath = self?.cellIndexPath else {
+                    return
+                }
+                
+                self?.delegate?.didTapShareButton(indexPath)
+            }
+            .make {
+                $0.imageView?.setContentMode(.scaleAspectFit)
+            }
     }
     
     override func setupSubviews() {
@@ -188,4 +198,10 @@ extension MediaTableViewCell {
         delegate = mediaItemDelegate
         return self
     }
+}
+
+@available(iOS 17.0, *)
+#Preview {
+    MediaTableViewCell()
+        .set(state: .init(title: "Test", displayShareButton: true))
 }

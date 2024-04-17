@@ -58,12 +58,15 @@ final class HorizontalActionMenuViewCell: CollectionViewCell {
         .maskToBounds(true)
     
     private let actionTitleLabel = Label()
-        .text(alignment: .center)
-        .text(font: UIFont.systemFont(ofSize: 18, weight: .medium))
-        .textColor(.white)
-        .set(characterSpacing: 1.1)
-        .set(numberOfLines: 1)
-        .adjustsFontSizeToFitWidth(true)
+    .text(alignment: .center)
+    .text(font: UIFont.systemFont(ofSize: 18, weight: .medium))
+    .textColor(.white)
+    .set(characterSpacing: 1.1)
+    .set(numberOfLines: 1)
+    .adjustsFontSizeToFitWidth(true)
+    .make {
+        $0.minimumScaleFactor = 0.2
+    }
     
     private let blurredView = ViewLayoutable()
         .addBlur(style: .light, intensity: 0.25)

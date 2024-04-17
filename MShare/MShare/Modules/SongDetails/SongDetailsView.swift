@@ -58,9 +58,21 @@ final class SongDetailsView: ViewController<SongDetailsContentView> {
 
 private extension SongDetailsView {
     func setupNavigationBar() {
-        title = "Share"
+        let closeImageView = UIImage(systemName: "xmark.circle.fill")?
+            .resizeImage(newWidth: 32.0)?
+            .applyGradient(colors: [.appPink, .appBlue], start: .topLeading, end: .bottomTrailing)?
+            .withRenderingMode(.alwaysOriginal)
+        
+        let closeButtonItem = UIBarButtonItem(
+            image: closeImageView,
+            style: .done,
+            target: self,
+            action: #selector(didTapCloseBarButton)
+        )
+        
+        navigationItem.titleView = contentView.gradientTitleLabel
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapCloseBarButton))
+        navigationItem.leftBarButtonItem = closeButtonItem
     }
     
     func setupViews() {
@@ -104,10 +116,7 @@ private extension SongDetailsView {
         case .changed:
             navigationControllerDelegate?.interactiveTransition?.update(percent)
             
-        case .ended:
-            fallthrough
-            
-        case .cancelled:
+        case .cancelled, .ended:
             if sender.velocity(in: sender.view).y < 0 && percent < 0.5 {
                 navigationControllerDelegate?.interactiveTransition?.cancel()
             } else {
@@ -253,11 +262,14 @@ extension SongDetailsView: DetailSongViewProtocol {
     }
     
     func setFavoriteStatus(_ isSaved: Bool) {
-        let rightImage = UIImage(systemName: isSaved ? "heart.fill" : "heart")
+        let heartImage = UIImage(systemName: isSaved ? "heart.fill" : "heart")?
+            .resizeImage(newWidth: 32.0)?
+            .applyGradient(colors: [.appPink, .appBlue], start: .topLeading, end: .bottomTrailing)?
+            .withRenderingMode(.alwaysOriginal)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: rightImage,
-            style: .plain,
+            image: heartImage,
+            style: .done,
             target: self,
             action: #selector(didTapAddToFavorite)
         )
@@ -298,14 +310,4 @@ extension SongDetailsView: DetailSongViewProtocol {
             self?.contentView.horizontalActionMenuView.set(animationStyle: .normal)
         }
     }
-}
-
-@available(iOS 17.0, *)
-#Preview {
-    SongDetailsRouter(
-        dependencyManager: DependencyManager.shared,
-        mediaResponse: .mock,
-        cover: .mockCover
-    )
-    .createModule()
 }

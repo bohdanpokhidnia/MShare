@@ -79,6 +79,7 @@ private extension MainRouter {
                 .make {
                     $0.title = tabItem.title
                     $0.tabBarItem.image = tabItem.icon
+                    $0.tabBarItem.selectedImage = tabItem.selectedIcon
                 }
             
             viewControllers.append(view)

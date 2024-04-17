@@ -12,6 +12,9 @@ class AppNavigationController: UINavigationController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configure(style: .transparent)
+        
         interactivePopGestureRecognizer?.delegate = self
         interactivePopGestureRecognizer?.isEnabled = true
     }

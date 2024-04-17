@@ -132,7 +132,6 @@
 		F7BB329629BA575600219035 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BB329529BA575600219035 /* ApiClient.swift */; };
 		F7BB329929BA62F300219035 /* GetShareMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BB329829BA62F300219035 /* GetShareMedia.swift */; };
 		F7BB329B29BA68EB00219035 /* GetSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BB329A29BA68EB00219035 /* GetSong.swift */; };
-		F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */; };
 		F7C2B83329A1320E00569C5B /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83229A1320E00569C5B /* ThemeProvider.swift */; };
 		F7C2B83629A1327D00569C5B /* AppThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83529A1327D00569C5B /* AppThemeProvider.swift */; };
 		F7C2B83829A132B000569C5B /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B83729A132B000569C5B /* Themeable.swift */; };
@@ -165,6 +164,8 @@
 		F7E775E42BCFDE900034C601 /* HorizontalActionMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775E32BCFDE900034C601 /* HorizontalActionMenuDelegate.swift */; };
 		F7E775E62BCFDEA10034C601 /* HorizontalMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775E52BCFDEA10034C601 /* HorizontalMenuAction.swift */; };
 		F7E775E92BCFE13F0034C601 /* IntensityVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775E82BCFE13F0034C601 /* IntensityVisualEffectView.swift */; };
+		F7E775EC2BCFFBD30034C601 /* GradientDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775EB2BCFFBD30034C601 /* GradientDirection.swift */; };
+		F7E775EE2BCFFC8D0034C601 /* GradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E775ED2BCFFC8D0034C601 /* GradientLabel.swift */; };
 		F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */; };
 		F7F5E5142AD8664D0063580C /* AlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */; };
 		F7F5E5162AD866700063580C /* AlertPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5E5152AD866700063580C /* AlertPosition.swift */; };
@@ -322,7 +323,6 @@
 		F7BB329529BA575600219035 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		F7BB329829BA62F300219035 /* GetShareMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetShareMedia.swift; sourceTree = "<group>"; };
 		F7BB329A29BA68EB00219035 /* GetSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSong.swift; sourceTree = "<group>"; };
-		F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Ext.swift"; sourceTree = "<group>"; };
 		F7C2B83229A1320E00569C5B /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
 		F7C2B83529A1327D00569C5B /* AppThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeProvider.swift; sourceTree = "<group>"; };
 		F7C2B83729A132B000569C5B /* Themeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
@@ -355,6 +355,8 @@
 		F7E775E32BCFDE900034C601 /* HorizontalActionMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalActionMenuDelegate.swift; sourceTree = "<group>"; };
 		F7E775E52BCFDEA10034C601 /* HorizontalMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMenuAction.swift; sourceTree = "<group>"; };
 		F7E775E82BCFE13F0034C601 /* IntensityVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityVisualEffectView.swift; sourceTree = "<group>"; };
+		F7E775EB2BCFFBD30034C601 /* GradientDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientDirection.swift; sourceTree = "<group>"; };
+		F7E775ED2BCFFC8D0034C601 /* GradientLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLabel.swift; sourceTree = "<group>"; };
 		F7F08F3728DA5BFE00851BB7 /* NetworkErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorResponse.swift; sourceTree = "<group>"; };
 		F7F5E5132AD8664D0063580C /* AlertConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConfiguration.swift; sourceTree = "<group>"; };
 		F7F5E5152AD866700063580C /* AlertPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPosition.swift; sourceTree = "<group>"; };
@@ -387,9 +389,9 @@
 			isa = PBXGroup;
 			children = (
 				F7E775E22BCFDC730034C601 /* HorizontalActionMenu */,
+				F7E775EA2BCFFBB50034C601 /* Gradient */,
 				F79ED12C28A811E3009DFC96 /* CoverView.swift */,
 				F7002750289C3B470075C133 /* MediaTableView.swift */,
-				F710245128AD5C1F0012CE0B /* GradientView.swift */,
 				F7D46D3A28CFB43700F9EFBD /* ShareCircleView.swift */,
 				F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */,
 			);
@@ -907,7 +909,6 @@
 				F7D589C3289AC26C0073709D /* UILabel+Ext.swift */,
 				F7D589C5289ADD870073709D /* UIImageView+Ext.swift */,
 				F710244F28AD4D920012CE0B /* UIColor+Ext.swift */,
-				F7C1780C28B7DE5600DD0F4D /* UINavigationBar+Ext.swift */,
 				F769EFB12928B14700EDEED2 /* UIViewController+Ext.swift */,
 				F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */,
 				F7E5259529C6135C005E0A95 /* UIImage+Ext.swift */,
@@ -942,6 +943,16 @@
 				F79ED12E28A82539009DFC96 /* Blurable.swift */,
 			);
 			path = Blurable;
+			sourceTree = "<group>";
+		};
+		F7E775EA2BCFFBB50034C601 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				F7E775EB2BCFFBD30034C601 /* GradientDirection.swift */,
+				F710245128AD5C1F0012CE0B /* GradientView.swift */,
+				F7E775ED2BCFFC8D0034C601 /* GradientLabel.swift */,
+			);
+			path = Gradient;
 			sourceTree = "<group>";
 		};
 		F7F5E5172AD877320063580C /* Views */ = {
@@ -1174,7 +1185,6 @@
 				F7B3663A2BCC1DDB00343F88 /* AlertKitIcon.swift in Sources */,
 				F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */,
 				F790282C289309940058CC19 /* SettingsEntity.swift in Sources */,
-				F7C1780D28B7DE5600DD0F4D /* UINavigationBar+Ext.swift in Sources */,
 				F74B75C7290B045800DBCD46 /* DatabaseManager+Base.swift in Sources */,
 				F7D9852A28FA977500F54E24 /* FavoritesInteractor.swift in Sources */,
 				F7632C3229DA1F9100239DAF /* Factory.swift in Sources */,
@@ -1190,6 +1200,7 @@
 				F7632C2B29D9C4AB00239DAF /* MakeCoverView.swift in Sources */,
 				F73873B12AD17FEC00581F57 /* BasePresenter.swift in Sources */,
 				F73873AB2AD17F7400581F57 /* NetworkErrorHandling.swift in Sources */,
+				F7E775EE2BCFFC8D0034C601 /* GradientLabel.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */,
 				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
@@ -1224,6 +1235,7 @@
 				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
 				F77EE0E5298FCA86002E7139 /* SignInContentView.swift in Sources */,
+				F7E775EC2BCFFBD30034C601 /* GradientDirection.swift in Sources */,
 				F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */,
 				F77A0E0D28A192BB00FF4644 /* ServiceHeaderView.swift in Sources */,
 			);

@@ -67,7 +67,7 @@ final class FavoritesView: ViewController<FavoritesContentView> {
         super.viewDidLoad()
         
         setupNavigationBar()
-        setupSubviews()
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,11 +91,14 @@ private extension FavoritesView {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setupSubviews() {
-        contentView.favotitesTableView.make {
-            $0.dataSource = self
-            $0.delegate = self
-        }
+    func setupViews() {
+        contentView.favotitesTableView
+            .register(class: MediaTableViewCell.self)
+            .setRowHeight(80)
+            .make {
+                $0.dataSource = self
+                $0.delegate = self
+            }
         
         contentView.segmentedControl.didSelectItemWith = { [weak presenter] (index, _) in
             presenter?.didSelectSection(index)

@@ -18,7 +18,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        configureNavigationBarStyle()
         configureTabBarStyle()
         registerDependecies()
         launchApplication(for: windowScene, options: connectionOptions)
@@ -36,10 +35,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 // MARK: - Setup Configuration
 
 private extension SceneDelegate {
-    func configureNavigationBarStyle() {
-        UINavigationBar.configure(style: .transcelent)
-    }
-    
     func configureTabBarStyle() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithDefaultBackground()

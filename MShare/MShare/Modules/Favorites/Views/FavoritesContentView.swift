@@ -11,8 +11,6 @@ final class FavoritesContentView: ViewLayoutable {
     // MARK: - UI
     
     private(set) lazy var favotitesTableView = TableView(style: .plain)
-        .register(class: MediaTableViewCell.self)
-        .setRowHeight(80)
         .backgroundColor(color: .clear)
         .make {
             $0.scrollIndicatorInsets = UIEdgeInsets(aTop: 0, aBottom: 82)
@@ -42,8 +40,8 @@ final class FavoritesContentView: ViewLayoutable {
             $0.useShadow = false
             $0.useGradient = true
             $0.thumbGradientColors = [.appPink, .appPink, .appBlue, .appBlue]
-            $0.gradientStartPoint = GradientPoint.topLeading.point
-            $0.gradientEndPoint = GradientPoint.bottomTrailing.point
+            $0.gradientStartPoint = GradientDirection.topLeading.point
+            $0.gradientEndPoint = GradientDirection.bottomTrailing.point
             $0.isBlurBackground = true
         }
     
