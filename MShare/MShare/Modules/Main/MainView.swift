@@ -18,6 +18,33 @@ protocol MainViewProtocol: AnyObject {
 final class MainView: UITabBarController {
     var presenter: MainPresenterProtocol?
     var viewController: UITabBarController { self }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureTabBarStyle()
+    }
+}
+
+// MARK: - Private Methods
+
+private extension MainView {
+    func configureTabBarStyle() {
+        let selectForegroundColor: UIColor = .appBlue
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        
+        let selectedTitleTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: selectForegroundColor,
+        ]
+        
+        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = selectForegroundColor
+        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedTitleTextAttributes
+        
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
+    }
 }
 
 // MARK: - MainViewProtocol
