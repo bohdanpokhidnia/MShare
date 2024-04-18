@@ -50,7 +50,6 @@ final class FirstFavoritesView: UIViewController {
 private extension FirstFavoritesView {
     func setupNavigationBar() {
         title = "First Favorites"
-        
         navigationItem.largeTitleDisplayMode = .never
     }
     
@@ -99,7 +98,6 @@ extension FirstFavoritesView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension FirstFavoritesView: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard selectedIndexPath != indexPath else { return }
@@ -110,5 +108,4 @@ extension FirstFavoritesView: UITableViewDelegate {
         delegate?.didSelectFavoritesSection(indexPath.row)
         tableView.reloadData()
     }
-    
 }

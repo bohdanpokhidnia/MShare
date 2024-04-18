@@ -62,6 +62,7 @@ final class AboutUsView: UIViewController {
 private extension AboutUsView {
     func setupNavigationBar() {
         title = "About"
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func setupViews() {
