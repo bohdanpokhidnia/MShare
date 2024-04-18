@@ -255,7 +255,7 @@ extension TTSegmentedControl {
     fileprivate func configureContainerView() {
         if isBlurBackground {
             let blurCornerRadius = cornerRadius < 0 ? 0.5 * containerView.frame.size.height : cornerRadius
-            containerView.addClipBlur(style: .systemChromeMaterial, intensity: 1.0, cornerRadius: blurCornerRadius)
+            containerView.addClipBlur(style: .systemChromeMaterial, intensity: 0.5, cornerRadius: blurCornerRadius)
         } else {
             containerView.backgroundColor = containerBackgroundColor
         }
