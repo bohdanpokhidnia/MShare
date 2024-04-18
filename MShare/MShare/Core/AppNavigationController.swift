@@ -15,6 +15,7 @@ final class AppNavigationController: UINavigationController {
         
         configure(style: .transparent)
         
+        navigationBar.tintColor = .appPink
         interactivePopGestureRecognizer?.delegate = self
         interactivePopGestureRecognizer?.isEnabled = true
     }
