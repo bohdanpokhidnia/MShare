@@ -79,10 +79,8 @@ private extension ApiClient {
         let headers = (urlRequest?.allHTTPHeaderFields ?? ["": ""]).map { "\($0.key): \($0.value)" }
         let body: String
         
-        if let httpBody = urlRequest?.httpBody,
-           let stringBody = String(data: httpBody, encoding: .utf8) 
-        {
-            body = stringBody
+        if let bodyData = urlRequest?.httpBody {
+            body = prettyString(from: bodyData) ?? "NONE"
         } else {
             body = "NONE"
         }
@@ -91,13 +89,7 @@ private extension ApiClient {
         var response: String
         
         if let data {
-            do {
-                let dataObject = try JSONSerialization.jsonObject(with: data)
-                let prettyData = try JSONSerialization.data(withJSONObject: dataObject, options: .prettyPrinted)
-                response = String(data: prettyData, encoding: .utf8) ?? "None"
-            } catch {
-                response = "NONE"
-            }
+            response = prettyString(from: data) ?? "NONE"
         } else {
             response = "NONE"
         }
@@ -105,12 +97,23 @@ private extension ApiClient {
         let logData = [
             "Request: \(methodWithUrl)",
             "Headers: \(headers)",
-            "Body: \(body)",
+            "Body:\n\(body)",
             "Status code: \(statusCode)",
-            "Response: \(response)"
+            "Response:\n\(response)"
         ]
         .joined(separator: "\n")
         
         dprint(logData)
+    }
+    
+    func prettyString(from data: Data) -> String? {
+        do {
+            let dataObject = try JSONSerialization.jsonObject(with: data)
+            let prettyData = try JSONSerialization.data(withJSONObject: dataObject, options: .prettyPrinted)
+            let string = String(data: prettyData, encoding: .utf8)
+            return string
+        } catch {
+            return nil
+        }
     }
 }
