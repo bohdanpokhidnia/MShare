@@ -75,6 +75,8 @@ final class AlertKitShortView: UIView {
     // MARK: - Animations
     
     func present() {
+        configuration.haptic?.notify()
+        
         UIView.animate(withDuration: configuration.presentationDuration) {
             self.alpha = 1.0
         } completion: { [weak self] _ in
