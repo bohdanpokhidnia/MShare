@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DetailSongViewProtocol: BaseView {
+protocol SongDetailsViewProtocol: BaseView {
     var presenter: SongDetailsPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     var shortToastPositionY: CGFloat { get }
@@ -250,9 +250,9 @@ extension SongDetailsView: TransitionProtocol {
     }
 }
 
-// MARK: - DetailSongViewProtocol
+// MARK: - SongDetailsViewProtocol
 
-extension SongDetailsView: DetailSongViewProtocol {
+extension SongDetailsView: SongDetailsViewProtocol {
     func setupContent(withState state: SongDetailsEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem]) {
         contentView
             .set(state: state)

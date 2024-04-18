@@ -8,19 +8,19 @@
 import UIKit
 
 protocol SongDetailsRouterProtocol {
-    func pop(view: DetailSongViewProtocol?)
+    func pop(view: SongDetailsViewProtocol?)
     func shareUrl(
-        view: DetailSongViewProtocol?,
+        view: SongDetailsViewProtocol?,
         urlString: String,
         completion: (() -> Void)?
     )
     func shareImage(
-        view: DetailSongViewProtocol?,
+        view: SongDetailsViewProtocol?,
         image: UIImage,
         savedImage: (() -> Void)?,
         completion: (() -> Void)?
     )
-    func pushMakeCover(view: DetailSongViewProtocol?)
+    func pushMakeCover(view: SongDetailsViewProtocol?)
 }
  
 final class SongDetailsRouter: Router {
@@ -42,7 +42,7 @@ final class SongDetailsRouter: Router {
         let apiClient = dependencyManager.resolve(type: ApiClient.self)
         let factory = dependencyManager.resolve(type: FactoryProtocol.self)
         
-        let view: DetailSongViewProtocol = SongDetailsView()
+        let view: SongDetailsViewProtocol = SongDetailsView()
         let presenter: SongDetailsPresenterProtocol & DetailSongInteractorOutputProtocol = SongDetailsPresenter(view: view, router: self)
         let interactor: SongDetailsInteractorInputProtocol = SongDetailsInteractor(
             presenter: presenter,
@@ -67,11 +67,11 @@ final class SongDetailsRouter: Router {
 //MARK: - SongDetailsRouterProtocol
 
 extension SongDetailsRouter: SongDetailsRouterProtocol {
-    func pop(view: DetailSongViewProtocol?) {
+    func pop(view: SongDetailsViewProtocol?) {
         view?.viewController.navigationController?.popViewController(animated: true)
     }
     
-    func shareUrl(view: DetailSongViewProtocol?, urlString: String, completion: (() -> Void)?) {
+    func shareUrl(view: SongDetailsViewProtocol?, urlString: String, completion: (() -> Void)?) {
         let string = "Shared from MShare: \(urlString)"
         let shareItems = [string]
         let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
@@ -81,7 +81,7 @@ extension SongDetailsRouter: SongDetailsRouterProtocol {
         }
     }
     
-    func shareImage(view: DetailSongViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?) {
+    func shareImage(view: SongDetailsViewProtocol?, image: UIImage, savedImage: (() -> Void)?, completion: (() -> Void)?) {
         let imageToShare = [image]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
         activityViewController.completionWithItemsHandler = { (activityType, completed, array, error) in
@@ -104,7 +104,7 @@ extension SongDetailsRouter: SongDetailsRouterProtocol {
         }
     }
     
-    func pushMakeCover(view: DetailSongViewProtocol?) {
+    func pushMakeCover(view: SongDetailsViewProtocol?) {
         let makeCover = MakeCoverRouter(
             dependencyManager: dependencyManager,
             mediaResponse: mediaResponse,

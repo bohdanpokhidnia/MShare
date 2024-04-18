@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SongDetailsPresenterProtocol: AnyObject {
-    var view: DetailSongViewProtocol? { get set }
+    var view: SongDetailsViewProtocol? { get set }
     var interactor: SongDetailsInteractorInputProtocol? { get set }
     var router: SongDetailsRouterProtocol? { get set }
     
@@ -23,13 +23,13 @@ protocol SongDetailsPresenterProtocol: AnyObject {
 }
 
 final class SongDetailsPresenter: BasePresenter {
-    weak var view: DetailSongViewProtocol?
+    weak var view: SongDetailsViewProtocol?
     var interactor: SongDetailsInteractorInputProtocol?
     var router: SongDetailsRouterProtocol?
     
     // MARK: - Initializers
     
-    init(view: DetailSongViewProtocol?, router: SongDetailsRouterProtocol?) {
+    init(view: SongDetailsViewProtocol?, router: SongDetailsRouterProtocol?) {
         self.view = view
         self.router = router
         
@@ -49,9 +49,14 @@ final class SongDetailsPresenter: BasePresenter {
     // MARK: - Private Methods
     
     override func handleNetworkError(error: BaseError) {
-        super.handleNetworkError(error: error)
-        
         view?.stopLoadingAnimation()
+        
+        AlertKit.shortToast(
+            title: error.localizedDescription,
+            icon: .error,
+            position: .center,
+            haptic: .error
+        )
     }
     
     // MARK: - Private
