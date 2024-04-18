@@ -22,7 +22,7 @@ protocol SongDetailsPresenterProtocol: AnyObject {
     func didTapMakeCover()
 }
 
-final class SongDetailsPresenter: NSObject {
+final class SongDetailsPresenter: BasePresenter {
     weak var view: DetailSongViewProtocol?
     var interactor: SongDetailsInteractorInputProtocol?
     var router: SongDetailsRouterProtocol?
@@ -32,6 +32,8 @@ final class SongDetailsPresenter: NSObject {
     init(view: DetailSongViewProtocol?, router: SongDetailsRouterProtocol?) {
         self.view = view
         self.router = router
+        
+        super.init(baseView: view)
     }
     
     @objc
@@ -42,6 +44,14 @@ final class SongDetailsPresenter: NSObject {
             view?.stopLoadingAnimation()
             view?.showSavedImage()
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    override func handleNetworkError(error: BaseError) {
+        super.handleNetworkError(error: error)
+        
+        view?.stopLoadingAnimation()
     }
     
     // MARK: - Private
@@ -133,6 +143,7 @@ extension SongDetailsPresenter: DetailSongInteractorOutputProtocol {
     
     func didCatchError(_ error: NetworkError) {
         view?.showError(error.localizedDescription)
+        view?.stopLoadingAnimation()
     }
     
     func didRequestedAccessToGallery(_ image: UIImage) {

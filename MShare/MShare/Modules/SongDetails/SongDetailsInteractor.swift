@@ -19,7 +19,7 @@ protocol SongDetailsInteractorInputProtocol {
     func requestAccessToGallery(_ image: UIImage)
 }
 
-protocol DetailSongInteractorOutputProtocol: AnyObject {
+protocol DetailSongInteractorOutputProtocol: BaseInteractorOutputProtocol {
     func didLoadDetailMedia(_ detailMedia: SongDetailsEntity)
     func didLoadShareMedia(_ shareMedia: ShareMediaResponse)
     func didCatchError(_ error: NetworkError)
@@ -29,7 +29,7 @@ protocol DetailSongInteractorOutputProtocol: AnyObject {
     func didDeleteFromDatabase()
 }
 
-final class SongDetailsInteractor {
+final class SongDetailsInteractor: BaseInteractor {
     weak var presenter: DetailSongInteractorOutputProtocol?
     
     // MARK: - Initializers
@@ -48,6 +48,8 @@ final class SongDetailsInteractor {
         self.factory = factory
         self.mediaResponse = mediaResponse
         self.cover = cover
+        
+        super.init(basePresenter: presenter)
     }
     
     // MARK: - Private
@@ -88,9 +90,10 @@ extension SongDetailsInteractor: SongDetailsInteractorInputProtocol {
                     presenter?.didLoadShareMedia(shareMedia)
                 } catch let networkError as NetworkError {
                     presenter?.didCatchError(networkError)
+                } catch {
+                    presenter?.handleNetworkError(error: NetworkError.message("Not found song for \(destinationService)"))
                 }
             }
-            
         case .album:
             break
         }

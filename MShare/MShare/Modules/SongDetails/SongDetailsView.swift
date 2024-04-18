@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DetailSongViewProtocol: AnyObject {
+protocol DetailSongViewProtocol: BaseView {
     var presenter: SongDetailsPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     var shortToastPositionY: CGFloat { get }
