@@ -8,8 +8,6 @@
 import Foundation
 
 extension UIComponentsLibrary {
-
-    
     struct MediaCell {
         let icon: Component
         let position: TextComponent
@@ -17,5 +15,4 @@ extension UIComponentsLibrary {
         let subtitle: TextComponent
         let background: Component
     }
-    
 }

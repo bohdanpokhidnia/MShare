@@ -76,7 +76,6 @@ final class MediaTableViewCell: TableViewCell {
     
     private(set) var subtitileLabel = UILabel()
         .set(numberOfLines: 1)
-        .adjustsFontSizeToFitWidth(true)
     
     private let shareImage = UIImage(systemName: "square.and.arrow.up")?
         .resizeImage(newWidth: 24)?
@@ -203,5 +202,5 @@ extension MediaTableViewCell {
 @available(iOS 17.0, *)
 #Preview {
     MediaTableViewCell()
-        .set(state: .init(title: "Test", displayShareButton: true))
+        .set(state: .init(title: "Test", subtitle: "test", displayShareButton: true))
 }

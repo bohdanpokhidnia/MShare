@@ -184,27 +184,27 @@ extension SongDetailsView: TransitionProtocol {
         ]
     }
     
-    func copyForView(_ subView: UIView) -> UIView {        
+    func copyForView(_ subView: UIView) -> UIView {
+        let theme: AppTheme = traitCollection.userInterfaceStyle == .light ? .light : .dark
+        let mediaCell = theme.components.mediaCell
+        
         switch subView {
         case contentView.coverView.coverImageView:
             let imageViewCopy = UIImageView(image: contentView.cover)
                 .setCornerRadius(5)
                 .maskToBounds(true)
-            
             return imageViewCopy
             
         case contentView.coverView.songNameLabel:
             let songNameLabel = UILabel()
                 .text(contentView.coverView.songNameLabel.text)
-                .textColor(.label)
-            
+                .set(component: mediaCell.title)
             return songNameLabel
             
         case contentView.coverView.artistNameLabel:
             let artistNameLabel = UILabel()
                 .text(contentView.coverView.artistNameLabel.text)
-                .textColor(.secondaryLabel)
-            
+                .set(component: mediaCell.subtitle)
             return artistNameLabel
             
         default:

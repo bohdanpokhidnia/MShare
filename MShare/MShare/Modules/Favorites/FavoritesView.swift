@@ -185,7 +185,6 @@ extension FavoritesView: TransitionProtocol {
                 .setCornerRadius(12)
                 .maskToBounds(true)
                 .borderWidth(1, color: .black)
-            
             return copyImageView
             
         case cell.titleLabel:
@@ -196,7 +195,6 @@ extension FavoritesView: TransitionProtocol {
                 .textColor(.white)
                 .set(numberOfLines: 2)
                 .adjustsFontSizeToFitWidth(true)
-            
             return titleLabel
             
         case cell.subtitileLabel:
@@ -207,7 +205,6 @@ extension FavoritesView: TransitionProtocol {
                 .textColor(UIColor(hex: "#f0f0f0"))
                 .set(numberOfLines: 1)
                 .adjustsFontSizeToFitWidth(true)
-            
             return subtitleLabel
             
         default:

@@ -31,8 +31,8 @@ extension AppTheme {
         mediaCell: .init(
             icon: .init(color: .clear, cornerRadius: 5),
             position: .init(color: .label, font: .systemFont(ofSize: 18, weight: .bold)),
-            title: .init(color: .label, font: .systemFont(ofSize: 17)),
-            subtitle: .init(color: .secondaryLabel, font: .systemFont(ofSize: 17)),
+            title: .init(color: .label, font: .systemFont(ofSize: 18, weight: .semibold)),
+            subtitle: .init(color: .secondaryLabel, font: .systemFont(ofSize: 16)),
             background: .init(color: .systemBackground)
         )
     ))
@@ -60,8 +60,8 @@ extension AppTheme {
         mediaCell: .init(
             icon: .init(color: .clear, cornerRadius: 5),
             position: .init(color: .label, font: .systemFont(ofSize: 18, weight: .bold)),
-            title: .init(color: .label, font: .systemFont(ofSize: 17)),
-            subtitle: .init(color: .secondaryLabel, font: .systemFont(ofSize: 17)),
+            title: .init(color: .label, font: .systemFont(ofSize: 18, weight: .semibold)),
+            subtitle: .init(color: .secondaryLabel, font: .systemFont(ofSize: 16)),
             background: .init(color: .secondarySystemBackground)
         )
     ))
