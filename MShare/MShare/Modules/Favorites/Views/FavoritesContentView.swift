@@ -10,11 +10,11 @@ import UIKit
 final class FavoritesContentView: ViewLayoutable {
     // MARK: - UI
     
-    private(set) lazy var favotitesTableView = TableView(style: .plain)
+    let favotitesTableView = TableView(style: .plain)
         .backgroundColor(color: .clear)
         .make {
             $0.scrollIndicatorInsets = UIEdgeInsets(aTop: 0, aBottom: 82)
-            $0.contentInset = UIEdgeInsets(aBottom: 48)
+            $0.contentInset = UIEdgeInsets(aBottom: 82)
         }
     
     private lazy var infoStackView = makeStackView(axis: .vertical)(
@@ -67,8 +67,8 @@ final class FavoritesContentView: ViewLayoutable {
         super.defineLayout()
         
         favotitesTableView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.bottom.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
         }
         
         infoImageView.snp.makeConstraints {
