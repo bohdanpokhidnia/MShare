@@ -9,10 +9,12 @@ import UIKit
 
 protocol SearchInteractorIntputProtocol {
     var presenter: SearchInteractorOutputProtocol? { get set }
+    var isDisplaySearchTip: Bool { get }
     
     func setupNotifications()
     func removeNotifications()
     func requestSong(urlString: String)
+    func set(isDisplaySearchTip: Bool)
 }
 
 protocol SearchInteractorOutputProtocol: BaseInteractorOutputProtocol {
@@ -25,15 +27,20 @@ protocol SearchInteractorOutputProtocol: BaseInteractorOutputProtocol {
 
 final class SearchInteractor: BaseInteractor {
     weak var presenter: SearchInteractorOutputProtocol?
+    var isDisplaySearchTip: Bool {
+        userManager.isDisplaySearchTip ?? false
+    }
     
     // MARK: - Initializers
     
     init(
         presenter: SearchInteractorOutputProtocol,
-        apiClient: HttpClient
+        apiClient: HttpClient,
+        userManager: UserManagerProtocol
     ) {
         self.presenter = presenter
         self.apiClient = apiClient
+        self.userManager = userManager
         
         super.init(basePresenter: presenter)
     }
@@ -45,6 +52,7 @@ final class SearchInteractor: BaseInteractor {
     // MARK: - Private
     
     private let apiClient: HttpClient
+    private var userManager: UserManagerProtocol
 }
 
 // MARK: - User interactions
@@ -129,5 +137,9 @@ extension SearchInteractor: SearchInteractorIntputProtocol {
                 presenter?.handleNetworkError(error: NetworkError.error(error))
             }
         }
+    }
+    
+    func set(isDisplaySearchTip: Bool) {
+        userManager.isDisplaySearchTip = isDisplaySearchTip
     }
 }

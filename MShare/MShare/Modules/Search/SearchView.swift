@@ -11,6 +11,7 @@ import SnapKit
 protocol SearchViewProtocol: BaseView {
     var presenter: SearchPresenterProtocol? { get set }
     var viewController: UIViewController { get }
+    var tipSource: UIView { get }
     
     func setLink(_ linkString: String)
     func setLinkTitle(_ title: String)
@@ -27,6 +28,7 @@ protocol SearchViewProtocol: BaseView {
 final class SearchView: ViewController<SearchContentView> {
     var presenter: SearchPresenterProtocol?
     var viewController: UIViewController { self }
+    var tipSource: UIView { contentView.linkTextField }
     
     // MARK: - Lifecycle
     

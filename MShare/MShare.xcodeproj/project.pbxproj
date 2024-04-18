@@ -107,7 +107,7 @@
 		F77EE0E5298FCA86002E7139 /* SignInContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0DF298FCA86002E7139 /* SignInContentView.swift */; };
 		F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0E6298FD9C6002E7139 /* SignInCollectionViewCell.swift */; };
 		F77FAA66296F59640017BB33 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */; };
-		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
+		F7902809289309320058CC19 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* SearchRouter.swift */; };
 		F790280A289309320058CC19 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* SearchInteractor.swift */; };
 		F790280B289309320058CC19 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* SearchEntity.swift */; };
 		F790280C289309320058CC19 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902805289309320058CC19 /* SearchView.swift */; };
@@ -298,7 +298,7 @@
 		F77EE0E929901815002E7139 /* MShareDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShareDebug.entitlements; sourceTree = "<group>"; };
 		F77EE0EA29901824002E7139 /* MShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShare.entitlements; sourceTree = "<group>"; };
 		F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
-		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
+		F7902802289309320058CC19 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		F7902803289309320058CC19 /* SearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		F7902804289309320058CC19 /* SearchEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
 		F7902805289309320058CC19 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -734,7 +734,7 @@
 				F7902803289309320058CC19 /* SearchInteractor.swift */,
 				F7902806289309320058CC19 /* SearchPresenter.swift */,
 				F7902804289309320058CC19 /* SearchEntity.swift */,
-				F7902802289309320058CC19 /* LinkRouter.swift */,
+				F7902802289309320058CC19 /* SearchRouter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1221,7 +1221,7 @@
 				F73873B82AD2DBC200581F57 /* AlertKit.swift in Sources */,
 				F73873AD2AD17F8F00581F57 /* BaseError.swift in Sources */,
 				F71413002915C63600D569E2 /* UserManager.swift in Sources */,
-				F7902809289309320058CC19 /* LinkRouter.swift in Sources */,
+				F7902809289309320058CC19 /* SearchRouter.swift in Sources */,
 				F7B366462BCC1E9200343F88 /* AlertKitIconAnimatable.swift in Sources */,
 				F7D9852B28FA977500F54E24 /* FavoritesRouter.swift in Sources */,
 				F777BE4D289E479600595ACA /* SongDetailsInteractor.swift in Sources */,

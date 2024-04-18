@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TipKit
 
 protocol SearchPresenterProtocol: AnyObject {
     var view: SearchViewProtocol? { get set }
@@ -73,6 +74,15 @@ final class SearchPresenter: BasePresenter {
 extension SearchPresenter: SearchPresenterProtocol {
     func viewWillAppear() {
         interactor?.setupNotifications()
+        
+        if #available(iOS 17.0, *) {
+            guard let interactor else {
+                return
+            }
+            let isViewedTip = !interactor.isDisplaySearchTip
+            SearchTip.hasViewedTip = isViewedTip
+            presentTip()
+        }
     }
     
     func viewWillDisappear() {
@@ -91,6 +101,11 @@ extension SearchPresenter: SearchPresenterProtocol {
     
     func getSong(urlString: String) {
         view?.showLoading()
+        
+        if #available(iOS 17.0, *) {
+            SearchTip.hasViewedTip = false
+            interactor?.set(isDisplaySearchTip: true)
+        }
         
         interactor?.requestSong(urlString: urlString)
     }
@@ -127,6 +142,43 @@ extension SearchPresenter: SearchInteractorOutputProtocol {
         router?.presentSongDetailsScreen(from: view, mediaResponse: mediaResponse, cover: cover) { [weak view] in
             view?.cleaningLinkTextField()
             view?.hideLoading(completion: nil)
+        }
+    }
+}
+
+@available(iOS 17.0, *)
+private extension SearchPresenter {
+    struct SearchTip: Tip {
+        var title: Text { Text("Search link for song") }
+        var message: Text? { Text("Paste a link to a song from Apple Music or Spotify") }
+        var image: Image? { Image(systemName: "magnifyingglass") }
+        
+        @Parameter
+        static var hasViewedTip: Bool = false
+        
+        var rules: [Rule] {
+            #Rule(SearchTip.$hasViewedTip) { $0 == true }
+        }
+        
+        var options: [TipOption] {
+            [Tip.MaxDisplayCount(1)]
+        }
+    }
+    
+    func presentTip() {
+        Task { @MainActor in
+            for await shouldDisplay in SearchTip().shouldDisplayUpdates {
+                guard shouldDisplay else {
+                    router?.dismissPresentedPopover(for: view)
+                    return
+                }
+                guard let sourceItem = view?.tipSource else {
+                    return
+                }
+                
+                let popoverController = TipUIPopoverViewController(SearchTip(), sourceItem: sourceItem)
+                router?.present(from: view, viewController: popoverController)
+            }
         }
     }
 }

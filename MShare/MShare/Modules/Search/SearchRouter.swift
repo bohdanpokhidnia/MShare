@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TipKit
 
 protocol SearchRouterProtocol {
     func presentSongDetailsScreen(
@@ -14,6 +15,9 @@ protocol SearchRouterProtocol {
         cover: UIImage,
         completion: (() -> Void)?
     )
+    
+    func present(from view: SearchViewProtocol?, viewController: UIViewController)
+    func dismissPresentedPopover(for view: SearchViewProtocol?)
 }
 
 final class SearchRouter: Router {
@@ -21,10 +25,15 @@ final class SearchRouter: Router {
     
     override func createModule() -> UIViewController {
         let apiClient = dependencyManager.resolve(type: ApiClient.self)
+        let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
         
         let view: SearchViewProtocol = SearchView()
         let presenter: SearchPresenterProtocol & SearchInteractorOutputProtocol = SearchPresenter(view: view, router: self)
-        let interactor: SearchInteractorIntputProtocol = SearchInteractor(presenter: presenter, apiClient: apiClient)
+        let interactor: SearchInteractorIntputProtocol = SearchInteractor(
+            presenter: presenter,
+            apiClient: apiClient,
+            userManager: userManager
+        )
         
         view.presenter = presenter
         presenter.interactor = interactor
@@ -54,5 +63,27 @@ extension SearchRouter: SearchRouterProtocol {
             view?.viewController.navigationController?.pushViewController(detailSongScreen, animated: true)
             completion?()
         }
+    }
+    
+    func present(from view: SearchViewProtocol?, viewController: UIViewController) {
+        view?.viewController.present(viewController, animated: true)
+    }
+    
+    func dismissPresentedView(for view: SearchViewProtocol?) {
+        view?.viewController.presentedViewController?.dismiss(animated: true)
+    }
+    
+    func dismissPresentedPopover(for view: SearchViewProtocol?) {
+        guard #available(iOS 17.0, *) else {
+            return
+        }
+        guard let presentedViewController = view?.viewController.presentedViewController else {
+            return
+        }
+        guard presentedViewController is TipUIPopoverViewController else {
+            return
+        }
+        
+        presentedViewController.dismiss(animated: true)
     }
 }

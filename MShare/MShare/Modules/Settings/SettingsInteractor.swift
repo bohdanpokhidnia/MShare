@@ -44,7 +44,6 @@ final class SettingsInteractor {
 // MARK: - SettingsInteractorInputProtocol
 
 extension SettingsInteractor: SettingsInteractorIntputProtocol {
-    
     func makeSettinsSections() {
         guard let versionAppString = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         else { return }
@@ -64,28 +63,26 @@ extension SettingsInteractor: SettingsInteractorIntputProtocol {
     }
     
     func showOnboarding() {
-        userManager.isDisplayOnboarding = false
+        userManager.reset()
         
         presenter?.didShowOnboarding()
     }
-    
 }
 
 // MARK: - Make sections
 
 private extension SettingsInteractor {
-    
     func makeSettingsSection(versionAppString: String) -> [SettingsSection] {
         let settingsSections: [SettingsSection] = [
-            .init(
+            SettingsSection(
                 title: "Favorites",
                 items: [.firstFavorites]
             ),
-            .init(
+            SettingsSection(
                 title: "Access",
                 items: [.accessToGallery]
             ),
-            .init(
+            SettingsSection(
                 title: "Information",
                 items: [.aboutUs, .privacyPolicyAndTerms, .versionApp(versionAppString)]
             )
@@ -93,5 +90,4 @@ private extension SettingsInteractor {
         
         return settingsSections
     }
-    
 }
