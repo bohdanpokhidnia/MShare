@@ -42,6 +42,7 @@ final class LinkPresenter: BasePresenter {
             let title = switch networkError {
             case .networkError(let networkErrorResponse):
                 networkErrorResponse.errors.contains(where: { $0.key == "url" }) ? "Failed url on song or album" : networkErrorResponse.title
+                
             default:
                 networkError.localizedDescription
             }

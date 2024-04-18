@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppNavigationController: UINavigationController {
+final class AppNavigationController: UINavigationController {
     var isRecognizerEnabled = true
         
     override func viewDidLoad() {

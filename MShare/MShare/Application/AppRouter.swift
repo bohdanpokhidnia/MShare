@@ -11,6 +11,7 @@ protocol AppRouterProtocol {
     func launchApplication()
     func loadOnboarding()
     func loadMain()
+    func dismissPresentedViewController(animated: Bool, completion: (() -> Void)?)
     func select(mainTab: MainEntity.TabItem)
 }
 
@@ -30,16 +31,6 @@ final class AppRouter: Router {
     
     private var window: UIWindow?
     private var mainRouter: MainRouter?
-}
-
-// MARK: - Private Methods
-
-private extension AppRouter {
-    func load(router: Router) {
-        let viewController = router.createModule()
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
-    }
 }
 
 //MARK: - AppRouterProtocol
@@ -74,7 +65,29 @@ extension AppRouter: AppRouterProtocol {
         mainRouter.select(tab: .link)
     }
     
+    func dismissPresentedViewController(animated: Bool, completion: (() -> Void)?) {
+        if let topMostViewController = window?.rootViewController?.topMostViewController {
+            if let navigationController = topMostViewController.navigationController {
+                navigationController.popViewController(animated: animated, completion: completion)
+            } else {
+                topMostViewController.dismiss(animated: animated, completion: completion)
+            }
+        } else {
+            completion?()
+        }
+    }
+    
     func select(mainTab: MainEntity.TabItem) {
         mainRouter?.select(tab: mainTab)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension AppRouter {
+    func load(router: Router) {
+        let viewController = router.createModule()
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
     }
 }

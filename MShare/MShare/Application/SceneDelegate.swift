@@ -69,21 +69,10 @@ private extension SceneDelegate {
         
         appRouter = AppRouter(dependencyManager: dependencyManager, window: window)
         appRouter?.launchApplication()
-//        let userManager = dependencyManager.resolve(type: UserManagerProtocol.self)
-//        let displayOnboarding = userManager.displayOnboarding ?? false
-//        
-//        onboardingRouter = OnboardingRouter(dependencyManager: dependencyManager).createModule()
-//        mainRouter = MainRouter(dependencyManager: dependencyManager).initMainModule()
-//        
-//        mainRouter?.selectTab(.link)
         
         if let url = options.urlContexts.first?.url {
             handleIncomingURL(url)
         }
-        
-//        window?.rootViewController = displayOnboarding ? mainRouter?.viewController : onboardingRouter
-//        window?.backgroundColor(color: displayOnboarding ? .systemBackground : .black)
-//        window?.makeKeyAndVisible()
     }
 }
 
@@ -107,17 +96,13 @@ private extension SceneDelegate {
             return
         }
         
-//        if let detailSongView = mainRouter?.viewController.topMostViewController as? DetailSongView {
-//            detailSongView.navigationController?.popViewController(animated: true) { [weak self] in
-//                self?.selectLinkTab(withUrlString: urlString)
-//            }
-//        } else {
-//            selectLinkTab(withUrlString: urlString)
-//        }
+        appRouter?.dismissPresentedViewController(animated: true) { [weak self] in
+            self?.selectLinkTab(with: urlString)
+        }
     }
     
-    func selectLinkTab(withUrlString urlString: String) {
-//        mainRouter?.selectTab(.link)
+    func selectLinkTab(with urlString: String) {
+        appRouter?.select(mainTab: .link)
         
         UserDefaults().set(urlString, forKey: "incomingURL")
     }

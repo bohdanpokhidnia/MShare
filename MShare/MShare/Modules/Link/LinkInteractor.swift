@@ -126,7 +126,7 @@ extension LinkInteractor: LinkInteractorIntputProtocol {
             } catch let networkError as NetworkError {
                 presenter?.handleNetworkError(error: networkError)
             } catch {
-                dprint(error, logType: .error)
+                presenter?.handleNetworkError(error: NetworkError.error(error))
             }
         }
     }

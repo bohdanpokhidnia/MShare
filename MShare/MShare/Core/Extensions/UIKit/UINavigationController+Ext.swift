@@ -8,20 +8,6 @@
 import UIKit
 
 extension UINavigationController {
-    func popViewController(animated: Bool, completion: (() -> Void)?) {
-        popViewController(animated: animated)
-        completionHelper(for: completion)
-    }
-    
-    func pushViewController(
-        _ viewController: UIViewController,
-        animated: Bool,
-        completion: (() -> Void)?
-    ) {
-        pushViewController(viewController, animated: animated)
-        completionHelper(for: completion)
-    }
-    
     enum NavigationBarStyle {
         case `default`
         case opaque
@@ -47,7 +33,25 @@ extension UINavigationController {
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
     }
+    
+    func popViewController(animated: Bool, completion: (() -> Void)?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        popViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
+    func pushViewController(
+        _ viewController: UIViewController,
+        animated: Bool,
+        completion: (() -> Void)?
+    ) {
+        pushViewController(viewController, animated: animated)
+        completionHelper(for: completion)
+    }
 }
+
+// MARK: - Private Methods
 
 private extension UINavigationController {
     func completionHelper(for completion: (() -> Void)?) {
