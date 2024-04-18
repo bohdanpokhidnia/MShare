@@ -44,6 +44,7 @@
 		F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73920172985896D00A773D7 /* UIStyleGuide.swift */; };
 		F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739201929866C1000A773D7 /* DependencyManager.swift */; };
 		F73C20712BCEA8890078AA20 /* AlertKitIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */; };
+		F73FDBB62BD15EF800AB8D98 /* appleMusicExample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F73FDBB52BD15EF800AB8D98 /* appleMusicExample.mp4 */; };
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
 		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
 		F74265312905331D00B87BBF /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */; };
@@ -143,7 +144,6 @@
 		F7C2B84529A13DD900569C5B /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2B84429A13DD900569C5B /* MediaCell.swift */; };
 		F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C85DFB28DB94D5007D0170 /* PaddedTextField.swift */; };
 		F7C85DFE28DBA3AF007D0170 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */; };
-		F7CC78212987B7B1001CB59C /* appleMusicExample.mov in Resources */ = {isa = PBXBuildFile; fileRef = F7CC78202987B7B1001CB59C /* appleMusicExample.mov */; };
 		F7CEB648297AD2DB00DB7BF2 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB647297AD2DB00DB7BF2 /* FirstPageViewController.swift */; };
 		F7D147A228D684E700655F19 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147A128D684E700655F19 /* NetworkError.swift */; };
 		F7D147AC28D68ACE00655F19 /* MediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D147AB28D68ACE00655F19 /* MediaResponse.swift */; };
@@ -232,6 +232,7 @@
 		F73920172985896D00A773D7 /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
 		F739201929866C1000A773D7 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertKitIconErrorView.swift; sourceTree = "<group>"; };
+		F73FDBB52BD15EF800AB8D98 /* appleMusicExample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = appleMusicExample.mp4; sourceTree = "<group>"; };
 		F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		F742652E2905318900B87BBF /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		F74265302905331D00B87BBF /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
@@ -334,7 +335,6 @@
 		F7C2B84429A13DD900569C5B /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		F7C85DFB28DB94D5007D0170 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		F7C85DFD28DBA3AF007D0170 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
-		F7CC78202987B7B1001CB59C /* appleMusicExample.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = appleMusicExample.mov; sourceTree = "<group>"; };
 		F7CEB647297AD2DB00DB7BF2 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		F7D147A128D684E700655F19 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		F7D147AB28D68ACE00655F19 /* MediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaResponse.swift; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 		F739200D29855DB000A773D7 /* OnboardingVideos */ = {
 			isa = PBXGroup;
 			children = (
-				F7CC78202987B7B1001CB59C /* appleMusicExample.mov */,
+				F73FDBB52BD15EF800AB8D98 /* appleMusicExample.mp4 */,
 			);
 			path = OnboardingVideos;
 			sourceTree = "<group>";
@@ -1064,7 +1064,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F774B92A2891AEDD00438A37 /* LaunchScreen.storyboard in Resources */,
-				F7CC78212987B7B1001CB59C /* appleMusicExample.mov in Resources */,
+				F73FDBB62BD15EF800AB8D98 /* appleMusicExample.mp4 in Resources */,
 				F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */,
 				F7392016298587FF00A773D7 /* Gilroy-SemiBold.ttf in Resources */,
 				F774B9272891AEDD00438A37 /* Assets.xcassets in Resources */,

@@ -16,7 +16,7 @@ final class ThirdPageViewController: UIViewController {
             let resourceName = self.rawValue
             let resourceType = self.type
             guard let path = Bundle.main.path(forResource: resourceName, ofType: resourceType) else {
-                fatalError("video not found")
+                fatalError("video not found for \(resourceName) with \(resourceType)")
             }
             let url = URL(fileURLWithPath: path)
             return url
@@ -25,7 +25,7 @@ final class ThirdPageViewController: UIViewController {
         var type: String {
             switch self {
             case .appleMusic:
-                return "mov"
+                return "mp4"
             }
         }
     }
