@@ -22,7 +22,7 @@ final class SongDetailsContentView: ViewLayoutable {
     // MARK: - UI
     
     let gradientTitleLabel = GradientLabel(
-        colors: [.appPink, .appPink, .appBlue, .appBlue],
+        colors: [.appPink, .appBlue],
         start: .topLeading,
         end: .bottomTrailing
     )
