@@ -18,7 +18,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        configureTabBarStyle()
         registerDependecies()
         launchApplication(for: windowScene, options: connectionOptions)
     }
@@ -29,19 +28,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         handleIncomingURL(url)
-    }
-}
-
-// MARK: - Setup Configuration
-
-private extension SceneDelegate {
-    func configureTabBarStyle() {
-        let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.configureWithDefaultBackground()
-        
-        if #available(iOS 15.0, *) {
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-        }
     }
 }
 
