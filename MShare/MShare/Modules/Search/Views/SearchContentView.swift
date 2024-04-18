@@ -1,5 +1,5 @@
 //
-//  LinkContentView.swift
+//  SearchContentView.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 28.07.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class LinkContentView: ViewLayoutable {
+final class SearchContentView: ViewLayoutable {
     var tapCopyButtonAction: (() -> Void) = {}
     
     // MARK: - UI
@@ -117,7 +117,7 @@ final class LinkContentView: ViewLayoutable {
 
 // MARK: - User interactions
 
-private extension LinkContentView {
+private extension SearchContentView {
     @objc
     func didTap() {
         endEditing(true)
@@ -131,7 +131,7 @@ private extension LinkContentView {
 
 // MARK: - Private Methods
 
-private extension LinkContentView {
+private extension SearchContentView {
     func applyLayoutAnimation(completion: (() -> Void)? = nil) {
         UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction], animations: {
             self.layoutIfNeeded()
@@ -153,7 +153,7 @@ private extension LinkContentView {
 
 // MARK: - Set
 
-extension LinkContentView {
+extension SearchContentView {
     func setLinkText(_ text: String) {
         linkTextField.text = text
     }

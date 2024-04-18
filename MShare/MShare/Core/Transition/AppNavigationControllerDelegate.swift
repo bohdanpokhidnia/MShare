@@ -25,10 +25,10 @@ class AppNavigationControllerDelegate: NSObject, UINavigationControllerDelegate 
         case (is SongDetailsView, is FavoritesView):
             transition = FromBottomPushTransition(operation: .pop)
             
-        case (is LinkView, is SongDetailsView):
+        case (is SearchView, is SongDetailsView):
             transition = BottomPushTransition()
             
-        case (is SongDetailsView, is LinkView):
+        case (is SongDetailsView, is SearchView):
             transition = BottomPopTransition()
             
         default:

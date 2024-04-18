@@ -1,5 +1,5 @@
 //
-//  LinkView.swift
+//  SearchView.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 28.07.2022.
@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-protocol LinkViewProtocol: BaseView {
-    var presenter: LinkPresenterProtocol? { get set }
+protocol SearchViewProtocol: BaseView {
+    var presenter: SearchPresenterProtocol? { get set }
     var viewController: UIViewController { get }
     
     func setLink(_ linkString: String)
@@ -24,8 +24,8 @@ protocol LinkViewProtocol: BaseView {
     func endEditing()
 }
 
-final class LinkView: ViewController<LinkContentView> {
-    var presenter: LinkPresenterProtocol?
+final class SearchView: ViewController<SearchContentView> {
+    var presenter: SearchPresenterProtocol?
     var viewController: UIViewController { self }
     
     // MARK: - Lifecycle
@@ -54,9 +54,9 @@ final class LinkView: ViewController<LinkContentView> {
 
 // MARK: - Setup
 
-private extension LinkView {
+private extension SearchView {
     func setupNavigationBar() {
-        title = "Link"
+        title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -81,7 +81,7 @@ private extension LinkView {
 
 // MARK: - Private Methods
 
-private extension LinkView {
+private extension SearchView {
     func getSong() {
         guard let songUrlString = contentView.linkTextField.text, songUrlString != "" else {
             return
@@ -93,7 +93,7 @@ private extension LinkView {
 
 // MARK: - UITextFieldDelegate
 
-extension LinkView: UITextFieldDelegate {
+extension SearchView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         endEditing()
         getSong()
@@ -112,9 +112,9 @@ extension LinkView: UITextFieldDelegate {
     }
 }
 
-// MARK: - LinkViewProtocol
+// MARK: - SearchViewProtocol
 
-extension LinkView: LinkViewProtocol {
+extension SearchView: SearchViewProtocol {
     func setLink(_ linkString: String) {
         contentView.setLinkText(linkString)
         contentView.enableSearchButton(true)

@@ -193,7 +193,7 @@ private extension AlertKitShortView {
 
 @available(iOS 17.0, *)
 #Preview {
-    let linkView = LinkView()
+    let linkView = SearchView()
     linkView.contentView.linkTextField.text = "Test"
     linkView.contentView.searchButton.onTap {
         AlertKitShortView(

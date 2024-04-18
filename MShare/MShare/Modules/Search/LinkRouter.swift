@@ -7,24 +7,24 @@
 
 import UIKit
 
-protocol LinkRouterProtocol {
+protocol SearchRouterProtocol {
     func presentSongDetailsScreen(
-        from view: LinkViewProtocol?,
+        from view: SearchViewProtocol?,
         mediaResponse: MediaResponse,
         cover: UIImage,
         completion: (() -> Void)?
     )
 }
 
-final class LinkRouter: Router {
+final class SearchRouter: Router {
     // MARK: - Override methods
     
     override func createModule() -> UIViewController {
         let apiClient = dependencyManager.resolve(type: ApiClient.self)
         
-        let view: LinkViewProtocol = LinkView()
-        let presenter: LinkPresenterProtocol & LinkInteractorOutputProtocol = LinkPresenter(view: view, router: self)
-        let interactor: LinkInteractorIntputProtocol = LinkInteractor(presenter: presenter, apiClient: apiClient)
+        let view: SearchViewProtocol = SearchView()
+        let presenter: SearchPresenterProtocol & SearchInteractorOutputProtocol = SearchPresenter(view: view, router: self)
+        let interactor: SearchInteractorIntputProtocol = SearchInteractor(presenter: presenter, apiClient: apiClient)
         
         view.presenter = presenter
         presenter.interactor = interactor
@@ -39,10 +39,10 @@ final class LinkRouter: Router {
     private let delegate = AppNavigationControllerDelegate()
 }
 
-//MARK: - LinkRouterProtocol
+//MARK: - SearchRouterProtocol
 
-extension LinkRouter: LinkRouterProtocol {
-    func presentSongDetailsScreen(from view: LinkViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
+extension SearchRouter: SearchRouterProtocol {
+    func presentSongDetailsScreen(from view: SearchViewProtocol?, mediaResponse: MediaResponse, cover: UIImage, completion: (() -> Void)?) {
         let detailSongScreen = SongDetailsRouter(
             dependencyManager: dependencyManager,
             mediaResponse: mediaResponse,

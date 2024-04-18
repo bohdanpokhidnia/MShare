@@ -102,7 +102,7 @@ private extension SceneDelegate {
     }
     
     func selectLinkTab(with urlString: String) {
-        appRouter?.select(mainTab: .link)
+        appRouter?.select(mainTab: .search)
         
         UserDefaults().set(urlString, forKey: "incomingURL")
     }

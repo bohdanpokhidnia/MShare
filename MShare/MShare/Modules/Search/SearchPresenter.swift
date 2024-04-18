@@ -1,5 +1,5 @@
 //
-//  LinkPresenter.swift
+//  SearchPresenter.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 28.07.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol LinkPresenterProtocol: AnyObject {
-    var view: LinkViewProtocol? { get set }
-    var interactor: LinkInteractorIntputProtocol? { get set }
-    var router: LinkRouterProtocol? { get set }
+protocol SearchPresenterProtocol: AnyObject {
+    var view: SearchViewProtocol? { get set }
+    var interactor: SearchInteractorIntputProtocol? { get set }
+    var router: SearchRouterProtocol? { get set }
     
     func viewWillAppear()
     func viewWillDisappear()
@@ -18,16 +18,16 @@ protocol LinkPresenterProtocol: AnyObject {
     func getSong(urlString: String)
 }
 
-final class LinkPresenter: BasePresenter {
-    weak var view: LinkViewProtocol?
-    var interactor: LinkInteractorIntputProtocol?
-    var router: LinkRouterProtocol?
+final class SearchPresenter: BasePresenter {
+    weak var view: SearchViewProtocol?
+    var interactor: SearchInteractorIntputProtocol?
+    var router: SearchRouterProtocol?
     
     // MARK: - Initializers
     
     init(
-        view: LinkViewProtocol?,
-        router: LinkRouterProtocol?
+        view: SearchViewProtocol?,
+        router: SearchRouterProtocol?
     ) {
         self.view = view
         self.router = router
@@ -68,9 +68,9 @@ final class LinkPresenter: BasePresenter {
     private var stringFromBuffer: String?
 }
 
-// MARK: - LinkPresenterProtocol
+// MARK: - SearchPresenterProtocol
 
-extension LinkPresenter: LinkPresenterProtocol {
+extension SearchPresenter: SearchPresenterProtocol {
     func viewWillAppear() {
         interactor?.setupNotifications()
     }
@@ -98,7 +98,7 @@ extension LinkPresenter: LinkPresenterProtocol {
 
 // MARK: - LinkInteractorOutputProtocol
 
-extension LinkPresenter: LinkInteractorOutputProtocol {
+extension SearchPresenter: SearchInteractorOutputProtocol {
     func didCatchURL(_ urlString: String) {
         view?.setLink(urlString)
     }

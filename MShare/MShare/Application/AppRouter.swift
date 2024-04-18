@@ -62,7 +62,7 @@ extension AppRouter: AppRouterProtocol {
         )
         self.mainRouter = mainRouter
         load(router: mainRouter)
-        mainRouter.select(tab: .link)
+        mainRouter.select(tab: .search)
     }
     
     func dismissPresentedViewController(animated: Bool, completion: (() -> Void)?) {

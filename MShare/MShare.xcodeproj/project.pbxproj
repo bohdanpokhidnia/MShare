@@ -107,11 +107,11 @@
 		F77EE0E7298FD9C6002E7139 /* SignInCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EE0E6298FD9C6002E7139 /* SignInCollectionViewCell.swift */; };
 		F77FAA66296F59640017BB33 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */; };
 		F7902809289309320058CC19 /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902802289309320058CC19 /* LinkRouter.swift */; };
-		F790280A289309320058CC19 /* LinkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* LinkInteractor.swift */; };
-		F790280B289309320058CC19 /* LinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* LinkEntity.swift */; };
-		F790280C289309320058CC19 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902805289309320058CC19 /* LinkView.swift */; };
-		F790280D289309320058CC19 /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902806289309320058CC19 /* LinkPresenter.swift */; };
-		F790280E289309320058CC19 /* LinkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902808289309320058CC19 /* LinkContentView.swift */; };
+		F790280A289309320058CC19 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902803289309320058CC19 /* SearchInteractor.swift */; };
+		F790280B289309320058CC19 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902804289309320058CC19 /* SearchEntity.swift */; };
+		F790280C289309320058CC19 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902805289309320058CC19 /* SearchView.swift */; };
+		F790280D289309320058CC19 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902806289309320058CC19 /* SearchPresenter.swift */; };
+		F790280E289309320058CC19 /* SearchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902808289309320058CC19 /* SearchContentView.swift */; };
 		F7902829289309940058CC19 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902822289309940058CC19 /* SettingsView.swift */; };
 		F790282A289309940058CC19 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902823289309940058CC19 /* SettingsRouter.swift */; };
 		F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902824289309940058CC19 /* SettingsInteractor.swift */; };
@@ -298,11 +298,11 @@
 		F77EE0EA29901824002E7139 /* MShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MShare.entitlements; sourceTree = "<group>"; };
 		F77FAA65296F59640017BB33 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		F7902802289309320058CC19 /* LinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
-		F7902803289309320058CC19 /* LinkInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInteractor.swift; sourceTree = "<group>"; };
-		F7902804289309320058CC19 /* LinkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkEntity.swift; sourceTree = "<group>"; };
-		F7902805289309320058CC19 /* LinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
-		F7902806289309320058CC19 /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
-		F7902808289309320058CC19 /* LinkContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkContentView.swift; sourceTree = "<group>"; };
+		F7902803289309320058CC19 /* SearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		F7902804289309320058CC19 /* SearchEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
+		F7902805289309320058CC19 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F7902806289309320058CC19 /* SearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		F7902808289309320058CC19 /* SearchContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContentView.swift; sourceTree = "<group>"; };
 		F7902822289309940058CC19 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F7902823289309940058CC19 /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		F7902824289309940058CC19 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
@@ -624,7 +624,7 @@
 				F77EE0D8298FCA86002E7139 /* SignIn */,
 				F774B93C2891B16600438A37 /* Main */,
 				F7D9852128FA977500F54E24 /* Favorites */,
-				F7902801289309320058CC19 /* Link */,
+				F7902801289309320058CC19 /* Search */,
 				F7902821289309940058CC19 /* Settings */,
 				F777BE42289E479600595ACA /* SongDetails */,
 				F7632C2329D9C4AB00239DAF /* MakeCover */,
@@ -726,23 +726,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F7902801289309320058CC19 /* Link */ = {
+		F7902801289309320058CC19 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				F7902807289309320058CC19 /* Views */,
-				F7902805289309320058CC19 /* LinkView.swift */,
-				F7902803289309320058CC19 /* LinkInteractor.swift */,
-				F7902806289309320058CC19 /* LinkPresenter.swift */,
-				F7902804289309320058CC19 /* LinkEntity.swift */,
+				F7902805289309320058CC19 /* SearchView.swift */,
+				F7902803289309320058CC19 /* SearchInteractor.swift */,
+				F7902806289309320058CC19 /* SearchPresenter.swift */,
+				F7902804289309320058CC19 /* SearchEntity.swift */,
 				F7902802289309320058CC19 /* LinkRouter.swift */,
 			);
-			path = Link;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F7902807289309320058CC19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F7902808289309320058CC19 /* LinkContentView.swift */,
+				F7902808289309320058CC19 /* SearchContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1112,7 +1112,7 @@
 				F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */,
 				F76368A829EC909800307B7C /* BottomPushTransition.swift in Sources */,
 				F7D589C6289ADD870073709D /* UIImageView+Ext.swift in Sources */,
-				F790280A289309320058CC19 /* LinkInteractor.swift in Sources */,
+				F790280A289309320058CC19 /* SearchInteractor.swift in Sources */,
 				F77EE0E0298FCA86002E7139 /* SignInPresenter.swift in Sources */,
 				F7FE397329144904000A190F /* FirstFavoritesView.swift in Sources */,
 				F790282E289309940058CC19 /* SettingsContentView.swift in Sources */,
@@ -1149,7 +1149,7 @@
 				F777BE4F289E479600595ACA /* SongDetailsEntity.swift in Sources */,
 				F73873B32AD1802100581F57 /* BaseInteractor.swift in Sources */,
 				F742652F2905318900B87BBF /* AboutUsView.swift in Sources */,
-				F790280B289309320058CC19 /* LinkEntity.swift in Sources */,
+				F790280B289309320058CC19 /* SearchEntity.swift in Sources */,
 				F71412FE2915C60100D569E2 /* UserDefault.swift in Sources */,
 				F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */,
 				F777BE4C289E479600595ACA /* SongDetailsView.swift in Sources */,
@@ -1171,7 +1171,7 @@
 				F7C2B84529A13DD900569C5B /* MediaCell.swift in Sources */,
 				F774B9492891B24400438A37 /* ViewController.swift in Sources */,
 				F71E37D7297ABC0800BAF622 /* OnboardingContentView.swift in Sources */,
-				F790280C289309320058CC19 /* LinkView.swift in Sources */,
+				F790280C289309320058CC19 /* SearchView.swift in Sources */,
 				F74B75C0290AF7CC00DBCD46 /* DBError.swift in Sources */,
 				F7DB96C228CCE4850031FD22 /* String+Ext.swift in Sources */,
 				F7C85DFC28DB94D5007D0170 /* PaddedTextField.swift in Sources */,
@@ -1203,7 +1203,7 @@
 				F7E775EE2BCFFC8D0034C601 /* GradientLabel.swift in Sources */,
 				F7F08F3828DA5BFF00851BB7 /* NetworkErrorResponse.swift in Sources */,
 				F76368A629EC796000307B7C /* UITabBarController+Ext.swift in Sources */,
-				F790280D289309320058CC19 /* LinkPresenter.swift in Sources */,
+				F790280D289309320058CC19 /* SearchPresenter.swift in Sources */,
 				F76368A229EBE7C000307B7C /* FromBottomPushTransition.swift in Sources */,
 				F7D589C8289AEC1A0073709D /* Button.swift in Sources */,
 				F790282B289309940058CC19 /* SettingsInteractor.swift in Sources */,
@@ -1232,7 +1232,7 @@
 				F71E37D6297ABC0800BAF622 /* OnboardingEntity.swift in Sources */,
 				F72E8301289578A2008D7702 /* TableViewCell.swift in Sources */,
 				F7B366382BCC1DB300343F88 /* AppRouter.swift in Sources */,
-				F790280E289309320058CC19 /* LinkContentView.swift in Sources */,
+				F790280E289309320058CC19 /* SearchContentView.swift in Sources */,
 				F72E82FB2895775C008D7702 /* UITableView+Ext.swift in Sources */,
 				F77EE0E5298FCA86002E7139 /* SignInContentView.swift in Sources */,
 				F7E775EC2BCFFBD30034C601 /* GradientDirection.swift in Sources */,

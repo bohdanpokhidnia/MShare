@@ -10,13 +10,13 @@ import UIKit
 struct MainEntity {
     enum TabItem: Int, CaseIterable {
         case favorites
-        case link
+        case search
         case settings
         
         var title: String {
             switch self {
             case .favorites: "Favorites"
-            case .link: "Link"
+            case .search: "Search"
             case .settings: "Settings"
             }
         }
@@ -24,7 +24,7 @@ struct MainEntity {
         var icon: UIImage? {
             switch self {
             case .favorites: UIImage(systemName: "heart")
-            case .link: UIImage(systemName: "link")
+            case .search: UIImage(systemName: "magnifyingglass")
             case .settings: UIImage(systemName: "gear")
             }
         }
@@ -32,7 +32,7 @@ struct MainEntity {
         var selectedIcon: UIImage? {
             switch self {
             case .favorites: UIImage(systemName: "heart.fill")
-            case .link: icon
+            case .search: icon
             case .settings: icon
             }
         }

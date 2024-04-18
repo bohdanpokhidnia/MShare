@@ -1,5 +1,5 @@
 //
-//  LinkInteractor.swift
+//  SearchInteractor.swift
 //  MShare
 //
 //  Created by Bohdan Pokhidnia on 28.07.2022.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol LinkInteractorIntputProtocol {
-    var presenter: LinkInteractorOutputProtocol? { get set }
+protocol SearchInteractorIntputProtocol {
+    var presenter: SearchInteractorOutputProtocol? { get set }
     
     func setupNotifications()
     func removeNotifications()
     func requestSong(urlString: String)
 }
 
-protocol LinkInteractorOutputProtocol: BaseInteractorOutputProtocol {
+protocol SearchInteractorOutputProtocol: BaseInteractorOutputProtocol {
     func didCatchURL(_ urlString: String)
     func didCatchFromBuffer(string: String)
     func didShowKeyboard(_ keyboardFrame: NSValue)
@@ -23,13 +23,13 @@ protocol LinkInteractorOutputProtocol: BaseInteractorOutputProtocol {
     func didFetchMedia(mediaResponse: MediaResponse, cover: UIImage?)
 }
 
-final class LinkInteractor: BaseInteractor {
-    weak var presenter: LinkInteractorOutputProtocol?
+final class SearchInteractor: BaseInteractor {
+    weak var presenter: SearchInteractorOutputProtocol?
     
     // MARK: - Initializers
     
     init(
-        presenter: LinkInteractorOutputProtocol,
+        presenter: SearchInteractorOutputProtocol,
         apiClient: HttpClient
     ) {
         self.presenter = presenter
@@ -49,7 +49,7 @@ final class LinkInteractor: BaseInteractor {
 
 // MARK: - User interactions
 
-private extension LinkInteractor {
+private extension SearchInteractor {
     @objc
     func handleURL() {
         guard let incomingURL = UserDefaults().value(forKey: "incomingURL") as? String else {
@@ -85,9 +85,9 @@ private extension LinkInteractor {
     }
 }
 
-// MARK: - LinkInteractorInputProtocol
+// MARK: - SearchInteractorInputProtocol
 
-extension LinkInteractor: LinkInteractorIntputProtocol {
+extension SearchInteractor: SearchInteractorIntputProtocol {
     func setupNotifications() {
         NotificationCenter.default.addObserver(
             self,

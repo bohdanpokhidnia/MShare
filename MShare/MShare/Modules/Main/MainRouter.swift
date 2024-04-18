@@ -58,8 +58,8 @@ private extension MainRouter {
         case .favorites:
             FavoritesRouter(dependencyManager: dependencyManager)
             
-        case .link:
-            LinkRouter(dependencyManager: dependencyManager)
+        case .search:
+            SearchRouter(dependencyManager: dependencyManager)
             
         case .settings:
             SettingsRouter(
