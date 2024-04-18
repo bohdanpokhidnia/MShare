@@ -1335,7 +1335,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
-				DEVELOPMENT_TEAM = 4PH2U96J79;
+				DEVELOPMENT_TEAM = 3S8AVD2TKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MShare;
@@ -1343,6 +1343,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your gallery for save covers";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1353,6 +1354,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukraine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=*]" = DEV;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1583,6 +1587,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your gallery for save covers";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1593,6 +1598,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukraine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1609,7 +1617,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
-				DEVELOPMENT_TEAM = 4PH2U96J79;
+				DEVELOPMENT_TEAM = 3S8AVD2TKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MShare;
@@ -1617,6 +1625,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your gallery for save covers";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1627,6 +1636,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mshare.ukraine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
