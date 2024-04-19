@@ -1334,7 +1334,7 @@
 				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEVELOPMENT_TEAM = 3S8AVD2TKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
@@ -1578,7 +1578,7 @@
 				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEVELOPMENT_TEAM = 3S8AVD2TKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
@@ -1616,7 +1616,7 @@
 				CODE_SIGN_ENTITLEMENTS = MShare/MShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEVELOPMENT_TEAM = 3S8AVD2TKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MShare/Resources/Info.plist;
