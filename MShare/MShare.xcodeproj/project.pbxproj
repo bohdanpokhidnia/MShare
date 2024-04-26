@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F7002751289C3B470075C133 /* MediaTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7002750289C3B470075C133 /* MediaTableView.swift */; };
-		F700AAEE28F223C7005390E4 /* NotificationToast in Frameworks */ = {isa = PBXBuildFile; productRef = F700AAED28F223C7005390E4 /* NotificationToast */; };
 		F7081F36291D7CDC005DF33D /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7081F35291D7CDC005DF33D /* TTSegmentedControl.swift */; };
 		F70B77282AE145F3000DFAA0 /* AlertKitShortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B77272AE145F3000DFAA0 /* AlertKitShortView.swift */; };
 		F710245028AD4D920012CE0B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710244F28AD4D920012CE0B /* UIColor+Ext.swift */; };
@@ -378,7 +377,6 @@
 				F74B75BE290AF73100DBCD46 /* RealmSwift in Frameworks */,
 				F774B9332891B00500438A37 /* Kingfisher in Frameworks */,
 				F774B9362891B01D00438A37 /* SnapKit in Frameworks */,
-				F700AAEE28F223C7005390E4 /* NotificationToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,7 +999,6 @@
 			packageProductDependencies = (
 				F774B9322891B00500438A37 /* Kingfisher */,
 				F774B9352891B01D00438A37 /* SnapKit */,
-				F700AAED28F223C7005390E4 /* NotificationToast */,
 				F74B75BD290AF73100DBCD46 /* RealmSwift */,
 			);
 			productName = MShare;
@@ -1038,7 +1035,6 @@
 			packageReferences = (
 				F774B9312891B00500438A37 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F774B9342891B01D00438A37 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */,
 				F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = F774B91B2891AEDC00438A37 /* Products */;
@@ -1681,14 +1677,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PhilippeWeidmann/NotificationToast.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -1716,11 +1704,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F700AAED28F223C7005390E4 /* NotificationToast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F700AAEC28F223C6005390E4 /* XCRemoteSwiftPackageReference "NotificationToast" */;
-			productName = NotificationToast;
-		};
 		F74B75BD290AF73100DBCD46 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F74B75BC290AF73100DBCD46 /* XCRemoteSwiftPackageReference "realm-swift" */;

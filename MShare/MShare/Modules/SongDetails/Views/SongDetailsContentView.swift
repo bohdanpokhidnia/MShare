@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import NotificationToast
 
 final class SongDetailsContentView: ViewLayoutable {
     var cover: UIImage? {
@@ -30,30 +29,6 @@ final class SongDetailsContentView: ViewLayoutable {
         $0.text = "Share"
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
-    
-    private(set) var copiedToast = ToastView(
-        title: "Cover copied",
-        titleFont: .systemFont(ofSize: 13, weight: .regular),
-        icon: UIImage(systemName: "doc.on.doc.fill"),
-        iconSpacing: 16,
-        position: .top
-    )
-    
-    private(set) var unvailableToast = ToastView(
-        title: "The service will be available soon",
-        titleFont: .systemFont(ofSize: 13, weight: .regular),
-        icon: UIImage(systemName: "xmark"),
-        iconSpacing: 12,
-        position: .top
-    )
-    
-    private(set) var imageSavedToast = ToastView(
-        title: "Image saved successfuly",
-        titleFont: .systemFont(ofSize: 13, weight: .regular),
-        icon: UIImage(systemName: "photo.on.rectangle.angled"),
-        iconSpacing: 14,
-        position: .top
-    )
     
     private let backgroundImageView = UIImageView()
         .setContentMode(.scaleAspectFill)

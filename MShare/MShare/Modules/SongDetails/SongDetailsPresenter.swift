@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 protocol SongDetailsPresenterProtocol: AnyObject {
     var view: SongDetailsViewProtocol? { get set }
@@ -34,16 +35,6 @@ final class SongDetailsPresenter: BasePresenter {
         self.router = router
         
         super.init(baseView: view)
-    }
-    
-    @objc
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            view?.showError("Error saving image: \(error.localizedDescription)")
-        } else {
-            view?.stopLoadingAnimation()
-            view?.showSavedImage()
-        }
     }
     
     // MARK: - Private Methods
@@ -80,7 +71,12 @@ extension SongDetailsPresenter: SongDetailsPresenterProtocol {
         let image = fromView.makeSnapShotImage(withBackground: false)
         interactor?.copyImageToBuffer(image)
         
-        view?.showCopiedToast()
+        AlertKit.shortToast(
+            title: "Cover copied",
+            icon: .custom(UIImage(systemName: "doc.on.doc.fill")!),
+            position: .top,
+            haptic: .success
+        )
         
         view?.setCoverAnimation(animationState: .pressed) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
@@ -103,6 +99,19 @@ extension SongDetailsPresenter: SongDetailsPresenterProtocol {
     
     func didTapMakeCover() {
         router?.pushMakeCover(view: view)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension SongDetailsPresenter {
+    func showSavedImage() {
+        AlertKit.shortToast(
+            title: "Image saved successfully",
+            icon: .custom(UIImage(systemName: "photo.on.rectangle.angled")!),
+            position: .top,
+            haptic: .success
+        )
     }
 }
 
@@ -155,7 +164,11 @@ extension SongDetailsPresenter: DetailSongInteractorOutputProtocol {
         router?.shareImage(
             view: view,
             image: image,
-            savedImage: view?.showSavedImage,
+            savedImage: { [weak self] in
+                DispatchQueue.main.async {
+                    self?.showSavedImage()
+                }
+            },
             completion: { [weak view] in
                 view?.stopLoadingAnimation()
             }
@@ -163,7 +176,17 @@ extension SongDetailsPresenter: DetailSongInteractorOutputProtocol {
     }
     
     func saveCover(cover: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(cover, self, #selector(image), nil)
+        do {
+            try PHPhotoLibrary.shared().performChangesAndWait {
+                PHAssetChangeRequest.creationRequestForAsset(from: cover)
+            }
+            
+            view?.stopLoadingAnimation()
+            showSavedImage()
+        } catch {
+            view?.stopLoadingAnimation()
+            view?.showError("Error saving image: \(error.localizedDescription)")
+        }
     }
     
     func didSaveToDatabase() {

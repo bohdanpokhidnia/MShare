@@ -15,12 +15,9 @@ protocol SongDetailsViewProtocol: BaseView {
     func setupContent(withState state: SongDetailsEntity, withHorizontalActionMenuItem horizontalActionMenuItem: [HorizontalActionMenuItem])
     func setFavoriteStatus(_ isSaved: Bool)
     func setCoverAnimation(animationState: CoverViewAnimation, completion: (() -> Void)?)
-    func showCopiedToast()
-    func showUnavailableToast()
     func stopShareLoading()
     func showError(_ error: String)
     func showAlertShareCount(for shareMedia: ShareMediaResponse)
-    func showSavedImage()
     func stopLoadingAnimation()
 }
 
@@ -141,7 +138,12 @@ extension SongDetailsView: HorizontalActionMenuDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         guard available else {
-            showUnavailableToast()
+            AlertKit.shortToast(
+                title: "The service will be available soon",
+                icon: .custom(UIImage(systemName: "xmark")!),
+                position: .center,
+                haptic: .warning
+            )
             return
         }
         
@@ -279,14 +281,6 @@ extension SongDetailsView: SongDetailsViewProtocol {
         contentView.set(animationState: animationState, completion: completion)
     }
     
-    func showCopiedToast() {
-        contentView.copiedToast.show(haptic: .success)
-    }
-    
-    func showUnavailableToast() {
-        contentView.unvailableToast.show(haptic: .warning)
-    }
-    
     func stopShareLoading() {
         contentView.horizontalActionMenuView.set(animationStyle: .normal)
     }
@@ -300,11 +294,7 @@ extension SongDetailsView: SongDetailsViewProtocol {
         
         showAlert(title: "Sorry, we have problem", message: "Make and send screenshot to us \nids:\(sourceIds)")
     }
-    
-    func showSavedImage() {
-        contentView.imageSavedToast.show(haptic: .success)
-    }
-    
+
     func stopLoadingAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.contentView.horizontalActionMenuView.set(animationStyle: .normal)
