@@ -8,8 +8,8 @@
 import Foundation
 
 final class ApiClient: HttpClient {
-    var scheme: String { "http" }
-    var host: String { "95.179.252.251" }
+    var scheme: String { "https" }
+    var host: String { "mshare-api.site" }
     var subPath: String { "/api/v1/" }
     
     func request<T: Decodable>(endpoint: Endpoint, response: T.Type) async throws -> T {
