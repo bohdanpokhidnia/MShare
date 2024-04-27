@@ -77,12 +77,16 @@ extension FirstFavoritesView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = FavoritesView.FavoriteSection.allCases[indexPath.row]
+        let accessoryType: UITableViewCell.AccessoryType = selectedIndexPath == indexPath ? .checkmark : .none
         let cell = tableView.dequeue(SettingsTableViewCell.self, for: indexPath)
-        
         return cell
-            .set(state: .init(title: section.title, image: nil, accesoryType: nil))
+            .set(state: SettingsEntity(
+                title: section.title,
+                image: nil,
+                accessoryType: nil
+            ))
             .make {
-                $0.accessoryType = selectedIndexPath == indexPath ? .checkmark : .none
+                $0.accessoryType = accessoryType
             }
     }
     

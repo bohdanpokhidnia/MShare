@@ -12,6 +12,7 @@ enum SettingsItem {
     case accessToGallery
     case aboutUs
     case privacyPolicyAndTerms
+    case support
     case versionApp(String)
 }
 
@@ -23,5 +24,5 @@ struct SettingsSection {
 struct SettingsEntity {
     let title: String
     let image: UIImage?
-    let accesoryType: UITableViewCell.AccessoryType?
+    let accessoryType: UITableViewCell.AccessoryType?
 }

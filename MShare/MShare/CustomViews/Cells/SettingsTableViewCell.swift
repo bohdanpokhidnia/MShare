@@ -21,7 +21,7 @@ final class SettingsTableViewCell: TableViewCell {
 extension SettingsTableViewCell {
     @discardableResult
     func set(state: SettingsEntity) -> Self {
-        if let accecoryView = state.accesoryType {
+        if let accecoryView = state.accessoryType {
             accessoryType = accecoryView
         }
         

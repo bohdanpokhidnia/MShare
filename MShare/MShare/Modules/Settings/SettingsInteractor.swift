@@ -10,7 +10,7 @@ import Foundation
 protocol SettingsInteractorIntputProtocol {
     var presenter: SettingsInteractorOutputProtocol? { get set }
     
-    func makeSettinsSections()
+    func makeSettingsSections()
     func loadFavoritesSectionIndex()
     func saveFavoritesSectionIndex(_ sectionIndex: Int)
     func showOnboarding()
@@ -44,9 +44,21 @@ final class SettingsInteractor {
 // MARK: - SettingsInteractorInputProtocol
 
 extension SettingsInteractor: SettingsInteractorIntputProtocol {
-    func makeSettinsSections() {
-        guard let versionAppString = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        else { return }
+    func makeSettingsSections() {
+        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+            return
+        }
+        guard let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else {
+            return
+        }
+        let versionAppString: String
+        
+        #if DEBUG
+        versionAppString = "\(appVersion) (\(buildVersion))"
+        #else
+        versionAppString = "\(appVersion)"
+        #endif
+        
         let settingsSections = makeSettingsSection(versionAppString: versionAppString)
         
         presenter?.didCatchSettingsSections(settingsSections)
@@ -84,7 +96,12 @@ private extension SettingsInteractor {
             ),
             SettingsSection(
                 title: "Information",
-                items: [.aboutUs, .privacyPolicyAndTerms, .versionApp(versionAppString)]
+                items: [
+                    .aboutUs,
+                    .privacyPolicyAndTerms,
+                    .support,
+                    .versionApp(versionAppString)
+                ]
             )
         ]
         

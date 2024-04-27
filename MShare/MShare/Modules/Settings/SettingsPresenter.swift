@@ -45,7 +45,7 @@ final class SettingsPresenter {
 
 extension SettingsPresenter: SettingsPresenterProtocol {
     func viewDidLoad() {
-        interactor?.makeSettinsSections()
+        interactor?.makeSettingsSections()
     }
     
     func settingsSectionCount() -> Int {
@@ -85,10 +85,17 @@ extension SettingsPresenter: SettingsPresenterProtocol {
             router?.pushAboutUsScreen(from: view)
             
         case .privacyPolicyAndTerms:
-            router?.presentBrowserScreen(from: view, forUrlString: "https://www.google.com.ua")
+            router?.presentBrowserScreen(from: view, forUrlString: "https://mshare-api.site/termsofuse.html")
+            
+        case .support:
+            router?.presentBrowserScreen(from: view, forUrlString: "https://mshare-api.site/support.html")
             
         case .versionApp:
+            #if DEBUG
             interactor?.showOnboarding()
+            #else
+            break
+            #endif
         }
     }
     
@@ -123,35 +130,42 @@ private extension SettingsPresenter {
             SettingsEntity(
                 title: "First Favorites",
                 image: .heart,
-                accesoryType: .disclosureIndicator
+                accessoryType: .disclosureIndicator
             )
             
         case .accessToGallery:
             SettingsEntity(
                 title: "Access to gallery",
                 image:  UIImage(systemName: "photo.on.rectangle.angled"),
-                accesoryType: .disclosureIndicator
+                accessoryType: .disclosureIndicator
             )
             
         case .aboutUs:
             SettingsEntity(
                 title: "About Us",
                 image: .group,
-                accesoryType: .disclosureIndicator
+                accessoryType: .disclosureIndicator
             )
             
         case .privacyPolicyAndTerms:
             SettingsEntity(
                 title: "Privacy Policy & Terms",
                 image: .privacyPolicy,
-                accesoryType: .disclosureIndicator
+                accessoryType: .disclosureIndicator
+            )
+            
+        case .support:
+            SettingsEntity(
+                title: "Support",
+                image: UIImage(systemName: "questionmark.circle.fill"),
+                accessoryType: .disclosureIndicator
             )
             
         case .versionApp(let versionAppString):
             SettingsEntity(
                 title: "Version: \(versionAppString)",
                 image: UIImage(named: "AppIcon"),
-                accesoryType: UITableViewCell.AccessoryType.none
+                accessoryType: UITableViewCell.AccessoryType.none
             )
         }
     }
