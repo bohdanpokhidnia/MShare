@@ -120,6 +120,7 @@
 		F790282E289309940058CC19 /* SettingsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902828289309940058CC19 /* SettingsContentView.swift */; };
 		F790283228931E9C0058CC19 /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */; };
 		F7902835289322EB0058CC19 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7902834289322EB0058CC19 /* UIStackView+Ext.swift */; };
+		F7995F0F2BE5FFD800E01D12 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F7995F0E2BE5FFD800E01D12 /* PrivacyInfo.xcprivacy */; };
 		F79ED12D28A811E3009DFC96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12C28A811E3009DFC96 /* CoverView.swift */; };
 		F79ED12F28A82539009DFC96 /* Blurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79ED12E28A82539009DFC96 /* Blurable.swift */; };
 		F7B366362BCC1D7000343F88 /* ViewLayoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B366352BCC1D7000343F88 /* ViewLayoutable.swift */; };
@@ -311,6 +312,7 @@
 		F7902828289309940058CC19 /* SettingsContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsContentView.swift; sourceTree = "<group>"; };
 		F790283128931E9C0058CC19 /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
 		F7902834289322EB0058CC19 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		F7995F0E2BE5FFD800E01D12 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F79ED12C28A811E3009DFC96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		F79ED12E28A82539009DFC96 /* Blurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blurable.swift; sourceTree = "<group>"; };
 		F7B366352BCC1D7000343F88 /* ViewLayoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLayoutable.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				F7392012298587A300A773D7 /* Fonts */,
 				F774B9262891AEDD00438A37 /* Assets.xcassets */,
 				F774B92B2891AEDD00438A37 /* Info.plist */,
+				F7995F0E2BE5FFD800E01D12 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1059,6 +1062,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7995F0F2BE5FFD800E01D12 /* PrivacyInfo.xcprivacy in Resources */,
 				F774B92A2891AEDD00438A37 /* LaunchScreen.storyboard in Resources */,
 				F73FDBB62BD15EF800AB8D98 /* appleMusicExample.mp4 in Resources */,
 				F7392014298587BE00A773D7 /* Gilroy-Bold.ttf in Resources */,
