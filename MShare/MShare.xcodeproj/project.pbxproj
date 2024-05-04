@@ -43,6 +43,7 @@
 		F73920182985896D00A773D7 /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73920172985896D00A773D7 /* UIStyleGuide.swift */; };
 		F739201A29866C1000A773D7 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F739201929866C1000A773D7 /* DependencyManager.swift */; };
 		F73C20712BCEA8890078AA20 /* AlertKitIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C20702BCEA8890078AA20 /* AlertKitIconErrorView.swift */; };
+		F73D455A2BE619C8006440BE /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F74B75BD290AF73100DBCD46 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F73FDBB62BD15EF800AB8D98 /* appleMusicExample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F73FDBB52BD15EF800AB8D98 /* appleMusicExample.mp4 */; };
 		F741F9EB29033AC600121BB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741F9EA29033AC600121BB4 /* SettingsTableViewCell.swift */; };
 		F742652F2905318900B87BBF /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742652E2905318900B87BBF /* AboutUsView.swift */; };
@@ -183,6 +184,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F73D455B2BE619C8006440BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F73D455A2BE619C8006440BE /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7653FBA289452A200FC47FA /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -992,6 +1004,7 @@
 				F774B9172891AEDC00438A37 /* Frameworks */,
 				F774B9182891AEDC00438A37 /* Resources */,
 				F7653FBA289452A200FC47FA /* Embed Foundation Extensions */,
+				F73D455B2BE619C8006440BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
