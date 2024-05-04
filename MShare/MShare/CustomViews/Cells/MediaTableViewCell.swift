@@ -68,13 +68,13 @@ final class MediaTableViewCell: TableViewCell {
         distibution: .fillProportionally
     )(
         titleLabel,
-        subtitileLabel
+        subtitleLabel
     )
     
     private(set) var titleLabel = UILabel()
         .set(numberOfLines: 1)
     
-    private(set) var subtitileLabel = UILabel()
+    private(set) var subtitleLabel = UILabel()
         .set(numberOfLines: 1)
     
     private let shareImage = UIImage(systemName: "square.and.arrow.up")?
@@ -150,7 +150,7 @@ final class MediaTableViewCell: TableViewCell {
         
         iconImageView.set(component: mediaCell.icon)
         titleLabel.set(component: mediaCell.title)
-        subtitileLabel.set(component: mediaCell.subtitle)
+        subtitleLabel.set(component: mediaCell.subtitle)
         set(component: mediaCell.background)
     }
     
@@ -177,7 +177,7 @@ extension MediaTableViewCell {
         titleLabel
             .text(state.title)
         
-        subtitileLabel
+        subtitleLabel
             .text(state.subtitle)
             .hidden(state.subtitle == nil)
         
