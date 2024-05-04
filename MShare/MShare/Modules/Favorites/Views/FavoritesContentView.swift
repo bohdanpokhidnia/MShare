@@ -10,7 +10,7 @@ import UIKit
 final class FavoritesContentView: ViewLayoutable {
     // MARK: - UI
     
-    let favotitesTableView = TableView(style: .plain)
+    let favoritesTableView = TableView(style: .plain)
         .backgroundColor(color: .clear)
         .make {
             $0.scrollIndicatorInsets = UIEdgeInsets(aTop: 0, aBottom: 82)
@@ -57,7 +57,7 @@ final class FavoritesContentView: ViewLayoutable {
         super.setupSubviews()
         
         addSubviews(
-            favotitesTableView,
+            favoritesTableView,
             infoStackView,
             segmentedControl
         )
@@ -66,7 +66,7 @@ final class FavoritesContentView: ViewLayoutable {
     override func defineLayout() {
         super.defineLayout()
         
-        favotitesTableView.snp.makeConstraints {
+        favoritesTableView.snp.makeConstraints {
             $0.top.bottom.equalTo(safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
         }

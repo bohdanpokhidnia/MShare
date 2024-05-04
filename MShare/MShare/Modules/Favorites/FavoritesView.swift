@@ -92,7 +92,7 @@ private extension FavoritesView {
     }
     
     func setupViews() {
-        contentView.favotitesTableView
+        contentView.favoritesTableView
             .register(class: MediaTableViewCell.self)
             .setRowHeight(80)
             .make {
@@ -165,10 +165,10 @@ extension FavoritesView: TransitionProtocol {
         guard let selectedItem else {
             fatalError("without selected index path")
         }
-        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
+        let cell = contentView.favoritesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         let coverImage = cell.iconImageView
         let title = cell.titleLabel
-        let subtitle = cell.subtitileLabel
+        let subtitle = cell.subtitleLabel
         let views = [coverImage, title, subtitle]
         return views
     }
@@ -177,7 +177,7 @@ extension FavoritesView: TransitionProtocol {
         guard let selectedItem else {
             fatalError("without selected index path")
         }
-        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
+        let cell = contentView.favoritesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         
         switch subView {
         case cell.iconImageView:
@@ -197,9 +197,9 @@ extension FavoritesView: TransitionProtocol {
                 .adjustsFontSizeToFitWidth(true)
             return titleLabel
             
-        case cell.subtitileLabel:
+        case cell.subtitleLabel:
             let subtitleLabel = UILabel()
-                .text(cell.subtitileLabel.text)
+                .text(cell.subtitleLabel.text)
                 .text(font: .systemFont(ofSize: 20, weight: .regular))
                 .text(alignment: .center)
                 .textColor(UIColor(hex: "#f0f0f0"))
@@ -216,7 +216,7 @@ extension FavoritesView: TransitionProtocol {
         guard let selectedItem else {
             fatalError("without selected index path")
         }
-        let cell = contentView.favotitesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
+        let cell = contentView.favoritesTableView.cellForRow(MediaTableViewCell.self, at: selectedItem)
         let coverImage = cell.iconImageView
         let fromRect = coverImage.superview?.convert(coverImage.frame, to: nil) ?? .zero
         return [
@@ -246,11 +246,11 @@ extension FavoritesView: FavoritesViewProtocol {
     }
     
     func reloadFavoritesData() {
-        contentView.favotitesTableView.reloadData()
+        contentView.favoritesTableView.reloadData()
     }
     
     func deleteRow(for indexPath: IndexPath) {
-        contentView.favotitesTableView.deleteRows(at: [indexPath], with: .automatic)
+        contentView.favoritesTableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     func setupFavoriteSection(_ sectionIndex: Int) {
